@@ -40,10 +40,28 @@ usersRouter.put('/addFriend', async (req, res) => {
   const receiverUser = await User.findById(body.receiverId)
 
   senderUser.friends = senderUser.friends.concat(receiverUser._id)
+  // Remove friendrequest from added friend.
+  senderUser.friendRequests  = senderUser.friendRequests.filter(request => request._id != receiverUser._id)
   await senderUser.save()
 
   receiverUser.friends = receiverUser.friends.concat(senderUser._id)
+  // Remove sent friendrequest to added friend.
+  receiverUser.sentFriendRequests  = receiverUser.sentFriendRequests.filter(request => request._id != senderUser._id)
   await receiverUser.save()
+
+})
+
+usersRouter.put('/friendRequest', async (req, res) => {
+  const body = req.body
+
+  const senderUser = await User.findById(body.senderId)
+  const receiverUser = await User.findById(body.receiverId)
+
+  receiverUser.friendRequests = receiverUser.friendRequests.concat(senderUser._id)
+  await receiverUser.save()
+
+  senderUser.sentFriendRequests = senderUser.sentFriendRequests.concat(receiverUser._id)
+  await senderUser.save()
 
 })
 
