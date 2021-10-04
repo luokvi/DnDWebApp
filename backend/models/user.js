@@ -14,8 +14,8 @@ const userSchema = new mongoose.Schema({
     username: { type: String, required: true, unique: true, minlength: 5 },
     passwordHash: { type: String, required: true },
     friends: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
-    friendRequests: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
-    sentFriendRequests: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }]
+    friendRequests: [{ type: mongoose.Schema.Types.ObjectId, ref: 'FriendRequest' }],
+    sentFriendRequests: [{ type: mongoose.Schema.Types.ObjectId, ref: 'FriendRequest' }]
 })
 
 userSchema.plugin(uniqueValidator)
@@ -29,4 +29,4 @@ userSchema.set('toJSON', {
     }
   })
 
-module.exports = mongoose.model("user", userSchema)
+module.exports = mongoose.model("User", userSchema)
