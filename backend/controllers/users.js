@@ -33,4 +33,18 @@ usersRouter.post('/', async (req, res) => {
   res.json(savedUser)
 })
 
+usersRouter.put('/addFriend', async (req, res) => {
+  const body = req.body
+
+  const senderUser = await User.findById(body.senderId)
+  const receiverUser = await User.findById(body.receiverId)
+
+  senderUser.friends = senderUser.friends.concat(receiverUser._id)
+  await senderUser.save()
+
+  receiverUser.friends = receiverUser.friends.concat(senderUser._id)
+  await receiverUser.save()
+
+})
+
 module.exports = usersRouter
