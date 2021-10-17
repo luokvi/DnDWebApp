@@ -43,8 +43,7 @@ usersRouter.post('/addFriend', async (req, res) => {
 
   // Check that there is a friendrequest from receiver to sender.
   const receivedRequest = await senderUser.friendRequests.filter(request => request._id === requestId)
-  console.log("Received request:")
-  console.log(receivedRequest)
+  
   if (!receivedRequest._id){
     res.status(403).json({ error: "no friendrequest from this receiver to sender"}).end()
     return
