@@ -4,7 +4,7 @@ const User = require('../models/user')
 const FriendRequest = require('../models/friendRequest')
 
 usersRouter.get('/', async (req, res) => {
-  const users = await User.find({}).populate("friends").populate("friendRequests")
+  const users = await User.find({}).populate("friends", { username: 1, id: 1 })
 
   res.json(users.map( user => user.toJSON() ))
 })
@@ -65,12 +65,11 @@ usersRouter.post('/addFriend', async (req, res) => {
 usersRouter.post('/friendRequest', async (req, res) => {
   const body = req.body
 
-  const senderUser = await User.findById(body.senderId).populate("friends").populate("sentFriendRequests").populate("friendRequests")
+  const senderUser = await User.findById(body.senderId).populate('friends').populate('sentFriendRequests').populate('friendRequests')
   const receiverUser = await User.findById(body.receiverId)
 
   // Check if users are already friends.
   const alredyFriend = senderUser.friends.filter(friend => friend.id == body.receiverId)
-  console.log(alredyFriend)
   if (alredyFriend.id){
     res.status(403).json({ error: "cannot send a friend request"}).end()
     return
@@ -78,27 +77,27 @@ usersRouter.post('/friendRequest', async (req, res) => {
 
   // Check if already sent a friend request.
   const sentRequest = senderUser.sentFriendRequests.filter(request => request.receiver == body.receiverId)
-  console.log(sentRequest)
   const receivedRequest = senderUser.friendRequests.filter(request => request.sender == body.receiverId)
-  console.log(receivedRequest)
   if (sentRequest[0] || receivedRequest[0]){
     res.status(403).json({ error: "cannot send a friend request"}).end()
     return
   }
 
   const newRequest = new FriendRequest({
-    sender: senderUser._id,
-    receiver: receiverUser._id,
+    sender: senderUser,
+    receiver: receiverUser,
     date: new Date()
   })
 
-  receiverUser.friendRequests = receiverUser.friendRequests.concat(newRequest)
+  const savedRequest = await newRequest.save()
+
+  receiverUser.friendRequests = receiverUser.friendRequests.concat(savedRequest)
   await receiverUser.save()
 
-  senderUser.sentFriendRequests = senderUser.sentFriendRequests.concat(newRequest)
+  senderUser.sentFriendRequests = senderUser.sentFriendRequests.concat(savedRequest)
   await senderUser.save()
 
-  res.json(newRequest)
+  res.json(savedRequest)
 })
 
 module.exports = usersRouter
