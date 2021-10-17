@@ -42,7 +42,7 @@ usersRouter.post('/addFriend', async (req, res) => {
   const receiverUser = await User.findById(body.receiverId)
 
   // Check that there is a friendrequest from receiver to sender.
-  const receivedRequest = await senderUser.friendRequests.filter(request => request._id === requestId)
+  const receivedRequest = await senderUser.friendRequests.filter(request => request._id == requestId)
   
   if (!receivedRequest._id){
     res.status(403).json({ error: "no friendrequest from this receiver to sender"}).end()
@@ -67,6 +67,24 @@ usersRouter.post('/friendRequest', async (req, res) => {
 
   const senderUser = await User.findById(body.senderId)
   const receiverUser = await User.findById(body.receiverId)
+
+  // Check if users are already friends.
+  const alredyFriend = senderUser.friends.filter(friend => friend == body.receiverId)
+  console.log(alredyFriend)
+  if (alredyFriend[0]){
+    res.status(403).json({ error: "cannot send a friend request"}).end()
+    return
+  }
+
+  // Check if already sent a friend request.
+  const sentRequest = senderUser.sentFriendRequests.filter(request => request.receiver == body.receiverId)
+  console.log(sentRequest)
+  const receivedRequest = senderUser.friendRequests.filter(request => request.sender == body.receiverId)
+  console.log(receivedRequest)
+  if (sentRequest[0] || receivedRequest[0]){
+    res.status(403).json({ error: "cannot send a friend request"}).end()
+    return
+  }
 
   const newRequest = new FriendRequest({
     sender: senderUser._id,
