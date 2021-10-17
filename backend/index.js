@@ -1,8 +1,10 @@
 require('dotenv').config()
 const express = require('express')
-const app = express()
-const userRouter = require('./controllers/users')
 
+const app = express()
+app.use(express.json())
+
+const userRouter = require('./controllers/users')
 app.use('/api/users', userRouter)
 
 app.get('/', ( req, res ) => {
