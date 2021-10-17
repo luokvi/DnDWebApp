@@ -4,4 +4,4 @@
 | 19.9. | 0.5 | Backendin tekemistä |
 | 25.9. | 1 | User backendissä |
 | 4.10 | 1 | User voi lähettää toiselle FriendRequest |
-| 17.10 | 0.5 | FriendRequestien debuggausta |
+| 17.10 | 1 | FriendRequestien debuggausta |
