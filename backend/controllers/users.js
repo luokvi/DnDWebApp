@@ -67,7 +67,7 @@ usersRouter.put('/friendRequest', async (req, res) => {
   const senderUser = await User.findById(body.senderId)
   const receiverUser = await User.findById(body.receiverId)
 
-  const newRequest = new FriendRequests({
+  const newRequest = new FriendRequest({
     sender: senderUser._id,
     receiver: receiverUser._id,
     date: new Date()
