@@ -13,11 +13,11 @@ usersRouter.post('/', async (req, res) => {
   const body = req.body
 
   if (body.password === undefined){
-      res.status(400).json({ error: "password is required" })
+      res.status(400).json({ error: "password is required" }).end()
       return
   }
   if (body.password.length < 8){
-      res.status(400).json({ error: "password must be atleast 3 characters"})
+      res.status(400).json({ error: "password must be atleast 3 characters"}).end()
       return
   }
 
@@ -34,7 +34,7 @@ usersRouter.post('/', async (req, res) => {
   res.json(savedUser)
 })
 
-usersRouter.put('/addFriend', async (req, res) => {
+usersRouter.post('/addFriend', async (req, res) => {
   const body = req.body
 
   const requestId = body.requestId
@@ -42,9 +42,11 @@ usersRouter.put('/addFriend', async (req, res) => {
   const receiverUser = await User.findById(body.receiverId)
 
   // Check that there is a friendrequest from receiver to sender.
-  const receivedRequest = await sender.friendRequests.findById(requestId)
-  if (!receivedRequest){
-    res.status(403).json({ error: "no friendrequest from this receiver to sender"})
+  const receivedRequest = await senderUser.friendRequests.filter(request => request._id === requestId)
+  console.log("Received request:")
+  console.log(receivedRequest)
+  if (!receivedRequest._id){
+    res.status(403).json({ error: "no friendrequest from this receiver to sender"}).end()
     return
   }
 
@@ -58,10 +60,10 @@ usersRouter.put('/addFriend', async (req, res) => {
   receiverUser.sentFriendRequests  = receiverUser.sentFriendRequests.filter(request => request._id != requestId)
   await receiverUser.save()
 
-  res.status(200)
+  res.status(200).end()
 })
 
-usersRouter.put('/friendRequest', async (req, res) => {
+usersRouter.post('/friendRequest', async (req, res) => {
   const body = req.body
 
   const senderUser = await User.findById(body.senderId)
