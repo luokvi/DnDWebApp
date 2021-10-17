@@ -4,7 +4,7 @@ const User = require('../models/user')
 const FriendRequest = require('../models/friendRequest')
 
 usersRouter.get('/', async (req, res) => {
-  const users = await User.find({})
+  const users = await User.find({}).populate("friends").populate("friendRequests")
 
   res.json(users.map( user => user.toJSON() ))
 })
@@ -65,13 +65,13 @@ usersRouter.post('/addFriend', async (req, res) => {
 usersRouter.post('/friendRequest', async (req, res) => {
   const body = req.body
 
-  const senderUser = await User.findById(body.senderId)
+  const senderUser = await User.findById(body.senderId).populate("friends").populate("sentFriendRequests").populate("friendRequests")
   const receiverUser = await User.findById(body.receiverId)
 
   // Check if users are already friends.
-  const alredyFriend = senderUser.friends.filter(friend => friend == body.receiverId)
+  const alredyFriend = senderUser.friends.filter(friend => friend.id == body.receiverId)
   console.log(alredyFriend)
-  if (alredyFriend[0]){
+  if (alredyFriend.id){
     res.status(403).json({ error: "cannot send a friend request"}).end()
     return
   }
