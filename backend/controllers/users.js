@@ -38,12 +38,12 @@ usersRouter.post('/addFriend', async (req, res) => {
   const body = req.body
 
   const requestId = body.requestId
-  const senderUser = await User.findById(body.senderId)
+  const senderUser = await User.findById(body.senderId).populate("friendRequests")
   const receiverUser = await User.findById(body.receiverId)
 
   // Check that there is a friendrequest from receiver to sender.
-  const receivedRequest = await senderUser.friendRequests.filter(request => request._id == requestId)
-  
+  const receivedRequest = await senderUser.friendRequests.filter(request => request == requestId)
+  console.log(senderUser)
   if (!receivedRequest._id){
     res.status(403).json({ error: "no friendrequest from this receiver to sender"}).end()
     return
@@ -98,6 +98,21 @@ usersRouter.post('/friendRequest', async (req, res) => {
   await senderUser.save()
 
   res.json(savedRequest)
+})
+
+usersRouter.delete('/friend', async (req, res) => {
+  const body = req.body
+
+  const user = await User.findById(body.userId)
+  const friendToDelete = await User.findById(body.friendId)
+
+  user.friends = user.friends.filter(friend => friend != friendToDelete._id)
+  const savedUser = await user.save()
+
+  friendToDelete.friends = friendToDelete.friends.filter(friend => friend != user._id)
+  const savedFriend = await friendToDelete.save()
+
+  res.json(savedUser, savedFriend)
 })
 
 module.exports = usersRouter
