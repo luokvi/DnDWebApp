@@ -34,7 +34,7 @@ usersRouter.post('/', async (req, res) => {
   res.json(savedUser)
 })
 
-usersRouter.post('/addFriend', async (req, res) => {
+usersRouter.post('/friend', async (req, res) => {
   const body = req.body
 
   const senderUser = await User.findById(body.senderId).populate('friendRequests')
