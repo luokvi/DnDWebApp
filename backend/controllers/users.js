@@ -37,7 +37,7 @@ usersRouter.post('/', async (req, res) => {
 usersRouter.post('/friend', async (req, res) => {
   const body = req.body
 
-  const senderUser = await User.findById(body.senderId).populate('friendRequests')
+  const senderUser = await User.findById(body.senderId).populate('friendRequests').populate('friends')
   const receiverUser = await User.findById(body.receiverId).populate('sentFriendRequests')
   const friendRequest = await FriendRequest.findById(body.friendRequest).populate('sender').populate('receiver')
 
@@ -49,6 +49,13 @@ usersRouter.post('/friend', async (req, res) => {
       res.status(403).end()
       return
     }
+
+  // Check if users are already friends.
+  const alreadyFriend = senderUser.friends.find(f => f._id == receiverUser.id)
+  if (alreadyFriend._id){
+    res.status(409).end()
+    return
+  }
 
   senderUser.friends = senderUser.friends.concat(receiverUser._id)
   senderUser.friendRequests = senderUser.friendRequests.filter(r => r.id != friendRequest._id)
