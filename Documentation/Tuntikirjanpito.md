@@ -6,3 +6,4 @@
 | 4.10 | 1 | User voi lähettää toiselle FriendRequest |
 | 17.10 | 1 | FriendRequestien debuggausta |
 | 17.10 | 1 | Lisää debuggausta ja mahdollista poistaa Friend |
+| 19.10 | 1 | FriendRequestien ja Friendin lisäämisen korjaus |
