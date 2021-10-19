@@ -39,7 +39,16 @@ usersRouter.post('/friend', async (req, res) => {
 
   const senderUser = await User.findById(body.senderId).populate('friendRequests')
   const receiverUser = await User.findById(body.receiverId).populate('sentFriendRequests')
-  const friendRequest = await FriendRequest.findById(body.friendRequest)
+  const friendRequest = await FriendRequest.findById(body.friendRequest).populate('sender').populate('receiver')
+
+  // Check that friendRequest exists and is between sender and receiver.
+  if (!friendRequest._id ||
+    friendRequest.sender[0]._id != receiverUser.id ||
+    friendRequest.receiver[0]._id != senderUser.id)
+    {
+      res.status(403).end()
+      return
+    }
 
   senderUser.friends = senderUser.friends.concat(receiverUser._id)
   senderUser.friendRequests = senderUser.friendRequests.filter(r => r.id != friendRequest._id)
