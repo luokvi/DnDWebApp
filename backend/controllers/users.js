@@ -37,18 +37,16 @@ usersRouter.post('/', async (req, res) => {
 usersRouter.post('/addFriend', async (req, res) => {
   const body = req.body
 
-  const senderUser = await User.findById(body.senderId)
-  const receiverUser = await User.findById(body.receiverId)
+  const senderUser = await User.findById(body.senderId).populate('friendRequests')
+  const receiverUser = await User.findById(body.receiverId).populate('sentFriendRequests')
   const friendRequest = await FriendRequest.findById(body.friendRequest)
 
-  console.log(friendRequest)
-
   senderUser.friends = senderUser.friends.concat(receiverUser._id)
-  senderUser.friendRequests = senderUser.friendRequests.filter(r => r._id != friendRequest._id)
+  senderUser.friendRequests = senderUser.friendRequests.filter(r => r.id != friendRequest._id)
   const savedSender = await senderUser.save()
 
   receiverUser.friends = receiverUser.friends.concat(senderUser._id)
-  receiverUser.sentFriendRequests = receiverUser.sentFriendRequests.filter(r => r._id != friendRequest._id)
+  receiverUser.sentFriendRequests = receiverUser.sentFriendRequests.filter(r => r.id != friendRequest._id)
   await receiverUser.save()
 
   res.json(savedSender.toJSON())
