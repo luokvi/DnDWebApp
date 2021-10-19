@@ -70,7 +70,7 @@ usersRouter.post('/friendRequest', async (req, res) => {
   await senderUser.save()
 
   receiverUser.friendRequests = receiverUser.friendRequests.concat(savedRequest._id)
-  receiverUser.save()
+  await receiverUser.save()
 
   res.json(savedRequest.toJSON())
 })
@@ -79,15 +79,15 @@ usersRouter.delete('/friend', async (req, res) => {
   const body = req.body
 
   const user = await User.findById(body.userId)
-  const friendToDelete = await User.findById(body.friendId)
+  const friend = await User.findById(body.friendId)
 
-  user.friends = user.friends.filter(friend => friend != friendToDelete._id)
+  user.friends = user.friends.filter(f => f.id != friend._id)
   const savedUser = await user.save()
 
-  friendToDelete.friends = friendToDelete.friends.filter(friend => friend != user._id)
-  const savedFriend = await friendToDelete.save()
+  friend.friends = friend.friends.filter(f => f.id != user._id)
+  await friend.save()
 
-  res.json(savedUser, savedFriend)
+  res.json(savedUser.toJSON())
 })
 
 module.exports = usersRouter
