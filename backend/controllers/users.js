@@ -52,7 +52,11 @@ usersRouter.post('/friend', async (req, res) => {
 
   // Check if users are already friends.
   const alreadyFriend = senderUser.friends.find(f => f._id == receiverUser.id)
-  if (alreadyFriend._id){
+  let check = true
+  if (!alreadyFriend){
+    check = false
+  }
+  if (check){
     res.status(409).end()
     return
   }
