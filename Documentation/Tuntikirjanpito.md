@@ -8,3 +8,4 @@
 | 17.10 | 1 | Lisää debuggausta ja mahdollista poistaa Friend |
 | 19.10 | 1 | FriendRequestien ja Friendin lisäämisen korjaus |
 | 19.10 | 3 | Checkaa että friendrequest on tarpeen lähettää, ja että friend on sallittu lisätä |
+| 19.10 | 2 | Käyttäjän login ja token authorization |
