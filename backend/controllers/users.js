@@ -2,6 +2,7 @@ const bcrypt = require('bcrypt')
 const usersRouter = require('express').Router()
 const User = require('../models/user')
 const FriendRequest = require('../models/friendRequest')
+const TokenCheck = require('../util/tokenCheck')
 
 usersRouter.get('/', async (req, res) => {
   const users = await User.find({}).populate("friends", { username: 1 })
@@ -35,6 +36,11 @@ usersRouter.post('/', async (req, res) => {
 })
 
 usersRouter.post('/friend', async (req, res) => {
+  const [authorized, checkMessage] = TokenCheck.checkToken(req)
+  if (!authorized){
+    res.status(401).send(checkMessage).end()
+    return
+  }
   const body = req.body
 
   const senderUser = await User.findById(body.senderId).populate('friendRequests').populate('friends')
@@ -73,6 +79,12 @@ usersRouter.post('/friend', async (req, res) => {
 })
 
 usersRouter.post('/friendRequest', async (req, res) => {
+  const [authorized, checkMessage] = TokenCheck.checkToken(req)
+  if (!authorized){
+    res.status(401).send(checkMessage).end()
+    return
+  }
+  
   const body = req.body
 
   const senderUser = await User.findById(body.senderId).populate(

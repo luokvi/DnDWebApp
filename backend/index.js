@@ -10,6 +10,9 @@ app.use('/api/users', userRouter)
 const loginRouter = require('./controllers/login')
 app.use('/api/login', loginRouter)
 
+const middleware = require('./util/middleware')
+app.use(middleware.errorHandler)
+
 app.get('/', ( req, res ) => {
   res.send( '<h1>Hello World!</h1>' )
 })
