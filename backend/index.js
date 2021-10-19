@@ -7,6 +7,9 @@ app.use(express.json())
 const userRouter = require('./controllers/users')
 app.use('/api/users', userRouter)
 
+const loginRouter = require('./controllers/login')
+app.use('/api/login', loginRouter)
+
 app.get('/', ( req, res ) => {
   res.send( '<h1>Hello World!</h1>' )
 })
