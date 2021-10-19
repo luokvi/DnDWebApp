@@ -56,7 +56,8 @@ usersRouter.post('/addFriend', async (req, res) => {
 
   receiverUser.friends = receiverUser.friends.concat(senderUser._id)
   // Remove sent friendrequest to added friend.
-  receiverUser.sentFriendRequests  = receiverUser.sentFriendRequests.filter(request => request._id != requestId)
+  receiverUser.sentFriendRequests  = receiverUser.sentFriendRequests.filter(
+    request => request._id != requestId)
   await receiverUser.save()
 
   res.status(200).end()
@@ -65,39 +66,24 @@ usersRouter.post('/addFriend', async (req, res) => {
 usersRouter.post('/friendRequest', async (req, res) => {
   const body = req.body
 
-  const senderUser = await User.findById(body.senderId).populate('friends').populate('sentFriendRequests').populate('friendRequests')
+  const senderUser = await User.findById(body.senderId)
   const receiverUser = await User.findById(body.receiverId)
 
-  // Check if users are already friends.
-  const alredyFriend = senderUser.friends.filter(friend => friend.id == body.receiverId)
-  if (alredyFriend.id){
-    res.status(403).json({ error: "cannot send a friend request"}).end()
-    return
-  }
-
-  // Check if already sent a friend request.
-  const sentRequest = senderUser.sentFriendRequests.filter(request => request.receiver == body.receiverId)
-  const receivedRequest = senderUser.friendRequests.filter(request => request.sender == body.receiverId)
-  if (sentRequest[0] || receivedRequest[0]){
-    res.status(403).json({ error: "cannot send a friend request"}).end()
-    return
-  }
-
-  const newRequest = new FriendRequest({
-    sender: senderUser,
+  const friendRequest = new FriendRequest({
+    sender: senderUser._id,
     receiver: receiverUser,
     date: new Date()
   })
 
-  const savedRequest = await newRequest.save()
+  const savedRequest = await friendRequest.save()
 
-  receiverUser.friendRequests = receiverUser.friendRequests.concat(savedRequest)
-  await receiverUser.save()
-
-  senderUser.sentFriendRequests = senderUser.sentFriendRequests.concat(savedRequest)
+  senderUser.sentFriendRequests = senderUser.sentFriendRequests.concat(savedRequest._id)
   await senderUser.save()
 
-  res.json(savedRequest)
+  receiverUser.friendRequests = receiverUser.friendRequests.concat(savedRequest._id)
+  receiverUser.save()
+
+  res.json(savedRequest.toJSON())
 })
 
 usersRouter.delete('/friend', async (req, res) => {
