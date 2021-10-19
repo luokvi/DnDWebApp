@@ -37,30 +37,19 @@ usersRouter.post('/', async (req, res) => {
 usersRouter.post('/addFriend', async (req, res) => {
   const body = req.body
 
-  const requestId = body.requestId
-  const senderUser = await User.findById(body.senderId).populate("friendRequests")
+  const senderUser = await User.findById(body.senderId)
   const receiverUser = await User.findById(body.receiverId)
-
-  // Check that there is a friendrequest from receiver to sender.
-  const receivedRequest = await senderUser.friendRequests.filter(request => request == requestId)
-  console.log(senderUser)
-  if (!receivedRequest._id){
-    res.status(403).json({ error: "no friendrequest from this receiver to sender"}).end()
-    return
-  }
+  const friendRequest = await FriendRequest.findById(body.friendRequest)
 
   senderUser.friends = senderUser.friends.concat(receiverUser._id)
-  // Remove friendrequest from added friend.
-  senderUser.friendRequests  = senderUser.friendRequests.filter(request => request._id != requestId)
-  await senderUser.save()
+  senderUser.friendRequests = senderUser.friendRequests.filter(r => r._id != friendRequest._id)
+  const savedSender = await senderUser.save()
 
   receiverUser.friends = receiverUser.friends.concat(senderUser._id)
-  // Remove sent friendrequest to added friend.
-  receiverUser.sentFriendRequests  = receiverUser.sentFriendRequests.filter(
-    request => request._id != requestId)
-  await receiverUser.save()
+  receiverUser.sentFriendRequests = receiverUser.sentFriendRequests.filter(r => r._id != friendRequest._id)
+  const savedReceiver = await receiverUser.save()
 
-  res.status(200).end()
+  res.json(savedSender.toJSON(), savedReceiver.toJSON())
 })
 
 usersRouter.post('/friendRequest', async (req, res) => {
