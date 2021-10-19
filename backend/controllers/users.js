@@ -4,7 +4,7 @@ const User = require('../models/user')
 const FriendRequest = require('../models/friendRequest')
 
 usersRouter.get('/', async (req, res) => {
-  const users = await User.find({}).populate("friends", { username: 1, id: 1 })
+  const users = await User.find({}).populate("friends", { username: 1 })
 
   res.json(users.map( user => user.toJSON() ))
 })
@@ -78,8 +78,8 @@ usersRouter.post('/friendRequest', async (req, res) => {
 usersRouter.delete('/friend', async (req, res) => {
   const body = req.body
 
-  const user = await User.findById(body.userId)
-  const friend = await User.findById(body.friendId)
+  const user = await User.findById(body.userId).populate('friends')
+  const friend = await User.findById(body.friendId).populate('friends')
 
   user.friends = user.friends.filter(f => f.id != friend._id)
   const savedUser = await user.save()
