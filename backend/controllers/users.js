@@ -70,6 +70,10 @@ usersRouter.post('/friendRequest', async (req, res) => {
   // Check that there isn't already a friendrequest.
   const existingRequest = senderUser.friendRequests.find(r => r.sender == receiverUser._id)
   const existingSentRequest = senderUser.sentFriendRequests.find(r => r.receiver == receiverUser._id)
+  console.log("existing request:")
+  console.log(existingRequest._id)
+  console.log("existing sent request:")
+  console.log(existingSentRequest._id)
   if (existingRequest || existingSentRequest){
     res.status(409).end()
     return
