@@ -2,6 +2,7 @@ require('dotenv').config()
 const express = require('express')
 
 const app = express()
+require('express-async-errors')
 app.use(express.json())
 
 const userRouter = require('./controllers/users')
