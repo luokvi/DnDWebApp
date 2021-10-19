@@ -7,3 +7,4 @@
 | 17.10 | 1 | FriendRequestien debuggausta |
 | 17.10 | 1 | Lisää debuggausta ja mahdollista poistaa Friend |
 | 19.10 | 1 | FriendRequestien ja Friendin lisäämisen korjaus |
+| 19.10 | 3 | Checkaa että friendrequest on tarpeen lähettää, ja että friend on sallittu lisätä |
