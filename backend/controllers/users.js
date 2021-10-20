@@ -36,7 +36,7 @@ usersRouter.post('/', async (req, res) => {
 })
 
 usersRouter.post('/friend', async (req, res) => {
-  const [authorized, checkMessage] = TokenCheck.checkToken(req)
+  const [authorized, checkMessage] = TokenCheck.checkToken(req, req.body.senderId)
   if (!authorized){
     res.status(401).send(checkMessage).end()
     return
@@ -79,7 +79,7 @@ usersRouter.post('/friend', async (req, res) => {
 })
 
 usersRouter.post('/friendRequest', async (req, res) => {
-  const [authorized, checkMessage] = TokenCheck.checkToken(req)
+  const [authorized, checkMessage] = TokenCheck.checkToken(req, req.body.senderId)
   if (!authorized){
     res.status(401).send(checkMessage).end()
     return
@@ -125,6 +125,12 @@ usersRouter.post('/friendRequest', async (req, res) => {
 })
 
 usersRouter.delete('/friend', async (req, res) => {
+  const [authorized, checkMessage] = TokenCheck.checkToken(req, req.body.userId)
+  if (!authorized){
+    res.status(401).send(checkMessage).end()
+    return
+  }
+
   const body = req.body
 
   const user = await User.findById(body.userId).populate('friends')
