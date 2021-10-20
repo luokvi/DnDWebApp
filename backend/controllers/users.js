@@ -99,13 +99,11 @@ usersRouter.post('/friendRequest', async (req, res) => {
   }
 
   // Check that there isn't already a friendrequest.
-  // This is not currently working..
-  /*
-  const existingRequest = senderUser.friendRequests.find(async r => {
-      const er = await r.populate('sender')
-      
-      return er.sender[0]._id === receiverUser._id
-    })
+  const existingRequest = FriendRequest.findOne({ sender: receiverUser.id, receiver: senderUser.id })
+
+  console.log(existingRequest)
+  return
+
   const existingSentRequest = senderUser.sentFriendRequests.find(async r =>{
     const er = await r.populate('receiver')
     
@@ -119,7 +117,6 @@ usersRouter.post('/friendRequest', async (req, res) => {
     res.status(409).json({error: 'Already sent a request.'}).end()
     return
   }
-  */
 
   const friendRequest = new FriendRequest({
     sender: senderUser._id,
