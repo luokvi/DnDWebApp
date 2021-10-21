@@ -10,6 +10,19 @@ usersRouter.get('/', async (req, res) => {
   res.json(users.map( user => user.toJSON() ))
 })
 
+usersRouter.get('/:id', async (req, res) => {
+  const id = req.params.id
+
+  const user = await User.findById(id).populate('friends', { username: 1})
+
+  if (user === null){
+    res.status(404).end()
+    return
+  }
+
+  res.json(user.toJSON())
+})
+
 usersRouter.post('/', async (req, res) => {
   const body = req.body
 
@@ -32,7 +45,7 @@ usersRouter.post('/', async (req, res) => {
 
   const savedUser = await user.save()
 
-  res.json(savedUser)
+  res.json(savedUser.toJSON())
 })
 
 usersRouter.post('/friend', async (req, res) => {
