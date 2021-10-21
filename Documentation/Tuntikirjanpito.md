@@ -10,3 +10,4 @@
 | 19.10 | 3 | Checkaa että friendrequest on tarpeen lähettää, ja että friend on sallittu lisätä |
 | 19.10 | 2 | Käyttäjän login ja token authorization |
 | 20.10 | 2 | Uusi FriendRequestien ja Friendin lisäämisen korjaus |
+| 21.10 | 0.5 | Character skeema |
