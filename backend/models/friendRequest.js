@@ -10,9 +10,9 @@ mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
   })
 
 const friendRequestSchema = new mongoose.Schema({
-    sender: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }],
-    receiver: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }],
-    date: [{ type: mongoose.Schema.Types.Date, required: true}]
+    sender: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+    receiver: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+    date: { type: mongoose.Schema.Types.Date, required: true}
 })
 
 friendRequestSchema.set('toJSON', {
