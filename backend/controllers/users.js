@@ -13,7 +13,8 @@ usersRouter.get('/', async (req, res) => {
 usersRouter.get('/:id', async (req, res) => {
   const id = req.params.id
 
-  const user = await User.findById(id).populate('friends', { username: 1})
+  const user = await User.findById(id).populate('friends', { username: 1}).populate(
+    'characters', {name: 1, race: 1, class: 1, level: 1})
 
   if (user === null){
     res.status(404).end()
