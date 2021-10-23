@@ -6,7 +6,7 @@ mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
 
 const characterSchema = new mongoose.Schema({
     creator: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
-    name: { type: String },
+    name: { type: String, required: true },
     race: { type: String },
     class: { type: String },
     level: { type: Number, min: 1 },
