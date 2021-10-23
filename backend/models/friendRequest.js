@@ -2,12 +2,6 @@ const mongoose = require('mongoose')
 
 const url = process.env.MONGODB_URI
 mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then( () => {
-    console.log('connected!')
-  })
-  .catch((error) => {
-    console.log('error connecting: ', error.message)
-  })
 
 const friendRequestSchema = new mongoose.Schema({
     sender: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
