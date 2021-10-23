@@ -31,12 +31,12 @@ const characterSchema = new mongoose.Schema({
     charisma: { type: Number, min: 0, max: 20 },
     passiveWisdom: { type: Number, min: 0, max: 20 },
     proficiencyBonus: { type: Number, min: 0, max: 20 },
-    proficiences: [{ 
+    proficiencies: [{ 
       name: { type: String },
       stat: { type: String }
     }],
     languages: [{ type: String }],
-    otherProficiences: [{ type: String }],
+    otherProficiencies: [{ type: String }],
     equipment: [{ 
       name: { type: String },
       description: { type: String }
