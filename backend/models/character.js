@@ -9,19 +9,20 @@ mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
     console.log('error connecting: ', error.message)
   })
 
+
 const characterSchema = new mongoose.Schema({
     creator: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     name: { type: String },
     race: { type: String },
     class: { type: String },
-    level: { type: Number, min: 0 },
+    level: { type: Number, min: 1 },
     expreriencePoints: { type: Number, min: 0 },
     background: { type: String },
     personalityTraits: { type: String },
     alignment: { 
         type: String,
         enum: ['true neutral', 'neutral evil', 'neutral good', 'chaotic neutral', 'chaotic evil', 'chaotic good', 'lawful neutral', 'lawful evil', 'lawful good']
-        },
+      },
     maxHealth: { type: Number, min: 0 },
     currentHealth: { type: Number, min: 0 },
     hitDice: { type: String },
@@ -34,18 +35,33 @@ const characterSchema = new mongoose.Schema({
     intelligence: { type: Number, min: 0, max: 20 },
     wisdom: { type: Number, min: 0, max: 20 },
     charisma: { type: Number, min: 0, max: 20 },
-    passiveWisdom: { type: Number, min: 0 },
-    proficiences: [{ type: String }],
+    passiveWisdom: { type: Number, min: 0, max: 20 },
+    proficiencyBonus: { type: Number, min: 0, max: 20 },
+    proficiences: [{ 
+      name: { type: String },
+      stat: { type: String }
+    }],
     languages: [{ type: String }],
-    equipment: { type: String },
-    features: [{ type: Map, of: String }],
+    otherProficiences: [{ type: String }],
+    equipment: [{ 
+      name: { type: String },
+      description: { type: String }
+    }],
+    storage: [{
+      name: { type: String },
+      description: { type: String }
+    }],
+    features: [{ 
+      name: { type: String },
+      description: { type: String }
+    }],
     coins: { 
         copper: { type: Number, min: 0 },
         silver: { type: Number, min: 0 },
         gold: { type: Number, min: 0 },
         platinum: { type: Number, min: 0 },
         ep: { type: Number, min: 0 }
-        }
+      }
     
 })
 
