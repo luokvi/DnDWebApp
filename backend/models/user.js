@@ -15,7 +15,8 @@ const userSchema = new mongoose.Schema({
     passwordHash: { type: String, required: true },
     friends: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
     friendRequests: [{ type: mongoose.Schema.Types.ObjectId, ref: 'FriendRequest' }],
-    sentFriendRequests: [{ type: mongoose.Schema.Types.ObjectId, ref: 'FriendRequest' }]
+    sentFriendRequests: [{ type: mongoose.Schema.Types.ObjectId, ref: 'FriendRequest' }],
+    characters: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Character'}]
 })
 
 userSchema.plugin(uniqueValidator)
