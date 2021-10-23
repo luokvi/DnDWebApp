@@ -62,8 +62,8 @@ usersRouter.post('/friend', async (req, res) => {
 
   // Check that friendRequest exists and is between sender and receiver.
   if (!friendRequest ||
-    !(friendRequest.sender[0].id === receiverUser.id) ||
-    !(friendRequest.receiver[0].id === senderUser.id))
+    !(friendRequest.sender.id === receiverUser.id) ||
+    !(friendRequest.receiver.id === senderUser.id))
     {
       res.status(403).end()
       return
