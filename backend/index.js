@@ -14,6 +14,9 @@ app.use('/api/login', loginRouter)
 const characterRouter = require('./controllers/character')
 app.use('/api/character', characterRouter)
 
+const itemsRouter = require('./controllers/items')
+app.use('/api/items', itemsRouter)
+
 const middleware = require('./util/middleware')
 app.use(middleware.errorHandler)
 
