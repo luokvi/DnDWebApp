@@ -3,6 +3,36 @@ const mongoose = require('mongoose')
 const url = process.env.MONGODB_URI
 mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
 
+const spellSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  level: { type: Number, min: 1, required: true },
+  description: { type: String, required: true },
+  castingTime: { type: String, required: true },
+  range: { type: Number, min: 0, required: true },
+  components: [{ type: String, enum: ['Verbal', 'Somatic', 'Material'], required: true }],
+  duration: {
+    minutes: { type: Number, min: 0, required: true },
+    isConcentration: { type: Boolean, required: true }
+  },
+  userCreated: { type: Boolean, required: true }
+})
+mongoose.model("Spell", spellSchema)
+
+const weaponSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  description: { type: String, required: true },
+  atkBonus: { type: Number, min: 0, max: 20, required: true },
+  damage: { type: String, required: true },
+  userCreated: { type: Boolean, required: true }
+})
+mongoose.model("Weapon", weaponSchema)
+
+const equipmentSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  description: { type: String, required: true },
+  userCreated: { type: Boolean, required: true }
+})
+mongoose.model('Equipment', equipmentSchema)
 
 const characterSchema = new mongoose.Schema({
     creator: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
@@ -37,14 +67,19 @@ const characterSchema = new mongoose.Schema({
     }],
     languages: [{ type: String }],
     otherProficiencies: [{ type: String }],
-    equipment: [{ 
-      name: { type: String },
-      description: { type: String }
+    weapons: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Weapon', required: true }],
+    spellCastingAbility: { type: String, enum: ['Wisdom', 'Intelligence', 'Charisma']},
+    spellSlots: [{
+      level: { type: Number, min: 1 },
+      amount: { type: Number, min: 0 },
+      used: { type: Number, min: 0 }
     }],
-    storage: [{
-      name: { type: String },
-      description: { type: String }
-    }],
+    spells: {
+      cantrips: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Spell', required: true }],
+      prepared: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Spell', required: true }]
+    },
+    equipment: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Equipment', required: true }],
+    storage: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Equipment', required: true }],
     features: [{ 
       name: { type: String },
       description: { type: String }
