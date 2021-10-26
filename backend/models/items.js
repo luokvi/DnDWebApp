@@ -62,4 +62,8 @@ const spellSchema = new mongoose.Schema({
   const equipmentModel = mongoose.model('Equipment', equipmentSchema)
   
 
-module.exports = spellModel, weaponModel, equipmentModel
+module.exports = {
+    Spell: spellModel,
+    Weapon: weaponModel,
+    Equipment: equipmentModel
+}

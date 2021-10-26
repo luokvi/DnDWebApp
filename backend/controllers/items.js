@@ -1,6 +1,8 @@
 const itemRouter = require('express').Router()
 const TokenCheck = require('../util/tokenCheck')
-const { Spell, Weapon, Equipment } = require('../models/items')
+const { Spell } = require('../models/items')
+const { Equipment } = require('../models/items')
+const { Weapon } = require('../models/items')
 
 // Get all public (ie. not user created) items.
 itemRouter.get('/spells', async (req, res) => {
@@ -29,7 +31,6 @@ itemRouter.post('/', async (req, res) => {
     }
     const body = req.body
     const itemType = body.itemType
-
     let saved = false
     switch (itemType){
         case "Equipment":
@@ -39,6 +40,7 @@ itemRouter.post('/', async (req, res) => {
                 userCreated: true
             })
             saved = await newEquip.save()
+            break
 
         case "Spell":
             const newSpell = new Spell({
@@ -51,6 +53,8 @@ itemRouter.post('/', async (req, res) => {
                 duration: body.duration,
                 userCreated: true
             })
+            saved = await newSpell.save()
+            break
         case "Weapon":
             const newWeapon = new Weapon({
                 name: body.name,
@@ -61,13 +65,14 @@ itemRouter.post('/', async (req, res) => {
             })
 
             saved = await newWeapon.save()
+            break
     }
     
     if(saved){
         res.json(saved.toJSON())
     }
     else {
-        res.status(400).send('Unsuported Item Type')
+        res.status(400).send('Unsupported Item Type')
     }
 
 })
