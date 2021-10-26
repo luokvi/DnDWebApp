@@ -54,8 +54,9 @@ const characterSchema = new mongoose.Schema({
         silver: { type: Number, min: 0 },
         gold: { type: Number, min: 0 },
         platinum: { type: Number, min: 0 },
-        ep: { type: Number, min: 0 }
-      }
+        electrum: { type: Number, min: 0 }
+      },
+    notes: [{ type: String }]
     
 })
 
