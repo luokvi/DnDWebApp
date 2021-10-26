@@ -2,6 +2,14 @@ const charaRouter = require('express').Router()
 const Character = require('../models/character')
 const TokenCheck = require('../util/tokenCheck')
 
+charaRouter.get('/:id', async (req, res) => {
+    const id = req.params.id
+
+    const chara = await Character.findById(id)
+
+    res.json(chara.toJSON())
+})
+
 // Create new character.
 charaRouter.post('/', async (req, res) => {
     const [authorized, checkMessage] = TokenCheck.checkToken(req, req.body.userId)
