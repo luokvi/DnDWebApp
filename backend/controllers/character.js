@@ -1,5 +1,6 @@
 const charaRouter = require('express').Router()
 const Character = require('../models/character')
+const User = require('../models/user')
 const TokenCheck = require('../util/tokenCheck')
 
 charaRouter.get('/:id', async (req, res) => {
@@ -58,6 +59,10 @@ charaRouter.post('/', async (req, res) => {
     })
 
     const savedChara = await chara.save()
+
+    const user = await User.findById(body.userId)
+    user.characters = user.characters.concat(savedChara._id)
+    await user.save()
 
     res.json(savedChara.toJSON())
 })
