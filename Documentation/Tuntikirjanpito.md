@@ -12,3 +12,4 @@
 | 20.10 | 2 | Uusi FriendRequestien ja Friendin lisäämisen korjaus |
 | 21.10 | 0.5 | Character skeema |
 | 23.10 | 1 | Character skeeman päivitys ja controller |
+| 26.10 | 2 | Lisää päivityksiä Character skeemaan |
