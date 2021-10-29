@@ -13,4 +13,5 @@
 | 21.10 | 0.5 | Character skeema |
 | 23.10 | 1 | Character skeeman päivitys ja controller |
 | 26.10 | 2 | Lisää päivityksiä Character skeemaan |
-| 26.10 | 1.5 | Spell, Equipment ja Weapon skeemat | 
+| 26.10 | 1.5 | Spell, Equipment ja Weapon skeemat |
+| 29.10 | 1 | Encounter ja Enemy skeemat | 
