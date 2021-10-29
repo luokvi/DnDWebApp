@@ -16,7 +16,12 @@ const userSchema = new mongoose.Schema({
   friends: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
   friendRequests: [{ type: mongoose.Schema.Types.ObjectId, ref: 'FriendRequest' }],
   sentFriendRequests: [{ type: mongoose.Schema.Types.ObjectId, ref: 'FriendRequest' }],
-  characters: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Character'}]
+  characters: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Character' }],
+  creations: {
+    enemies: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Enemy' }],
+    encounters: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Encounter' }],
+    campaigns: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Campaign' }]
+  }
 })
 
 userSchema.plugin(uniqueValidator)

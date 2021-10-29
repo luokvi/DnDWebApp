@@ -3,6 +3,7 @@ const TokenCheck = require('../util/tokenCheck')
 const Enemy = require('../models/enemy')
 const Encounter = require('../models/encounter')
 const Campaign = require('../models/campaign')
+const User = require('../models/user')
 
 // Create enemy.
 campaignRouter.post('/enemy', async (req, res) => {
@@ -47,6 +48,12 @@ campaignRouter.post('/enemy', async (req, res) => {
 	})
 
 	const savedEnemy = await newEnemy.save()
+
+	// Add to creator.
+	const creator = await User.findById(body.userId)
+	creator.creations.enemies = creator.creations.enemies.concat(savedEnemy._id)
+	await creator.save()
+
 	res.json(savedEnemy.toJSON())
 })
 
@@ -87,6 +94,12 @@ campaignRouter.post('/encounter', async (req, res) => {
 	})
 
 	const savedEncounter = await newEncounter.save()
+
+	// Add to creator.
+	const creator = await User.findById(body.userId)
+	creator.creations.encounters = creator.creations.encounters.concat(savedEncounter._id)
+	await creator.save()
+
 	res.json(savedEncounter.toJSON())
 })
 
@@ -126,6 +139,12 @@ campaignRouter.post('/campaign', async (req, res) => {
 	})
 
 	const savedCampaign = await newCampaign.save()
+
+	// Add to creator.
+	const creator = await User.findById(body.userId)
+	creator.creations.campaigns = creator.creations.campaigns.concat(savedCampaign._id)
+	await creator.save()
+
 	res.json(savedCampaign.toJSON())
 })
 
