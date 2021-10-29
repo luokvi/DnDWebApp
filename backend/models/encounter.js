@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const encounterSchema = new mongoose.Schema({
 	name: { type: String, required: true },
-	enemies: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Character' }],
+	enemies: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Enemy' }],
 	npcs: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Character' }],
 	loot: {
 		weapons: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Weapon' }],
