@@ -47,7 +47,8 @@ const enemySchema = new mongoose.Schema({
 		prepared: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Spell' }]
 	},
 	weapon: { type: mongoose.Schema.Types.ObjectId, ref: 'Weapon' },
-	description: { type: String }
+	description: { type: String },
+	userCreated: { type: Boolean, required: true }
 })
 
 enemySchema.set('toJSON', {
