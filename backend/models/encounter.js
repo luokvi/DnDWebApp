@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 
 const encounterSchema = new mongoose.Schema({
+	creator: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
 	name: { type: String, required: true },
 	enemies: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Enemy' }],
 	npcs: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Character' }],
