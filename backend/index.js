@@ -17,6 +17,9 @@ app.use('/api/character', characterRouter)
 const itemsRouter = require('./controllers/items')
 app.use('/api/items', itemsRouter)
 
+const campaignRouter = require('./controllers/campaign')
+app.use('/api/dm', campaignRouter)
+
 const middleware = require('./util/middleware')
 app.use(middleware.errorHandler)
 

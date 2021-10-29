@@ -84,7 +84,7 @@ campaignRouter.post('/campaign', async (req, res) => {
 	const body = req.body
 
 	const newCampaign = new Campaign({
-		creator = body.userId,
+		creator: body.userId,
 		name: body.name,
 		heroes: body.heroes,
 		npcs: body.npcs,
@@ -95,3 +95,5 @@ campaignRouter.post('/campaign', async (req, res) => {
 	const savedCampaign = await newCampaign.save()
 	res.json(savedCampaign.toJSON())
 })
+
+module.exports = campaignRouter
