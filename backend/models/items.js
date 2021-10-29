@@ -15,55 +15,55 @@ const spellSchema = new mongoose.Schema({
       isConcentration: { type: Boolean, required: true }
     },
     userCreated: { type: Boolean, required: true }
-  })
+})
 
-  spellSchema.set('toJSON', {
-    transform: (document, returnedObject) => {
-      returnedObject.id = returnedObject._id.toString()
-      delete returnedObject._id
-      delete returnedObject.__v
-    }
-  })
+spellSchema.set('toJSON', {
+  transform: (document, returnedObject) => {
+    returnedObject.id = returnedObject._id.toString()
+    delete returnedObject._id
+    delete returnedObject.__v
+  }
+})
 
-  const spellModel = mongoose.model("Spell", spellSchema)
-  
-  const weaponSchema = new mongoose.Schema({
-    name: { type: String, required: true },
-    description: { type: String, required: true },
-    atkBonus: { type: Number, min: 0, max: 20, required: true },
-    damage: { type: String, required: true },
-    userCreated: { type: Boolean, required: true }
-  })
+const spellModel = mongoose.model("Spell", spellSchema)
 
-  weaponSchema.set('toJSON', {
-    transform: (document, returnedObject) => {
-      returnedObject.id = returnedObject._id.toString()
-      delete returnedObject._id
-      delete returnedObject.__v
-    }
-  })
+const weaponSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  description: { type: String, required: true },
+  atkBonus: { type: Number, min: 0, max: 20, required: true },
+  damage: { type: String, required: true },
+  userCreated: { type: Boolean, required: true }
+})
 
-  const weaponModel = mongoose.model("Weapon", weaponSchema)
-  
-  const equipmentSchema = new mongoose.Schema({
-    name: { type: String, required: true },
-    description: { type: String, required: true },
-    userCreated: { type: Boolean, required: true }
-  })
+weaponSchema.set('toJSON', {
+  transform: (document, returnedObject) => {
+    returnedObject.id = returnedObject._id.toString()
+    delete returnedObject._id
+    delete returnedObject.__v
+  }
+})
 
-  equipmentSchema.set('toJSON', {
-    transform: (document, returnedObject) => {
-      returnedObject.id = returnedObject._id.toString()
-      delete returnedObject._id
-      delete returnedObject.__v
-    }
-  })
+const weaponModel = mongoose.model("Weapon", weaponSchema)
 
-  const equipmentModel = mongoose.model('Equipment', equipmentSchema)
-  
+const equipmentSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  description: { type: String, required: true },
+  userCreated: { type: Boolean, required: true }
+})
+
+equipmentSchema.set('toJSON', {
+  transform: (document, returnedObject) => {
+    returnedObject.id = returnedObject._id.toString()
+    delete returnedObject._id
+    delete returnedObject.__v
+  }
+})
+
+const equipmentModel = mongoose.model('Equipment', equipmentSchema)
+
 
 module.exports = {
-    Spell: spellModel,
-    Weapon: weaponModel,
-    Equipment: equipmentModel
+  Spell: spellModel,
+  Weapon: weaponModel,
+  Equipment: equipmentModel
 }

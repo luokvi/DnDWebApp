@@ -29,6 +29,7 @@ itemRouter.post('/', async (req, res) => {
         res.status(401).send(checkMessage).end()
         return
     }
+    
     const body = req.body
     const itemType = body.itemType
     let saved = false
@@ -55,6 +56,7 @@ itemRouter.post('/', async (req, res) => {
             })
             saved = await newSpell.save()
             break
+
         case "Weapon":
             const newWeapon = new Weapon({
                 name: body.name,
@@ -63,7 +65,6 @@ itemRouter.post('/', async (req, res) => {
                 damage: body.damage,
                 userCreated: true
             })
-
             saved = await newWeapon.save()
             break
     }
