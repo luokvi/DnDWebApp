@@ -30,12 +30,16 @@ const characterSchema = new mongoose.Schema({
   charisma: { type: Number, min: 0, max: 20 },
   passiveWisdom: { type: Number, min: 0, max: 20 },
   proficiencyBonus: { type: Number, min: 0, max: 20 },
-  proficiencies: [{ 
-    name: { type: String },
-    stat: { type: String }
+  proficientSkills: [{
+    type: String,
+    enum: ['Acrobatics', 'Animal Handling', 'Arcana', 'Athletics', 'Deception', 'History', 'Insight', 'Intimidation', 'Investigation',
+      'Medicine', 'Nature', 'Perception', 'Performance', 'Persuasion', 'Religion', 'Sleight of Hand', 'Stealth', 'Survival']
   }],
   languages: [{ type: String }],
-  otherProficiencies: [{ type: String }],
+  otherProficiencies: [{ 
+    name: { type: String },
+    description: { type: String }
+  }],
   weapons: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Weapon', required: true }],
   spellCastingAbility: { type: String, enum: ['Wisdom', 'Intelligence', 'Charisma']},
   spellSlots: [{

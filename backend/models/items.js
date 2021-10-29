@@ -4,17 +4,17 @@ const url = process.env.MONGODB_URI
 mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
 
 const spellSchema = new mongoose.Schema({
-    name: { type: String, required: true },
-    level: { type: Number, min: 1, required: true },
-    description: { type: String, required: true },
-    castingTime: { type: String, required: true },
-    range: { type: Number, min: 0, required: true },
-    components: [{ type: String, enum: ['Verbal', 'Somatic', 'Material'], required: true }],
-    duration: {
-      minutes: { type: Number, min: 0, required: true },
-      isConcentration: { type: Boolean, required: true }
-    },
-    userCreated: { type: Boolean, required: true }
+  name: { type: String, required: true },
+  level: { type: Number, min: 1, required: true },
+  description: { type: String, required: true },
+  castingTime: { type: String, required: true },
+  range: { type: Number, min: 0, required: true },
+  components: [{ type: String, enum: ['Verbal', 'Somatic', 'Material'], required: true }],
+  duration: {
+    minutes: { type: Number, min: 0, required: true },
+    isConcentration: { type: Boolean, required: true }
+  },
+  userCreated: { type: Boolean, required: true }
 })
 
 spellSchema.set('toJSON', {
@@ -32,6 +32,7 @@ const weaponSchema = new mongoose.Schema({
   description: { type: String, required: true },
   atkBonus: { type: Number, min: 0, max: 20, required: true },
   damage: { type: String, required: true },
+  range: { type: Number, min: 0, required: true },
   userCreated: { type: Boolean, required: true }
 })
 
