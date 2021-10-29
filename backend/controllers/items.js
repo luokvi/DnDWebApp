@@ -38,7 +38,8 @@ itemRouter.post('/', async (req, res) => {
             const newEquip = new Equipment({
                 name: body.name,
                 description: body.description,
-                userCreated: true
+                userCreated: true,
+                creator: body.userId
             })
             saved = await newEquip.save()
             break
@@ -52,7 +53,8 @@ itemRouter.post('/', async (req, res) => {
                 range: body.range,
                 components: body.components,
                 duration: body.duration,
-                userCreated: true
+                userCreated: true,
+                creator: body.userId
             })
             saved = await newSpell.save()
             break
@@ -63,7 +65,8 @@ itemRouter.post('/', async (req, res) => {
                 description: body.description,
                 atkBonus: body.atkBonus,
                 damage: body.damage,
-                userCreated: true
+                userCreated: true,
+                creator: body.userId
             })
             saved = await newWeapon.save()
             break

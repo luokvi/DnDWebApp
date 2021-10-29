@@ -14,7 +14,8 @@ const spellSchema = new mongoose.Schema({
     minutes: { type: Number, min: 0, required: true },
     isConcentration: { type: Boolean, required: true }
   },
-  userCreated: { type: Boolean, required: true }
+  userCreated: { type: Boolean, required: true },
+  creator: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
 })
 
 spellSchema.set('toJSON', {
@@ -33,7 +34,8 @@ const weaponSchema = new mongoose.Schema({
   atkBonus: { type: Number, min: 0, max: 20, required: true },
   damage: { type: String, required: true },
   range: { type: Number, min: 0, required: true },
-  userCreated: { type: Boolean, required: true }
+  userCreated: { type: Boolean, required: true },
+  creator: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
 })
 
 weaponSchema.set('toJSON', {
@@ -49,7 +51,8 @@ const weaponModel = mongoose.model("Weapon", weaponSchema)
 const equipmentSchema = new mongoose.Schema({
   name: { type: String, required: true },
   description: { type: String, required: true },
-  userCreated: { type: Boolean, required: true }
+  userCreated: { type: Boolean, required: true },
+  creator: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
 })
 
 equipmentSchema.set('toJSON', {

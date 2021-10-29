@@ -48,7 +48,8 @@ const enemySchema = new mongoose.Schema({
 	},
 	weapon: { type: mongoose.Schema.Types.ObjectId, ref: 'Weapon' },
 	description: { type: String },
-	userCreated: { type: Boolean, required: true }
+	userCreated: { type: Boolean, required: true },
+	creator: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
 })
 
 enemySchema.set('toJSON', {

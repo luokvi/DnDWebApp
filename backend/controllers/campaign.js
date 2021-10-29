@@ -42,7 +42,8 @@ campaignRouter.post('/enemy', async (req, res) => {
 		spells: body.spells,
 		weapon: body.weapon,
 		description: body.description,
-		userCreated: true
+		userCreated: true,
+		creator: body.userId
 	})
 
 	const savedEnemy = await newEnemy.save()
