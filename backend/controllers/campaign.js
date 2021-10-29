@@ -8,8 +8,8 @@ const Campaign = require('../models/campaign')
 campaignRouter.post('/enemy', async (req, res) => {
   const [authorized, checkMessage] = TokenCheck.checkToken(req, req.body.userId)
 	if (!authorized){
-			res.status(401).send(checkMessage).end()
-			return
+		res.status(401).send(checkMessage).end()
+		return
 	}
 
 	const body = req.body
@@ -50,6 +50,22 @@ campaignRouter.post('/enemy', async (req, res) => {
 	res.json(savedEnemy.toJSON())
 })
 
+// Update enemy.
+campaignRouter.patch('/enemy/:id', async (req, res) => {
+	const [authorized, checkMessage] = TokenCheck.checkToken(req, req.body.userId)
+	if (!authorized){
+		res.status(401).send(checkMessage).end()
+		return
+	}
+
+	const id = req.params.id
+	const body = req.body
+
+	const enemy = await Enemy.findByIdAndUpdate(id, body.update, { new: true })
+
+	res.json(enemy.toJSON())
+})
+
 // Create encouter.
 campaignRouter.post('/encounter', async (req, res) => {
 	const [authorized, checkMessage] = TokenCheck.checkToken(req, req.body.userId)
@@ -74,6 +90,22 @@ campaignRouter.post('/encounter', async (req, res) => {
 	res.json(savedEncounter.toJSON())
 })
 
+// Update encounter.
+campaignRouter.patch('/encounter/:id', async (req, res) => {
+	const [authorized, checkMessage] = TokenCheck.checkToken(req, req.body.userId)
+	if (!authorized){
+		res.status(401).send(checkMessage).end()
+		return
+	}
+
+	const id = req.params.id
+	const body = req.body
+
+	const encounter = await Encounter.findByIdAndUpdate(id, body.update, { new: true })
+
+	res.json(encounter.toJSON())
+})
+
 // Create campaign.
 campaignRouter.post('/campaign', async (req, res) => {
 	const [authorized, checkMessage] = TokenCheck.checkToken(req, req.body.userId)
@@ -95,6 +127,22 @@ campaignRouter.post('/campaign', async (req, res) => {
 
 	const savedCampaign = await newCampaign.save()
 	res.json(savedCampaign.toJSON())
+})
+
+// Update campaign.
+campaignRouter.patch('/campaign/:id', async (req, res) => {
+	const [authorized, checkMessage] = TokenCheck.checkToken(req, req.body.userId)
+	if (!authorized){
+		res.status(401).send(checkMessage).end()
+		return
+	}
+
+	const id = req.params.id
+	const body = req.body
+
+	const campaign = await Campaign.findByIdAndUpdate(id, body.update, { new: true })
+
+	res.json(campaign.toJSON())
 })
 
 module.exports = campaignRouter
