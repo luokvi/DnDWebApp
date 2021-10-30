@@ -20,7 +20,10 @@ const userSchema = new mongoose.Schema({
   creations: {
     enemies: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Enemy' }],
     encounters: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Encounter' }],
-    campaigns: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Campaign' }]
+    campaigns: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Campaign' }],
+    equipment: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Equipment' }],
+    weapons: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Weapon' }],
+    spells: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Spell' }]
   }
 })
 

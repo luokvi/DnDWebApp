@@ -3,6 +3,7 @@ const TokenCheck = require('../util/tokenCheck')
 const { Spell } = require('../models/items')
 const { Equipment } = require('../models/items')
 const { Weapon } = require('../models/items')
+const User = require('../models/user')
 
 // Get all public (ie. not user created) items.
 itemRouter.get('/spells', async (req, res) => {
@@ -103,6 +104,7 @@ itemRouter.post('/', async (req, res) => {
     }
 
     const body = req.body
+    const user = await User.findById(body.userId)
     const itemType = body.itemType
     let saved = false
     switch (itemType){
@@ -114,6 +116,8 @@ itemRouter.post('/', async (req, res) => {
                 creator: body.userId
             })
             saved = await newEquip.save()
+
+            user.creations.equipment = user.creations.equipment.concat(saved._id)
             break
 
         case "Spell":
@@ -129,6 +133,8 @@ itemRouter.post('/', async (req, res) => {
                 creator: body.userId
             })
             saved = await newSpell.save()
+
+            user.creations.spells = user.creations.spells.concat(saved._id)
             break
 
         case "Weapon":
@@ -142,10 +148,13 @@ itemRouter.post('/', async (req, res) => {
                 creator: body.userId
             })
             saved = await newWeapon.save()
+
+            user.creations.weapons = user.creations.weapons.concat(saved._id)
             break
     }
     
     if(saved){
+        await user.save()
         res.json(saved.toJSON())
     }
     else {
