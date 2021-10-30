@@ -73,6 +73,35 @@ campaignRouter.patch('/enemy/:id', async (req, res) => {
 	res.json(enemy.toJSON())
 })
 
+// Delete enemy.
+campaignRouter.delete('/enemy/:id', async (req, res) => {
+	const [authorized, checkMessage] = TokenCheck.checkToken(req, req.body.userId)
+	if (!authorized){
+		res.status(401).send(checkMessage).end()
+		return
+	}
+
+	const id = req.params.id
+	const body = req.body
+
+	const enemy = await Enemy.findById(id)
+
+	// Check that enemy was created by this user.
+	const enemyCreator = enemy.creator.toString()
+	if(enemyCreator !== body.userId){
+		res.status(403).end()
+        return
+	}
+
+	await Enemy.findByIdAndDelete(id)
+
+	const user = User.findById(body.userId)
+	user.creations.enemies = user.creations.enemies.filter(e => e.toString() !== id)
+	await user.save()
+
+	res.status(204).end()
+})
+
 // Create encouter.
 campaignRouter.post('/encounter', async (req, res) => {
 	const [authorized, checkMessage] = TokenCheck.checkToken(req, req.body.userId)
@@ -119,6 +148,35 @@ campaignRouter.patch('/encounter/:id', async (req, res) => {
 	res.json(encounter.toJSON())
 })
 
+// Delete encounter.
+campaignRouter.delete('/encounter/:id', async (req, res) => {
+	const [authorized, checkMessage] = TokenCheck.checkToken(req, req.body.userId)
+	if (!authorized){
+		res.status(401).send(checkMessage).end()
+		return
+	}
+
+	const id = req.params.id
+	const body = req.body
+
+	const encounter = await Encounter.findById(id)
+
+	// Check that encounter was created by this user.
+	const encounterCreator = encounter.creator.toString()
+	if(encounterCreator !== body.userId){
+		res.status(403).end()
+        return
+	}
+
+	await Encounter.findByIdAndDelete(id)
+
+	const user = User.findById(body.userId)
+	user.creations.encounters = user.creations.encounters.filter(e => e.toString() !== id)
+	await user.save()
+
+	res.status(204).end()
+})
+
 // Create campaign.
 campaignRouter.post('/campaign', async (req, res) => {
 	const [authorized, checkMessage] = TokenCheck.checkToken(req, req.body.userId)
@@ -162,6 +220,35 @@ campaignRouter.patch('/campaign/:id', async (req, res) => {
 	const campaign = await Campaign.findByIdAndUpdate(id, body.update, { new: true })
 
 	res.json(campaign.toJSON())
+})
+
+// Delete campaign.
+campaignRouter.delete('/campaign/:id', async (req, res) => {
+	const [authorized, checkMessage] = TokenCheck.checkToken(req, req.body.userId)
+	if (!authorized){
+		res.status(401).send(checkMessage).end()
+		return
+	}
+
+	const id = req.params.id
+	const body = req.body
+
+	const campaign = await Campaign.findById(id)
+
+	// Check that campaign was created by this user.
+	const campaignCreator = campaign.creator.toString()
+	if(campaignCreator !== body.userId){
+		res.status(403).end()
+        return
+	}
+
+	await Campaign.findByIdAndDelete(id)
+
+	const user = User.findById(body.userId)
+	user.creations.campaigns = user.creations.campaigns.filter(c => c.toString() !== id)
+	await user.save()
+
+	res.status(204).end()
 })
 
 module.exports = campaignRouter
