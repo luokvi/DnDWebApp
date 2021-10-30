@@ -23,6 +23,78 @@ itemRouter.get('/weapons', async (req, res) => {
     res.json(weapons.map( w => w.toJSON() ))
 })
 
+itemRouter.delete('/spells/:id', async (req, res) => {
+    const [authorized, checkMessage] = TokenCheck.checkToken(req, req.body.userId)
+    if (!authorized){
+        res.status(401).send(checkMessage).end()
+        return
+    }
+
+    const id = req.params.id
+    const body = req.body
+
+    const spell = await Spell.findById(id)
+
+    // Check that spell was created by this user.
+    const spellCreator = spell.creator
+    if (spellCreator !== body.userId){
+        res.status(403).end()
+        return
+    }
+
+    await Spell.findByIdAndDelete(id)
+
+    res.status(204).end()
+})
+
+itemRouter.delete('/equipment/:id', async (req, res) => {
+    const [authorized, checkMessage] = TokenCheck.checkToken(req, req.body.userId)
+    if (!authorized){
+        res.status(401).send(checkMessage).end()
+        return
+    }
+
+    const id = req.params.id
+    const body = req.body
+
+    const equipment = await Equipment.findById(id)
+
+    // Check that spell was created by this user.
+    const equipmentCreator = equipment.creator
+    if (equipmentCreator !== body.userId){
+        res.status(403).end()
+        return
+    }
+
+    await Equipment.findByIdAndDelete(id)
+
+    res.status(204).end()
+})
+
+itemRouter.delete('/weapons/:id', async (req, res) => {
+    const [authorized, checkMessage] = TokenCheck.checkToken(req, req.body.userId)
+    if (!authorized){
+        res.status(401).send(checkMessage).end()
+        return
+    }
+
+    const id = req.params.id
+    const body = req.body
+
+    const weapon = await Weapon.findById(id)
+
+    // Check that weapon was created by this user.
+    const weaponCreator = weapon.creator
+    if (weaponCreator !== body.userId){
+        res.status(403).end()
+        return
+    }
+
+    await Weapon.findByIdAndDelete(id)
+
+    res.status(204).end()
+})
+
 itemRouter.post('/', async (req, res) => {
     const [authorized, checkMessage] = TokenCheck.checkToken(req, req.body.userId)
     if (!authorized){
