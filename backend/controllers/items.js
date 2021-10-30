@@ -36,8 +36,7 @@ itemRouter.delete('/spells/:id', async (req, res) => {
     const spell = await Spell.findById(id)
 
     // Check that spell was created by this user.
-    const spellCreator = spell.creator
-    console.log(spellCreator) //poista
+    const spellCreator = spell.creator.toString()
     if (spellCreator !== body.userId){
         res.status(403).end()
         return
@@ -61,7 +60,7 @@ itemRouter.delete('/equipment/:id', async (req, res) => {
     const equipment = await Equipment.findById(id)
 
     // Check that spell was created by this user.
-    const equipmentCreator = equipment.creator
+    const equipmentCreator = equipment.creator.toString()
     if (equipmentCreator !== body.userId){
         res.status(403).end()
         return
@@ -85,7 +84,7 @@ itemRouter.delete('/weapons/:id', async (req, res) => {
     const weapon = await Weapon.findById(id)
 
     // Check that weapon was created by this user.
-    const weaponCreator = weapon.creator
+    const weaponCreator = weapon.creator.toString()
     if (weaponCreator !== body.userId){
         res.status(403).end()
         return
