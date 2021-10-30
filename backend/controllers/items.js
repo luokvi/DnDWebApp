@@ -45,6 +45,9 @@ itemRouter.delete('/spells/:id', async (req, res) => {
 
     await Spell.findByIdAndDelete(id)
 
+    const user = await User.findById(body.userId)
+    user.creations.spells = user.creations.spells.filter(s => s.toString() !== id)
+
     res.status(204).end()
 })
 
@@ -69,6 +72,9 @@ itemRouter.delete('/equipment/:id', async (req, res) => {
 
     await Equipment.findByIdAndDelete(id)
 
+    const user = await User.findById(body.userId)
+    user.creations.equipment = user.creations.equipment.filter(e => e.toString() !== id)
+
     res.status(204).end()
 })
 
@@ -92,6 +98,9 @@ itemRouter.delete('/weapons/:id', async (req, res) => {
     }
 
     await Weapon.findByIdAndDelete(id)
+
+    const user = await User.findById(body.userId)
+    user.creations.weapons = user.creations.weapons.filter(w => w.toString() !== id)
 
     res.status(204).end()
 })
