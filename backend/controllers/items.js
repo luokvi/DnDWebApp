@@ -37,6 +37,7 @@ itemRouter.delete('/spells/:id', async (req, res) => {
 
     // Check that spell was created by this user.
     const spellCreator = spell.creator
+    console.log(spellCreator) //poista
     if (spellCreator !== body.userId){
         res.status(403).end()
         return
@@ -101,7 +102,7 @@ itemRouter.post('/', async (req, res) => {
         res.status(401).send(checkMessage).end()
         return
     }
-    console.log(req.body)
+
     const body = req.body
     const itemType = body.itemType
     let saved = false
