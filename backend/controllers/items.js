@@ -101,7 +101,7 @@ itemRouter.post('/', async (req, res) => {
         res.status(401).send(checkMessage).end()
         return
     }
-    
+    console.log(req.body)
     const body = req.body
     const itemType = body.itemType
     let saved = false
@@ -137,6 +137,7 @@ itemRouter.post('/', async (req, res) => {
                 description: body.description,
                 atkBonus: body.atkBonus,
                 damage: body.damage,
+                range: body.range,
                 userCreated: true,
                 creator: body.userId
             })
