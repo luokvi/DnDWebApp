@@ -12,6 +12,30 @@ itemRouter.get('/spells', async (req, res) => {
     res.json(spells.map( s => s.toJSON() ))
 })
 
+// Update spell.
+itemRouter.patch('/spells/:id', async (req, res) => {
+    const [authorized, checkMessage] = TokenCheck.checkToken(req, req.body.userId)
+    if (!authorized){
+        res.status(401).send(checkMessage).end()
+        return
+    }
+
+    const id = req.params.id
+    const body = req.body
+
+    // Check that spell was created by user.
+    const spellToUpdate = await Spell.findById(id)
+    const spellCreator = spellToUpdate.creator.toString()
+    if(spellCreator !== body.userId){
+        res.status(403).end()
+        return
+    }
+
+    const spell = await Spell.findByIdAndUpdate(id, body.update, { new: true })
+
+    res.json(spell.toJSON())
+})
+
 // Delete spell.
 itemRouter.delete('/spells/:id', async (req, res) => {
     const [authorized, checkMessage] = TokenCheck.checkToken(req, req.body.userId)
@@ -48,6 +72,30 @@ itemRouter.get('/equipment', async (req, res) => {
     res.json(equipment.map( e => e.toJSON() ))
 })
 
+// Update equipment.
+itemRouter.patch('/equipment/:id', async (req, res) => {
+    const [authorized, checkMessage] = TokenCheck.checkToken(req, req.body.userId)
+    if (!authorized){
+        res.status(401).send(checkMessage).end()
+        return
+    }
+
+    const id = req.params.id
+    const body = req.body
+
+    // Check that spell was created by user.
+    const equipmentToUpdate = await Equipment.findById(id)
+    const equipmentCreator = equipmentToUpdate.creator.toString()
+    if(equipmentCreator !== body.userId){
+        res.status(403).end()
+        return
+    }
+    
+    const equipment = await Equipment.findByIdAndUpdate(id, body.update, { new: true })
+
+    res.json(equipment.toJSON())
+})
+
 // Delete equipment.
 itemRouter.delete('/equipment/:id', async (req, res) => {
     const [authorized, checkMessage] = TokenCheck.checkToken(req, req.body.userId)
@@ -82,6 +130,30 @@ itemRouter.get('/weapons', async (req, res) => {
     const weapons = await Weapon.find({ userCreated: false })
 
     res.json(weapons.map( w => w.toJSON() ))
+})
+
+// Update weapon.
+itemRouter.patch('/weapons/:id', async (req, res) => {
+    const [authorized, checkMessage] = TokenCheck.checkToken(req, req.body.userId)
+    if (!authorized){
+        res.status(401).send(checkMessage).end()
+        return
+    }
+
+    const id = req.params.id
+    const body = req.body
+
+    // Check that weapon was created by user.
+    const weaponToUpdate = await Weapon.findById(id)
+    const weaponCreator = weaponToUpdate.creator.toString()
+    if(weaponCreator !== body.userId){
+        res.status(403).end()
+        return
+    }
+    
+    const weapon = await Weapon.findByIdAndUpdate(id, body.update, { new: true })
+
+    res.json(weapon.toJSON())
 })
 
 // Delete weapon.
