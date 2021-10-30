@@ -8,7 +8,7 @@ const errorHandler = (error, req, res, next) => {
         return
     }
     else if (error.name === 'ValidationError'){
-        res.status(403).json({ error: 'Invalid'})
+        res.status(400).json({ error: 'Invalid schema'})
     }
 
     next(error)
