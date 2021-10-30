@@ -16,3 +16,4 @@
 | 26.10 | 1.5 | Spell, Equipment ja Weapon skeemat |
 | 29.10 | 1 | Encounter ja Enemy skeemat |
 | 29.10 | 3 | Campaign skeema ja controller |
+| 30.10 | 4 | Itemeiden poisto ja muokkaus. Korjauksia itemiden luomiseen |
