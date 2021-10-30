@@ -5,25 +5,14 @@ const { Equipment } = require('../models/items')
 const { Weapon } = require('../models/items')
 const User = require('../models/user')
 
-// Get all public (ie. not user created) items.
+// Get all public (ie. not user created) spells.
 itemRouter.get('/spells', async (req, res) => {
     const spells = await Spell.find({ userCreated: false })
     
     res.json(spells.map( s => s.toJSON() ))
 })
 
-itemRouter.get('/equipment', async (req, res) => {
-    const equipment = await Equipment.find({ userCreated: false })
-    
-    res.json(equipment.map( e => e.toJSON() ))
-})
-
-itemRouter.get('/weapons', async (req, res) => {
-    const weapons = await Weapon.find({ userCreated: false })
-
-    res.json(weapons.map( w => w.toJSON() ))
-})
-
+// Delete spell.
 itemRouter.delete('/spells/:id', async (req, res) => {
     const [authorized, checkMessage] = TokenCheck.checkToken(req, req.body.userId)
     if (!authorized){
@@ -52,6 +41,14 @@ itemRouter.delete('/spells/:id', async (req, res) => {
     res.status(204).end()
 })
 
+// Get all public (ie. not user created) equipment.
+itemRouter.get('/equipment', async (req, res) => {
+    const equipment = await Equipment.find({ userCreated: false })
+    
+    res.json(equipment.map( e => e.toJSON() ))
+})
+
+// Delete equipment.
 itemRouter.delete('/equipment/:id', async (req, res) => {
     const [authorized, checkMessage] = TokenCheck.checkToken(req, req.body.userId)
     if (!authorized){
@@ -80,6 +77,14 @@ itemRouter.delete('/equipment/:id', async (req, res) => {
     res.status(204).end()
 })
 
+// Get all public (ie. not user created) weapons.
+itemRouter.get('/weapons', async (req, res) => {
+    const weapons = await Weapon.find({ userCreated: false })
+
+    res.json(weapons.map( w => w.toJSON() ))
+})
+
+// Delete weapon.
 itemRouter.delete('/weapons/:id', async (req, res) => {
     const [authorized, checkMessage] = TokenCheck.checkToken(req, req.body.userId)
     if (!authorized){
@@ -108,6 +113,7 @@ itemRouter.delete('/weapons/:id', async (req, res) => {
     res.status(204).end()
 })
 
+// Create new item.
 itemRouter.post('/', async (req, res) => {
     const [authorized, checkMessage] = TokenCheck.checkToken(req, req.body.userId)
     if (!authorized){
