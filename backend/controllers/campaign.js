@@ -68,9 +68,18 @@ campaignRouter.patch('/enemy/:id', async (req, res) => {
 	const id = req.params.id
 	const body = req.body
 
-	const enemy = await Enemy.findByIdAndUpdate(id, body.update, { new: true })
+	const enemy = await Enemy.findById(id)
 
-	res.json(enemy.toJSON())
+	// Check that enemy was created by this user.
+	const enemyCreator = enemy.creator.toString()
+	if(enemyCreator !== body.userId){
+		res.status(403).end()
+        return
+	}
+
+	const updatedEnemy = await Enemy.findByIdAndUpdate(id, body.update, { new: true })
+
+	res.json(updatedEnemy.toJSON())
 })
 
 // Delete enemy.
@@ -143,9 +152,18 @@ campaignRouter.patch('/encounter/:id', async (req, res) => {
 	const id = req.params.id
 	const body = req.body
 
-	const encounter = await Encounter.findByIdAndUpdate(id, body.update, { new: true })
+	const encounter = await Encounter.findById(id)
 
-	res.json(encounter.toJSON())
+	// Check that encounter was created by this user.
+	const encounterCreator = encounter.creator.toString()
+	if(encounterCreator !== body.userId){
+		res.status(403).end()
+        return
+	}
+
+	const updatedEncounter = await Encounter.findByIdAndUpdate(id, body.update, { new: true })
+
+	res.json(updatedEncounter.toJSON())
 })
 
 // Delete encounter.
@@ -217,9 +235,18 @@ campaignRouter.patch('/campaign/:id', async (req, res) => {
 	const id = req.params.id
 	const body = req.body
 
-	const campaign = await Campaign.findByIdAndUpdate(id, body.update, { new: true })
+	const campaign = await Campaign.findById(id)
 
-	res.json(campaign.toJSON())
+	// Check that campaign was created by this user.
+	const campaignCreator = campaign.creator.toString()
+	if(campaignCreator !== body.userId){
+		res.status(403).end()
+        return
+	}
+
+	const updatedCampaign = await Campaign.findByIdAndUpdate(id, body.update, { new: true })
+
+	res.json(updatedCampaign.toJSON())
 })
 
 // Delete campaign.
