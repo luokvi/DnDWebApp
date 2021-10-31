@@ -84,6 +84,8 @@ campaignRouter.patch('/enemy/:id', async (req, res) => {
         return
 	}
 
+	// Field userCreated has to be true.
+	body.update.userCreated = true
 	const updatedEnemy = await Enemy.findByIdAndUpdate(id, body.update, { new: true })
 
 	res.json(updatedEnemy.toJSON())
@@ -168,6 +170,8 @@ campaignRouter.patch('/encounter/:id', async (req, res) => {
         return
 	}
 
+	// Field userCreated has to be true.
+	body.update.userCreated = true
 	const updatedEncounter = await Encounter.findByIdAndUpdate(id, body.update, { new: true })
 
 	res.json(updatedEncounter.toJSON())
@@ -251,6 +255,8 @@ campaignRouter.patch('/campaign/:id', async (req, res) => {
         return
 	}
 
+	// Field userCreated has to be true.
+	body.update.userCreated = true
 	const updatedCampaign = await Campaign.findByIdAndUpdate(id, body.update, { new: true })
 
 	res.json(updatedCampaign.toJSON())

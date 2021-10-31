@@ -31,6 +31,8 @@ itemRouter.patch('/spells/:id', async (req, res) => {
         return
     }
 
+    // Field userCreated has to be true.
+	body.update.userCreated = true
     const spell = await Spell.findByIdAndUpdate(id, body.update, { new: true })
 
     res.json(spell.toJSON())
@@ -91,6 +93,8 @@ itemRouter.patch('/equipment/:id', async (req, res) => {
         return
     }
     
+    // Field userCreated has to be true.
+	body.update.userCreated = true
     const equipment = await Equipment.findByIdAndUpdate(id, body.update, { new: true })
 
     res.json(equipment.toJSON())
@@ -151,6 +155,8 @@ itemRouter.patch('/weapons/:id', async (req, res) => {
         return
     }
     
+    // Field userCreated has to be true.
+	body.update.userCreated = true
     const weapon = await Weapon.findByIdAndUpdate(id, body.update, { new: true })
 
     res.json(weapon.toJSON())
