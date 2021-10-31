@@ -206,6 +206,32 @@ campaignRouter.delete('/encounter/:id', async (req, res) => {
 	res.status(204).end()
 })
 
+// Get specific campaign.
+campaignRouter.get('/campaign/:id', async (req, res) => {
+	const [authorized, checkMessage] = TokenCheck.checkToken(req, req.body.userId)
+	if (!authorized){
+		res.status(401).send(checkMessage).end()
+		return
+	}
+
+	const id = req.params.id
+	const body = req.body
+
+	const campaign = await Campaign.findById(id).populate(
+		'heroes', {name: 1, race: 1, level: 1}).populate(
+		'encounters', {name: 1}).populate(
+		'npcs', {name: 1})
+
+	// Check that campaign was created by this user.
+	const campaignCreator = campaign.creator.toString()
+	if(campaignCreator !== body.userId){
+		res.status(403).end()
+        return
+	}
+
+	res.json(campaign.toJSON())
+})
+
 // Create campaign.
 campaignRouter.post('/campaign', async (req, res) => {
 	const [authorized, checkMessage] = TokenCheck.checkToken(req, req.body.userId)
