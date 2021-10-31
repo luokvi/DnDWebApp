@@ -5,6 +5,13 @@ const Encounter = require('../models/encounter')
 const Campaign = require('../models/campaign')
 const User = require('../models/user')
 
+
+// Get all public (not user created) enemies.
+campaignRouter.get('/enemy', async (req, res) => {
+	const enemies = await Enemy.find({ userCreated: false })
+
+	res.json(enemies.map( e => e.toJSON() ))
+})
 // Create enemy.
 campaignRouter.post('/enemy', async (req, res) => {
   const [authorized, checkMessage] = TokenCheck.checkToken(req, req.body.userId)
