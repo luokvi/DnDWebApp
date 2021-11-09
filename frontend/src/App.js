@@ -3,13 +3,14 @@ import React, { useState, useEffect } from "react"
 import userService from './services/users'
 
 function App() {
- const [users, setUsers] = useState([])
+  const
+  const [users, setUsers] = useState([])
 
- useEffect(() => {
-   userService.getAll().then(usersList => {
-     setUsers(usersList)
-   })
- }, [])
+  useEffect(() => {
+    userService.getAll().then(usersList => {
+      setUsers(usersList)
+    })
+  }, [])
 
   return (
     <div>
