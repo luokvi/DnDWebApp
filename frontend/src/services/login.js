@@ -12,4 +12,4 @@ const loginUser = async (username, password) => {
     return res.data
 }
 
-export default { getAll }
+export default { loginUser }
