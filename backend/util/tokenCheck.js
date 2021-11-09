@@ -2,7 +2,6 @@ const jwt = require('jsonwebtoken')
 const TokenBlacklist = require('../models/tokenBlacklist')
 
 const checkToken = ( req, userId ) => {
-    console.log("Checking auth")
     const auth = req.get('authorization')
     
     // Check that auth starts with 'bearer'
