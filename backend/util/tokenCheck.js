@@ -19,7 +19,6 @@ const checkToken = ( async ( req, userId ) => {
 
     // Check that token is not on the blacklist.
     const blacklisted = await TokenBlacklist.findOne({ token: token.toLowerCase() })
-    console.log("Blacklisted: " + blacklisted)
     if (blacklisted !== null){
         return [false, {error: 'Wrong Token'}]
     }
