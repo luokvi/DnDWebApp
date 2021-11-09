@@ -13,7 +13,7 @@ charaRouter.get('/:id', async (req, res) => {
 
 // Create new character.
 charaRouter.post('/', async (req, res) => {
-    const [authorized, checkMessage] = TokenCheck.checkToken(req, req.body.userId)
+    const [authorized, checkMessage] = await TokenCheck.checkToken(req, req.body.userId)
     if (!authorized){
         res.status(401).send(checkMessage).end()
         return
@@ -69,7 +69,7 @@ charaRouter.post('/', async (req, res) => {
 
 // Update character.
 charaRouter.patch('/:id', async (req, res) => {
-    const [authorized, checkMessage] = TokenCheck.checkToken(req, req.body.userId)
+    const [authorized, checkMessage] = await TokenCheck.checkToken(req, req.body.userId)
     if (!authorized){
         res.status(401).send(checkMessage).end()
         return
@@ -85,7 +85,7 @@ charaRouter.patch('/:id', async (req, res) => {
 
 // Delete character.
 charaRouter.delete('/:id', async (req, res) => {
-    const [authorized, checkMessage] = TokenCheck.checkToken(req, req.body.userId)
+    const [authorized, checkMessage] = await TokenCheck.checkToken(req, req.body.userId)
     if (!authorized){
         res.status(401).send(checkMessage).end()
         return

@@ -14,7 +14,7 @@ campaignRouter.get('/enemy', async (req, res) => {
 })
 // Create enemy.
 campaignRouter.post('/enemy', async (req, res) => {
-  const [authorized, checkMessage] = TokenCheck.checkToken(req, req.body.userId)
+  const [authorized, checkMessage] = await TokenCheck.checkToken(req, req.body.userId)
 	if (!authorized){
 		res.status(401).send(checkMessage).end()
 		return
@@ -66,7 +66,7 @@ campaignRouter.post('/enemy', async (req, res) => {
 
 // Update enemy.
 campaignRouter.patch('/enemy/:id', async (req, res) => {
-	const [authorized, checkMessage] = TokenCheck.checkToken(req, req.body.userId)
+	const [authorized, checkMessage] = await TokenCheck.checkToken(req, req.body.userId)
 	if (!authorized){
 		res.status(401).send(checkMessage).end()
 		return
@@ -93,7 +93,7 @@ campaignRouter.patch('/enemy/:id', async (req, res) => {
 
 // Delete enemy.
 campaignRouter.delete('/enemy/:id', async (req, res) => {
-	const [authorized, checkMessage] = TokenCheck.checkToken(req, req.body.userId)
+	const [authorized, checkMessage] = await TokenCheck.checkToken(req, req.body.userId)
 	if (!authorized){
 		res.status(401).send(checkMessage).end()
 		return
@@ -122,7 +122,7 @@ campaignRouter.delete('/enemy/:id', async (req, res) => {
 
 // Create encouter.
 campaignRouter.post('/encounter', async (req, res) => {
-	const [authorized, checkMessage] = TokenCheck.checkToken(req, req.body.userId)
+	const [authorized, checkMessage] = await TokenCheck.checkToken(req, req.body.userId)
 	if (!authorized){
 		res.status(401).send(checkMessage).end()
 		return
@@ -152,7 +152,7 @@ campaignRouter.post('/encounter', async (req, res) => {
 
 // Update encounter.
 campaignRouter.patch('/encounter/:id', async (req, res) => {
-	const [authorized, checkMessage] = TokenCheck.checkToken(req, req.body.userId)
+	const [authorized, checkMessage] = await TokenCheck.checkToken(req, req.body.userId)
 	if (!authorized){
 		res.status(401).send(checkMessage).end()
 		return
@@ -179,7 +179,7 @@ campaignRouter.patch('/encounter/:id', async (req, res) => {
 
 // Delete encounter.
 campaignRouter.delete('/encounter/:id', async (req, res) => {
-	const [authorized, checkMessage] = TokenCheck.checkToken(req, req.body.userId)
+	const [authorized, checkMessage] = await TokenCheck.checkToken(req, req.body.userId)
 	if (!authorized){
 		res.status(401).send(checkMessage).end()
 		return
@@ -208,7 +208,7 @@ campaignRouter.delete('/encounter/:id', async (req, res) => {
 
 // Get specific campaign.
 campaignRouter.get('/campaign/:id', async (req, res) => {
-	const [authorized, checkMessage] = TokenCheck.checkToken(req, req.body.userId)
+	const [authorized, checkMessage] = await TokenCheck.checkToken(req, req.body.userId)
 	if (!authorized){
 		res.status(401).send(checkMessage).end()
 		return
@@ -234,7 +234,7 @@ campaignRouter.get('/campaign/:id', async (req, res) => {
 
 // Create campaign.
 campaignRouter.post('/campaign', async (req, res) => {
-	const [authorized, checkMessage] = TokenCheck.checkToken(req, req.body.userId)
+	const [authorized, checkMessage] = await TokenCheck.checkToken(req, req.body.userId)
 	if (!authorized){
 		res.status(401).send(checkMessage).end()
 		return
@@ -263,7 +263,7 @@ campaignRouter.post('/campaign', async (req, res) => {
 
 // Update campaign.
 campaignRouter.patch('/campaign/:id', async (req, res) => {
-	const [authorized, checkMessage] = TokenCheck.checkToken(req, req.body.userId)
+	const [authorized, checkMessage] = await TokenCheck.checkToken(req, req.body.userId)
 	if (!authorized){
 		res.status(401).send(checkMessage).end()
 		return
@@ -290,7 +290,7 @@ campaignRouter.patch('/campaign/:id', async (req, res) => {
 
 // Delete campaign.
 campaignRouter.delete('/campaign/:id', async (req, res) => {
-	const [authorized, checkMessage] = TokenCheck.checkToken(req, req.body.userId)
+	const [authorized, checkMessage] = await TokenCheck.checkToken(req, req.body.userId)
 	if (!authorized){
 		res.status(401).send(checkMessage).end()
 		return

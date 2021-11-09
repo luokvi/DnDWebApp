@@ -14,7 +14,7 @@ itemRouter.get('/spells', async (req, res) => {
 
 // Update spell.
 itemRouter.patch('/spells/:id', async (req, res) => {
-    const [authorized, checkMessage] = TokenCheck.checkToken(req, req.body.userId)
+    const [authorized, checkMessage] = await TokenCheck.checkToken(req, req.body.userId)
     if (!authorized){
         res.status(401).send(checkMessage).end()
         return
@@ -40,7 +40,7 @@ itemRouter.patch('/spells/:id', async (req, res) => {
 
 // Delete spell.
 itemRouter.delete('/spells/:id', async (req, res) => {
-    const [authorized, checkMessage] = TokenCheck.checkToken(req, req.body.userId)
+    const [authorized, checkMessage] = await TokenCheck.checkToken(req, req.body.userId)
     if (!authorized){
         res.status(401).send(checkMessage).end()
         return
@@ -76,7 +76,7 @@ itemRouter.get('/equipment', async (req, res) => {
 
 // Update equipment.
 itemRouter.patch('/equipment/:id', async (req, res) => {
-    const [authorized, checkMessage] = TokenCheck.checkToken(req, req.body.userId)
+    const [authorized, checkMessage] = await TokenCheck.checkToken(req, req.body.userId)
     if (!authorized){
         res.status(401).send(checkMessage).end()
         return
@@ -102,7 +102,7 @@ itemRouter.patch('/equipment/:id', async (req, res) => {
 
 // Delete equipment.
 itemRouter.delete('/equipment/:id', async (req, res) => {
-    const [authorized, checkMessage] = TokenCheck.checkToken(req, req.body.userId)
+    const [authorized, checkMessage] = await TokenCheck.checkToken(req, req.body.userId)
     if (!authorized){
         res.status(401).send(checkMessage).end()
         return
@@ -138,7 +138,7 @@ itemRouter.get('/weapons', async (req, res) => {
 
 // Update weapon.
 itemRouter.patch('/weapons/:id', async (req, res) => {
-    const [authorized, checkMessage] = TokenCheck.checkToken(req, req.body.userId)
+    const [authorized, checkMessage] = await TokenCheck.checkToken(req, req.body.userId)
     if (!authorized){
         res.status(401).send(checkMessage).end()
         return
@@ -164,7 +164,7 @@ itemRouter.patch('/weapons/:id', async (req, res) => {
 
 // Delete weapon.
 itemRouter.delete('/weapons/:id', async (req, res) => {
-    const [authorized, checkMessage] = TokenCheck.checkToken(req, req.body.userId)
+    const [authorized, checkMessage] = await TokenCheck.checkToken(req, req.body.userId)
     if (!authorized){
         res.status(401).send(checkMessage).end()
         return
@@ -193,7 +193,7 @@ itemRouter.delete('/weapons/:id', async (req, res) => {
 
 // Create new item.
 itemRouter.post('/', async (req, res) => {
-    const [authorized, checkMessage] = TokenCheck.checkToken(req, req.body.userId)
+    const [authorized, checkMessage] = await TokenCheck.checkToken(req, req.body.userId)
     if (!authorized){
         res.status(401).send(checkMessage).end()
         return

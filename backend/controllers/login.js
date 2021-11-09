@@ -31,7 +31,7 @@ loginRouter.post('/', async (req, res) => {
 
 // On logout add used token to a blacklist, so it can't be used again for a time.
 loginRouter.post('/logout', async (req, res) => {
-  const [authorized, checkMessage] = TokenCheck.checkToken(req, req.body.userId)
+  const [authorized, checkMessage] = await TokenCheck.checkToken(req, req.body.userId)
 	if (!authorized){
 		res.status(401).send(checkMessage).end()
 		return
