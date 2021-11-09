@@ -18,9 +18,9 @@ const checkToken = async ( req, userId ) => {
 
     const token = auth.substring(7)
 
-    console.log("type:" +  typeof TokenBlacklist)
+    console.log("type:" +  typeof TokenBlacklist.findOne)
     // Check that token is not on the blacklist.
-    const blacklisted = await TokenBlacklist.findOne({ token: token })
+    const blacklisted = await TokenBlacklist.findOne({ 'token': token })
     console.log("Blacklisted: " + blacklisted)
     if (blacklisted !== null){
         return [false, {error: 'Wrong Token'}]
