@@ -2,6 +2,8 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const loginRouter = require('express').Router()
 const User = require('../models/user')
+const TokenCheck = require('../util/tokenCheck')
+const TokenBlacklist = require('../models/tokenBlacklist')
 
 loginRouter.post('/', async (req, res) => {
   const body = req.body
@@ -25,6 +27,27 @@ loginRouter.post('/', async (req, res) => {
   const token = jwt.sign(tokenUser, process.env.TOKENSECRET, {expiresIn: '12h'})
 
   res.status(200).send({ token, username: user.username })
+})
+
+// On logout add used token to a blacklist, so it can't be used again for a time.
+loginRouter.post('/logout', async (req, res) => {
+  const [authorized, checkMessage] = TokenCheck.checkToken(req, req.body.userId)
+	if (!authorized){
+		res.status(401).send(checkMessage).end()
+		return
+	}
+
+  const auth = req.get('authorization')
+  const token = auth.substring(7)
+  
+  const tokenItem = new TokenBlacklist({
+    token: token,
+    time: new Date()
+  })
+
+  await tokenItem.save()
+
+  res.status(200).send('Logged out.').end()
 })
 
 module.exports = loginRouter
