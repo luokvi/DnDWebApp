@@ -10,6 +10,9 @@ const LoginForm = (setFunction, user) => {
         const response = await loginService.loginUser(username, password)
 
         setFunction(response.username)
+        
+        setUsername('')
+        setPassword('')
     }
 
     return(
