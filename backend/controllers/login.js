@@ -37,7 +37,7 @@ loginRouter.post('/logout', async (req, res) => {
 		return
 	}
 
-  const auth = req.get('authorization')
+  const auth = req.get('authorization').toLowerCase()
   const token = auth.substring(7)
   
   const tokenItem = new TokenBlacklist({
