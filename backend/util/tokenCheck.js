@@ -1,6 +1,8 @@
 const jwt = require('jsonwebtoken')
+const tokenBlacklist = require('../models/tokenBlacklist')
+const TokenBlacklist = require('../models/tokenBlacklist')
 
-const checkToken = ( req, userId ) => {
+const checkToken = async ( req, userId ) => {
     const auth = req.get('authorization')
     
     // Check that auth starts with 'bearer'
@@ -15,6 +17,12 @@ const checkToken = ( req, userId ) => {
     }
 
     const token = auth.substring(7)
+    // Check that token is not on the blacklist.
+    const blacklisted = await TokenBlacklist.findOne({ token: token })
+    if (blacklisted._id){
+        return [false, {error: 'Wrong Token'}]
+    }
+
     const decoded = jwt.verify(token, process.env.TOKENSECRET)
     // Check that found an user matching token
     if (!decoded.id){
