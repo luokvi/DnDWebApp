@@ -19,3 +19,4 @@
 | 30.10 | 4 | Itemeiden poisto ja muokkaus. Korjauksia itemiden luomiseen |
 | 31.10 | 1 | Päivityksiä campaign controlleriin |
 | 5.11 | 1 | Frontendin aloitus |
+| 9.11 | 2.5 | Käyttäjän logout |
