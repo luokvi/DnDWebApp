@@ -18,7 +18,7 @@ const checkToken = ( req, userId ) => {
     const token = auth.substring(7)
 
     // Check that token is not on the blacklist.
-    TokenBlacklist.findOne({ 'token': token }).then(blacklisted => {
+    TokenBlacklist.findOne({ token: token.toLowerCase() }).then(blacklisted => {
         console.log("Blacklisted: " + blacklisted)
         if (blacklisted !== null){
             return [false, {error: 'Wrong Token'}]
