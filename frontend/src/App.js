@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react"
 
 import userService from './services/users'
+import LoginForm from './components/loginForm'
 
 function App() {
-  const
+  const [loggedInUser, setLoggedInUsers] = useState("")
   const [users, setUsers] = useState([])
 
   useEffect(() => {
@@ -15,6 +16,7 @@ function App() {
   return (
     <div>
       <h1>DnD Web App</h1>
+      <LoginForm setFunction={setLoggedInUsers} user={loggedInUser}/>
       <h3>Users:</h3>
       <ul>
         {users.map(user => 
