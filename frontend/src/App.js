@@ -17,6 +17,7 @@ function App() {
     <div>
       <h1>DnD Web App</h1>
       <LoginForm setFunction={setLoggedInUsers} user={loggedInUser}/>
+      <p>Logged in as: {loggedInUser}</p>
       <h3>Users:</h3>
       <ul>
         {users.map(user => 

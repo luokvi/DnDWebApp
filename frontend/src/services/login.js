@@ -10,6 +10,6 @@ const loginUser = async (username, password) => {
     const res = await axios.post(baseUrl, user)
 
     return res.data
-}
+};
 
 export default { loginUser }
