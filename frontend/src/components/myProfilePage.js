@@ -1,11 +1,10 @@
 import React, { useState } from "react"
 
 const ProfilePage = ({ user }) => {
-    console.log("user: " + JSON.stringify(user) )
-
+    
     return(
         <div>
-            <p>jsdkljasdlk</p>
+            <h2>{user.username}</h2>
         </div>
     )
 }
