@@ -13,8 +13,7 @@ const LoginForm = ({ setFunction, user }) => {
         try {
             const response = await loginService.loginUser(username, password)
             
-            setFunction(response.username)
-            setUsername('')
+            setFunction(response.userid, response.token)
             setPassword('')
             setNotif('')
         } catch { 
@@ -22,6 +21,13 @@ const LoginForm = ({ setFunction, user }) => {
             setNotif('Incorrect username or password')
             setPassword('')
         }
+    }
+
+    const handleLogout = (event) => {
+        event.preventDefault()
+
+        setFunction('', '')
+        setUsername('')
     }
 
     if ( user === ""){
@@ -43,7 +49,8 @@ const LoginForm = ({ setFunction, user }) => {
 
     return(
         <div>
-            <p>Logged in as {user}</p>
+            <p>Logged in as {username}</p>
+            <button id="logout-button" onClick={handleLogout}>Logout</button>
         </div>
     )
     
