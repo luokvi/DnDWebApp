@@ -7,11 +7,11 @@ import ProfilePage from "./components/myProfilePage"
 function App() {
   const [loggedInUser, setLoggedInUser] = useState("")
   const [token, setToken] = useState("")
-  const [users, setUsers] = useState([])
+  const [user, setUser] = useState([])
 
   useEffect(() => {
-    userService.getAll().then(usersList => {
-      setUsers(usersList)
+    userService.getUser(loggedInUser).then(user => {
+      setUser(user)
     })
   }, [])
 
@@ -24,13 +24,7 @@ function App() {
     <div>
       <h1>DnD Web App</h1>
       <LoginForm setFunction={loginFunc} user={loggedInUser}/>
-      <ProfilePage userid={loggedInUser} />
-      <h3>Users:</h3>
-      <ul>
-        {users.map(user => 
-          <li key={user.id}>{user.username}</li>
-          )}
-      </ul>
+      <ProfilePage userid={user} />
     </div>
   );
 }
