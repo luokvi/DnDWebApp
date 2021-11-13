@@ -10,14 +10,19 @@ function App() {
   const [user, setUser] = useState("")
 
   useEffect(() => {
-    userService.getUser(loggedInUser).then(user => {
-      setUser(user)
-    })
+    
   }, [])
 
-  const loginFunc = (userid, token) => {
+  const loginFunc = async (userid, token) => {
     setLoggedInUser(userid)
     setToken(token)
+
+    if(userid !== ''){
+      const profile = await userService.getUser(userid)
+      setUser(profile)
+    } else{
+      setUser('')
+    }
   }
 
   if (loggedInUser == ''){
