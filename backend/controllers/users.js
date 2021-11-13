@@ -5,14 +5,12 @@ const FriendRequest = require('../models/friendRequest')
 const TokenCheck = require('../util/tokenCheck')
 
 usersRouter.get('/', async (req, res) => {
-  console.log("all users")
   const users = await User.find({}).populate("friends", { username: 1 })
 
   res.json(users.map( user => user.toJSON() ))
 })
 
 usersRouter.get('/:id', async (req, res) => {
-  console.log("single user")
   // TODO: return more info if user's own info vs other user's.
   const id = req.params.id
 
