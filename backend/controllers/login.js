@@ -26,7 +26,7 @@ loginRouter.post('/', async (req, res) => {
 
   const token = jwt.sign(tokenUser, process.env.TOKENSECRET, {expiresIn: '12h'})
 
-  res.status(200).send({ token, username: user.username })
+  res.status(200).send({ token, username: user.username, userid: user._id })
 })
 
 // On logout add used token to a blacklist, so it can't be used again for a time.

@@ -4,7 +4,8 @@ import userService from './services/users'
 import LoginForm from './components/loginForm'
 
 function App() {
-  const [loggedInUser, setLoggedInUsers] = useState("")
+  const [loggedInUser, setLoggedInUser] = useState("")
+  const [token, setToken] = useState("")
   const [users, setUsers] = useState([])
 
   useEffect(() => {
@@ -13,11 +14,15 @@ function App() {
     })
   }, [])
 
+  const loginFunc = (userid, token) => {
+    setLoggedInUser(userid)
+    setToken(token)
+  }
+
   return (
     <div>
       <h1>DnD Web App</h1>
-      <LoginForm setFunction={setLoggedInUsers} user={loggedInUser}/>
-      <p>Logged in as: {loggedInUser}</p>
+      <LoginForm setFunction={loginFunc} user={loggedInUser}/>
       <h3>Users:</h3>
       <ul>
         {users.map(user => 
