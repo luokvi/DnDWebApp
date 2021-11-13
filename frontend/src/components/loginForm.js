@@ -5,20 +5,30 @@ const LoginForm = ({ setFunction, user }) => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
+    const [notifText, setNotif] = useState('')
+
     const handleLogin = async (event) => {
         event.preventDefault()
-        const response = await loginService.loginUser(username, password)
-
-        setFunction(response.username)
         
-        setUsername('')
-        setPassword('')
+        try {
+            const response = await loginService.loginUser(username, password)
+            
+            setFunction(response.username)
+            setUsername('')
+            setPassword('')
+            setNotif('')
+        } catch { 
+            // if couldn't find user
+            setNotif('Incorrect username or password')
+            setPassword('')
+        }
     }
 
     if ( user === ""){
         return(
             <div>
                 <form onSubmit={handleLogin}>
+                    <p>{notifText}</p>
                     <div>username
                         <input id="username" type="text" value={username} name="Username" onChange={({ target }) => setUsername(target.value)}/>
                     </div>
