@@ -38,7 +38,7 @@ function App() {
     <div>
       <h1>DnD Web App</h1>
       <LoginForm setFunction={loginFunc} user={loggedInUser}/>
-      <ProfilePage userid={user} />
+      <ProfilePage user={user} />
     </div>
   );
 }
