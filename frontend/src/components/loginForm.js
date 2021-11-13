@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import loginService from '../services/login'
 
-const LoginForm = (setFunction, user) => {
+const LoginForm = ({ setFunction, user }) => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
