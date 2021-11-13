@@ -1,27 +1,13 @@
 import React, { useState } from "react"
 
 const ProfilePage = ({ user }) => {
-    try {
-        console.log("userid: " + user.id)
-        console.log("user: " + user )
+    console.log("user: " + JSON.stringify(user) )
 
-        return(
-            <div>
-                <h2> Characters: </h2>
-                {user.characters.map(chara =>
-                    <p key={chara.id}>{chara.name}</p>
-                )}
-            </div>
-        )
-    } catch {
-        return(
-            <div>
-                <p>Not logged in.</p>
-            </div>
-        )
-    }
-    
-
+    return(
+        <div>
+            <p>jsdkljasdlk</p>
+        </div>
+    )
 }
 
 export default ProfilePage
