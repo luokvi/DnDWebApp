@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 
 import userService from './services/users'
 import LoginForm from './components/loginForm'
+import ProfilePage from "./components/myProfilePage"
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState("")
@@ -23,6 +24,7 @@ function App() {
     <div>
       <h1>DnD Web App</h1>
       <LoginForm setFunction={loginFunc} user={loggedInUser}/>
+      <ProfilePage userid={loggedInUser} />
       <h3>Users:</h3>
       <ul>
         {users.map(user => 

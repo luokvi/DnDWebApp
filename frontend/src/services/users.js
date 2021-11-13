@@ -9,4 +9,12 @@ const getAll = async () => {
     return res.data
 };
 
-export default { getAll }
+// Get specific user by id.
+const getUser = async (userId) => {
+    const url = baseUrl + "/" + userId
+    const res = await axios.get(url)
+
+    return res.data
+}
+
+export default { getAll, getUser }

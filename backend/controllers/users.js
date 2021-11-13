@@ -11,6 +11,7 @@ usersRouter.get('/', async (req, res) => {
 })
 
 usersRouter.get('/:id', async (req, res) => {
+  // TODO: return more info if user's own info vs other user's.
   const id = req.params.id
 
   const user = await User.findById(id).populate('friends', { username: 1}).populate(
