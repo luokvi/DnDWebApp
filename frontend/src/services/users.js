@@ -12,8 +12,10 @@ const getAll = async () => {
 // Get specific user by id.
 const getUser = async (userId) => {
     const url = baseUrl + "/" + userId
+    console.log("url: " + url)
     const res = await axios.get(url)
 
+    console.log("Userservice got: " + res)
     return res.data
 }
 

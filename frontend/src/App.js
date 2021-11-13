@@ -7,7 +7,7 @@ import ProfilePage from "./components/myProfilePage"
 function App() {
   const [loggedInUser, setLoggedInUser] = useState("")
   const [token, setToken] = useState("")
-  const [user, setUser] = useState([])
+  const [user, setUser] = useState("")
 
   useEffect(() => {
     userService.getUser(loggedInUser).then(user => {
@@ -18,6 +18,15 @@ function App() {
   const loginFunc = (userid, token) => {
     setLoggedInUser(userid)
     setToken(token)
+  }
+
+  if (loggedInUser == ''){
+    return(
+      <div>
+        <h1>DnD Web App</h1>
+        <LoginForm setFunction={loginFunc} user={loggedInUser}/>
+      </div>
+    )
   }
 
   return (
