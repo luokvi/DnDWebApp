@@ -2,7 +2,7 @@ import React from "react"
 
 const Character = ({ c }) => {
     return(
-        <div>
+        <div key={c.id}>
             <h4>{c.name}</h4>
             <p>{c.level} level {c.class}, {c.race}</p>
         </div>
@@ -10,7 +10,7 @@ const Character = ({ c }) => {
 }
 const ProfilePage = ({ user }) => {
     
-    if (user.characters === undefined){
+    if (user === ''){
         return(
             <div>empty</div>
         )
