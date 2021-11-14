@@ -3,11 +3,30 @@ import React from "react"
 const Character = ({ c }) => {
     return(
         <div key={c.id}>
-            <h4>{c.name}</h4>
+            <h5>{c.name}</h5>
             <p>{c.level} level {c.class}, {c.race}</p>
         </div>
     )
 }
+const Campaign = ({ campaigns }) => {
+    if (campaigns.length === 0){
+        return(
+            null
+        )
+    }
+    return(
+        <div>
+            <h3>Campaigns:</h3>
+            {campaigns.map(c =>
+                <div key={c.id}>
+                    <h5>{c.name}</h5>
+                    <p>{c.description}</p>
+                </div>
+                )}
+        </div>
+    )
+}
+
 const ProfilePage = ({ user }) => {
     
     if (user === ''){
@@ -16,6 +35,7 @@ const ProfilePage = ({ user }) => {
         )
     }
 
+    console.log(JSON.stringify(user))
     return(
         <div>
             <h2>{user.username}</h2>
@@ -23,6 +43,7 @@ const ProfilePage = ({ user }) => {
             {user.characters.map(chara => 
                 <Character c={chara} />
                 )}
+            <Campaign campaigns={user.creations.campaigns} />
         </div>
     )
 }
