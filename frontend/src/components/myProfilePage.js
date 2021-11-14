@@ -27,6 +27,14 @@ const Campaign = ({ campaigns }) => {
     )
 }
 
+const Friend = ({ f }) => {
+    return(
+        <li key={f.id}>
+            {f.username}
+        </li>
+    )
+}
+
 const ProfilePage = ({ user }) => {
     
     if (user === ''){
@@ -39,6 +47,12 @@ const ProfilePage = ({ user }) => {
     return(
         <div>
             <h2>{user.username}</h2>
+            <h3>Friends:</h3>
+            <ul>
+            {user.friends.map(friend =>
+                <Friend f={friend} />
+                )}
+            </ul>
             <h3>Characters:</h3>
             {user.characters.map(chara => 
                 <Character c={chara} />
