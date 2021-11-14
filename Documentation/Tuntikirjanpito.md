@@ -22,3 +22,4 @@
 | 9.11 | 2.5 | Käyttäjän logout |
 | 9.11 | 1.5 | Login form frontendissä|
 | 13.11 | 3 | Login ja logout toiminnallisuus. Käyttäjän profiili-sivu |
+| 14.11 | 1.5 | Lisää käyttäjän profiilisivulle |
