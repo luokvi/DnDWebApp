@@ -12,7 +12,7 @@ const ProfilePage = ({ user }) => {
     
     if (user === ''){
         return(
-            <div>empty</div>
+            <div>loading...</div>
         )
     }
 
