@@ -38,17 +38,13 @@ const Friend = ({ f }) => {
 
 const FriendRequest = ({ user, r, setNotif }) => {
     const accept = async () => {
-        console.log("Clicked accept")
         try{
-            const response = userService.acceptFriendRequest(
+            const response = await userService.acceptFriendRequest(
                 user.id,
                 r.sender,
                 r.id
             )
             console.log(response)
-            if(response.status === 401){
-                console.log("Got unathorized!")
-            }
             setNotif(
                 "Added friend " + 
                 r.sender
