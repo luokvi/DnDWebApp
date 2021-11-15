@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import userService from '../services/users'
 
 const Character = ({ c }) => {
@@ -36,15 +36,29 @@ const Friend = ({ f }) => {
     )
 }
 
-const FriendRequest = ({ user, r }) => {
+const FriendRequest = ({ user, r, setNotif }) => {
     const accept = async () => {
         console.log("Clicked accept")
-        const response = userService.acceptFriendRequest(
-            user.id,
-            r.sender,
-            r.id
-        )
-        console.log(response)
+        try{
+            const response = userService.acceptFriendRequest(
+                user.id,
+                r.sender,
+                r.id
+            )
+            console.log(response)
+            if(response.status === 401){
+                console.log("Got unathorized!")
+            }
+            setNotif(
+                "Added friend " + 
+                r.sender
+                )
+        }catch{
+            setNotif(
+                "Error occured when accepting friend request from " + 
+                r.sender
+                )
+        }
     }
     return(
         <li key={r.id}>
@@ -55,7 +69,8 @@ const FriendRequest = ({ user, r }) => {
 }
 
 const ProfilePage = ({ user }) => {
-    
+    const [notifText, setNotif] = useState('')
+
     if (user === ''){
         return(
             <div>loading...</div>
@@ -73,9 +88,10 @@ const ProfilePage = ({ user }) => {
                 )}
             </ul>
             <h3>Friend requests:</h3>
+            <p>{notifText}</p>
             <ul>
             {user.friendRequests.map(request =>
-                <FriendRequest r={request} user={user} />
+                <FriendRequest r={request} user={user} setNotif={setNotif} />
                 )}
             </ul>
             <h3>Characters:</h3>
