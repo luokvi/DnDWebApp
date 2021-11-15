@@ -38,11 +38,13 @@ const Friend = ({ f }) => {
 
 const FriendRequest = ({ user, r }) => {
     const accept = async () => {
+        console.log("Clicked accept")
         const response = userService.acceptFriendRequest(
             user.id,
             r.sender,
             r.id
         )
+        console.log(response)
     }
     return(
         <li key={r.id}>
