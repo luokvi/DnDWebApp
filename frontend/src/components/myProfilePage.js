@@ -35,6 +35,14 @@ const Friend = ({ f }) => {
     )
 }
 
+const FriendRequest = ({ r }) => {
+    return(
+        <li key={r.id}>
+            <p>From: {r.sender}</p>
+        </li>
+    )
+}
+
 const ProfilePage = ({ user }) => {
     
     if (user === ''){
@@ -51,6 +59,12 @@ const ProfilePage = ({ user }) => {
             <ul>
             {user.friends.map(friend =>
                 <Friend f={friend} />
+                )}
+            </ul>
+            <h3>Friend requests::</h3>
+            <ul>
+            {user.friendRequests.map(request =>
+                <FriendRequest r={request} />
                 )}
             </ul>
             <h3>Characters:</h3>
