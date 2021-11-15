@@ -17,4 +17,17 @@ const getUser = async (userId) => {
     return res.data
 }
 
-export default { getAll, getUser }
+// Accept a friend request.
+const acceptFriendRequest = async (userId, senderId, requestId) => {
+    const url = baseUrl + "/friend"
+    const body = {
+        "SenderId": userId,
+        "ReceiverId": senderId,
+        "friendRequest": requestId
+    }
+
+    const res = await axios.post(url, body)
+    return res.data
+}
+
+export default { getAll, getUser, acceptFriendRequest }

@@ -1,4 +1,5 @@
 import React from "react"
+import userService from '../services/users'
 
 const Character = ({ c }) => {
     return(
@@ -35,10 +36,18 @@ const Friend = ({ f }) => {
     )
 }
 
-const FriendRequest = ({ r }) => {
+const FriendRequest = ({ user, r }) => {
+    const accept = async () => {
+        const response = userService.acceptFriendRequest(
+            user.id,
+            r.sender,
+            r.id
+        )
+    }
     return(
         <li key={r.id}>
             <p>From: {r.sender}</p>
+            <button onClick={accept}>accept</button>
         </li>
     )
 }
@@ -61,10 +70,10 @@ const ProfilePage = ({ user }) => {
                 <Friend f={friend} />
                 )}
             </ul>
-            <h3>Friend requests::</h3>
+            <h3>Friend requests:</h3>
             <ul>
             {user.friendRequests.map(request =>
-                <FriendRequest r={request} />
+                <FriendRequest r={request} user={user} />
                 )}
             </ul>
             <h3>Characters:</h3>
