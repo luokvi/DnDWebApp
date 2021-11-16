@@ -24,3 +24,4 @@
 | 13.11 | 3 | Login ja logout toiminnallisuus. Käyttäjän profiili-sivu |
 | 14.11 | 1.5 | Lisää käyttäjän profiilisivulle |
 | 15.11 | 2 | Friendrequestit käyttäjän profiilisivulla |
+| 16.11 | 2 | Token requestin mukana. Yritin saada friendRequestin lähettäjän nimen näkyviin |
