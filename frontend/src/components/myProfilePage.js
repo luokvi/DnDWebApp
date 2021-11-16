@@ -36,13 +36,14 @@ const Friend = ({ f }) => {
     )
 }
 
-const FriendRequest = ({ user, r, setNotif }) => {
+const FriendRequest = ({ user, r, setNotif, token }) => {
     const accept = async () => {
         try{
             const response = await userService.acceptFriendRequest(
                 user.id,
                 r.sender,
-                r.id
+                r.id,
+                token
             )
             console.log(response)
             setNotif(
@@ -66,7 +67,7 @@ const FriendRequest = ({ user, r, setNotif }) => {
     )
 }
 
-const ProfilePage = ({ user }) => {
+const ProfilePage = ({ user, token }) => {
     const [notifText, setNotif] = useState('')
 
     if (user === ''){
@@ -89,7 +90,7 @@ const ProfilePage = ({ user }) => {
             <p>{notifText}</p>
             <ul>
             {user.friendRequests.map(request =>
-                <FriendRequest r={request} user={user} setNotif={setNotif} />
+                <FriendRequest r={request} user={user} setNotif={setNotif} token={token} />
                 )}
             </ul>
             <h3>Characters:</h3>
