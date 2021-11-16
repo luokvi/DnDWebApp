@@ -25,7 +25,7 @@ function App() {
     }
   }
 
-  if (loggedInUser == ''){
+  if (loggedInUser === ''){
     return(
       <div>
         <h1>DnD Web App</h1>
