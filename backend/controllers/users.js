@@ -57,6 +57,7 @@ usersRouter.post('/', async (req, res) => {
 })
 
 usersRouter.post('/friend', async (req, res) => {
+  console.log(JSON.stringify(req))
   const [authorized, checkMessage] = await TokenCheck.checkToken(req, req.body.senderId)
   if (!authorized){
     res.status(401).send(checkMessage).end()
