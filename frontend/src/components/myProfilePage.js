@@ -36,8 +36,7 @@ const Friend = ({ f }) => {
     )
 }
 
-const FriendRequest = async ({ user, r, setNotif, token }) => {
-    const [senderName, setSendername] = useState('')
+const FriendRequest = ({ user, r, setNotif, token }) => {
     const accept = async () => {
         try{
             const response = await userService.acceptFriendRequest(
@@ -58,17 +57,11 @@ const FriendRequest = async ({ user, r, setNotif, token }) => {
                 )
         }
     }
-
-    const response = await userService.getUsersName(r.sender)
-    console.log("Sender's Username from getSender: " + response)
-    setSendername(response)
-    
-    console.log("Sender's Username: " + senderName)
     
     return(
         <li key={r.id}>
             <p>
-                From: {senderName}
+                From: {r.sender}
                 <button onClick={accept}>accept</button>
             </p>
         </li>
@@ -86,7 +79,7 @@ const ProfilePage = ({ user, token }) => {
 
     console.log(JSON.stringify(user))
     return(
-        <div>
+        <div id={user.username}>
             <h2>{user.username}</h2>
             <h3>Friends:</h3>
             <ul>
