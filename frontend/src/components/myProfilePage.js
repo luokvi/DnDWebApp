@@ -36,8 +36,7 @@ const Friend = ({ f }) => {
     )
 }
 
-const FriendRequest = async ({ user, r, setNotif, token }) => {
-    console.log("user: " + user)
+const FriendRequest = ({ user, r, setNotif, token }) => {
     const accept = async () => {
         try{
             const response = await userService.acceptFriendRequest(
@@ -62,7 +61,7 @@ const FriendRequest = async ({ user, r, setNotif, token }) => {
     let senderName = ''
     // Get sender's username
     try{
-        const senderUser = await userService.getUser(r.sender)
+        const senderUser = userService.getUser(r.sender)
         senderName = senderUser.username
     } catch{
         senderName = ''
