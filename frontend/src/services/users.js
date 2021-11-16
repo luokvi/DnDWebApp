@@ -27,7 +27,7 @@ const acceptFriendRequest = async (userId, senderId, requestId, token) => {
         "friendRequest": requestId
     }
     const axiosConfig = {
-        Headers: {
+        headers: {
             'Authorization': 'Bearer ' + token
         }
     }
