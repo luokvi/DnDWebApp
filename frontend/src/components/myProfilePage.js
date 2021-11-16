@@ -58,7 +58,7 @@ const FriendRequest = ({ user, r, setNotif, token }) => {
         }
     }
     return(
-        <li key={r.id}>
+        <li key={r._id}>
             <p>
                 From: {r.sender}
                 <button onClick={accept}>accept</button>

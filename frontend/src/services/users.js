@@ -18,15 +18,21 @@ const getUser = async (userId) => {
 }
 
 // Accept a friend request.
-const acceptFriendRequest = async (userId, senderId, requestId) => {
+const acceptFriendRequest = async (userId, senderId, requestId, token) => {
+    console.log("got token: " + token)
     const url = baseUrl + "/friend"
     const body = {
         "SenderId": userId,
         "ReceiverId": senderId,
         "friendRequest": requestId
     }
+    const axiosConfig = {
+        Headers: {
+            'Authorization': 'Bearer ' + token
+        }
+    }
 
-    const res = await axios.post(url, body)
+    const res = await axios.post(url, body, axiosConfig)
     return res.data
 }
 
