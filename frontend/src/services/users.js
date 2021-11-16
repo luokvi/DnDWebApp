@@ -22,8 +22,8 @@ const acceptFriendRequest = async (userId, senderId, requestId, token) => {
     console.log("got token: " + token)
     const url = baseUrl + "/friend"
     const body = {
-        "SenderId": userId,
-        "ReceiverId": senderId,
+        "senderId": userId,
+        "receiverId": senderId,
         "friendRequest": requestId
     }
     const axiosConfig = {
