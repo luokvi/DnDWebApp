@@ -60,11 +60,14 @@ const FriendRequest = async ({ user, r, setNotif, token }) => {
 
     let senderName = ''
     // Get sender's username
-    const userResponse = await userService.getUser(r.sender)
-    senderName = userResponse.username
-
+    try{
+        const userResponse = await userService.getUser(r.sender)
+        senderName = userResponse.username
+    } catch{
+        senderName = ''
+    }
     return(
-        <li key={r._id}>
+        <li key={r.id}>
             <p>
                 From: {senderName}
                 <button onClick={accept}>accept</button>
