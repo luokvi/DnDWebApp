@@ -31,7 +31,6 @@ usersRouter.get('/:id', async (req, res) => {
     return
   }
 
-  console.log("user: " + JSON.stringify(user))
   res.json(user.toJSON())
 }) 
 
