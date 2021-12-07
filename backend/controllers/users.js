@@ -34,6 +34,7 @@ usersRouter.get('/:id', async (req, res) => {
     const senderUser = await User.findById(senderId)
 
     fr.senderName = senderUser.username
+    console.log("Friendrequest: " + fr.toJSON())
   })
 
   res.json(user.toJSON())
