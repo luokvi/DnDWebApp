@@ -34,9 +34,7 @@ usersRouter.get('/:id', async (req, res) => {
 
   console.log("user: " + JSON.stringify(user))
   res.json(user.toJSON())
-})
-
-const 
+}) 
 
 usersRouter.post('/', async (req, res) => {
   const body = req.body
