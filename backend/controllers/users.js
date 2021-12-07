@@ -29,7 +29,7 @@ usersRouter.get('/:id', async (req, res) => {
   }
 
   // Get friendrequests' senders' 
-  user.friendRequests.map(fr => {
+  user.friendRequests.map(async (fr) => {
     const senderId = fr.sender
     const senderUser = await User.findById(senderId)
 
