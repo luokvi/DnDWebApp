@@ -37,7 +37,7 @@ const Friend = ({ f }) => {
     )
 }
 
-const FriendRequest = ({ user, r, setNotif, token, setOtherUser }) => {
+const FriendRequest = ({ user, r, setNotif, token }) => {
     console.log("Friendrequest: " + JSON.stringify(r))
     const accept = async () => {
         try{
@@ -63,14 +63,14 @@ const FriendRequest = ({ user, r, setNotif, token, setOtherUser }) => {
     return(
         <li>
             <p>
-                From: <Link to={"/user/" + r.id} onClick={setOtherUser(r.id)}>{r.sender.username}</Link>
+                From: <Link to={"/user/" + r.id}>{r.sender.username}</Link>
                 <button onClick={accept}>accept</button>
             </p>
         </li>
     )
 }
 
-const ProfilePage = ({ user, token, setOtherUser }) => {
+const ProfilePage = ({ user, token }) => {
     const [notifText, setNotif] = useState('')
 
     if (user === ''){
@@ -93,7 +93,7 @@ const ProfilePage = ({ user, token, setOtherUser }) => {
             <p>{notifText}</p>
             <ul>
             {user.friendRequests.map(request =>
-                <FriendRequest r={request} user={user} setNotif={setNotif} token={token} setOtherUser={setOtherUser} key={request.id}/>
+                <FriendRequest r={request} user={user} setNotif={setNotif} token={token} key={request.id}/>
                 )}
             </ul>
             <h3>Characters:</h3>

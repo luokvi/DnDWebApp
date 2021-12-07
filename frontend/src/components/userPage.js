@@ -1,4 +1,5 @@
-import React, { useParams } from "react"
+import React from "react"
+import { useParams } from "react-router-dom"
 import userService from '../services/users'
 
 const Character = ({ c }) => {
@@ -36,9 +37,10 @@ const Friend = ({ f }) => {
     )
 }
 
-const UserPage = async () => {
-    const { userId } = useParams()
-    const user = await userService.getUser(userId)
+const UserPage = () => {
+    const userId = useParams().id
+    const user = userService.getUser(userId)
+    console.log("Viewing user: " + JSON.stringify(user))
 
     if (user === ''){
         return(
