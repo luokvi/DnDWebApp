@@ -37,6 +37,7 @@ const Friend = ({ f }) => {
 }
 
 const FriendRequest = ({ user, r, setNotif, token }) => {
+    console.log("Friendrequest: " + r)
     const accept = async () => {
         try{
             const response = await userService.acceptFriendRequest(
