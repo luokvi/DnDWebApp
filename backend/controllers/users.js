@@ -28,14 +28,16 @@ usersRouter.get('/:id', async (req, res) => {
     return
   }
 
-  // Get friendrequests' senders' 
-  user.friendRequests.map(async (fr) => {
+  // Get friendrequests' senders' username
+  const newFr = await user.friendRequests.forEach(async fr => {
     const senderId = fr.sender
     const senderUser = await User.findById(senderId)
 
     fr.senderName = senderUser.username
+    console.log("Name: " + fr.senderName)
   })
-  console.log("Friendrequest: " + JSON.stringify(user))
+
+  console.log("New fr: " + JSON.stringify(newFr))
 
   res.json(user.toJSON())
 })
