@@ -15,7 +15,11 @@ usersRouter.get('/:id', async (req, res) => {
   const id = req.params.id
 
   const user = await User.findById(id).populate('friends', { username: 1}).populate(
-    'friendRequests', {sender: 1}).populate(
+    { // Get friendrequest sender's username
+      path: 'friendRequests',
+      populate: { path: 'sender', model: 'User'}
+    
+  }).populate(
     'characters', {name: 1, race: 1, class: 1, level: 1}).populate(
     'creations.campaigns', {name: 1}).populate(
     'creations.enemies', {name: 1, race: 1, description: 1}).populate(
@@ -28,19 +32,11 @@ usersRouter.get('/:id', async (req, res) => {
     return
   }
 
-  // Get friendrequests' senders' username
-  const more = await user.friendRequests.map( async fr => {
-    const senderId = fr.sender
-    const senderUser = await User.findById(senderId)
-
-    fr.senderName = senderUser.username
-    console.log("Name: " + JSON.stringify(fr))
-  })
-
-  console.log("New fr: " + JSON.stringify(more))
-
+  console.log("user: " + JSON.stringify(user))
   res.json(user.toJSON())
 })
+
+const 
 
 usersRouter.post('/', async (req, res) => {
   const body = req.body
