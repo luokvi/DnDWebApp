@@ -15,10 +15,9 @@ usersRouter.get('/:id', async (req, res) => {
   const id = req.params.id
 
   const user = await User.findById(id).populate('friends', { username: 1}).populate(
-    { // Get friendrequest sender's username
+    { // Get friendrequest sender
       path: 'friendRequests',
-      populate: { path: 'sender', model: 'User'}
-    
+      populate: { path: 'sender'}
   }).populate(
     'characters', {name: 1, race: 1, class: 1, level: 1}).populate(
     'creations.campaigns', {name: 1}).populate(
