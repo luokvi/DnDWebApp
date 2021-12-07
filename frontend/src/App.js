@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
+import { BrowserRouter as Router, Route, Routes, useNavigate } from "react-router-dom"
 
 import userService from './services/users'
 import LoginForm from './components/loginForm'
@@ -13,6 +13,7 @@ function App() {
   useEffect(() => {
     
   }, [])
+  const navigate = useNavigate()
 
   const loginFunc = async (userid, token) => {
     setLoggedInUser(userid)
@@ -21,6 +22,7 @@ function App() {
     if(userid !== ''){
       const profile = await userService.getUser(userid)
       setUser(profile)
+      navigate('/myProfile')
     } else{
       setUser('')
     }
@@ -36,7 +38,6 @@ function App() {
   }
 
   return (
-    <Router>
       <div>
         <h1>DnD Web App</h1>
         <LoginForm setFunction={loginFunc} user={loggedInUser}/>
@@ -46,7 +47,6 @@ function App() {
           
         </Routes>
       </div>
-    </Router>
   );
 }
 
