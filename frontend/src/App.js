@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes, useNavigate } from "react-route
 import userService from './services/users'
 import LoginForm from './components/loginForm'
 import ProfilePage from "./components/myProfilePage"
+import UserPage from "./components/userPage"
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState("")
@@ -44,7 +45,7 @@ function App() {
 
         <Routes>
           <Route path="/myProfile" element={<ProfilePage user={user} token={token}/>} />
-          
+          <Route path="/user/:id" element={<UserPage />} />
         </Routes>
       </div>
   );
