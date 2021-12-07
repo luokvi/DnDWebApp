@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 
 import userService from './services/users'
 import LoginForm from './components/loginForm'
@@ -35,11 +36,17 @@ function App() {
   }
 
   return (
-    <div>
-      <h1>DnD Web App</h1>
-      <LoginForm setFunction={loginFunc} user={loggedInUser}/>
-      <ProfilePage user={user} token={token}/>
-    </div>
+    <Router>
+      <div>
+        <h1>DnD Web App</h1>
+        <LoginForm setFunction={loginFunc} user={loggedInUser}/>
+
+        <Routes>
+          <Route path="/myProfile" element={<ProfilePage user={user} token={token}/>} />
+          
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
