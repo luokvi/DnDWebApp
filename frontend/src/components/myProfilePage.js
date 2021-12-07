@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { Link } from 'react-router-dom'
 import userService from '../services/users'
 
 const Character = ({ c }) => {
@@ -60,9 +61,9 @@ const FriendRequest = ({ user, r, setNotif, token }) => {
     }
     
     return(
-        <li key={r.id}>
+        <li>
             <p>
-                From: {r.sender.username}
+                From: <Link to={"/user/" + r.id}>{r.sender.username}</Link>
                 <button onClick={accept}>accept</button>
             </p>
         </li>
@@ -92,7 +93,7 @@ const ProfilePage = ({ user, token }) => {
             <p>{notifText}</p>
             <ul>
             {user.friendRequests.map(request =>
-                <FriendRequest r={request} user={user} setNotif={setNotif} token={token} />
+                <FriendRequest r={request} user={user} setNotif={setNotif} token={token} key={request.id}/>
                 )}
             </ul>
             <h3>Characters:</h3>
