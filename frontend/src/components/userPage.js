@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { useParams } from "react-router-dom"
 import userService from '../services/users'
 
@@ -37,32 +37,40 @@ const Friend = ({ f }) => {
     )
 }
 
-const UserPage = () => {
-    const userId = useParams().id
-    const user = userService.getUser(userId)
-    console.log("Viewing user: " + JSON.stringify(user))
+const getUser = async( id, setFunction ) => {
+    const user = await userService.getUser(id)
 
-    if (user === ''){
+    setFunction(user)
+}
+
+const UserPage = () => {
+    const [userToView, setUser] = useState('')
+    const userId = useParams().id
+    getUser(userId, setUser)
+    
+    console.log("Viewing user: " + JSON.stringify(userToView))
+
+    if (userToView === ''){
         return(
             <div>loading...</div>
         )
     }
 
-    console.log(JSON.stringify(user))
+    console.log(JSON.stringify(userToView))
     return(
-        <div id={user.username}>
-            <h2>{user.username}</h2>
+        <div id={userToView.username}>
+            <h2>{userToView.username}</h2>
             <h3>Friends:</h3>
             <ul>
-            {user.friends.map(friend =>
+            {userToView.friends.map(friend =>
                 <Friend f={friend} />
                 )}
             </ul>
             <h3>Characters:</h3>
-            {user.characters.map(chara => 
+            {userToView.characters.map(chara => 
                 <Character c={chara} />
                 )}
-            <Campaign campaigns={user.creations.campaigns} />
+            <Campaign campaigns={userToView.creations.campaigns} />
         </div>
     )
 }
