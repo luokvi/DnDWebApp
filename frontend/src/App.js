@@ -44,7 +44,7 @@ function App() {
         <LoginForm setFunction={loginFunc} user={loggedInUser}/>
 
         <Routes>
-          <Route path="/myProfile" element={<ProfilePage user={user} token={token} setOtherUser={setOtherUser}/>} />
+          <Route path="/myProfile" element={<ProfilePage user={user} token={token} />} />
           <Route path="/user/:id" element={<UserPage />} />
         </Routes>
       </div>
