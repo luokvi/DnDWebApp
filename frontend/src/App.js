@@ -10,6 +10,8 @@ function App() {
   const [loggedInUser, setLoggedInUser] = useState("")
   const [token, setToken] = useState("")
   const [user, setUser] = useState("")
+  const [otherUser, setOtherUser] = useState("")
+  console.log("other user: " + otherUser)
 
   useEffect(() => {
     
@@ -44,8 +46,8 @@ function App() {
         <LoginForm setFunction={loginFunc} user={loggedInUser}/>
 
         <Routes>
-          <Route path="/myProfile" element={<ProfilePage user={user} token={token}/>} />
-          <Route path="/user/:id" element={<UserPage />} />
+          <Route path="/myProfile" element={<ProfilePage user={user} token={token} setOtherUser={setOtherUser}/>} />
+          <Route path="/user/:id" element={<UserPage userId={otherUser}/>} />
         </Routes>
       </div>
   );
