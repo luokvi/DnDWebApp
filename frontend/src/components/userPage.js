@@ -1,6 +1,8 @@
-import React, { useState } from "react"
+import React, { useEffect } from "react"
 import { useParams } from "react-router-dom"
-import userService from '../services/users'
+import { useDispatch, useSelector } from "react-redux"
+
+import { getUser } from "../reducers/userReducer"
 
 const Character = ({ c }) => {
     return(
@@ -37,16 +39,20 @@ const Friend = ({ f }) => {
     )
 }
 
-const getUser = async( id, setFunction ) => {
-    const user = await userService.getUser(id)
-
-    setFunction(user)
-}
-
 const UserPage = () => {
-    const [userToView, setUser] = useState('')
     const userId = useParams().id
-    getUser(userId, setUser)
+    const dispatch = useDispatch()
+
+    // Get user to reducer when page is rendered.
+    useEffect(() =>{
+        dispatch(getUser(userId))
+
+    }, [dispatch, userId])
+
+    // Get user from reducer.
+    const userToView = useSelector(({ user }) => {
+        return user
+    })
     
     console.log("Viewing user: " + JSON.stringify(userToView))
 
