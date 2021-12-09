@@ -40,7 +40,7 @@ const Friend = ({ f }) => {
 }
 
 const UserPage = () => {
-    const userId = useParams().id
+    const userId = useParams().userId
     const dispatch = useDispatch()
 
     // Get user to reducer when page is rendered.
