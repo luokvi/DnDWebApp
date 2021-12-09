@@ -1,13 +1,13 @@
-import axiosInstance from "../util/axiosUtil";
+import axios from "axios";
 
-const baseUrl = '/login';
+const baseUrl = 'api/login';
 
 const loginUser = async (username, password) => {
     const user = {
         username: username,
         password: password
     }
-    const res = await axiosInstance.post(baseUrl, user)
+    const res = await axios.post(baseUrl, user)
 
     return res.data
 };

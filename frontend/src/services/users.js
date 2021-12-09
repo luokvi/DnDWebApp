@@ -1,10 +1,10 @@
-import axiosInstance from "../util/axiosUtil";
+import axios from "axios";
 
-const baseUrl = '/users';
+const baseUrl = 'api/users';
 
 // Get all users.
 const getAll = async () => {
-    const res = await axiosInstance.get(baseUrl)
+    const res = await axios.get(baseUrl)
 
     return res.data
 };
@@ -12,7 +12,7 @@ const getAll = async () => {
 // Get specific user by id.
 const getUser = async (userId) => {
     const url = baseUrl + "/" + userId
-    const res = await axiosInstance.get(url)
+    const res = await axios.get(url)
 
     return res.data
 }
@@ -20,7 +20,7 @@ const getUser = async (userId) => {
 // Get user's username.
 const getUsersName = async(userId) => {
     const url = baseUrl + "/" + userId
-    const res = await axiosInstance.get(url)
+    const res = await axios.get(url)
 
     const username = res.data.username
     return username
@@ -41,7 +41,7 @@ const acceptFriendRequest = async (userId, senderId, requestId, token) => {
         }
     }
 
-    const res = await axiosInstance.post(url, body, axiosConfig)
+    const res = await axios.post(url, body, axiosConfig)
     return res.data
 }
 
