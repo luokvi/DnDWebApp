@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Link } from 'react-router-dom'
+import { Link, Outlet } from 'react-router-dom'
 import userService from '../services/users'
 
 const Character = ({ c }) => {
@@ -101,6 +101,7 @@ const ProfilePage = ({ user, token }) => {
                 <Character c={chara} />
                 )}
             <Campaign campaigns={user.creations.campaigns} />
+            <Outlet />
         </div>
     )
 }

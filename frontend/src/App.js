@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react"
-import { BrowserRouter as Router, Route, Routes, useNavigate } from "react-router-dom"
+import { BrowserRouter as Router, Route, Routes, useNavigate, Outlet } from "react-router-dom"
 
 import userService from './services/users'
 import LoginForm from './components/loginForm'
 import ProfilePage from "./components/myProfilePage"
+import Wrapper from "./components/wrapper"
 import UserPage from "./components/userPage"
 
 function App() {
@@ -45,8 +46,11 @@ function App() {
 
         <Routes>
           <Route path="/myProfile" element={<ProfilePage user={user} token={token} />} />
-          <Route path="/user/:id" element={<UserPage />} />
+          <Route path="/user/" element={<Wrapper />}>
+            <Route path=":userId" element={<UserPage />}/>
+          </Route>
         </Routes>
+        <Outlet />
       </div>
   );
 }
