@@ -63,7 +63,7 @@ const FriendRequest = ({ user, r, setNotif, token }) => {
     return(
         <li>
             <p>
-                From: <Link to={"/user/" + r.sender.id}>{r.sender.username}</Link>
+                From: {r.sender.username}
                 <button onClick={accept}>accept</button>
             </p>
         </li>
