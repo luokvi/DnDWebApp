@@ -27,3 +27,4 @@
 | 16.11 | 2 | Token requestin mukana. Yritin saada friendRequestin lähettäjän nimen näkyviin |
 | 7.12 | 2 | FriendRequesting lähettäjän nimi näkyviin |
 | 7.12 | 2 | React Router sivujen välillä siirtymiseen ja toisen käyttäjän profiilisivu |
+| 9.12 | 1 | Kokeile eri tapoja korjata ongelma, että toisen käyttäjän tietoja haettaessa api kutsu menee väärään osoitteeseen /user/api/users/... |
