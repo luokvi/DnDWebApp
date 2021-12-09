@@ -46,11 +46,10 @@ function App() {
 
         <Routes>
           <Route path="/myProfile" element={<ProfilePage user={user} token={token} />} />
-          <Route path="/user/" element={<Wrapper />}>
-            <Route path=":userId" element={<UserPage />}/>
+            <Route path="/user/" element={<Wrapper />}>
+              <Route path=":userId" element={<UserPage />}/>
           </Route>
         </Routes>
-        <Outlet />
       </div>
   );
 }
