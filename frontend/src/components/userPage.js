@@ -37,15 +37,16 @@ const Friend = ({ f }) => {
     )
 }
 
-const getUser = async( id, setFunction, getFunction ) => {
-    const user = await getFunction(id)
+const getUser = async( id, setFunction ) => {
+    const user = await userService.getUser(id)
+
     setFunction(user)
 }
 
-const UserPage = ({ getUserFunction }) => {
+const UserPage = () => {
     const [userToView, setUser] = useState('')
     const userId = useParams().id
-    getUser(userId, setUser, getUserFunction)
+    getUser(userId, setUser)
     
     console.log("Viewing user: " + JSON.stringify(userToView))
 
