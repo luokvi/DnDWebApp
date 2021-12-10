@@ -18,7 +18,7 @@ function App() {
     const loggedToken = localStorage.getItem('token')
 
     if (loggedUser && loggedToken){
-      setLoggedInUser(loggedUser.id)
+      setLoggedInUser(loggedUser)
       setUser(loggedUser)
       setToken(loggedToken)
     }
