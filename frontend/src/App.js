@@ -19,7 +19,6 @@ function App() {
     if(user !== ''){
       const profile = await userService.getUser(user)
       setUser(profile)
-      navigate('/myProfile')
 
     } else{
       setUser('')

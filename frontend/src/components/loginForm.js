@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import { useNavigate } from "react-router"
 import loginService from '../services/login'
 import userService from '../services/users'
 
@@ -8,6 +9,8 @@ const LoginForm = ({ setFunction, user, loggedInAs }) => {
 
     const [notifText, setNotif] = useState('')
 
+    const navigate = useNavigate()
+    
     // Check localStorage for user.
     useEffect(() => {
         if ( user === ''){
@@ -39,6 +42,10 @@ const LoginForm = ({ setFunction, user, loggedInAs }) => {
 
             setPassword('')
             setNotif('')
+
+            // Move to myProfile page
+            navigate('/myProfile')
+
         } catch { 
             // if couldn't find user
             setNotif('Incorrect username or password')
