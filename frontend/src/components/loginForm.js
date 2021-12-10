@@ -28,6 +28,9 @@ const LoginForm = ({ setFunction, user }) => {
 
         setFunction('', '')
         setUsername('')
+
+        // Clear localStorage.
+        localStorage.clear()
     }
 
     if ( user === ""){

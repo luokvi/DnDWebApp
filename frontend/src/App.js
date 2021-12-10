@@ -13,7 +13,15 @@ function App() {
   const [user, setUser] = useState("")
 
   useEffect(() => {
-    
+    // Check if user in LocalStorage.
+    const loggedUser = localStorage.getItem('user')
+    const loggedToken = localStorage.getItem('token')
+
+    if (loggedUser && loggedToken){
+      setLoggedInUser(loggedUser.id)
+      setUser(loggedUser)
+      setToken(loggedToken)
+    }
   }, [])
   const navigate = useNavigate()
 
@@ -25,6 +33,11 @@ function App() {
       const profile = await userService.getUser(userid)
       setUser(profile)
       navigate('/myProfile')
+
+      // Save user and token in LocalStorage.
+      localStorage.setItem('user', profile)
+      localStorage.setItem('token', token)
+
     } else{
       setUser('')
     }
