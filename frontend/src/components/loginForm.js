@@ -1,5 +1,6 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import loginService from '../services/login'
+import userService from '../services/users'
 
 const LoginForm = ({ setFunction, user }) => {
     const [username, setUsername] = useState('')
@@ -7,13 +8,31 @@ const LoginForm = ({ setFunction, user }) => {
 
     const [notifText, setNotif] = useState('')
 
+    // Check localStorage for user.
+    useEffect(() => {
+        const storedUser = localStorage.getItem('user')
+        const storedToken = localStorage.getItem('token')
+
+        if (storedUser){
+            setFunction(storedUser.id, storedToken)
+        }
+      }, [setFunction])
+
     const handleLogin = async (event) => {
         event.preventDefault()
         
         try {
+            // Login
             const response = await loginService.loginUser(username, password)
+            // Get user
+            const user = await userService.getUser(response.userid)
             
+            // Set user and token to LocalStorage
+            localStorage.setItem('user', user)
+            localStorage.setItem('token', response.token)
+
             setFunction(response.userid, response.token)
+
             setPassword('')
             setNotif('')
         } catch { 
