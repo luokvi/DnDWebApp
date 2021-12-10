@@ -6,13 +6,12 @@ const commonFriends = (user, sender) => {
     var commonFriends = []
 
     user.friends.forEach(friend => {
-        console.log("friend: " + JSON.stringify(friend))
-        
-        if (sender.friends.includes(friend)){
-            commonFriends = commonFriends.concat(friend)
+        if (sender.friends.includes(friend.id)){
+            commonFriends = commonFriends.concat(friend.username)
         }
         
-    });
+    })
+    
     return commonFriends
 }
 
@@ -48,9 +47,9 @@ const FriendRequest = ({ user, r, setNotif, token }) => {
                 From: {r.sender.username}
                 <button onClick={accept}>accept</button>
             </p>
-            <p>You have these friends in common: 
+            <p>You have these friends in common:  
                 {commonFriendsList.map(f =>
-                    <b>{f} </b>
+                    <b key={f}>{f} </b>
                 )}
             </p>
         </li>
