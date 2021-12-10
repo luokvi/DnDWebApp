@@ -90,7 +90,34 @@ const CharacterCreation = ({ userId, token }) => {
             <form onSubmit={create}>
                 <FormField id="name" title="Name" type="text" value={name} setFunction={setName} />
                 <FormField id="race" title="Race" type="text" value={race} setFunction={setRace} />
-                <FormField id="level" title="Level" type="number" value={race} setFunction={setLevel} />
+                <FormField id="level" title="Level" type="number" value={level} setFunction={setLevel} />
+                <FormField id="exp" title="Experiencepoints" type="number" value={exp} setFunction={setExp} />
+                <FormField id="background" title="Background" type="text" value={background} setFunction={setBackground} />
+                <FormField id="personality" title="Personality traits" type="text" value={personality} setFunction={setPersonality} />
+                <FormField id="alignment" title="Alignment" type="text" value={alignment} setFunction={setAlignment} />
+                <FormField id="health" title="Hitpoints" type="number" value={health} setFunction={setHealth} />
+                <FormField id="hitdice" title="Hit Dice" type="text" value={hitDice} setFunction={setHitDice} />
+                <FormField id="ac" title="Armor Class" type="number" value={armorClass} setFunction={setArmorClass} />
+                <FormField id="intitiative" title="Initiative" type="number" value={initiative} setFunction={setInitiative} />
+                <FormField id="speed" title="Speed" type="number" value={speed} setFunction={setSpeed} />
+                <FormField id="strength" title="Strength" type="number" value={strength} setFunction={setStrength} />
+                <FormField id="dex" title="Dexteriety" type="number" value={dex} setFunction={setDex} />
+                <FormField id="const" title="Constitution" type="number" value={constitution} setFunction={setConstitution} />
+                <FormField id="int" title="Intelligence" type="number" value={int} setFunction={setInt} />
+                <FormField id="wis" title="Wisdom" type="number" value={wis} setFunction={setWis} />
+                <FormField id="cha" title="Charisma" type="number" value={cha} setFunction={setCha} />
+                <FormField id="pWis" title="Passive Wisdom" type="number" value={pWis} setFunction={setPWis} />
+                <FormField id="bonus" title="Proficienct Bonus" type="number" value={bonus} setFunction={setBonus} />
+                <FormField id="prof" title="Profiencies" type="text" value={proficiencies} setFunction={setProficiencies} />
+                <FormField id="lan" title="Languages" type="text" value={lan} setFunction={setLan} />
+                <FormField id="oprof" title="Other Profiencies" type="text" value={otherProficiencies} setFunction={setOtherProficiencies} />
+                <FormField id="weapons" title="Weapons" type="text" value={weapons} setFunction={setWeapons} />
+                <FormField id="spellCasting" title="Spell Casting Ability" type="text" value={spellCasting} setFunction={setSpellCasting} />
+                <FormField id="spells" title="Spells" type="text" value={spells} setFunction={setSpells} />
+                <FormField id="equip" title="Equipment" type="text" value={equip} setFunction={setEquip} />
+                <FormField id="storage" title="Storage" type="text" value={storage} setFunction={setStorage} />
+                <FormField id="features" title="Features" type="text" value={features} setFunction={setFreatus} />
+                <FormField id="coins" title="Coins" type="text" value={coins} setFunction={setCoins} />
             <button type="submit">create</button>
             </form>
         </div>
