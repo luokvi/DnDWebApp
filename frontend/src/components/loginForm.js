@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import loginService from '../services/login'
 import userService from '../services/users'
 
-const LoginForm = ({ setFunction, user }) => {
+const LoginForm = ({ setFunction, user, loggedInAs }) => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
@@ -10,13 +10,17 @@ const LoginForm = ({ setFunction, user }) => {
 
     // Check localStorage for user.
     useEffect(() => {
-        const storedUser = localStorage.getItem('user')
-        const storedToken = localStorage.getItem('token')
+        if ( user === ''){
+            const storedUser = localStorage.getItem('user')
+            const storedToken = localStorage.getItem('token')
 
-        if (storedUser){
-            setFunction(storedUser.id, storedToken)
+            console.log("Got from storage: " + storedUser + ", and token: " + storedToken)
+            if (storedUser !== null){
+                const parsedUser = JSON.parse(storedUser)
+                setFunction(parsedUser.id, storedToken)
+            }
         }
-      }, [setFunction])
+      }, [setFunction, user])
 
     const handleLogin = async (event) => {
         event.preventDefault()
@@ -28,7 +32,7 @@ const LoginForm = ({ setFunction, user }) => {
             const user = await userService.getUser(response.userid)
             
             // Set user and token to LocalStorage
-            localStorage.setItem('user', user)
+            localStorage.setItem('user', JSON.stringify(user))
             localStorage.setItem('token', response.token)
 
             setFunction(response.userid, response.token)
@@ -52,7 +56,8 @@ const LoginForm = ({ setFunction, user }) => {
         localStorage.clear()
     }
 
-    if ( user === ""){
+    console.log("User is: " + user)
+    if ( !user ){
         return(
             <div>
                 <form onSubmit={handleLogin}>
@@ -71,7 +76,7 @@ const LoginForm = ({ setFunction, user }) => {
 
     return(
         <div>
-            <p>Logged in as {username}</p>
+            <p>Logged in as {loggedInAs}</p>
             <button id="logout-button" onClick={handleLogout}>Logout</button>
         </div>
     )

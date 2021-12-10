@@ -8,21 +8,16 @@ import CharacterCreation from "./components/characterCreationForm"
 
 
 function App() {
-  const [loggedInUser, setLoggedInUser] = useState("")
   const [token, setToken] = useState("")
   const [user, setUser] = useState("")
 
-  useEffect(() => {
-
-  }, [])
   const navigate = useNavigate()
 
-  const loginFunc = async (userid, token) => {
-    setLoggedInUser(userid)
+  const loginFunc = async (user, token) => {
     setToken(token)
 
-    if(userid !== ''){
-      const profile = await userService.getUser(userid)
+    if(user !== ''){
+      const profile = await userService.getUser(user)
       setUser(profile)
       navigate('/myProfile')
 
@@ -31,11 +26,11 @@ function App() {
     }
   }
 
-  if (loggedInUser === ''){
+  if (user === ''){
     return(
       <div>
         <h1>DnD Web App</h1>
-        <LoginForm setFunction={loginFunc} user={loggedInUser}/>
+        <LoginForm setFunction={loginFunc} user={user}/>
       </div>
     )
   }
@@ -43,7 +38,7 @@ function App() {
   return (
       <div>
         <h1>DnD Web App</h1>
-        <LoginForm setFunction={loginFunc} user={loggedInUser}/>
+        <LoginForm setFunction={loginFunc} user={user.id} loggedInAs={user.username}/>
 
         <Routes>
           <Route path="/myProfile" element={<ProfilePage user={user} token={token} />} />
