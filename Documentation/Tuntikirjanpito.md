@@ -29,3 +29,5 @@
 | 7.12 | 2 | React Router sivujen välillä siirtymiseen ja toisen käyttäjän profiilisivu |
 | 9.12 | 1 | Kokeile eri tapoja korjata ongelma, että toisen käyttäjän tietoja haettaessa api kutsu menee väärään osoitteeseen /user/api/users/... |
 | 9.12 | 1 | Kokeile, lopulta turhaan, jos Reduxin käyttö korjaisi tilanteen |
+| 10.12 | 4 | Siirrä friendRequest omaksi kompponentikseen, luo lomake uuden hahmon luomiseen, muuta sisään kirjautumis logiikkaa niin että kirjautunut käyttäjä tallenetaan localStorageen |
+
