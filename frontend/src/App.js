@@ -18,8 +18,8 @@ function App() {
     const loggedToken = localStorage.getItem('token')
 
     if (loggedUser && loggedToken){
-      setLoggedInUser(loggedUser)
-      setUser(loggedUser)
+      console.log("Got from storage: " + JSON.parse(loggedUser))
+      setUser(JSON.parse(loggedUser))
       setToken(loggedToken)
     }
   }, [])
@@ -35,7 +35,8 @@ function App() {
       navigate('/myProfile')
 
       // Save user and token in LocalStorage.
-      localStorage.setItem('user', profile)
+      console.log("Saving to storage: " + JSON.stringify(profile))
+      localStorage.setItem('user', JSON.stringify(profile))
       localStorage.setItem('token', token)
 
     } else{
