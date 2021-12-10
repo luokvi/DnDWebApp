@@ -6,8 +6,8 @@ const commonFriends = (user, sender) => {
     var commonFriends = []
 
     user.friends.forEach(friend => {
-        if (sender.friends.contains(friend)){
-            commonFriends.add(friend)
+        if (sender.friends.includes(friend)){
+            commonFriends = commonFriends.concat(friend)
         }
         
     });
