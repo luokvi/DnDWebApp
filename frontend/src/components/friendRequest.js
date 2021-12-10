@@ -2,8 +2,21 @@ import React from "react"
 
 import userService from '../services/users'
 
+const commonFriends = (user, sender) => {
+    var commonFriends = []
+
+    user.friends.forEach(friend => {
+        if (sender.friends.contains(friend)){
+            commonFriends.add(friend)
+        }
+        
+    });
+    return commonFriends
+}
+
 const FriendRequest = ({ user, r, setNotif, token }) => {
     console.log("Friendrequest: " + JSON.stringify(r))
+
     const accept = async () => {
         try{
             const response = await userService.acceptFriendRequest(
@@ -24,12 +37,19 @@ const FriendRequest = ({ user, r, setNotif, token }) => {
                 )
         }
     }
+
+    const commonFriendsList = commonFriends(user, r.sender)
     
     return(
         <li>
             <p>
                 From: {r.sender.username}
                 <button onClick={accept}>accept</button>
+            </p>
+            <p>You have these friends in common: 
+                {commonFriendsList.map(f =>
+                    <b>{f} </b>
+                )}
             </p>
         </li>
     )
