@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes, useNavigate } from "react-route
 import userService from './services/users'
 import LoginForm from './components/loginForm'
 import ProfilePage from "./components/myProfilePage"
+import CharacterCreation from "./components/characterCreationForm"
 
 
 function App() {
@@ -45,6 +46,7 @@ function App() {
 
         <Routes>
           <Route path="/myProfile" element={<ProfilePage user={user} token={token} />} />
+          <Route path="/createCharacter" element={ <CharacterCreation userId={user.id} token={token} /> } />
         </Routes>
       </div>
   );
