@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 
-import createCharacter from '../services/creations'
+import createService from '../services/creations'
 
 const FormField = ({ id, title, type, value, setFunction }) => {
     return(
@@ -81,7 +81,7 @@ const CharacterCreation = ({ userId, token }) => {
             coins: coins
         }
 
-        createCharacter(character, token)
+        createService.createCharacter(character, token)
     }
 
     return(
