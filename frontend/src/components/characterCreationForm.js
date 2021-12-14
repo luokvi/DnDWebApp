@@ -42,7 +42,11 @@ const CharacterCreation = ({ userId, token }) => {
     const [equip, setEquip] = useState("")
     const [storage, setStorage] = useState("")
     const [features, setFreatus] = useState("")
-    const [coins, setCoins] = useState("")
+    const [copper, setCopper] = useState(0)
+    const [silver, setSilver] = useState(0)
+    const [gold, setGold] = useState(0)
+    const [platinum, setPlatinum] = useState(0)
+    const [electrum, setElectrum] = useState(0)
 
     const create = (event) => {
         event.preventDefault()
@@ -78,7 +82,13 @@ const CharacterCreation = ({ userId, token }) => {
             equipment: equip,
             storage: storage,
             features: features,
-            coins: coins
+            coins: {
+                copper: copper,
+                silver: silver,
+                gold: gold,
+                platinum: platinum,
+                electrum: electrum
+            }
         }
 
         createService.createCharacter(character, token)
@@ -117,7 +127,14 @@ const CharacterCreation = ({ userId, token }) => {
                 <FormField id="equip" title="Equipment" type="text" value={equip} setFunction={setEquip} />
                 <FormField id="storage" title="Storage" type="text" value={storage} setFunction={setStorage} />
                 <FormField id="features" title="Features" type="text" value={features} setFunction={setFreatus} />
-                <FormField id="coins" title="Coins" type="text" value={coins} setFunction={setCoins} />
+                <div>
+                    <p>Coins:</p>
+                    <FormField id="copper" title="Copper" type="number" value={copper} setFunction={setCopper} />
+                    <FormField id="silver" title="Silver" type="number" value={silver} setFunction={setSilver} />
+                    <FormField id="gold" title="Gold" type="number" value={gold} setFunction={setGold} />
+                    <FormField id="platinum" title="Platinum" type="number" value={platinum} setFunction={setPlatinum} />
+                    <FormField id="electrum" title="Electrum" type="number" value={electrum} setFunction={setElectrum} />
+                </div>
             <button type="submit">create</button>
             </form>
         </div>
