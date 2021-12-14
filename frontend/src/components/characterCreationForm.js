@@ -86,7 +86,7 @@ const CharacterCreation = ({ userId, token }) => {
         medicine, nature, perception, performance, persuasion, religion, sleightOfHand, stealth, survival]
         
         listOfProficiencies.forEach( prof => {
-          if (prof === 'true'){
+          if (prof !== ''){
             setProficiencies(...proficiencies, prof)
           }
         })
