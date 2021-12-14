@@ -16,7 +16,7 @@ const CheckboxField = ({ title, value, setFunction }) => {
     return(
         <div>
             <input type="checkbox" id={title} name={title}
-            value={value} onChange={({ target }) => setFunction(target.value)}/>
+            value="true" onChange={({ target }) => setFunction(target.value)}/>
             <label htmlFor={title}>{title}</label>
         </div>
     )
@@ -43,8 +43,27 @@ const CharacterCreation = ({ userId, token }) => {
     const [cha, setCha] = useState("")
     const [pWis, setPWis] = useState("")
     const [bonus, setBonus] = useState("")
-    const [proficiencies, setProficiencies] = useState("")
+
+    const [proficiencies, setProficiencies] = useState([])
     const [acrobatics, setAcrobatics] = useState("")
+    const [animalHandling, setAnimalHandling] = useState("")
+    const [arcana, setArcana] = useState("")
+    const [athletics, setAthletics] = useState("")
+    const [deception, setDeception] = useState("")
+    const [history, setHistory] = useState("")
+    const [insight, setInsight] = useState("")
+    const [intimidation, setIntimidation] = useState("")
+    const [investigation, setInvestigation] = useState("")
+    const [medicine, setMedicine] = useState("")
+    const [nature, setNature] = useState("")
+    const [perception, setPerception] = useState("")
+    const [performance, setPerformance] = useState("")
+    const [persuasion, setPersuasion] = useState("")
+    const [religion, setReligion] = useState("")
+    const [sleightOfHand, setSleightOfHand] = useState("")
+    const [stealth, setStealth] = useState("")
+    const [survival, setSurvival] = useState("")
+
     const [lan, setLan] = useState("")
     const [otherProficiencies, setOtherProficiencies] = useState("")
     const [weapons, setWeapons] = useState("")
@@ -61,8 +80,16 @@ const CharacterCreation = ({ userId, token }) => {
 
     const create = (event) => {
         event.preventDefault()
-        console.log(acrobatics)
+
         // Get Proficiencies from checkboxes.
+        const listOfProficiencies = [acrobatics, animalHandling, arcana, athletics, deception, history, insight, intimidation, investigation,
+        medicine, nature, perception, performance, persuasion, religion, sleightOfHand, stealth, survival]
+        
+        listOfProficiencies.forEach( prof => {
+          if (prof === 'true'){
+            setProficiencies(proficiencies.concat(prof))
+          }
+        })
 
         const character = {
             creator: userId,
@@ -134,23 +161,23 @@ const CharacterCreation = ({ userId, token }) => {
                 <div>
                     <p>Proficiencies</p>
                     <CheckboxField title={'Acrobatics'} value={acrobatics} setFunction={setAcrobatics}/>
-                    <CheckboxField title={'Animal Handling'} />
-                    <CheckboxField title={'Arcana'} />
-                    <CheckboxField title={'Athletics'} />
-                    <CheckboxField title={'Deception'} />
-                    <CheckboxField title={'History'} />
-                    <CheckboxField title={'Insight'} />
-                    <CheckboxField title={'Intimidation'} />
-                    <CheckboxField title={'Investigation'} />
-                    <CheckboxField title={'Medicine'} />
-                    <CheckboxField title={'Nature'} />
-                    <CheckboxField title={'Perception'} />
-                    <CheckboxField title={'Performance'} />
-                    <CheckboxField title={'Persuasion'} />
-                    <CheckboxField title={'Religion'} />
-                    <CheckboxField title={'Sleight of Hand'} />
-                    <CheckboxField title={'Stealth'} />
-                    <CheckboxField title={'Survival'} />
+                    <CheckboxField title={'Animal Handling'} value={animalHandling} setFunction={setAnimalHandling}/>
+                    <CheckboxField title={'Arcana'} value={arcana} setFunction={setArcana}/>
+                    <CheckboxField title={'Athletics'} value={athletics} setFunction={setAthletics}/>
+                    <CheckboxField title={'Deception'} value={deception} setFunction={setDeception}/>
+                    <CheckboxField title={'History'} value={history} setFunction={setHistory}/>
+                    <CheckboxField title={'Insight'} value={insight} setFunction={setInsight}/>
+                    <CheckboxField title={'Intimidation'} value={intimidation} setFunction={setIntimidation}/>
+                    <CheckboxField title={'Investigation'} value={investigation} setFunction={setInvestigation}/>
+                    <CheckboxField title={'Medicine'} value={medicine} setFunction={setMedicine}/>
+                    <CheckboxField title={'Nature'} value={nature} setFunction={setNature}/>
+                    <CheckboxField title={'Perception'} value={perception} setFunction={setPerception}/>
+                    <CheckboxField title={'Performance'} value={performance} setFunction={setPerformance}/>
+                    <CheckboxField title={'Persuasion'} value={persuasion} setFunction={setPersuasion}/>
+                    <CheckboxField title={'Religion'} value={religion} setFunction={setReligion}/>
+                    <CheckboxField title={'Sleight of Hand'} value={sleightOfHand} setFunction={setSleightOfHand}/>
+                    <CheckboxField title={'Stealth'} value={stealth} setFunction={setStealth}/>
+                    <CheckboxField title={'Survival'} value={survival} setFunction={setSurvival}/>
                 </div>
                 <FormField id="lan" title="Languages" type="text" value={lan} setFunction={setLan} />
                 <FormField id="oprof" title="Other Profiencies" type="text" value={otherProficiencies} setFunction={setOtherProficiencies} />
