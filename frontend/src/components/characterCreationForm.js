@@ -12,6 +12,15 @@ const FormField = ({ id, title, type, value, setFunction }) => {
     )
 }
 
+const CheckboxField = ({ title }) => {
+    return(
+        <div>
+            <input type="checkbox" id={title} name={title} value={title}></input>
+            <label for={title}>{title}</label>
+        </div>
+    )
+}
+
 const CharacterCreation = ({ userId, token }) => {
     const [name, setName] = useState("")
     const [race, setRace] = useState("")
@@ -50,6 +59,8 @@ const CharacterCreation = ({ userId, token }) => {
 
     const create = (event) => {
         event.preventDefault()
+        console.log(event)
+        // Get Proficiencies from checkboxes.
 
         const character = {
             creator: userId,
@@ -118,7 +129,27 @@ const CharacterCreation = ({ userId, token }) => {
                 <FormField id="cha" title="Charisma" type="number" value={cha} setFunction={setCha} />
                 <FormField id="pWis" title="Passive Wisdom" type="number" value={pWis} setFunction={setPWis} />
                 <FormField id="bonus" title="Proficienct Bonus" type="number" value={bonus} setFunction={setBonus} />
-                <FormField id="prof" title="Profiencies" type="text" value={proficiencies} setFunction={setProficiencies} />
+                <div>
+                    <p>Proficiencies</p>
+                    <CheckboxField title={'Acrobatics'} />
+                    <CheckboxField title={'Animal Handling'} />
+                    <CheckboxField title={'Arcana'} />
+                    <CheckboxField title={'Athletics'} />
+                    <CheckboxField title={'Deception'} />
+                    <CheckboxField title={'History'} />
+                    <CheckboxField title={'Insight'} />
+                    <CheckboxField title={'Intimidation'} />
+                    <CheckboxField title={'Investigation'} />
+                    <CheckboxField title={'Medicine'} />
+                    <CheckboxField title={'Nature'} />
+                    <CheckboxField title={'Perception'} />
+                    <CheckboxField title={'Performance'} />
+                    <CheckboxField title={'Persuasion'} />
+                    <CheckboxField title={'Religion'} />
+                    <CheckboxField title={'Sleight of Hand'} />
+                    <CheckboxField title={'Stealth'} />
+                    <CheckboxField title={'Survival'} />
+                </div>
                 <FormField id="lan" title="Languages" type="text" value={lan} setFunction={setLan} />
                 <FormField id="oprof" title="Other Profiencies" type="text" value={otherProficiencies} setFunction={setOtherProficiencies} />
                 <FormField id="weapons" title="Weapons" type="text" value={weapons} setFunction={setWeapons} />
