@@ -44,7 +44,6 @@ const CharacterCreation = ({ userId, token }) => {
     const [pWis, setPWis] = useState("")
     const [bonus, setBonus] = useState("")
 
-    const [proficiencies, setProficiencies] = useState([])
     const [acrobatics, setAcrobatics] = useState("")
     const [animalHandling, setAnimalHandling] = useState("")
     const [arcana, setArcana] = useState("")
@@ -82,16 +81,10 @@ const CharacterCreation = ({ userId, token }) => {
         event.preventDefault()
 
         // Get Proficiencies from checkboxes.
-        const listOfProficiencies = [acrobatics, animalHandling, arcana, athletics, deception, history, insight, intimidation, investigation,
+        let listOfProficiencies = [acrobatics, animalHandling, arcana, athletics, deception, history, insight, intimidation, investigation,
         medicine, nature, perception, performance, persuasion, religion, sleightOfHand, stealth, survival]
         
-        listOfProficiencies.forEach( prof => {
-            if (prof !== ""){
-                console.log(prof)
-                setProficiencies(...proficiencies, prof)
-                console.log(proficiencies)
-            }
-        })
+        listOfProficiencies = listOfProficiencies.filter(p => p !== '')
 
         const character = {
             creator: userId,
@@ -115,7 +108,7 @@ const CharacterCreation = ({ userId, token }) => {
             charisma: cha,
             passiveWisdom: pWis,
             proficiencyBonus: bonus,
-            proficiencies: proficiencies,
+            proficiencies: listOfProficiencies,
             languages: lan,
             otherProficiencies: otherProficiencies,
             weapons: weapons,
