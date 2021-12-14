@@ -12,11 +12,11 @@ const FormField = ({ id, title, type, value, setFunction }) => {
     )
 }
 
-const CheckboxField = ({ title, value, setFunction }) => {
+const CheckboxField = ({ title, setFunction }) => {
     return(
         <div>
             <input type="checkbox" id={title} name={title}
-            value="true" onChange={({ target }) => setFunction(target.value)}/>
+            value={title} onChange={({ target }) => setFunction(target.value)}/>
             <label htmlFor={title}>{title}</label>
         </div>
     )
@@ -87,7 +87,7 @@ const CharacterCreation = ({ userId, token }) => {
         
         listOfProficiencies.forEach( prof => {
           if (prof === 'true'){
-            setProficiencies(proficiencies.concat(prof))
+            setProficiencies(...proficiencies, prof)
           }
         })
 
@@ -131,6 +131,7 @@ const CharacterCreation = ({ userId, token }) => {
             }
         }
 
+        console.log(JSON.stringify(character))
         createService.createCharacter(character, token)
     }
 
@@ -160,24 +161,24 @@ const CharacterCreation = ({ userId, token }) => {
                 <FormField id="bonus" title="Proficienct Bonus" type="number" value={bonus} setFunction={setBonus} />
                 <div>
                     <p>Proficiencies</p>
-                    <CheckboxField title={'Acrobatics'} value={acrobatics} setFunction={setAcrobatics}/>
-                    <CheckboxField title={'Animal Handling'} value={animalHandling} setFunction={setAnimalHandling}/>
-                    <CheckboxField title={'Arcana'} value={arcana} setFunction={setArcana}/>
-                    <CheckboxField title={'Athletics'} value={athletics} setFunction={setAthletics}/>
-                    <CheckboxField title={'Deception'} value={deception} setFunction={setDeception}/>
-                    <CheckboxField title={'History'} value={history} setFunction={setHistory}/>
-                    <CheckboxField title={'Insight'} value={insight} setFunction={setInsight}/>
-                    <CheckboxField title={'Intimidation'} value={intimidation} setFunction={setIntimidation}/>
-                    <CheckboxField title={'Investigation'} value={investigation} setFunction={setInvestigation}/>
-                    <CheckboxField title={'Medicine'} value={medicine} setFunction={setMedicine}/>
-                    <CheckboxField title={'Nature'} value={nature} setFunction={setNature}/>
-                    <CheckboxField title={'Perception'} value={perception} setFunction={setPerception}/>
-                    <CheckboxField title={'Performance'} value={performance} setFunction={setPerformance}/>
-                    <CheckboxField title={'Persuasion'} value={persuasion} setFunction={setPersuasion}/>
-                    <CheckboxField title={'Religion'} value={religion} setFunction={setReligion}/>
-                    <CheckboxField title={'Sleight of Hand'} value={sleightOfHand} setFunction={setSleightOfHand}/>
-                    <CheckboxField title={'Stealth'} value={stealth} setFunction={setStealth}/>
-                    <CheckboxField title={'Survival'} value={survival} setFunction={setSurvival}/>
+                    <CheckboxField title={'Acrobatics'} setFunction={setAcrobatics}/>
+                    <CheckboxField title={'Animal Handling'} setFunction={setAnimalHandling}/>
+                    <CheckboxField title={'Arcana'} setFunction={setArcana}/>
+                    <CheckboxField title={'Athletics'} setFunction={setAthletics}/>
+                    <CheckboxField title={'Deception'} setFunction={setDeception}/>
+                    <CheckboxField title={'History'} setFunction={setHistory}/>
+                    <CheckboxField title={'Insight'} setFunction={setInsight}/>
+                    <CheckboxField title={'Intimidation'} setFunction={setIntimidation}/>
+                    <CheckboxField title={'Investigation'} setFunction={setInvestigation}/>
+                    <CheckboxField title={'Medicine'} setFunction={setMedicine}/>
+                    <CheckboxField title={'Nature'} setFunction={setNature}/>
+                    <CheckboxField title={'Perception'} setFunction={setPerception}/>
+                    <CheckboxField title={'Performance'} setFunction={setPerformance}/>
+                    <CheckboxField title={'Persuasion'} setFunction={setPersuasion}/>
+                    <CheckboxField title={'Religion'} setFunction={setReligion}/>
+                    <CheckboxField title={'Sleight of Hand'} setFunction={setSleightOfHand}/>
+                    <CheckboxField title={'Stealth'} setFunction={setStealth}/>
+                    <CheckboxField title={'Survival'} setFunction={setSurvival}/>
                 </div>
                 <FormField id="lan" title="Languages" type="text" value={lan} setFunction={setLan} />
                 <FormField id="oprof" title="Other Profiencies" type="text" value={otherProficiencies} setFunction={setOtherProficiencies} />
