@@ -84,10 +84,11 @@ const CharacterCreation = ({ userId, token }) => {
         // Get Proficiencies from checkboxes.
         const listOfProficiencies = [acrobatics, animalHandling, arcana, athletics, deception, history, insight, intimidation, investigation,
         medicine, nature, perception, performance, persuasion, religion, sleightOfHand, stealth, survival]
+        
         listOfProficiencies.forEach( prof => {
             if (prof !== ""){
                 console.log(prof)
-                setProficiencies({...proficiencies, prof})
+                setProficiencies(...proficiencies, prof)
                 console.log(proficiencies)
             }
         })
