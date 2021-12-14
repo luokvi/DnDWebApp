@@ -12,11 +12,12 @@ const FormField = ({ id, title, type, value, setFunction }) => {
     )
 }
 
-const CheckboxField = ({ title }) => {
+const CheckboxField = ({ title, value, setFunction }) => {
     return(
         <div>
-            <input type="checkbox" id={title} name={title} value={title}></input>
-            <label for={title}>{title}</label>
+            <input type="checkbox" id={title} name={title}
+            value={value} onChange={({ target }) => setFunction(target.value)}/>
+            <label htmlFor={title}>{title}</label>
         </div>
     )
 }
@@ -43,6 +44,7 @@ const CharacterCreation = ({ userId, token }) => {
     const [pWis, setPWis] = useState("")
     const [bonus, setBonus] = useState("")
     const [proficiencies, setProficiencies] = useState("")
+    const [acrobatics, setAcrobatics] = useState("")
     const [lan, setLan] = useState("")
     const [otherProficiencies, setOtherProficiencies] = useState("")
     const [weapons, setWeapons] = useState("")
@@ -59,7 +61,7 @@ const CharacterCreation = ({ userId, token }) => {
 
     const create = (event) => {
         event.preventDefault()
-        console.log(event)
+        console.log(acrobatics)
         // Get Proficiencies from checkboxes.
 
         const character = {
@@ -131,7 +133,7 @@ const CharacterCreation = ({ userId, token }) => {
                 <FormField id="bonus" title="Proficienct Bonus" type="number" value={bonus} setFunction={setBonus} />
                 <div>
                     <p>Proficiencies</p>
-                    <CheckboxField title={'Acrobatics'} />
+                    <CheckboxField title={'Acrobatics'} value={acrobatics} setFunction={setAcrobatics}/>
                     <CheckboxField title={'Animal Handling'} />
                     <CheckboxField title={'Arcana'} />
                     <CheckboxField title={'Athletics'} />
