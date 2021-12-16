@@ -34,7 +34,7 @@ const AddToListForm = ({ field, listValue, listSetFunction }) => {
             'desciption': descriptionValue
         }
         listSetFunction([...listValue, newItem])
-        
+
         nameSet("")
         descriptionSet("")
     }
@@ -42,11 +42,10 @@ const AddToListForm = ({ field, listValue, listSetFunction }) => {
     return(
         <div>
             <h3>{field}</h3>
-            <form onSubmit={addNew}>
                 <FormField id="itemName" title={"Name"} value={nameValue} setFunction={nameSet} />
                 <FormField id="itemDesc" title={"Description"} value={descriptionValue} setFunction={descriptionSet}/>
-                <button type="submit">add</button>
-            </form>
+                <button onClick={addNew}>add</button>
+
             {listValue.map(value =>
                 <div>
                     <p>Name: {value.name} </p>
