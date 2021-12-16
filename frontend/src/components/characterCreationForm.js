@@ -287,10 +287,10 @@ const CharacterCreation = ({ userId, token }) => {
                 <AddItemToList field="Proficiencies" listValue={otherProficiencies} listSetFunction={setOtherProficiencies} />
 
                 <DropDownList field="Weapons" optionsList={gotWeapons} listValue={weapons} listSetFunction={setWeapons} />
-                <FormField id="weapons" title="Weapons" type="text" value={weapons} setFunction={setWeapons} />
+                <DropDownList field="Equipment" optionsList={gotEquipment} listValue={equip} listSetFunction={setEquip} />
+                
                 <FormField id="spellCasting" title="Spell Casting Ability" type="text" value={spellCasting} setFunction={setSpellCasting} />
                 <FormField id="spells" title="Spells" type="text" value={spells} setFunction={setSpells} />
-                <FormField id="equip" title="Equipment" type="text" value={equip} setFunction={setEquip} />
                 <FormField id="storage" title="Storage" type="text" value={storage} setFunction={setStorage} />
                 
                 <AddItemToList field="Features" listValue={features} listSetFunction={setFeatures} />
