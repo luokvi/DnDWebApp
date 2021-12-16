@@ -22,6 +22,41 @@ const CheckboxField = ({ title, setFunction }) => {
     )
 }
 
+const AddToListForm = ({ field, listValue, listSetFunction }) => {
+    const [nameValue, nameSet] = useState("")
+    const [descriptionValue, descriptionSet] = useState("")
+
+    const addNew = (event) =>{
+        event.preventDefault()
+
+        const newItem = {
+            'name': nameValue,
+            'desciption': descriptionValue
+        }
+        listSetFunction([...listValue, newItem])
+        
+        nameSet("")
+        descriptionSet("")
+    }
+
+    return(
+        <div>
+            <h3>{field}</h3>
+            <form onSubmit={addNew}>
+                <FormField id="itemName" title={"Name"} value={nameValue} setFunction={nameSet} />
+                <FormField id="itemDesc" title={"Description"} value={descriptionValue} setFunction={descriptionSet}/>
+                <button type="submit">add</button>
+            </form>
+            {listValue.map(value =>
+                <div>
+                    <p>Name: {value.name} </p>
+                    <p>Description: {value.desciption}</p>
+                </div>
+            )}
+        </div>
+    )
+}
+
 const CharacterCreation = ({ userId, token }) => {
     const [name, setName] = useState("")
     const [race, setRace] = useState("")
@@ -65,7 +100,6 @@ const CharacterCreation = ({ userId, token }) => {
 
     const [lan, setLan] = useState("")
     const [otherProficiencies, setOtherProficiencies] = useState([])
-    const [newProficiency, setNewProficiency] = useState("")
     const [weapons, setWeapons] = useState("")
     const [spellCasting, setSpellCasting] = useState("")
     const [spells, setSpells] = useState("")
@@ -177,7 +211,9 @@ const CharacterCreation = ({ userId, token }) => {
                     <CheckboxField title={'Survival'} setFunction={setSurvival}/>
                 </div>
                 <FormField id="lan" title="Languages" type="text" value={lan} setFunction={setLan} />
-                <FormField id="oprof" title="Other Profiencies" type="text" value={otherProficiencies} setFunction={setOtherProficiencies} />
+                
+                <AddToListForm field="Proficiencies" listValue={otherProficiencies} listSetFunction={setOtherProficiencies} />
+
                 <FormField id="weapons" title="Weapons" type="text" value={weapons} setFunction={setWeapons} />
                 <FormField id="spellCasting" title="Spell Casting Ability" type="text" value={spellCasting} setFunction={setSpellCasting} />
                 <FormField id="spells" title="Spells" type="text" value={spells} setFunction={setSpells} />
