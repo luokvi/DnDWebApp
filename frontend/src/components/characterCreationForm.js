@@ -28,7 +28,9 @@ const AddItemToList = ({ field, listValue, listSetFunction }) => {
 
     const addNew = (event) => {
         event.preventDefault()
-
+        if (nameValue === ""){
+            return
+        }
         const newItem = {
             'name': nameValue,
             'desciption': descriptionValue
@@ -61,6 +63,11 @@ const AddToSimpleList = ({ field, listValue, listSetFunction }) => {
     const [item, setItem] = useState("")
 
     const addNew = (event) => {
+        event.preventDefault()
+        if(item === ""){
+            return
+        }
+
         listSetFunction([...listValue, item])
 
         setItem("")
@@ -84,6 +91,10 @@ const DropDownList = ({ field, optionsList, listValue, listSetFunction }) => {
 
     const add = (event) => {
         event.preventDefault()
+        if (selected === {}){
+            return
+        }
+
         console.log(selected.name)
         listSetFunction([...listValue, selected])
     }
