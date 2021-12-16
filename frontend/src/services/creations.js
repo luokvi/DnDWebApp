@@ -31,7 +31,7 @@ const getEquipment = async () => {
 
     const res = await axios.get(url)
 
-    return res
+    return res.data
 }
 
 const getSpells = async () => {
