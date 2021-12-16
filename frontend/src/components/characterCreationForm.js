@@ -104,7 +104,7 @@ const CharacterCreation = ({ userId, token }) => {
     const [spells, setSpells] = useState("")
     const [equip, setEquip] = useState("")
     const [storage, setStorage] = useState("")
-    const [features, setFreatus] = useState("")
+    const [features, setFeatures] = useState([])
     const [copper, setCopper] = useState(0)
     const [silver, setSilver] = useState(0)
     const [gold, setGold] = useState(0)
@@ -218,7 +218,9 @@ const CharacterCreation = ({ userId, token }) => {
                 <FormField id="spells" title="Spells" type="text" value={spells} setFunction={setSpells} />
                 <FormField id="equip" title="Equipment" type="text" value={equip} setFunction={setEquip} />
                 <FormField id="storage" title="Storage" type="text" value={storage} setFunction={setStorage} />
-                <FormField id="features" title="Features" type="text" value={features} setFunction={setFreatus} />
+                
+                <AddToListForm field="Features" listValue={features} listSetFunction={setFeatures} />
+
                 <div>
                     <p>Coins:</p>
                     <FormField id="copper" title="Copper" type="number" value={copper} setFunction={setCopper} />
