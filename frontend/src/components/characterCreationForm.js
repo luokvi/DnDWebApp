@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 
 import createService from '../services/creations'
 
@@ -123,17 +123,39 @@ const CharacterCreation = ({ userId, token }) => {
 
     const [lan, setLan] = useState([])
     const [otherProficiencies, setOtherProficiencies] = useState([])
-    const [weapons, setWeapons] = useState("")
-    const [spellCasting, setSpellCasting] = useState("")
-    const [spells, setSpells] = useState("")
-    const [equip, setEquip] = useState("")
-    const [storage, setStorage] = useState("")
     const [features, setFeatures] = useState([])
+
+    const [weapons, setWeapons] = useState([])
+    const [spellCasting, setSpellCasting] = useState("")
+    const [spells, setSpells] = useState([])
+    const [equip, setEquip] = useState([])
+    const [storage, setStorage] = useState([])
+
     const [copper, setCopper] = useState(0)
     const [silver, setSilver] = useState(0)
     const [gold, setGold] = useState(0)
     const [platinum, setPlatinum] = useState(0)
     const [electrum, setElectrum] = useState(0)
+
+    const [gotEquipment, setEquipment] = useState([])
+    const [gotSpells, setGotSpells] = useState([])
+    const [gotWeapons, setGotWeaopns] = useState([])
+
+    useEffect(() => {
+        // Get equipment, spells, and weapons
+        setAllItems()
+    }, [])
+
+    const setAllItems = async () => {
+        const e = await createService.getEquipment()
+        setEquipment(e)
+
+        const s = await createService.getSpells()
+        setGotSpells(s)
+
+        const w = await createService.getWeapons()
+        setGotWeaopns(w)
+    }
 
     const create = (event) => {
         event.preventDefault()
