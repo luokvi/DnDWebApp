@@ -48,7 +48,7 @@ const AddItemToList = ({ field, listValue, listSetFunction }) => {
 
             <p><b>Added:</b></p>
             {listValue.map(value =>
-                <div>
+                <div key={value.name}>
                     <p><b>Name:</b> {value.name} </p>
                     <p><b>Description:</b> {value.desciption}</p>
                 </div>
@@ -62,6 +62,8 @@ const AddToSimpleList = ({ field, listValue, listSetFunction }) => {
 
     const addNew = (event) => {
         listSetFunction([...listValue, item])
+
+        setItem("")
     }
 
     return(
@@ -71,7 +73,7 @@ const AddToSimpleList = ({ field, listValue, listSetFunction }) => {
 
             <p><b>Added:</b></p>
             {listValue.map(value =>
-                <p>{value}</p>
+                <p key={value}>{value}</p>
                 )}
         </div>
     )
@@ -80,6 +82,7 @@ const AddToSimpleList = ({ field, listValue, listSetFunction }) => {
 const CharacterCreation = ({ userId, token }) => {
     const [name, setName] = useState("")
     const [race, setRace] = useState("")
+    const [charClass, setClass] = useState("")
     const [level, setLevel] = useState("")
     const [exp, setExp] = useState("")
     const [background, setBackground] = useState("")
@@ -145,6 +148,7 @@ const CharacterCreation = ({ userId, token }) => {
             creator: userId,
             name: name,
             race: race,
+            class: charClass,
             level: level,
             experiencePoints: exp,
             background: background,
@@ -191,6 +195,7 @@ const CharacterCreation = ({ userId, token }) => {
             <form onSubmit={create}>
                 <FormField id="name" title="Name" type="text" value={name} setFunction={setName} />
                 <FormField id="race" title="Race" type="text" value={race} setFunction={setRace} />
+                <FormField id="class" title="Class" type="text" value={charClass} setFunction={setClass} />
                 <FormField id="level" title="Level" type="number" value={level} setFunction={setLevel} />
                 <FormField id="exp" title="Experiencepoints" type="number" value={exp} setFunction={setExp} />
                 <FormField id="background" title="Background" type="text" value={background} setFunction={setBackground} />
