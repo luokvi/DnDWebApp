@@ -22,11 +22,11 @@ const CheckboxField = ({ title, setFunction }) => {
     )
 }
 
-const AddToListForm = ({ field, listValue, listSetFunction }) => {
+const AddItemToList = ({ field, listValue, listSetFunction }) => {
     const [nameValue, nameSet] = useState("")
     const [descriptionValue, descriptionSet] = useState("")
 
-    const addNew = (event) =>{
+    const addNew = (event) => {
         event.preventDefault()
 
         const newItem = {
@@ -42,16 +42,37 @@ const AddToListForm = ({ field, listValue, listSetFunction }) => {
     return(
         <div>
             <h5>{field}</h5>
-                <FormField id="itemName" title={"Name"} value={nameValue} setFunction={nameSet} />
-                <FormField id="itemDesc" title={"Description"} value={descriptionValue} setFunction={descriptionSet}/>
+                <FormField id="itemName" title="Name" value={nameValue} setFunction={nameSet} />
+                <FormField id="itemDesc" title="Description" value={descriptionValue} setFunction={descriptionSet}/>
                 <button onClick={addNew}>add</button>
 
+            <p><b>Added:</b></p>
             {listValue.map(value =>
                 <div>
                     <p><b>Name:</b> {value.name} </p>
                     <p><b>Description:</b> {value.desciption}</p>
                 </div>
             )}
+        </div>
+    )
+}
+
+const AddToSimpleList = ({ field, listValue, listSetFunction }) => {
+    const [item, setItem] = useState("")
+
+    const addNew = (event) => {
+        listSetFunction([...listValue, item])
+    }
+
+    return(
+        <div>
+            <FormField id={field} title={field} value={item} setFunction={setItem}/>
+            <button onClick={addNew}>add</button>
+
+            <p><b>Added:</b></p>
+            {listValue.map(value =>
+                <p>{value}</p>
+                )}
         </div>
     )
 }
@@ -97,7 +118,7 @@ const CharacterCreation = ({ userId, token }) => {
     const [stealth, setStealth] = useState("")
     const [survival, setSurvival] = useState("")
 
-    const [lan, setLan] = useState("")
+    const [lan, setLan] = useState([])
     const [otherProficiencies, setOtherProficiencies] = useState([])
     const [weapons, setWeapons] = useState("")
     const [spellCasting, setSpellCasting] = useState("")
@@ -209,9 +230,10 @@ const CharacterCreation = ({ userId, token }) => {
                     <CheckboxField title={'Stealth'} setFunction={setStealth}/>
                     <CheckboxField title={'Survival'} setFunction={setSurvival}/>
                 </div>
-                <FormField id="lan" title="Languages" type="text" value={lan} setFunction={setLan} />
+
+                <AddToSimpleList field="Languages" listValue={lan} listSetFunction={setLan} />
                 
-                <AddToListForm field="Proficiencies" listValue={otherProficiencies} listSetFunction={setOtherProficiencies} />
+                <AddItemToList field="Proficiencies" listValue={otherProficiencies} listSetFunction={setOtherProficiencies} />
 
                 <FormField id="weapons" title="Weapons" type="text" value={weapons} setFunction={setWeapons} />
                 <FormField id="spellCasting" title="Spell Casting Ability" type="text" value={spellCasting} setFunction={setSpellCasting} />
@@ -219,7 +241,7 @@ const CharacterCreation = ({ userId, token }) => {
                 <FormField id="equip" title="Equipment" type="text" value={equip} setFunction={setEquip} />
                 <FormField id="storage" title="Storage" type="text" value={storage} setFunction={setStorage} />
                 
-                <AddToListForm field="Features" listValue={features} listSetFunction={setFeatures} />
+                <AddItemToList field="Features" listValue={features} listSetFunction={setFeatures} />
 
                 <div>
                     <p>Coins:</p>
