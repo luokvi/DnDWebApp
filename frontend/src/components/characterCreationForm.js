@@ -89,6 +89,7 @@ const DropDownList = ({ field, optionsList, listValue, listSetFunction }) => {
 
     return(
         <div>
+            <h5>{field}</h5>
             <select name={field} id={field} onChange={({ target }) => setSelected(target.value)}>
             {optionsList.map(optionValue =>
                 <option value={optionValue}>{optionValue.name}</option>
@@ -282,6 +283,7 @@ const CharacterCreation = ({ userId, token }) => {
                 
                 <AddItemToList field="Proficiencies" listValue={otherProficiencies} listSetFunction={setOtherProficiencies} />
 
+                <DropDownList field="Weapons" optionsList={gotWeapons} listValue={weapons} listSetFunction={setWeapons} />
                 <FormField id="weapons" title="Weapons" type="text" value={weapons} setFunction={setWeapons} />
                 <FormField id="spellCasting" title="Spell Casting Ability" type="text" value={spellCasting} setFunction={setSpellCasting} />
                 <FormField id="spells" title="Spells" type="text" value={spells} setFunction={setSpells} />
