@@ -169,12 +169,15 @@ const CharacterCreation = ({ userId, token }) => {
 
     const setAllItems = async () => {
         const e = await createService.getEquipment()
+        console.log(JSON.stringify(e))
         setEquipment(e)
 
         const s = await createService.getSpells()
+        console.log(JSON.stringify(s))
         setGotSpells(s)
 
         const w = await createService.getWeapons()
+        console.log(JSON.stringify(w))
         setGotWeaopns(w)
     }
 
