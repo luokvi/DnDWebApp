@@ -64,7 +64,8 @@ const CharacterCreation = ({ userId, token }) => {
     const [survival, setSurvival] = useState("")
 
     const [lan, setLan] = useState("")
-    const [otherProficiencies, setOtherProficiencies] = useState("")
+    const [otherProficiencies, setOtherProficiencies] = useState([])
+    const [newProficiency, setNewProficiency] = useState("")
     const [weapons, setWeapons] = useState("")
     const [spellCasting, setSpellCasting] = useState("")
     const [spells, setSpells] = useState("")
