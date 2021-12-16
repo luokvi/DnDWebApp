@@ -87,16 +87,18 @@ const AddToSimpleList = ({ field, listValue, listSetFunction }) => {
 }
 
 const DropDownList = ({ field, optionsList, listValue, listSetFunction }) => {
-    const [selected, setSelected] = useState({})
+    const [selected, setSelected] = useState("")
 
     const add = (event) => {
         event.preventDefault()
-        if (selected === {}){
+        if (selected === ""){
             return
         }
 
         console.log(selected.name)
         listSetFunction([...listValue, selected])
+
+        setSelected("")
     }
 
     return(
