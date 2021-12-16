@@ -41,15 +41,15 @@ const AddToListForm = ({ field, listValue, listSetFunction }) => {
 
     return(
         <div>
-            <h3>{field}</h3>
+            <h5>{field}</h5>
                 <FormField id="itemName" title={"Name"} value={nameValue} setFunction={nameSet} />
                 <FormField id="itemDesc" title={"Description"} value={descriptionValue} setFunction={descriptionSet}/>
                 <button onClick={addNew}>add</button>
 
             {listValue.map(value =>
                 <div>
-                    <p>Name: {value.name} </p>
-                    <p>Description: {value.desciption}</p>
+                    <p><b>Name:</b> {value.name} </p>
+                    <p><b>Description:</b> {value.desciption}</p>
                 </div>
             )}
         </div>
