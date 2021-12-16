@@ -95,7 +95,7 @@ const DropDownList = ({ field, optionsList, listValue, listSetFunction }) => {
             return
         }
 
-        console.log(selected.name)
+        console.log("selected: " + selected)
         listSetFunction([...listValue, selected])
 
         setSelected("")
@@ -106,7 +106,7 @@ const DropDownList = ({ field, optionsList, listValue, listSetFunction }) => {
             <h5>{field}</h5>
             <select name={field} id={field} onChange={({ target }) => setSelected(target.value)}>
                 {optionsList.map(optionValue =>
-                    <option key={optionValue.id} value={optionValue}>{optionValue.name}</option>
+                    <option key={optionValue.id} value={optionValue.id}>{optionValue.name}</option>
                 )}
                 <option>empty</option>
             </select>
@@ -114,7 +114,7 @@ const DropDownList = ({ field, optionsList, listValue, listSetFunction }) => {
 
             <p><b>Added:</b></p>
             {listValue.map(value =>
-                <p key={value.id}>{value}</p>
+                <p key={value}>{value}</p>
                 )}
         </div>
     )
