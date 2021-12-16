@@ -80,23 +80,29 @@ const AddToSimpleList = ({ field, listValue, listSetFunction }) => {
 }
 
 const DropDownList = ({ field, optionsList, listValue, listSetFunction }) => {
-    const [selected, setSelected] = useState("")
+    const [selected, setSelected] = useState({})
 
     const add = (event) => {
         event.preventDefault()
-        console.log("Selected option: " + selected)
+        console.log(selected.name)
+        listSetFunction([...listValue, selected])
     }
 
     return(
         <div>
             <h5>{field}</h5>
             <select name={field} id={field} onChange={({ target }) => setSelected(target.value)}>
-            {optionsList.map(optionValue =>
-                <option value={optionValue.id}>{optionValue.name}</option>
+                {optionsList.map(optionValue =>
+                    <option key={optionValue.id} value={optionValue}>{optionValue.name}</option>
                 )}
                 <option>empty</option>
             </select>
             <button onClick={add}>Add</button>
+
+            <p><b>Added:</b></p>
+            {listValue.map(value =>
+                <p key={value.id}>{value}</p>
+                )}
         </div>
     )
 }
