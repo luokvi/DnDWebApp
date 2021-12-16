@@ -31,3 +31,4 @@
 | 9.12 | 1 | Kokeile, lopulta turhaan, jos Reduxin käyttö korjaisi tilanteen |
 | 10.12 | 4 | Siirrä friendRequest omaksi kompponentikseen, luo lomake uuden hahmon luomiseen, muuta sisään kirjautumis logiikkaa niin että kirjautunut käyttäjä tallenetaan localStorageen |
 | 14.12 | 2.5 | Muokkaa lomaketta uuden hahmon luomiseen |
+| 16.12 | 2 | Lisää muokkauksia uuden hahmon luomiseen |
