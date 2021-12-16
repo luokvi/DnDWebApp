@@ -42,7 +42,7 @@ const getSpells = async () => {
     return res.data
 }
 
-const getWeapon = async () => {
+const getWeapons = async () => {
     const url = baseUrl + "items/weapons"
 
     const res = await axios.get(url)
@@ -50,4 +50,4 @@ const getWeapon = async () => {
     return res.data
 }
 
-export default { createCharacter, createItem, getEquipment, getSpells, getWeapon }
+export default { createCharacter, createItem, getEquipment, getSpells, getWeapons }
