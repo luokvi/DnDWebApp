@@ -32,3 +32,4 @@
 | 10.12 | 4 | Siirrä friendRequest omaksi kompponentikseen, luo lomake uuden hahmon luomiseen, muuta sisään kirjautumis logiikkaa niin että kirjautunut käyttäjä tallenetaan localStorageen |
 | 14.12 | 2.5 | Muokkaa lomaketta uuden hahmon luomiseen |
 | 16.12 | 2 | Lisää muokkauksia uuden hahmon luomiseen |
+| 16.12 | 2 | Itemien hakeminen ja lisää muokkauksia hahmon luontiin |
