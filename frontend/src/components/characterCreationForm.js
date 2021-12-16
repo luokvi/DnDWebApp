@@ -79,6 +79,26 @@ const AddToSimpleList = ({ field, listValue, listSetFunction }) => {
     )
 }
 
+const DropDownList = ({ field, optionsList, listValue, listSetFunction }) => {
+    const [selected, setSelected] = useState("")
+
+    const add = (event) => {
+        event.preventDefault()
+        console.log("Selected option: " + selected)
+    }
+
+    return(
+        <div>
+            <select name={field} id={field} onChange={({ target }) => setSelected(target.value)}>
+            {optionsList.map(optionValue =>
+                <option value={optionValue}>{optionValue.name}</option>
+                )}
+            </select>
+            <button onClick={add}>Add</button>
+        </div>
+    )
+}
+
 const CharacterCreation = ({ userId, token }) => {
     const [name, setName] = useState("")
     const [race, setRace] = useState("")
