@@ -281,7 +281,7 @@ const CharacterCreation = ({ userId, token }) => {
                 <FormField id="pWis" title="Passive Wisdom" type="number" value={pWis} setFunction={setPWis} />
                 <FormField id="bonus" title="Proficienct Bonus" type="number" value={bonus} setFunction={setBonus} />
                 <div>
-                    <p>Proficiencies</p>
+                    <h5>Proficiencies</h5>
                     <CheckboxField title={'Acrobatics'} setFunction={setAcrobatics}/>
                     <CheckboxField title={'Animal Handling'} setFunction={setAnimalHandling}/>
                     <CheckboxField title={'Arcana'} setFunction={setArcana}/>
@@ -308,9 +308,9 @@ const CharacterCreation = ({ userId, token }) => {
 
                 <DropDownList field="Weapons" optionsList={gotWeapons} listValue={weapons} listSetFunction={setWeapons} />
                 <DropDownList field="Equipment" optionsList={gotEquipment} listValue={equip} listSetFunction={setEquip} />
-                
+                <DropDownList field="Spells" optionsList={gotSpells} listValue={spells} listSetFunction={setSpells}/>
                 <FormField id="spellCasting" title="Spell Casting Ability" type="text" value={spellCasting} setFunction={setSpellCasting} />
-                <FormField id="spells" title="Spells" type="text" value={spells} setFunction={setSpells} />
+
                 <FormField id="storage" title="Storage" type="text" value={storage} setFunction={setStorage} />
                 
                 <AddItemToList field="Features" listValue={features} listSetFunction={setFeatures} />
