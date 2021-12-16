@@ -251,7 +251,7 @@ const CharacterCreation = ({ userId, token }) => {
                     <FormField id="platinum" title="Platinum" type="number" value={platinum} setFunction={setPlatinum} />
                     <FormField id="electrum" title="Electrum" type="number" value={electrum} setFunction={setElectrum} />
                 </div>
-            <button type="submit">create</button>
+                <button type="submit">create</button>
             </form>
         </div>
     )
