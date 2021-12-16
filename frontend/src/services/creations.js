@@ -26,4 +26,28 @@ const createItem = async (body, token) => {
     return res.data
 }
 
-export default { createCharacter, createItem }
+const getEquipment = async () => {
+    const url = baseUrl + "items/equipment"
+
+    const res = await axios.get(url)
+
+    return res
+}
+
+const getSpells = async () => {
+    const url = baseUrl + "items/spells"
+
+    const res = await axios.get(url)
+
+    return res.data
+}
+
+const getWeapon = async () => {
+    const url = baseUrl + "items/weapons"
+
+    const res = await axios.get(url)
+
+    return res.data
+}
+
+export default { createCharacter, createItem, getEquipment, getSpells, getWeapon }
