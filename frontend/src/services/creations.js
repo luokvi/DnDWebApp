@@ -14,4 +14,16 @@ const createCharacter = async (body, token) => {
     return res.data
 }
 
-export default { createCharacter }
+const createItem = async (body, token) => {
+    const url = baseUrl + "items"
+    const axiosConfig = {
+        headers: {
+            'Authorization': 'Bearer ' + token
+        }
+    }
+
+    const res = await axios.post(url, body, axiosConfig)
+    return res.data
+}
+
+export default { createCharacter, createItem }
