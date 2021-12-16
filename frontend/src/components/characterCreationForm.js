@@ -92,8 +92,9 @@ const DropDownList = ({ field, optionsList, listValue, listSetFunction }) => {
             <h5>{field}</h5>
             <select name={field} id={field} onChange={({ target }) => setSelected(target.value)}>
             {optionsList.map(optionValue =>
-                <option value={optionValue}>{optionValue.name}</option>
+                <option value={optionValue.id}>{optionValue.name}</option>
                 )}
+                <option>empty</option>
             </select>
             <button onClick={add}>Add</button>
         </div>
