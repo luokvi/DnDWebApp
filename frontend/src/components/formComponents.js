@@ -85,7 +85,7 @@ export const AddToSimpleList = ({ field, listValue, listSetFunction }) => {
 }
 
 export const DropDownList = ({ field, optionsList, listValue, listSetFunction }) => {
-    const [selected, setSelected] = useState(("", ""))
+    const [selected, setSelected] = useState([])
     const [addedItemNames, setItemNames] = useState([])
 
     const add = (event) => {
@@ -93,10 +93,12 @@ export const DropDownList = ({ field, optionsList, listValue, listSetFunction })
         if (selected === ""){
             return
         }
-        const [id, name] = selected
-        console.log("selected: " + id + ", " + name)
-        listSetFunction([...listValue, id])
-        setItemNames([...addedItemNames, name])
+        console.log("selected: " + selected)
+        const string = selected.split(",")
+        const selectedId = string[0]
+        const selectedName = string[1]
+        listSetFunction([...listValue, selectedId])
+        setItemNames([...addedItemNames, selectedName])
 
         setSelected("")
     }
@@ -106,7 +108,7 @@ export const DropDownList = ({ field, optionsList, listValue, listSetFunction })
             <h5>{field}</h5>
             <select name={field} id={field} onChange={({ target }) => setSelected(target.value)}>
                 {optionsList.map(optionValue =>
-                    <option key={optionValue.id} value={(optionValue.id, optionValue.name)}>{optionValue.name}</option>
+                    <option key={optionValue.id} value={[optionValue.id, optionValue.name]}>{optionValue.name}</option>
                 )}
                 <option>empty</option>
             </select>
