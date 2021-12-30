@@ -84,7 +84,7 @@ export const AddToSimpleList = ({ field, listValue, listSetFunction }) => {
     )
 }
 
-export const DropDownList = ({ field, optionsList, listValue, listSetFunction, newItemFunction }) => {
+export const DropDownList = ({ field, optionsList, listValue, listSetFunction, newItemFunction, itemType }) => {
     const [nameValue, nameSet] = useState("")
     const [descriptionValue, descriptionSet] = useState("")
     const [selected, setSelected] = useState("")
@@ -110,11 +110,12 @@ export const DropDownList = ({ field, optionsList, listValue, listSetFunction, n
 
         // Add to backend.
         const newItem = {
+            "itemType": itemType,
             "name": nameValue,
             "description": descriptionValue
         }
         const createdId = newItemFunction(newItem)
-        
+
         listSetFunction([...listValue, createdId])
         setItemNames([...addedItemNames, nameValue])
 
