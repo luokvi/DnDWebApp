@@ -114,8 +114,10 @@ export const DropDownList = ({ field, optionsList, listValue, listSetFunction, n
             "name": nameValue,
             "description": descriptionValue
         }
+
+        const createdItem = newItemFunction(newItem)
+        
         try{
-            const createdItem = newItemFunction(newItem)
 
             listSetFunction([...listValue, createdItem.id])
             setItemNames([...addedItemNames, createdItem.name])
@@ -124,6 +126,7 @@ export const DropDownList = ({ field, optionsList, listValue, listSetFunction, n
             descriptionSet("")
         }
         catch{
+            console.log("Error happened.")
             // TODO: Set a notification that an error occured.
         }
     }
