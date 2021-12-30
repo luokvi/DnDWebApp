@@ -155,5 +155,3 @@ export const DropDownList = ({ field, optionsList, listValue, listSetFunction, n
         </div>
     )
 }
-
-//export default { AddItemToList, AddToSimpleList, CheckboxField, DropDownList, FormField }
