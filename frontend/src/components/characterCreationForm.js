@@ -71,6 +71,16 @@ const CharacterCreation = ({ userId, token }) => {
         setAllItems()
     }, [])
 
+    const createNewItem = async ({ newItem }) => {
+
+        const response = await createService.createItem(newItem, token)
+        
+        console.log(response)
+
+        const itemId = response.id
+
+        return(itemId)
+    }
     const setAllItems = async () => {
         const e = await createService.getEquipment()
         console.log(JSON.stringify(e))
@@ -190,9 +200,9 @@ const CharacterCreation = ({ userId, token }) => {
                 
                 <AddItemToList field="Proficiencies" listValue={otherProficiencies} listSetFunction={setOtherProficiencies} />
 
-                <DropDownList field="Weapons" optionsList={gotWeapons} listValue={weapons} listSetFunction={setWeapons} />
-                <DropDownList field="Equipment" optionsList={gotEquipment} listValue={equip} listSetFunction={setEquip} />
-                <DropDownList field="Spells" optionsList={gotSpells} listValue={spells} listSetFunction={setSpells}/>
+                <DropDownList field="Weapons" optionsList={gotWeapons} listValue={weapons} listSetFunction={setWeapons} newItemFunction={createNewItem} itemType={"Weapon"}/>
+                <DropDownList field="Equipment" optionsList={gotEquipment} listValue={equip} listSetFunction={setEquip} newItemFunction={createNewItem} itemType={"Equipment"}/>
+                <DropDownList field="Spells" optionsList={gotSpells} listValue={spells} listSetFunction={setSpells}newItemFunction={createNewItem} itemType={"Spell"} />
                 <FormField id="spellCasting" title="Spell Casting Ability" type="text" value={spellCasting} setFunction={setSpellCasting} />
 
                 <FormField id="storage" title="Storage" type="text" value={storage} setFunction={setStorage} />
