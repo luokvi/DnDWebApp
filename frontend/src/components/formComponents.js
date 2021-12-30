@@ -116,18 +116,16 @@ export const DropDownList = ({ field, optionsList, listValue, listSetFunction, n
         }
 
         const createdItem = newItemFunction(newItem)
-        
-        try{
 
+        if (createdItem !== undefined){
             listSetFunction([...listValue, createdItem.id])
             setItemNames([...addedItemNames, createdItem.name])
 
             nameSet("")
             descriptionSet("")
         }
-        catch{
-            console.log("Error happened.")
-            // TODO: Set a notification that an error occured.
+        else {
+            //TODO: set notification that an error occured.
         }
     }
 
