@@ -85,7 +85,9 @@ export const AddToSimpleList = ({ field, listValue, listSetFunction }) => {
 }
 
 export const DropDownList = ({ field, optionsList, listValue, listSetFunction }) => {
-    const [selected, setSelected] = useState([])
+    const [nameValue, nameSet] = useState("")
+    const [descriptionValue, descriptionSet] = useState("")
+    const [selected, setSelected] = useState("")
     const [addedItemNames, setItemNames] = useState([])
 
     const add = (event) => {
@@ -103,6 +105,11 @@ export const DropDownList = ({ field, optionsList, listValue, listSetFunction })
         setSelected("")
     }
 
+    const createNew = (event) => {
+        event.preventDefault()
+        
+    }
+
     return(
         <div>
             <h5>{field}</h5>
@@ -113,6 +120,13 @@ export const DropDownList = ({ field, optionsList, listValue, listSetFunction })
                 <option>empty</option>
             </select>
             <button onClick={add}>Add</button>
+
+            <div>
+                <p><b>Create new:</b></p>
+                <FormField id="itemName" title="Name" value={nameValue} setFunction={nameSet} />
+                <FormField id="itemDesc" title="Description" value={descriptionValue} setFunction={descriptionSet}/>
+                <button onClick={createNew}>create</button>
+            </div>
 
             <p><b>Added:</b></p>
             {addedItemNames.map(value =>
