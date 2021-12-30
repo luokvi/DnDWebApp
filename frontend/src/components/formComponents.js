@@ -114,13 +114,18 @@ export const DropDownList = ({ field, optionsList, listValue, listSetFunction, n
             "name": nameValue,
             "description": descriptionValue
         }
-        const createdId = newItemFunction(newItem)
+        try{
+            const createdItem = newItemFunction(newItem)
 
-        listSetFunction([...listValue, createdId])
-        setItemNames([...addedItemNames, nameValue])
+            listSetFunction([...listValue, createdItem.id])
+            setItemNames([...addedItemNames, createdItem.name])
 
-        nameSet("")
-        descriptionSet("")
+            nameSet("")
+            descriptionSet("")
+        }
+        catch{
+            // TODO: Set a notification that an error occured.
+        }
     }
 
     return(
