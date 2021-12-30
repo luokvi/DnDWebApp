@@ -118,6 +118,7 @@ export const DropDownList = ({ field, optionsList, listValue, listSetFunction, n
         const createdItem = await newItemFunction(newItem)
 
         if (createdItem !== undefined){
+            // Add created item to list.
             listSetFunction([...listValue, createdItem.id])
             setItemNames([...addedItemNames, createdItem.name])
 
