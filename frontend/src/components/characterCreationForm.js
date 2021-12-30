@@ -74,13 +74,16 @@ const CharacterCreation = ({ userId, token }) => {
     const createNewItem = async ({ newItem }) => {
 
         const itemToCreate = { ...newItem, "userId": userId }
-        const response = await createService.createItem(itemToCreate, token)
-        
-        console.log(response)
 
-        const itemId = response.id
+        try{
+            const response = await createService.createItem(itemToCreate, token)
+            console.log(response)
 
-        return(itemId)
+            return(response)
+        }
+        catch{
+            console.log("error")
+        }
     }
     const setAllItems = async () => {
         const e = await createService.getEquipment()
