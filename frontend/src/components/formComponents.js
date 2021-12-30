@@ -105,7 +105,7 @@ export const DropDownList = ({ field, optionsList, listValue, listSetFunction, n
         setSelected("")
     }
 
-    const createNew = (event) => {
+    const createNew = async (event) => {
         event.preventDefault()
 
         // Add to backend.
@@ -115,7 +115,7 @@ export const DropDownList = ({ field, optionsList, listValue, listSetFunction, n
             "description": descriptionValue
         }
 
-        const createdItem = newItemFunction(newItem)
+        const createdItem = await newItemFunction(newItem)
 
         if (createdItem !== undefined){
             listSetFunction([...listValue, createdItem.id])
