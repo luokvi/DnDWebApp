@@ -167,7 +167,7 @@ export const DropDownList = ({ field, optionsList, listValue, listSetFunction, n
                         <FormField id="spellCasting" title="Casting Time" value={castingTime} setFunction={castingTimeSet} />
                         <div>
                             <p>Spell Duration</p>
-                            <FormField id="spellMinutes" title="Duration" value={minutesValue} setFunction={minutesSet} type="Number" />
+                            <FormField id="spellMinutes" title="Duration, minutes" value={minutesValue} setFunction={minutesSet} type="Number" />
                             <CheckboxField title={"Is Concentration"} setFunction={concentrationSet}/>
                         </div>
                     </div>
