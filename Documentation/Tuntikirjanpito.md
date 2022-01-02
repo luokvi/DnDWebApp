@@ -36,3 +36,4 @@
 | 29.12 | 1.5 | Hahmon luonnissa näytä itemin nimi id:n sijaan, kun se lisätään listaan |
 | 30.12 | 1 | Mahdollisuus luoda item hahmonluonti-lomakkeessa |
 | 2.1 | 1 | Korjauksia itemin luontiin. |
+| 2.1 | 2 | Lisää mahdollisuus lisätä erityyppisiä itemejä |
