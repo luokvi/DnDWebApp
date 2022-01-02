@@ -71,7 +71,7 @@ const CharacterCreation = ({ userId, token }) => {
         setAllItems()
     }, [])
 
-    const createNewItem = async ({ newItem }) => {
+    const createNewItem = async (newItem) => {
 
         //Debug item creation.
         console.log("CreateNewItem sending:")
