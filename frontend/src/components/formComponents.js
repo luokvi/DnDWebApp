@@ -120,6 +120,7 @@ export const DropDownList = ({ field, optionsList, listValue, listSetFunction, n
     const createNew = async (event) => {
         event.preventDefault()
 
+        console.log(verbal + ", " + somatic + ", " + material)
         if (verbal !== ""){
             componentsSet([...components, "Verbal"])
         }
@@ -129,6 +130,7 @@ export const DropDownList = ({ field, optionsList, listValue, listSetFunction, n
         if (material !== ""){
             componentsSet([...components, "Material"])
         }
+        console.log(components)
 
         const isConcentration = isConcentrationValue === "Is Concentration" ? true : false
 
