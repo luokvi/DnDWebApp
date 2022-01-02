@@ -87,6 +87,7 @@ export const AddToSimpleList = ({ field, listValue, listSetFunction }) => {
 export const DropDownList = ({ field, optionsList, listValue, listSetFunction, newItemFunction, itemType }) => {
     const [nameValue, nameSet] = useState("")
     const [descriptionValue, descriptionSet] = useState("")
+    const [spellLevel, levelSet] = useState("")
     const [castingTime, castingTimeSet] = useState("")
     const [rangeValue, rangeSet] = useState("")
     const [componentsValue, componentsSet] = useState([""])
@@ -150,13 +151,25 @@ export const DropDownList = ({ field, optionsList, listValue, listSetFunction, n
             case "Weapon":
                 return(
                     <div>
-
+                        <FormField id="itemName" title="Name" value={nameValue} setFunction={nameSet} />
+                        <FormField id="itemDesc" title="Description" value={descriptionValue} setFunction={descriptionSet}/>
+                        <FormField id="weaponAtk" title="ATK Bonus" value={atkValue} setFunction={atkSet} type="Number" />
+                        <FormField id="weaponDmg" title="Damage Type" value={damageValue} setFunction={damageSet} />
+                        <FormField id="weaponRange" title="Range" value={rangeValue} setFunction={rangeSet} type="Number" />
                     </div>
                 )
             case "Spell":
                 return(
                     <div>
-
+                        <FormField id="itemName" title="Name" value={nameValue} setFunction={nameSet} />
+                        <FormField id="itemDesc" title="Description" value={descriptionValue} setFunction={descriptionSet}/>
+                        <FormField id="spellLevel" title="Level" value={spellLevel} setFunction={levelSet} type="Number" />
+                        <FormField id="spellCasting" title="Casting Time" value={castingTime} setFunction={castingTimeSet} />
+                        <div>
+                            <p>Spell Duration</p>
+                            <FormField id="spellMinutes" title="Duration" value={minutesValue} setFunction={minutesSet} type="Number" />
+                            <CheckboxField title={"Is Concentration"} setFunction={concentrationSet}/>
+                        </div>
                     </div>
                 )
             default:
