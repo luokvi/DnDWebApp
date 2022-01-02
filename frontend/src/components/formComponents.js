@@ -122,6 +122,7 @@ export const DropDownList = ({ field, optionsList, listValue, listSetFunction, n
 
         if (verbal !== ""){
             console.log("verbal selected")
+            // For some reason, these componentSets don't work. components list ends up empty.
             componentsSet([...components, "Verbal"])
             verbalSet("")
         }
