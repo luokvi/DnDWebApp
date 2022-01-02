@@ -22,12 +22,16 @@ const createItem = async (body, token) => {
         }
     }
 
+    //Debug item creation.
+    console.log("CreateItem posting:")
+    console.log(body)
+
     const res = await axios.post(url, body, axiosConfig)
 
     //Debug item creation.
     console.log("CreateItem got response:")
     console.log(res)
-    
+
     return res.data
 }
 
