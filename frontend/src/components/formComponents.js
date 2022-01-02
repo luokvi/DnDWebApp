@@ -93,7 +93,6 @@ export const DropDownList = ({ field, optionsList, listValue, listSetFunction, n
     const [verbal, verbalSet] = useState("")
     const [somatic, somaticSet] = useState("")
     const [material, materialSet] = useState("")
-    const [componentsValue, componentsSet] = useState([""])
     const [minutesValue, minutesSet] = useState("")
     const [isConcentrationValue, concentrationSet] = useState("")
     const [atkValue, atkSet] = useState("")
@@ -120,7 +119,17 @@ export const DropDownList = ({ field, optionsList, listValue, listSetFunction, n
     const createNew = async (event) => {
         event.preventDefault()
 
-        componentsSet([verbal, somatic, material])
+        const components = []
+        if (verbal !== ""){
+            components.concat("Verbal")
+        }
+        if (somatic !== ""){
+            components.concat("Somatic")
+        }
+        if (material !== ""){
+            components.concat("Material")
+        }
+
         const isConcentration = isConcentrationValue === "Is Concentration" ? true : false
 
         // Add to backend.
@@ -131,7 +140,7 @@ export const DropDownList = ({ field, optionsList, listValue, listSetFunction, n
             "level": spellLevel,
             "castingTime": castingTime,
             "range": rangeValue,
-            "components": componentsValue,
+            "components": components,
             "duration": {
                 "minutes": minutesValue,
                 "isConcentration": isConcentration
