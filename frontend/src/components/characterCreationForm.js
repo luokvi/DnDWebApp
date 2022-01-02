@@ -73,19 +73,12 @@ const CharacterCreation = ({ userId, token }) => {
 
     const createNewItem = async (newItem) => {
 
-        //Debug item creation.
-        console.log("CreateNewItem sending:")
-        console.log(newItem)
-
         const itemToCreate = {
             "itemType": newItem.itemType,
             "name": newItem.name,
             "description": newItem.description,
             "userId": userId
         }
-        //Debug item creation.
-        console.log("CreateNewItem sending:")
-        console.log(itemToCreate)
 
         try{
             const response = await createService.createItem(itemToCreate, token)

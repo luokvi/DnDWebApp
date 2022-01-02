@@ -114,9 +114,6 @@ export const DropDownList = ({ field, optionsList, listValue, listSetFunction, n
             "name": nameValue,
             "description": descriptionValue
         }
-        //Debug item creation.
-        console.log("CreateNew sending:")
-        console.log(newItem)
 
         const createdItem = await newItemFunction(newItem)
 
