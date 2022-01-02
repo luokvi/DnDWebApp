@@ -74,9 +74,7 @@ const CharacterCreation = ({ userId, token }) => {
     const createNewItem = async (newItem) => {
 
         const itemToCreate = {
-            "itemType": newItem.itemType,
-            "name": newItem.name,
-            "description": newItem.description,
+            ...newItem,
             "userId": userId
         }
 
