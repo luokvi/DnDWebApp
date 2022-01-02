@@ -132,18 +132,30 @@ export const DropDownList = ({ field, optionsList, listValue, listSetFunction, n
 
     const CreateNewForm = ({ type }) => {
         switch (type){
-            case "equipment":
+            case "Equipment":
                 return(
                     <div>
                         <FormField id="itemName" title="Name" value={nameValue} setFunction={nameSet} />
                         <FormField id="itemDesc" title="Description" value={descriptionValue} setFunction={descriptionSet}/>
                     </div>
                 )
+            case "Weapon":
+                return(
+                    <div>
+
+                    </div>
+                )
+            case "Spell":
+                return(
+                    <div>
+                        
+                    </div>
+                )
             default:
                 return(
-                    <di>
-                        <p>something is wrong...</p>
-                    </di>
+                    <div>
+                      <p>something is wrong...</p>
+                    </div>
                 )
         }
 
