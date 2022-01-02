@@ -123,14 +123,17 @@ export const DropDownList = ({ field, optionsList, listValue, listSetFunction, n
         if (verbal !== ""){
             console.log("verbal selected")
             componentsSet([...components, "Verbal"])
+            verbalSet("")
         }
         if (somatic !== ""){
             console.log("somatic selected")
             componentsSet([...components, "Somatic"])
+            somaticSet("")
         }
         if (material !== ""){
             console.log("material selected")
             componentsSet([...components, "Material"])
+            materialSet("")
         }
         console.log(components)
 
