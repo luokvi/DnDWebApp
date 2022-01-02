@@ -4,6 +4,9 @@ const TokenBlacklist = require('../models/tokenBlacklist')
 const checkToken = ( async ( req, userId ) => {
     const auth = req.get('authorization')
     
+    // Debug.
+    console.log("Authorization: ")
+    console.log(auth)
     // Check that auth starts with 'bearer'
     if (auth){
         const lowerCase = auth.toLowerCase()
@@ -16,6 +19,8 @@ const checkToken = ( async ( req, userId ) => {
     }
 
     const token = auth.substring(7)
+    // Debug.
+    console.log(token)
 
     // Check that token is not on the blacklist.
     const blacklisted = await TokenBlacklist.findOne({ token: token.toLowerCase() })
@@ -24,6 +29,8 @@ const checkToken = ( async ( req, userId ) => {
     }
 
     const decoded = jwt.verify(token, process.env.TOKENSECRET)
+    // Debug.
+    console.log(decoded)
     // Check that found an user matching token
     if (!decoded.id){
         return [false, {error: 'Invalid'}]
@@ -34,6 +41,8 @@ const checkToken = ( async ( req, userId ) => {
         return [false, {error: 'Wrong Token'}]
     }
 
+    // Debug.
+    console.log("Authorization succesfull")
     return [true, {}]
 })
 
