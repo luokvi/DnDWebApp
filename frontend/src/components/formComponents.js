@@ -93,6 +93,7 @@ export const DropDownList = ({ field, optionsList, listValue, listSetFunction, n
     const [verbal, verbalSet] = useState("")
     const [somatic, somaticSet] = useState("")
     const [material, materialSet] = useState("")
+    const [components, componentsSet] = useState([])
     const [minutesValue, minutesSet] = useState("")
     const [isConcentrationValue, concentrationSet] = useState("")
     const [atkValue, atkSet] = useState("")
@@ -119,15 +120,14 @@ export const DropDownList = ({ field, optionsList, listValue, listSetFunction, n
     const createNew = async (event) => {
         event.preventDefault()
 
-        const components = []
         if (verbal !== ""){
-            components.concat("Verbal")
+            componentsSet([...components, "Verbal"])
         }
         if (somatic !== ""){
-            components.concat("Somatic")
+            componentsSet([...components, "Somatic"])
         }
         if (material !== ""){
-            components.concat("Material")
+            componentsSet([...components, "Material"])
         }
 
         const isConcentration = isConcentrationValue === "Is Concentration" ? true : false
