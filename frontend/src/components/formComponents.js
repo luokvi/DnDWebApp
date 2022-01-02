@@ -120,14 +120,16 @@ export const DropDownList = ({ field, optionsList, listValue, listSetFunction, n
     const createNew = async (event) => {
         event.preventDefault()
 
-        console.log(verbal + ", " + somatic + ", " + material)
         if (verbal !== ""){
+            console.log("verbal selected")
             componentsSet([...components, "Verbal"])
         }
         if (somatic !== ""){
+            console.log("somatic selected")
             componentsSet([...components, "Somatic"])
         }
         if (material !== ""){
+            console.log("material selected")
             componentsSet([...components, "Material"])
         }
         console.log(components)
@@ -161,10 +163,22 @@ export const DropDownList = ({ field, optionsList, listValue, listSetFunction, n
 
             nameSet("")
             descriptionSet("")
+            levelSet("")
+            castingTimeSet("")
+            rangeSet("")
+            verbalSet("")
+            somaticSet("")
+            materialSet("")
+            minutesSet("")
+            concentrationSet("")
+            atkSet("")
+            damageSet("")
         }
         else {
             //TODO: set notification that an error occured.
         }
+
+        componentsSet([""])
     }
 
     const CreateNewForm = ({ type }) => {
