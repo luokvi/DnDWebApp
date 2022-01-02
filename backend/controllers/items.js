@@ -193,6 +193,8 @@ itemRouter.delete('/weapons/:id', async (req, res) => {
 
 // Create new item.
 itemRouter.post('/', async (req, res) => {
+    // Debug.
+    console.log("Post item.")
     const [authorized, checkMessage] = await TokenCheck.checkToken(req, req.body.userId)
     if (!authorized){
         res.status(401).send(checkMessage).end()
@@ -200,7 +202,11 @@ itemRouter.post('/', async (req, res) => {
     }
 
     const body = req.body
+    // Debug.
+    console.log(body)
     const user = await User.findById(body.userId)
+    // Debug.
+    console.log(user)
     const itemType = body.itemType
     let saved = false
     switch (itemType){
@@ -248,6 +254,9 @@ itemRouter.post('/', async (req, res) => {
             user.creations.weapons = user.creations.weapons.concat(saved._id)
             break
     }
+    
+    // Debug.
+    console.log(saved)
     
     if(saved){
         await user.save()
