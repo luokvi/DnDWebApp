@@ -87,6 +87,14 @@ export const AddToSimpleList = ({ field, listValue, listSetFunction }) => {
 export const DropDownList = ({ field, optionsList, listValue, listSetFunction, newItemFunction, itemType }) => {
     const [nameValue, nameSet] = useState("")
     const [descriptionValue, descriptionSet] = useState("")
+    const [castingTime, castingTimeSet] = useState("")
+    const [rangeValue, rangeSet] = useState("")
+    const [componentsValue, componentsSet] = useState([""])
+    const [minutesValue, minutesSet] = useState("")
+    const [isConcentrationValue, concentrationSet] = useState("")
+    const [atkValue, atkSet] = useState("")
+    const [damageValue, damageSet] = useState("")
+
     const [selected, setSelected] = useState("")
     const [addedItemNames, setItemNames] = useState([])
 
@@ -148,7 +156,7 @@ export const DropDownList = ({ field, optionsList, listValue, listSetFunction, n
             case "Spell":
                 return(
                     <div>
-                        
+
                     </div>
                 )
             default:
