@@ -85,8 +85,8 @@ export const AddToSimpleList = ({ field, listValue, listSetFunction }) => {
 }
 
 export const DropDownList = ({ field, optionsList, listValue, listSetFunction, newItemFunction, itemType }) => {
-    const [nameValue, nameSet] = useState("")
-    const [descriptionValue, descriptionSet] = useState("")
+    const [itemNameValue, itemNameSet] = useState("")
+    const [itemDescriptionValue, itemDescriptionSet] = useState("")
     const [spellLevel, levelSet] = useState("")
     const [castingTime, castingTimeSet] = useState("")
     const [rangeValue, rangeSet] = useState("")
@@ -143,8 +143,8 @@ export const DropDownList = ({ field, optionsList, listValue, listSetFunction, n
         // Add to backend.
         const newItem = {
             "itemType": itemType,
-            "name": nameValue,
-            "description": descriptionValue,
+            "name": itemNameValue,
+            "description": itemDescriptionValue,
             "level": spellLevel,
             "castingTime": castingTime,
             "range": rangeValue,
@@ -165,8 +165,8 @@ export const DropDownList = ({ field, optionsList, listValue, listSetFunction, n
             listSetFunction([...listValue, createdItem.id])
             setItemNames([...addedItemNames, createdItem.name])
 
-            nameSet("")
-            descriptionSet("")
+            itemNameSet("")
+            itemDescriptionSet("")
             levelSet("")
             castingTimeSet("")
             rangeSet("")
@@ -190,15 +190,15 @@ export const DropDownList = ({ field, optionsList, listValue, listSetFunction, n
             case "Equipment":
                 return(
                     <div>
-                        <FormField id="eName" title="Name" value={nameValue} setFunction={nameSet} />
-                        <FormField id="eDesc" title="Description" value={descriptionValue} setFunction={descriptionSet}/>
+                        <FormField id="eName" title="Name" value={itemNameValue} setFunction={itemNameSet} />
+                        <FormField id="eDesc" title="Description" value={itemDescriptionValue} setFunction={itemDescriptionSet}/>
                     </div>
                 )
             case "Weapon":
                 return(
                     <div>
-                        <FormField id="wName" title="Name" value={nameValue} setFunction={nameSet} />
-                        <FormField id="wDesc" title="Description" value={descriptionValue} setFunction={descriptionSet}/>
+                        <FormField id="wName" title="Name" value={itemNameValue} setFunction={itemNameSet} />
+                        <FormField id="wDesc" title="Description" value={itemDescriptionValue} setFunction={itemDescriptionSet}/>
                         <FormField id="weaponAtk" title="ATK Bonus" value={atkValue} setFunction={atkSet} type="Number" />
                         <FormField id="weaponDmg" title="Damage Type" value={damageValue} setFunction={damageSet} />
                         <FormField id="weaponRange" title="Range" value={rangeValue} setFunction={rangeSet} type="Number" />
@@ -207,8 +207,8 @@ export const DropDownList = ({ field, optionsList, listValue, listSetFunction, n
             case "Spell":
                 return(
                     <div>
-                        <FormField id="sName" title="Name" value={nameValue} setFunction={nameSet} />
-                        <FormField id="sDesc" title="Description" value={descriptionValue} setFunction={descriptionSet}/>
+                        <FormField id="sName" title="Name" value={itemNameValue} setFunction={itemNameSet} />
+                        <FormField id="sDesc" title="Description" value={itemDescriptionValue} setFunction={itemDescriptionSet}/>
                         <FormField id="spellLevel" title="Level" value={spellLevel} setFunction={levelSet} type="Number" />
                         <FormField id="spellCasting" title="Casting Time" value={castingTime} setFunction={castingTimeSet} />
                         <div>
