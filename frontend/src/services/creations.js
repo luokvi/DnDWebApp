@@ -10,10 +10,6 @@ const createCharacter = async (body, token) => {
         }
     }
 
-    // Debugging
-    console.log("Sending character:")
-    console.log(body)
-
     const res = await axios.post(url, body, axiosConfig)
     return res.data
 }

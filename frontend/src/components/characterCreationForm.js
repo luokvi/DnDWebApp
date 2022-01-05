@@ -135,7 +135,6 @@ const CharacterCreation = ({ userId, token }) => {
             }
         }
 
-        console.log(JSON.stringify(character))
         const created = await createService.createCharacter(character, token)
 
         console.log("Created character:")

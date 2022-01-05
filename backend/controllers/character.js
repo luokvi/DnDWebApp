@@ -21,10 +21,6 @@ charaRouter.post('/', async (req, res) => {
 
     const body = req.body
 
-    // Debugging
-    console.log("Received character:")
-    console.log(body)
-
     const chara = new Character({
         creator: body.userId,
         name: body.name,
