@@ -95,7 +95,7 @@ const CharacterCreation = ({ userId, token }) => {
         listOfProficiencies = listOfProficiencies.filter(p => p !== '')
 
         const character = {
-            creator: userId,
+            userId: userId,
             name: name,
             race: race,
             class: charClass,
