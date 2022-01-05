@@ -103,18 +103,6 @@ export const DropDownList = ({ field, optionsList, listValue, listSetFunction })
         setSelected("")
     }
 
-    const CreateNewForm = ({ type }) => {
-        switch (type){
-            default:
-                return(
-                    <div>
-                      <p>something is wrong...</p>
-                    </div>
-                )
-        }
-
-    }
-
     return(
         <div>
             <h5>{field}</h5>
@@ -125,10 +113,6 @@ export const DropDownList = ({ field, optionsList, listValue, listSetFunction })
                 <option>empty</option>
             </select>
             <button onClick={add}>Add</button>
-
-            <div>
-                <p><b>Create new:</b></p>
-            </div>
 
             <p><b>Added:</b></p>
             {addedItemNames.map(value =>
