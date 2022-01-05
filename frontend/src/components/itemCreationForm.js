@@ -4,6 +4,7 @@ import createService from '../services/creations'
 
 import { CheckboxField, FormField } from './formComponents'
 
+// TODO: separate function for adding different types of items??
 const ItemCreationForm = ({ userId, token }) => {
     const [itemNameValue, itemNameSet] = useState("")
     const [itemDescriptionValue, itemDescriptionSet] = useState("")
