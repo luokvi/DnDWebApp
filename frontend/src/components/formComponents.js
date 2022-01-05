@@ -192,6 +192,7 @@ export const DropDownList = ({ field, optionsList, listValue, listSetFunction, n
                     <div>
                         <FormField id="eName" title="Name" value={itemNameValue} setFunction={itemNameSet} />
                         <FormField id="eDesc" title="Description" value={itemDescriptionValue} setFunction={itemDescriptionSet}/>
+                        <button onClick={createNew}>create</button>
                     </div>
                 )
             case "Weapon":
@@ -202,6 +203,7 @@ export const DropDownList = ({ field, optionsList, listValue, listSetFunction, n
                         <FormField id="weaponAtk" title="ATK Bonus" value={atkValue} setFunction={atkSet} type="Number" />
                         <FormField id="weaponDmg" title="Damage Type" value={damageValue} setFunction={damageSet} />
                         <FormField id="weaponRange" title="Range" value={rangeValue} setFunction={rangeSet} type="Number" />
+                        <button onClick={createNew}>create</button>
                     </div>
                 )
             case "Spell":
@@ -223,6 +225,7 @@ export const DropDownList = ({ field, optionsList, listValue, listSetFunction, n
                             <FormField id="spellMinutes" title="Duration, minutes" value={minutesValue} setFunction={minutesSet} type="Number" />
                             <CheckboxField title="Is Concentration" setFunction={concentrationSet}/>
                         </div>
+                        <button onClick={createNew}>create</button>
                     </div>
                 )
             default:
@@ -249,7 +252,6 @@ export const DropDownList = ({ field, optionsList, listValue, listSetFunction, n
             <div>
                 <p><b>Create new:</b></p>
                     <CreateNewForm type={itemType} />
-                <button onClick={createNew}>create</button>
             </div>
 
             <p><b>Added:</b></p>
