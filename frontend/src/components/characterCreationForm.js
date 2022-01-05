@@ -50,6 +50,20 @@ const CharacterCreation = ({ userId, token }) => {
     const [otherProficiencies, setOtherProficiencies] = useState([])
     const [features, setFeatures] = useState([])
 
+    const [itemNameValue, itemNameSet] = useState("")
+    const [itemDescriptionValue, itemDescriptionSet] = useState("")
+    const [spellLevel, levelSet] = useState("")
+    const [castingTime, castingTimeSet] = useState("")
+    const [rangeValue, rangeSet] = useState("")
+    const [verbal, verbalSet] = useState("")
+    const [somatic, somaticSet] = useState("")
+    const [material, materialSet] = useState("")
+    const [components, componentsSet] = useState([])
+    const [minutesValue, minutesSet] = useState("")
+    const [isConcentrationValue, concentrationSet] = useState("")
+    const [atkValue, atkSet] = useState("")
+    const [damageValue, damageSet] = useState("")
+    
     const [weapons, setWeapons] = useState([])
     const [spellCasting, setSpellCasting] = useState("")
     const [spells, setSpells] = useState([])
@@ -71,23 +85,76 @@ const CharacterCreation = ({ userId, token }) => {
         setAllItems()
     }, [])
 
-    const createNewItem = async (newItem) => {
+    const createNewItem = async () => {
 
-        const itemToCreate = {
-            ...newItem,
+        if (verbal !== ""){
+            console.log("verbal selected")
+            // For some reason, these componentSets don't work. components list ends up empty.
+            componentsSet([...components, "Verbal"])
+            verbalSet("")
+        }
+        if (somatic !== ""){
+            console.log("somatic selected")
+            componentsSet([...components, "Somatic"])
+            somaticSet("")
+        }
+        if (material !== ""){
+            console.log("material selected")
+            componentsSet([...components, "Material"])
+            materialSet("")
+        }
+        console.log(components)
+
+        const isConcentration = isConcentrationValue === "Is Concentration" ? true : false
+
+        // Add to backend.
+        const newItem = {
+            "itemType": "Spell", // TODO: get actual item type
+            "name": itemNameValue,
+            "description": itemDescriptionValue,
+            "level": spellLevel,
+            "castingTime": castingTime,
+            "range": rangeValue,
+            "components": components,
+            "duration": {
+                "minutes": minutesValue,
+                "isConcentration": isConcentration
+            },
+            "atkBonus": atkValue,
+            "damage": damageValue,
             "userId": userId
+            
         }
 
-        try{
-            const response = await createService.createItem(itemToCreate, token)
-            console.log(response)
+        const createdItem = await createService.createItem(newItem, token)
+        console.log(createdItem)
 
-            return(response)
+        if (createdItem !== undefined){
+            // Add created item to list.
+            setSpells([...spells, createdItem.id])
+            //setItemNames([...addedItemNames, createdItem.name])
+
+            itemNameSet("")
+            itemDescriptionSet("")
+            levelSet("")
+            castingTimeSet("")
+            rangeSet("")
+            verbalSet("")
+            somaticSet("")
+            materialSet("")
+            minutesSet("")
+            concentrationSet("")
+            atkSet("")
+            damageSet("")
         }
-        catch{
+        else {
+            //TODO: set notification that an error occured.
             console.log("error")
         }
+
+        componentsSet([""])
     }
+
     const setAllItems = async () => {
         const e = await createService.getEquipment()
         console.log(JSON.stringify(e))
@@ -207,9 +274,43 @@ const CharacterCreation = ({ userId, token }) => {
                 
                 <AddItemToList field="Proficiencies" listValue={otherProficiencies} listSetFunction={setOtherProficiencies} />
 
-                <DropDownList field="Weapons" optionsList={gotWeapons} listValue={weapons} listSetFunction={setWeapons} newItemFunction={createNewItem} itemType={"Weapon"}/>
-                <DropDownList field="Equipment" optionsList={gotEquipment} listValue={equip} listSetFunction={setEquip} newItemFunction={createNewItem} itemType={"Equipment"}/>
-                <DropDownList field="Spells" optionsList={gotSpells} listValue={spells} listSetFunction={setSpells}newItemFunction={createNewItem} itemType={"Spell"} />
+                <div>
+                    <DropDownList field="Weapons" optionsList={gotWeapons} listValue={weapons} listSetFunction={setWeapons} newItemFunction={createNewItem} itemType={"Weapon"}/>
+                    <FormField id="wName" title="Name" value={itemNameValue} setFunction={itemNameSet} />
+                    <FormField id="wDesc" title="Description" value={itemDescriptionValue} setFunction={itemDescriptionSet}/>
+                    <FormField id="weaponAtk" title="ATK Bonus" value={atkValue} setFunction={atkSet} type="Number" />
+                    <FormField id="weaponDmg" title="Damage Type" value={damageValue} setFunction={damageSet} />
+                    <FormField id="weaponRange" title="Range" value={rangeValue} setFunction={rangeSet} type="Number" />
+                    <button onClick={createNewItem}>create</button>
+                </div>
+                <div>
+                    <DropDownList field="Equipment" optionsList={gotEquipment} listValue={equip} listSetFunction={setEquip} newItemFunction={createNewItem} itemType={"Equipment"}/>
+                    <FormField id="eName" title="Name" value={itemNameValue} setFunction={itemNameSet} />
+                    <FormField id="eDesc" title="Description" value={itemDescriptionValue} setFunction={itemDescriptionSet}/>
+                    <button onClick={createNewItem}>create</button>
+                </div>
+                
+                <div>
+                    <DropDownList field="Spells" optionsList={gotSpells} listValue={spells} listSetFunction={setSpells}newItemFunction={createNewItem} itemType={"Spell"} />
+                    <FormField id="sName" title="Name" value={itemNameValue} setFunction={itemNameSet} />
+                    <FormField id="sDesc" title="Description" value={itemDescriptionValue} setFunction={itemDescriptionSet}/>
+                    <FormField id="spellLevel" title="Level" value={spellLevel} setFunction={levelSet} type="Number" />
+                    <FormField id="spellCasting" title="Casting Time" value={castingTime} setFunction={castingTimeSet} />
+                    <div>
+                        <p>Components needed:</p>
+                        <CheckboxField title="Verbal" setFunction={verbalSet} />
+                        <CheckboxField title="Somatic" setFunction={somaticSet} />
+                        <CheckboxField title="Material" setFunction={materialSet} />
+                    </div>
+                    <FormField id="spellRange" title="Range" value={rangeValue} setFunction={rangeSet} type="Number" />                        
+                    <div>
+                        <p>Spell Duration</p>
+                        <FormField id="spellMinutes" title="Duration, minutes" value={minutesValue} setFunction={minutesSet} type="Number" />
+                        <CheckboxField title="Is Concentration" setFunction={concentrationSet}/>
+                    </div>
+                    <button onClick={createNewItem}>create</button>
+                </div>
+
                 <FormField id="spellCasting" title="Spell Casting Ability" type="text" value={spellCasting} setFunction={setSpellCasting} />
 
                 <FormField id="storage" title="Storage" type="text" value={storage} setFunction={setStorage} />
