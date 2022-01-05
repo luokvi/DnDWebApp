@@ -85,7 +85,7 @@ const CharacterCreation = ({ userId, token }) => {
         setGotWeaopns(w)
     }
 
-    const create = (event) => {
+    const create = async (event) => {
         event.preventDefault()
 
         // Get Proficiencies from checkboxes.
@@ -136,7 +136,10 @@ const CharacterCreation = ({ userId, token }) => {
         }
 
         console.log(JSON.stringify(character))
-        createService.createCharacter(character, token)
+        const created = await createService.createCharacter(character, token)
+
+        console.log("Created character:")
+        console.log(JSON.stringify(created))
     }
 
     return(
@@ -189,15 +192,9 @@ const CharacterCreation = ({ userId, token }) => {
                 <AddToSimpleList field="Languages" listValue={lan} listSetFunction={setLan} />
                 
                 <AddItemToList field="Proficiencies" listValue={otherProficiencies} listSetFunction={setOtherProficiencies} />
-                <DropDownList field="Weapons" optionsList={gotWeapons} listValue={weapons} listSetFunction={setWeapons} newItemFunction={createNewItem} itemType={"Weapon"}/>
-                <DropDownList field="Equipment" optionsList={gotEquipment} listValue={equip} listSetFunction={setEquip} newItemFunction={createNewItem} itemType={"Equipment"}/>
-                
-                
-                
-                <div>
-                    <DropDownList field="Spells" optionsList={gotSpells} listValue={spells} listSetFunction={setSpells}newItemFunction={createNewItem} itemType={"Spell"} />
-                    
-                </div>
+                <DropDownList field="Weapons" optionsList={gotWeapons} listValue={weapons} listSetFunction={setWeapons} itemType={"Weapon"}/>
+                <DropDownList field="Equipment" optionsList={gotEquipment} listValue={equip} listSetFunction={setEquip} itemType={"Equipment"}/>
+                <DropDownList field="Spells" optionsList={gotSpells} listValue={spells} listSetFunction={setSpells} itemType={"Spell"} />
 
                 <FormField id="spellCasting" title="Spell Casting Ability" type="text" value={spellCasting} setFunction={setSpellCasting} />
 
