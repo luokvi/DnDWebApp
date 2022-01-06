@@ -21,8 +21,8 @@ const ItemCreationForm = ({ userId, token }) => {
     const [minutesValue, minutesSet] = useState("")
     const [isConcentrationValue, concentrationSet] = useState("")
 
-    const [itemNameValue, itemNameSet] = useState("")
-    const [itemDescriptionValue, itemDescriptionSet] = useState("")
+    const [weaponNameValue, weaponNameSet] = useState("")
+    const [weaponDescriptionValue, weaponDescriptionSet] = useState("")
     const [atkValue, atkSet] = useState("")
     const [damageValue, damageSet] = useState("")
     const [weaponRangeValue, weaponRangeSet] = useState("")
@@ -47,7 +47,7 @@ const ItemCreationForm = ({ userId, token }) => {
         ])
         console.log("Components: ")
         console.log(components)
-        
+
         const newSpell = {
             "name": spellNameValue,
             "description": spellDescriptionValue,
@@ -62,6 +62,21 @@ const ItemCreationForm = ({ userId, token }) => {
             "userId": userId
         }
         const created = await createService.createItem(newSpell, token)
+
+        console.log(created)
+    }
+
+    const createWeapon = async () => {
+        const newWeapon = {
+            "name": weaponNameValue,
+            "description": weaponDescriptionValue,
+            "atkBonus": atkValue,
+            "damage": damageValue,
+            "range": weaponRangeValue,
+            "itemType": "Weapon",
+            "userId": userId
+        }
+        const created = await createService.createItem(newWeapon, token)
 
         console.log(created)
     }
@@ -90,6 +105,16 @@ const ItemCreationForm = ({ userId, token }) => {
                 </div>
                 <FormField id="SpellDuration" title="Duration, minutes" type="number" value={minutesValue} setFunction={minutesSet} />
                 <CheckboxField title="Is Concentration" setFunction={concentrationSet} />
+                <button type="Submit">Create</button>
+            </form>
+
+            <form onSubmit={createWeapon}>
+                <h5>Create new Weapon</h5>
+                <FormField id="WeaponName" title="Name" type="text" value={weaponNameValue} setFunction={weaponNameSet} />
+                <FormField id="WeaponDesc" title="Description" type="text" value={weaponDescriptionValue} setFunction={weaponDescriptionSet} />
+                <FormField id="Atk" title="Attack Bonus" type="number" value={atkValue} setFunction={atkSet} />
+                <FormField id="Damage" title="Damage Type" type="text" value={damageValue} setFunction={damageSet} />
+                <FormField id="WeaponRange" title="Range" type="number" value={weaponRangeValue} setFunction={weaponRangeSet} />
                 <button type="Submit">Create</button>
             </form>
         </div>
