@@ -35,41 +35,26 @@ const createItem = async (body, token) => {
     return res.data
 }
 
-const getEquipment = async (body, token) => {
+const getEquipment = async () => {
     const url = baseUrl + "items/equipment"
-    const axiosConfig = {
-        headers: {
-            'Authorization': 'Bearer ' + token
-        }
-    }
 
-    const res = await axios.get(url, body, axiosConfig)
+    const res = await axios.get(url)
 
     return res.data
 }
 
-const getSpells = async (body, token) => {
+const getSpells = async () => {
     const url = baseUrl + "items/spells"
-    const axiosConfig = {
-        headers: {
-            'Authorization': 'Bearer ' + token
-        }
-    }
 
-    const res = await axios.get(url, body, axiosConfig)
+    const res = await axios.get(url)
 
     return res.data
 }
 
-const getWeapons = async (body, token) => {
+const getWeapons = async () => {
     const url = baseUrl + "items/weapons"
-    const axiosConfig = {
-        headers: {
-            'Authorization': 'Bearer ' + token
-        }
-    }
 
-    const res = await axios.get(url, body, axiosConfig)
+    const res = await axios.get(url)
 
     return res.data
 }
