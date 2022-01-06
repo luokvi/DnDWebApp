@@ -7,6 +7,8 @@ const User = require('../models/user')
 
 // Get all public (ie. not user created) spells.
 itemRouter.get('/spells', async (req, res) => {
+    console.log("Spell router got:")
+    console.log(req.body)
     const [authorized, checkMessage] = await TokenCheck.checkToken(req, req.body.userId)
 
     const body = req.body
