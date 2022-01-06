@@ -4,7 +4,7 @@ import createService from '../services/creations'
 
 import { AddItemToList, AddToSimpleList, CheckboxField, DropDownList, FormField } from './formComponents'
 
-const CharacterCreation = ({ userId, token }) => {
+const CharacterCreation = ({ userId, token, userCreations }) => {
     const [name, setName] = useState("")
     const [race, setRace] = useState("")
     const [charClass, setClass] = useState("")
@@ -72,18 +72,19 @@ const CharacterCreation = ({ userId, token }) => {
     }, [])
 
     const setAllItems = async () => {
-        const reqBody = {
-            "userId": userId
-        }
-        const e = await createService.getEquipment(reqBody, token)
+        console.log("User's creations:")
+        console.log(userCreations.equipment)
+        console.log(userCreations.spells)
+        
+        const e = await createService.getEquipment()
         console.log(JSON.stringify(e))
         setEquipment(e)
 
-        const s = await createService.getSpells(reqBody, token)
+        const s = await createService.getSpells()
         console.log(JSON.stringify(s))
         setGotSpells(s)
 
-        const w = await createService.getWeapons(reqBody, token)
+        const w = await createService.getWeapons()
         console.log(JSON.stringify(w))
         setGotWeaopns(w)
     }
