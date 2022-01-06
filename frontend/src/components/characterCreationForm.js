@@ -72,21 +72,26 @@ const CharacterCreation = ({ userId, token, userCreations }) => {
     }, [])
 
     const setAllItems = async () => {
-        console.log("User's creations:")
-        console.log(userCreations.equipment)
-        console.log(userCreations.spells)
-        
         const e = await createService.getEquipment()
         console.log(JSON.stringify(e))
         setEquipment(e)
+
+        // Add user's created equipment.
+        setEquipment(gotEquipment.concat(userCreations.equipment))
 
         const s = await createService.getSpells()
         console.log(JSON.stringify(s))
         setGotSpells(s)
 
+        // Add user's created spells.
+        setGotSpells(gotSpells.concat(userCreations.spells))
+
         const w = await createService.getWeapons()
         console.log(JSON.stringify(w))
         setGotWeaopns(w)
+
+        // Add user's created weapons.
+        setGotWeaopns(gotWeapons.concat(userCreations.weapons))
     }
 
     const create = async (event) => {
