@@ -51,12 +51,13 @@ const ItemCreationForm = ({ userId, token }) => {
         const newSpell = {
             "name": spellNameValue,
             "description": spellDescriptionValue,
+            "level": spellLevel,
             "castingTime": castingTime,
             "range": spellRangeValue,
             "components": components,
             "duration": {
                 "minutes": minutesValue,
-                "isConcentration": isConcentrationValue
+                "isConcentration": (isConcentrationValue !== "" ? true : false)
             },
             "itemType": "Spell",
             "userId": userId
