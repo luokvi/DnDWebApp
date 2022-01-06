@@ -39,11 +39,57 @@ const ItemCreationForm = ({ userId, token }) => {
         console.log(created)
     }
 
+    const createSpell = async () => {
+        componentsSet([
+            (verbal === "Verbal" ? "Verbal" : "empty"),
+            (somatic === "Somatic" ? "Somatic" : "empty"),
+            (material === "Material" ? "Material" : "empty")
+        ])
+        console.log("Components: ")
+        console.log(components)
+        
+        const newSpell = {
+            "name": spellNameValue,
+            "description": spellDescriptionValue,
+            "castingTime": castingTime,
+            "range": spellRangeValue,
+            "components": components,
+            "duration": {
+                "minutes": minutesValue,
+                "isConcentration": isConcentrationValue
+            },
+            "itemType": "Spell",
+            "userId": userId
+        }
+        const created = await createService.createItem(newSpell, token)
+
+        console.log(created)
+    }
+
     return(
         <div>
             <form onSubmit={createEquip}>
+                <h5>Create new Equipment</h5>
                 <FormField id="EquipmentName" title="Name" type="text" value={equipNameValue} setFunction={equipNameSet} />
                 <FormField id="EquipmentDesc" title="Description" type="text" value={equipDescriptionValue} setFunction={equipDescriptionSet} />
+                <button type="Submit">Create</button>
+            </form>
+
+            <form onSubmit={createSpell}>
+                <h5>Create new Spell</h5>
+                <FormField id="SpellName" title="Name" type="text" value={spellNameValue} setFunction={spellNameSet} />
+                <FormField id="SpellDesc" title="Description" type="text" value={spellDescriptionValue} setFunction={spellDescriptionSet} />
+                <FormField id="SpellLevel" title="Level" type="number" value={spellLevel} setFunction={levelSet} />
+                <FormField id="CastingTime" title="Casting Time" type="text" value={castingTime} setFunction={castingTimeSet} />
+                <FormField id="SpellRange" title="Range" type="number" value={spellRangeValue} setFunction={spellRangeSet} />
+                <div>
+                    <h5>Needed components</h5>
+                    <CheckboxField title="Verbal" setFunction={verbalSet} />
+                    <CheckboxField title="Somatic" setFunction={somaticSet} />
+                    <CheckboxField title="Material" setFunction={materialSet} />
+                </div>
+                <FormField id="SpellDuration" title="Duration, minutes" type="number" value={minutesValue} setFunction={minutesSet} />
+                <CheckboxField title="Is Concentration" setFunction={concentrationSet} />
                 <button type="Submit">Create</button>
             </form>
         </div>
