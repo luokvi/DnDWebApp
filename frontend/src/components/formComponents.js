@@ -108,7 +108,7 @@ export const DropDownList = ({ field, optionsList, listValue, listSetFunction })
             <h5>{field}</h5>
             <select name={field} id={field} onChange={({ target }) => setSelected(target.value)}>
                 {optionsList.map(optionValue =>
-                    <option key={optionValue.id} value={[optionValue.id, optionValue.name]}>{optionValue.name}</option>
+                    <option key={optionValue.id} value={[optionValue.id, optionValue.name]}>{optionValue.name}: {optionValue.description}</option>
                 )}
                 <option>empty</option>
             </select>
