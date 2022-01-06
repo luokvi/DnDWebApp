@@ -72,15 +72,18 @@ const CharacterCreation = ({ userId, token }) => {
     }, [])
 
     const setAllItems = async () => {
-        const e = await createService.getEquipment()
+        const reqBody = {
+            "userId": userId
+        }
+        const e = await createService.getEquipment(reqBody, token)
         console.log(JSON.stringify(e))
         setEquipment(e)
 
-        const s = await createService.getSpells()
+        const s = await createService.getSpells(reqBody, token)
         console.log(JSON.stringify(s))
         setGotSpells(s)
 
-        const w = await createService.getWeapons()
+        const w = await createService.getWeapons(reqBody, token)
         console.log(JSON.stringify(w))
         setGotWeaopns(w)
     }
