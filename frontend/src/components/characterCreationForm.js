@@ -64,7 +64,7 @@ const CharacterCreation = ({ userId, token, userCreations }) => {
 
     const [gotEquipment, setEquipment] = useState([])
     const [gotSpells, setGotSpells] = useState([])
-    const [gotWeapons, setGotWeaopns] = useState([])
+    const [gotWeapons, setGotWeapons] = useState([])
 
     useEffect(() => {
         // Get equipment, spells, and weapons
@@ -88,10 +88,10 @@ const CharacterCreation = ({ userId, token, userCreations }) => {
 
         const w = await createService.getWeapons()
         console.log(JSON.stringify(w))
-        setGotWeaopns(w)
+        setGotWeapons(w)
 
         // Add user's created weapons.
-        setGotWeaopns(gotWeapons.concat(userCreations.weapons))
+        setGotWeapons(gotWeapons.concat(userCreations.weapons))
     }
 
     const create = async (event) => {
