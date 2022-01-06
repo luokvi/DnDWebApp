@@ -4,7 +4,6 @@ import createService from '../services/creations'
 
 import { CheckboxField, FormField } from './formComponents'
 
-// TODO: separate function for adding different types of items??
 const ItemCreationForm = ({ userId, token }) => {
     const [equipNameValue, equipNameSet] = useState("")
     const [equipDescriptionValue, equipDescriptionSet] = useState("")
@@ -37,6 +36,10 @@ const ItemCreationForm = ({ userId, token }) => {
         const created = await createService.createItem(newEquip, token)
 
         console.log(created)
+
+        // Empty form.
+        equipNameSet("")
+        equipDescriptionSet("")
     }
 
     const createSpell = async () => {
@@ -65,6 +68,16 @@ const ItemCreationForm = ({ userId, token }) => {
         const created = await createService.createItem(newSpell, token)
 
         console.log(created)
+
+        // Empty form.
+        spellNameSet("")
+        spellDescriptionSet("")
+        levelSet("")
+        castingTimeSet("")
+        spellRangeSet("")
+        componentsSet("")
+        minutesSet("")
+        concentrationSet("")
     }
 
     const createWeapon = async () => {
@@ -80,6 +93,13 @@ const ItemCreationForm = ({ userId, token }) => {
         const created = await createService.createItem(newWeapon, token)
 
         console.log(created)
+
+        // Empty form.
+        weaponNameSet("")
+        weaponDescriptionSet("")
+        atkSet("")
+        damageSet("")
+        weaponRangeSet("")
     }
 
     return(
