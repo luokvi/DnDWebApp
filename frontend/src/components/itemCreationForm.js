@@ -16,7 +16,7 @@ const ItemCreationForm = ({ userId, token }) => {
     const [verbal, verbalSet] = useState("")
     const [somatic, somaticSet] = useState("")
     const [material, materialSet] = useState("")
-    const [components, componentsSet] = useState([])
+    let components = []
     const [minutesValue, minutesSet] = useState("")
     const [isConcentrationValue, concentrationSet] = useState("")
 
@@ -43,11 +43,10 @@ const ItemCreationForm = ({ userId, token }) => {
     }
 
     const createSpell = async () => {
-        componentsSet([
-            (verbal === "Verbal" ? "Verbal" : "empty"),
-            (somatic === "Somatic" ? "Somatic" : "empty"),
-            (material === "Material" ? "Material" : "empty")
-        ])
+        if (verbal !== "") components.push("Verbal")
+        if (somatic !== "") components.push("Somatic")
+        if (material !== "") components.push("Material")
+
         console.log("Components: ")
         console.log(components)
 
@@ -75,7 +74,7 @@ const ItemCreationForm = ({ userId, token }) => {
         levelSet("")
         castingTimeSet("")
         spellRangeSet("")
-        componentsSet("")
+        components = []
         minutesSet("")
         concentrationSet("")
     }
