@@ -26,6 +26,8 @@ const ItemCreationForm = ({ userId, token }) => {
     const [damageValue, damageSet] = useState("")
     const [weaponRangeValue, weaponRangeSet] = useState("")
 
+    const [creations, creationsSet] = useState([])
+
     const createEquip = async () => {
         const newEquip = {
             "name": equipNameValue,
@@ -35,7 +37,7 @@ const ItemCreationForm = ({ userId, token }) => {
         }
         const created = await createService.createItem(newEquip, token)
 
-        console.log(created)
+        creationsSet(creations.push(created))
 
         // Empty form.
         equipNameSet("")
@@ -66,7 +68,7 @@ const ItemCreationForm = ({ userId, token }) => {
         }
         const created = await createService.createItem(newSpell, token)
 
-        console.log(created)
+        creationsSet(creations.push(created))
 
         // Empty form.
         spellNameSet("")
@@ -91,7 +93,7 @@ const ItemCreationForm = ({ userId, token }) => {
         }
         const created = await createService.createItem(newWeapon, token)
 
-        console.log(created)
+        creationsSet(creations.push(created))
 
         // Empty form.
         weaponNameSet("")
@@ -104,14 +106,14 @@ const ItemCreationForm = ({ userId, token }) => {
     return(
         <div>
             <form onSubmit={createEquip}>
-                <h5>Create new Equipment</h5>
+                <h4>Create new Equipment</h4>
                 <FormField id="EquipmentName" title="Name" type="text" value={equipNameValue} setFunction={equipNameSet} />
                 <FormField id="EquipmentDesc" title="Description" type="text" value={equipDescriptionValue} setFunction={equipDescriptionSet} />
                 <button type="Submit">Create</button>
             </form>
 
             <form onSubmit={createSpell}>
-                <h5>Create new Spell</h5>
+                <h4>Create new Spell</h4>
                 <FormField id="SpellName" title="Name" type="text" value={spellNameValue} setFunction={spellNameSet} />
                 <FormField id="SpellDesc" title="Description" type="text" value={spellDescriptionValue} setFunction={spellDescriptionSet} />
                 <FormField id="SpellLevel" title="Level" type="number" value={spellLevel} setFunction={levelSet} />
@@ -129,7 +131,7 @@ const ItemCreationForm = ({ userId, token }) => {
             </form>
 
             <form onSubmit={createWeapon}>
-                <h5>Create new Weapon</h5>
+                <h4>Create new Weapon</h4>
                 <FormField id="WeaponName" title="Name" type="text" value={weaponNameValue} setFunction={weaponNameSet} />
                 <FormField id="WeaponDesc" title="Description" type="text" value={weaponDescriptionValue} setFunction={weaponDescriptionSet} />
                 <FormField id="Atk" title="Attack Bonus" type="number" value={atkValue} setFunction={atkSet} />
@@ -137,6 +139,16 @@ const ItemCreationForm = ({ userId, token }) => {
                 <FormField id="WeaponRange" title="Range" type="number" value={weaponRangeValue} setFunction={weaponRangeSet} />
                 <button type="Submit">Create</button>
             </form>
+
+            <div>
+                <h4>Created items:</h4>
+                {creations.map(item =>
+                    <div>
+                        <h5>{item.name}</h5>
+                        <p>{item.description}</p>
+                    </div>
+                )}
+            </div>
         </div>
     )
 }
