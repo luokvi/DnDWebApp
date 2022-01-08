@@ -41,6 +41,7 @@ const ItemCreationForm = ({ userId, token }) => {
 
         creationsSet(creations.push(created))
         // debug creations list
+        console.log("Creations:")
         console.log(creations)
 
         // Empty form.
@@ -150,12 +151,7 @@ const ItemCreationForm = ({ userId, token }) => {
 
             <div>
                 <h4>Created items:</h4>
-                {creations.map(item =>
-                    <div>
-                        <h5>{item.name}</h5>
-                        <p>{item.description}</p>
-                    </div>
-                )}
+                
             </div>
         </div>
     )
