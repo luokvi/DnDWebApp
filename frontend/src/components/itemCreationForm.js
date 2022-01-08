@@ -149,7 +149,7 @@ const ItemCreationForm = ({ userId, token }) => {
             <div>
                 <h4>Created items:</h4>
                 {creations.map(item =>
-                    <div>
+                    <div key={item.id}>
                         <h5>{item.name}</h5>
                         <p>{item.description}</p>
                     </div>
