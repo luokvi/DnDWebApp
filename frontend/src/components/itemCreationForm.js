@@ -43,6 +43,7 @@ const ItemCreationForm = ({ userId, token }) => {
         // debug creations list
         console.log("Creations:")
         console.log(creations)
+        console.log(creations[0].name)
 
         // Empty form.
         equipNameSet("")
