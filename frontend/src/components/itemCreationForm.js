@@ -39,11 +39,10 @@ const ItemCreationForm = ({ userId, token }) => {
         }
         const created = await createService.createItem(newEquip, token)
 
-        creationsSet(creations.push(created))
+        creationsSet([...creations, created])
         // debug creations list
         console.log("Creations:")
         console.log(creations)
-        console.log(creations[0].name)
 
         // Empty form.
         equipNameSet("")
@@ -152,7 +151,12 @@ const ItemCreationForm = ({ userId, token }) => {
 
             <div>
                 <h4>Created items:</h4>
-                
+                {creations.map(item =>
+                    <div>
+                        <h5>{item.name}</h5>
+                        <p>{item.description}</p>
+                    </div>
+                )}
             </div>
         </div>
     )
