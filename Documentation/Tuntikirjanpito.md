@@ -40,3 +40,4 @@
 | 4.1 | 1.5 | Poista itemien lisäys hahmonluonti-lomakkeesta, se oli liian buginen |
 | 6.1 | 2 | Siirrä itemien luontilomake omalle sivulleen, nyt se myös toimii |
 | 6.1 | 1 | Lisää käyttäjän luomat itemit hahmonluontilomakkeen dropdown listoihin |
+| 8.1 | 1 | Korjaa itemien luontilomake |
