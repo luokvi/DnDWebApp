@@ -39,11 +39,8 @@ const ItemCreationForm = ({ userId, token }) => {
         }
         const created = await createService.createItem(newEquip, token)
 
-        creationsSet([created, {name: "Kovakoodattu", description: "jotain jotain"}])
-        // debug creations list
-        console.log("Creations:")
-        console.log(creations)
-
+        creations.push(created)
+        
         // Empty form.
         equipNameSet("")
         equipDescriptionSet("")
