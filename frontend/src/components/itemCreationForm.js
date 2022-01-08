@@ -28,7 +28,9 @@ const ItemCreationForm = ({ userId, token }) => {
 
     const [creations, creationsSet] = useState([])
 
-    const createEquip = async () => {
+    const createEquip = async (event) => {
+        event.preventDefault()
+
         const newEquip = {
             "name": equipNameValue,
             "description": equipDescriptionValue,
@@ -44,7 +46,9 @@ const ItemCreationForm = ({ userId, token }) => {
         equipDescriptionSet("")
     }
 
-    const createSpell = async () => {
+    const createSpell = async (event) => {
+        event.preventDefault()
+
         if (verbal !== "") components.push("Verbal")
         if (somatic !== "") components.push("Somatic")
         if (material !== "") components.push("Material")
@@ -81,7 +85,9 @@ const ItemCreationForm = ({ userId, token }) => {
         concentrationSet("")
     }
 
-    const createWeapon = async () => {
+    const createWeapon = async (event) => {
+        event.preventDefault()
+
         const newWeapon = {
             "name": weaponNameValue,
             "description": weaponDescriptionValue,
