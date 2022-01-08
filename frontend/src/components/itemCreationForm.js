@@ -26,7 +26,7 @@ const ItemCreationForm = ({ userId, token }) => {
     const [damageValue, damageSet] = useState("")
     const [weaponRangeValue, weaponRangeSet] = useState("")
 
-    const [creations, creationsSet] = useState([])
+    const creations = []
 
     const createEquip = async (event) => {
         event.preventDefault()
@@ -39,7 +39,7 @@ const ItemCreationForm = ({ userId, token }) => {
         }
         const created = await createService.createItem(newEquip, token)
 
-        creationsSet([...creations, created])
+        creations.push(created)
         // debug creations list
         console.log("Creations:")
         console.log(creations)
@@ -75,7 +75,7 @@ const ItemCreationForm = ({ userId, token }) => {
         }
         const created = await createService.createItem(newSpell, token)
 
-        creationsSet(creations.push(created))
+        //creationsSet(creations.push(created))
 
         // Empty form.
         spellNameSet("")
@@ -102,7 +102,7 @@ const ItemCreationForm = ({ userId, token }) => {
         }
         const created = await createService.createItem(newWeapon, token)
 
-        creationsSet(creations.push(created))
+        //creationsSet(creations.push(created))
 
         // Empty form.
         weaponNameSet("")
