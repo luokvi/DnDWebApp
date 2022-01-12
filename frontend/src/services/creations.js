@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const baseUrl = 'api/'
+const baseUrl = '/api/'
 
 const createCharacter = async (body, token) => {
     const url = baseUrl + "character"
