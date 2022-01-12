@@ -44,7 +44,7 @@ function App() {
           <Route path="/myProfile" element={<ProfilePage user={user} token={token} />} />
           <Route path="/createCharacter" element={ <CharacterCreation userId={user.id} token={token} userCreations={user.creations} /> } />
           <Route path="/createItem" element={ <ItemCreationForm userId={user.id} token={token} /> } />
-          <Route path="/editCharacter/:id" element={ <CharacterCreation userId={user.id} token={token} userCreations={user.creations} /> } />
+          <Route path="/editCharacter/:characterId" element={ <CharacterCreation userId={user.id} token={token} userCreations={user.creations} /> } />
         </Routes>
       </div>
   );

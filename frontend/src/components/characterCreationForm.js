@@ -73,9 +73,9 @@ const CharacterCreation = ({ userId, token, userCreations }) => {
     }, [])
 
     // Debug getting parameters.
-    const { params } = useParams()
+    const { characterId } = useParams()
     console.log("Parameters:")
-    console.log(params)
+    console.log(characterId)
 
     const setAllItems = async () => {
         const e = await createService.getEquipment()
