@@ -72,10 +72,13 @@ const CharacterCreation = ({ userId, token, userCreations }) => {
         setAllItems()
     }, [])
 
-    // Debug getting parameters.
+    // If editing character, get the character.
     const { characterId } = useParams()
-    console.log("Parameters:")
-    console.log(characterId)
+    if (characterId !== undefined){
+        console.log("Character id:")
+        console.log(characterId)
+    }
+    
 
     const setAllItems = async () => {
         const e = await createService.getEquipment()
