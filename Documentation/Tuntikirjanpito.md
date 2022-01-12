@@ -41,3 +41,4 @@
 | 6.1 | 2 | Siirrä itemien luontilomake omalle sivulleen, nyt se myös toimii |
 | 6.1 | 1 | Lisää käyttäjän luomat itemit hahmonluontilomakkeen dropdown listoihin |
 | 8.1 | 1 | Korjaa itemien luontilomake |
+| 12.1 | 2.5 | Lisää sivu hahmon muokkaamiseen, ei vielä valmis |
