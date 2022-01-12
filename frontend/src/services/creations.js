@@ -14,6 +14,18 @@ const createCharacter = async (body, token) => {
     return res.data
 }
 
+const getCharacter = async (id, token) => {
+    const url = baseUrl + "character/" + id
+    const axiosConfig = {
+        headers: {
+            'Authorization': 'Bearer ' + token
+        }
+    }
+
+    const res = await axios.get(url, axiosConfig)
+    return res.data
+}
+
 const createItem = async (body, token) => {
     const url = baseUrl + "items"
     const axiosConfig = {

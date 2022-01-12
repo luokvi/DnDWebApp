@@ -72,11 +72,17 @@ const CharacterCreation = ({ userId, token, userCreations }) => {
         setAllItems()
     }, [])
 
+    const getCharacterToEdit = async (characterId) => {
+        const chara = createService.getCharacter(characterId, token)
+        return chara
+    }
     // If editing character, get the character.
     const { characterId } = useParams()
     if (characterId !== undefined){
         console.log("Character id:")
         console.log(characterId)
+        const chara = getCharacterToEdit(characterId)
+        console.log(chara)
     }
     
 
