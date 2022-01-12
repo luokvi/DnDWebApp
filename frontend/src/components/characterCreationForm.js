@@ -73,7 +73,7 @@ const CharacterCreation = ({ userId, token, userCreations }) => {
     }, [])
 
     const getCharacterToEdit = async (characterId) => {
-        const chara = createService.getCharacter(characterId, token)
+        const chara = await createService.getCharacter(characterId, token)
         return chara
     }
     // If editing character, get the character.

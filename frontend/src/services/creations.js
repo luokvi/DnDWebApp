@@ -71,4 +71,4 @@ const getWeapons = async () => {
     return res.data
 }
 
-export default { createCharacter, createItem, getEquipment, getSpells, getWeapons }
+export default { createCharacter, createItem, getEquipment, getSpells, getWeapons, getCharacter }
