@@ -1,4 +1,5 @@
-import React, { useState, useEffect, getParams } from "react"
+import React, { useState, useEffect } from "react"
+import { useParams } from 'react-router-dom'
 
 import createService from '../services/creations'
 
@@ -72,7 +73,7 @@ const CharacterCreation = ({ userId, token, userCreations }) => {
     }, [])
 
     // Debug getting parameters.
-    const params = getParams()
+    const { params } = useParams()
     console.log("Parameters:")
     console.log(params)
 
