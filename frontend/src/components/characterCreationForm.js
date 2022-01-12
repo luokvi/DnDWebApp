@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, getParams } from "react"
 
 import createService from '../services/creations'
 
@@ -70,6 +70,11 @@ const CharacterCreation = ({ userId, token, userCreations }) => {
         // Get equipment, spells, and weapons
         setAllItems()
     }, [])
+
+    // Debug getting parameters.
+    const params = getParams()
+    console.log("Parameters:")
+    console.log(params)
 
     const setAllItems = async () => {
         const e = await createService.getEquipment()
