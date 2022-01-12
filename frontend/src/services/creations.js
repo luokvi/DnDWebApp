@@ -11,6 +11,9 @@ const createCharacter = async (body, token) => {
     }
 
     const res = await axios.post(url, body, axiosConfig)
+
+    console.log("Creations got character:")
+    console.log(res.data)
     return res.data
 }
 
