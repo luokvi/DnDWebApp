@@ -67,6 +67,8 @@ const CharacterCreation = ({ userId, token, userCreations }) => {
     const [gotSpells, setGotSpells] = useState([])
     const [gotWeapons, setGotWeapons] = useState([])
 
+    const [characterToEdit, setCharacter] = useState("")
+
     useEffect(() => {
         // Get equipment, spells, and weapons
         setAllItems()
@@ -74,15 +76,17 @@ const CharacterCreation = ({ userId, token, userCreations }) => {
 
     const getCharacterToEdit = async (characterId) => {
         const chara = await createService.getCharacter(characterId, token)
-        return chara
+        setCharacter(chara)
+
+        setName(characterToEdit.name)               
     }
     // If editing character, get the character.
     const { characterId } = useParams()
     if (characterId !== undefined){
-        console.log("Character id:")
-        console.log(characterId)
-        const chara = getCharacterToEdit(characterId)
-        console.log(chara)
+        getCharacterToEdit(characterId)
+
+        console.log("Chara:")
+        console.log(characterToEdit.name)
     }
     
 
