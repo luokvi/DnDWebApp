@@ -13,13 +13,9 @@ const EditingCharacter = (props) => {
 
     const GetCharacterToEdit = async () => {
         if (characterId === undefined){
-            return(
-                <div>
-                    <h2>New Character</h2>
-                </div>
-            )
+            return
         }
-
+        
         const chara = await createService.getCharacter(characterId, props.token)
         setCharacter(chara)
 
@@ -78,6 +74,14 @@ const EditingCharacter = (props) => {
         //props.setGold(characterToEdit.coins.gold)
         //props.setPlatinum(characterToEdit.coins.platinum)
         //props.setElectrum(characterToEdit.coins.electrum)
+    }
+
+    if (characterId === undefined){
+        return(
+            <div>
+                <h2>New Character</h2>
+            </div>
+        )
     }
 
     return(
