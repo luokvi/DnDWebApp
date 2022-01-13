@@ -77,8 +77,8 @@ const CharacterCreation = ({ userId, token, userCreations }) => {
         GetCharacterToEdit()
     }, [])
 
+    const { characterId } = useParams()
     const GetCharacterToEdit = async () => {
-        const { characterId } = useParams()
         if (characterId === undefined){
             return
         }
