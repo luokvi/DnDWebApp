@@ -153,8 +153,22 @@ const CharacterCreation = ({ userId, token, userCreations }) => {
 
     return(
         <div>
-            <EditingCharacter />
-            <h2>New Character</h2>
+            <EditingCharacter toke={token} setName={setName} setRace={setRace} setClass={setClass}
+        setLevel={setLevel} setExp={setExp} setBackground={setBackground}
+        setPersonality={setPersonality} setAlignment={setAlignment} setHealth={setHealth} setHitDice={setHitDice}
+        setArmorClass={setArmorClass} setInitiative={setInitiative} setSpeed={setSpeed} setStrength={setStrength}
+        setDex={setDex} setConstitution={setConstitution} setInt={setInt} setWis={setWis} setCha={setCha}
+        setPWis={setPWis} setBonus={setBonus} setAcrobatics={setAcrobatics} setAnimalHandling={setAnimalHandling}
+        setArcana={setArcana} setAthletics={setAthletics} setDeception={setDeception} setHistory={setHistory}
+        setInsight={setInsight} setIntimidation={setIntimidation} setInvestigation={setInvestigation}
+        setMedicine={setMedicine} setNature={setNature} setPerception={setPerception}
+        setPerformance={setPerformance} setPersuasion={setPersuasion} setReligion={setReligion}
+        setSleightOfHand={setSleightOfHand} setStealth={setStealth} setSurvival={setSurvival}
+        setLan={setLan} setOtherProficiencies={setOtherProficiencies} setFeatures={setFeatures}
+        setWeapons={setWeapons} setSpellCasting={setSpellCasting} setSpells={setSpells} setEquip={setEquip}
+        setStorage={setStorage} setCopper={setCopper} setSilver={setSilver} setGold={setGold}
+        setPlatinum={setPlatinum} setElectrum={setElectrum} />
+            
             <form onSubmit={create}>
                 <FormField id="name" title="Name" type="text" value={name} setFunction={setName} />
                 <FormField id="race" title="Race" type="text" value={race} setFunction={setRace} />
