@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react"
 import createService from '../services/creations'
 
 import { AddItemToList, AddToSimpleList, CheckboxField, DropDownList, FormField } from './formComponents'
-import { EditingCharacter } from './characterEditing'
+import EditingCharacter from './characterEditing'
 
 const CharacterCreation = ({ userId, token, userCreations }) => {
     const [name, setName] = useState("")
