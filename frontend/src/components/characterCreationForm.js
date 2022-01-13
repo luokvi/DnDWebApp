@@ -72,9 +72,19 @@ const CharacterCreation = ({ userId, token, userCreations }) => {
     useEffect(() => {
         // Get equipment, spells, and weapons
         setAllItems()
-    }, [])
 
-    const getCharacterToEdit = async (characterId) => {
+        // If editing character, get the character.
+    
+        if (characterId !== undefined){
+            getCharacterToEdit()
+
+            console.log("Chara:")
+            console.log(characterToEdit.name)
+        }
+    }, [characterToEdit])
+
+    const { characterId } = useParams()
+    const getCharacterToEdit = async () => {
         const chara = await createService.getCharacter(characterId, token)
         setCharacter(chara)
 
@@ -131,15 +141,6 @@ const CharacterCreation = ({ userId, token, userCreations }) => {
         //setPlatinum(characterToEdit.coins.platinum)
         //setElectrum(characterToEdit.coins.electrum)    
     }
-    // If editing character, get the character.
-    const { characterId } = useParams()
-    if (characterId !== undefined){
-        getCharacterToEdit(characterId)
-
-        console.log("Chara:")
-        console.log(characterToEdit.name)
-    }
-    
 
     const setAllItems = async () => {
         const e = await createService.getEquipment()
