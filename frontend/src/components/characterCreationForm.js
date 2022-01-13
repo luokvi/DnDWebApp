@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react"
-import { useParams } from 'react-router-dom'
 
 import createService from '../services/creations'
 
 import { AddItemToList, AddToSimpleList, CheckboxField, DropDownList, FormField } from './formComponents'
+import { EditingCharacter } from './characterEditing'
 
 const CharacterCreation = ({ userId, token, userCreations }) => {
     const [name, setName] = useState("")
@@ -67,80 +67,10 @@ const CharacterCreation = ({ userId, token, userCreations }) => {
     const [gotSpells, setGotSpells] = useState([])
     const [gotWeapons, setGotWeapons] = useState([])
 
-    const [characterToEdit, setCharacter] = useState("")
-
     useEffect(() => {
         // Get equipment, spells, and weapons
         setAllItems()
-
-        // If editing character, get the character.
-        GetCharacterToEdit()
     }, [])
-
-    const { characterId } = useParams()
-    const GetCharacterToEdit = async () => {
-        if (characterId === undefined){
-            return
-        }
-        const chara = await createService.getCharacter(characterId, token)
-
-        console.log("Chara:")
-        console.log(characterToEdit.name)
-        setCharacter(chara)
-
-        setName(characterToEdit.name)
-        setRace(characterToEdit.race)
-        setClass(characterToEdit.class)
-        setLevel(characterToEdit.level)
-        setExp(characterToEdit.exp)
-        setBackground(characterToEdit.background)
-        setPersonality(characterToEdit.personality)
-        setAlignment(characterToEdit.alignment)
-        setHealth(characterToEdit.maxHealth)
-        setHitDice(characterToEdit.hitDice)
-        setArmorClass(characterToEdit.armorClass)
-        setInitiative(characterToEdit.initiative)
-        setSpeed(characterToEdit.speed)
-        setStrength(characterToEdit.strength)
-        setDex(characterToEdit.dexterity)
-        setConstitution(characterToEdit.constitution)
-        setInt(characterToEdit.intelligence)
-        setWis(characterToEdit.wisdom)
-        setCha(characterToEdit.charisma)
-        setPWis(characterToEdit.passiveWisdom)
-        setBonus(characterToEdit.proficiencyBonus)
-        setAcrobatics(characterToEdit.acrobatics)
-        setAnimalHandling(characterToEdit.animalHandling)
-        setArcana(characterToEdit.arcana)
-        setAthletics(characterToEdit.athletics)
-        setDeception(characterToEdit.deception)
-        setHistory(characterToEdit.history)
-        setInsight(characterToEdit.insight)
-        setIntimidation(characterToEdit.intimidation)
-        setInvestigation(characterToEdit.investigation)
-        setMedicine(characterToEdit.medicine)
-        setNature(characterToEdit.nature)
-        setPerception(characterToEdit.perception)
-        setPerformance(characterToEdit.performance)
-        setPersuasion(characterToEdit.persuasion)
-        setReligion(characterToEdit.religion)
-        setSleightOfHand(characterToEdit.sleightOfHand)
-        setStealth(characterToEdit.stealth)
-        setSurvival(characterToEdit.survival)
-        //setLan(characterToEdit.languages)
-        //setOtherProficiencies(characterToEdit.otherProficiencies)
-        //setFeatures(characterToEdit.features)
-        //setWeapons(characterToEdit.weapons)
-        setSpellCasting(characterToEdit.spellCastingAbility)
-        //setSpells(characterToEdit.spells)
-        setEquip(characterToEdit.equipment)
-        setStorage(characterToEdit.storage)
-        //setCopper(characterToEdit.coins.copper)
-        //setSilver(characterToEdit.coins.silver)
-        //setGold(characterToEdit.coins.gold)
-        //setPlatinum(characterToEdit.coins.platinum)
-        //setElectrum(characterToEdit.coins.electrum)    
-    }
 
     const setAllItems = async () => {
         const e = await createService.getEquipment()
@@ -223,6 +153,7 @@ const CharacterCreation = ({ userId, token, userCreations }) => {
 
     return(
         <div>
+            <EditingCharacter />
             <h2>New Character</h2>
             <form onSubmit={create}>
                 <FormField id="name" title="Name" type="text" value={name} setFunction={setName} />
