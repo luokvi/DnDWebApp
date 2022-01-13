@@ -21,17 +21,15 @@ const EditingCharacter = ({ token }) => {
         }
 
         const chara = await createService.getCharacter(characterId, token)
-
-        console.log("Chara:")
-        console.log(characterToEdit.name)
         setCharacter(chara)
 
-          
+        console.log("Chara:")
+        console.log(chara)
     }
 
     return(
         <div>
-            <p>Editing character {characterId}</p>
+            <p>Editing character {characterToEdit.name}</p>
         </div>
     )
 }
