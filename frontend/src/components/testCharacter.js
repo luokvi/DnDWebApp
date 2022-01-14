@@ -6,7 +6,9 @@ import createService from '../services/creations'
 const NewForm = ({ token }) => {
     const { characterId } = useParams()
     const [character, setCharacter] = useState({})
+
     const [name, setName] = useState("")
+    const [race, setRace] = useState("")
 
     useEffect(() => {
         getCharacter()
@@ -20,6 +22,7 @@ const NewForm = ({ token }) => {
         const chara = await createService.getCharacter(characterId, token)
         setCharacter(chara)
         setName(chara.name)
+        setRace(chara.race)
 
         console.log("Chara:")
         console.log(chara)
@@ -30,15 +33,27 @@ const NewForm = ({ token }) => {
 
         console.log("Submit")
         console.log(character)
-        console.log(name)
+        
+        const newCharacter = {
+            name: name,
+            race: race,
+        }
+        console.log(newCharacter)
     }
 
     return(
         <div>
             <h2>Testing...</h2>
             <form onSubmit={handleSubmit}>
-                <label>Name:</label>
-                <input type="text" value={name} name={"Name"} onChange={({ target }) => setName(target.value)}/>
+                <div>
+                    <label>Name: </label>
+                    <input type="text" value={name} name={"Name"} onChange={({ target }) => setName(target.value)}/>
+                </div>
+                <div>
+                    <label>Race: </label>
+                    <input type="text" value={race} name={"Race"} onChange={({ target }) => setRace(target.value)}/>
+                </div>
+
                 <button type="submit">Submit</button>
             </form>
         </div>
