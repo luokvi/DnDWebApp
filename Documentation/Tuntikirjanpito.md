@@ -43,3 +43,4 @@
 | 8.1 | 1 | Korjaa itemien luontilomake |
 | 12.1 | 2.5 | Lisää sivu hahmon muokkaamiseen, ei vielä valmis |
 | 13.1 | 1.5 | Muokkaa hahmon muokkausta, ei vieläkään valmis |
+| 14.1 | 0.5 | Peruuta joitain eilisiä muutoksia, mutta ei edelleenkään toimi kunnolla |
