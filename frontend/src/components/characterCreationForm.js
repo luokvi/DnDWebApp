@@ -81,6 +81,7 @@ const CharacterCreation = ({ userId, token, userCreations }) => {
     const GetCharacterToEdit = async () => {
         console.log("Chara id:")
         console.log(characterId)
+        console.log(characterId)
         if (characterId === undefined){
             return
         }
