@@ -88,7 +88,7 @@ const CharacterCreation = ({ userId, token, userCreations }) => {
 
         setCharacter(chara)
         console.log("Chara:")
-        console.log(characterToEdit.name)
+        console.log(chara)
 
         setName(characterToEdit.name)
         setRace(characterToEdit.race)
