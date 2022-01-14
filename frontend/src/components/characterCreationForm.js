@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import { useParams } from "react-router-dom"
 
 import createService from '../services/creations'
 
@@ -67,21 +68,27 @@ const CharacterCreation = ({ userId, token, userCreations }) => {
     const [gotSpells, setGotSpells] = useState([])
     const [gotWeapons, setGotWeapons] = useState([])
 
+    const [characterToEdit, setCharacter] = useState("")
+
     useEffect(() => {
         // Get equipment, spells, and weapons
         setAllItems()
+        GetCharacterToEdit()
     }, [])
 
+    const { characterId } = useParams()
+
     const GetCharacterToEdit = async () => {
-        const { characterId } = useParams()
+        console.log("Chara id:")
+        console.log(characterId)
         if (characterId === undefined){
             return
         }
         const chara = await createService.getCharacter(characterId, token)
 
+        setCharacter(chara)
         console.log("Chara:")
         console.log(characterToEdit.name)
-        setCharacter(chara)
 
         setName(characterToEdit.name)
         setRace(characterToEdit.race)
@@ -218,21 +225,6 @@ const CharacterCreation = ({ userId, token, userCreations }) => {
 
     return(
         <div>
-            <EditingCharacter toke={token} setName={setName} setRace={setRace} setClass={setClass}
-        setLevel={setLevel} setExp={setExp} setBackground={setBackground}
-        setPersonality={setPersonality} setAlignment={setAlignment} setHealth={setHealth} setHitDice={setHitDice}
-        setArmorClass={setArmorClass} setInitiative={setInitiative} setSpeed={setSpeed} setStrength={setStrength}
-        setDex={setDex} setConstitution={setConstitution} setInt={setInt} setWis={setWis} setCha={setCha}
-        setPWis={setPWis} setBonus={setBonus} setAcrobatics={setAcrobatics} setAnimalHandling={setAnimalHandling}
-        setArcana={setArcana} setAthletics={setAthletics} setDeception={setDeception} setHistory={setHistory}
-        setInsight={setInsight} setIntimidation={setIntimidation} setInvestigation={setInvestigation}
-        setMedicine={setMedicine} setNature={setNature} setPerception={setPerception}
-        setPerformance={setPerformance} setPersuasion={setPersuasion} setReligion={setReligion}
-        setSleightOfHand={setSleightOfHand} setStealth={setStealth} setSurvival={setSurvival}
-        setLan={setLan} setOtherProficiencies={setOtherProficiencies} setFeatures={setFeatures}
-        setWeapons={setWeapons} setSpellCasting={setSpellCasting} setSpells={setSpells} setEquip={setEquip}
-        setStorage={setStorage} setCopper={setCopper} setSilver={setSilver} setGold={setGold}
-        setPlatinum={setPlatinum} setElectrum={setElectrum} />
             
             <form onSubmit={create}>
                 <FormField id="name" title="Name" type="text" value={name} setFunction={setName} />
