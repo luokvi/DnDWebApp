@@ -185,6 +185,9 @@ const NewForm = ({ token, handleSubmitToBackend }) => {
                 <NewFormField type="text" label="Race" value={race} setFunction={setRace}/>
                 <NewFormField type="text" label="Class" value={charClass} setFunction={setClass}/>
                 <NewFormField type="number" label="Level" value={level} setFunction={setLevel} min="0" max="100" />
+                <NewFormField type="number" label="Experience Points" value={exp} setFunction={setExp} min="0" />
+                <NewFormField type="text" label="Background" value={background} setFunction={setBackground}/>
+                <NewFormField type="text" label="Personality" value={personality} setFunction={setPersonality}/>
 
                 <button type="submit">Submit</button>
             </form>
