@@ -121,3 +121,12 @@ export const DropDownList = ({ field, optionsList, listValue, listSetFunction })
         </div>
     )
 }
+
+export const NewFormField = ({ label, type, value, setFunction }) => {
+    return(
+        <div>
+            <label>{label}: </label>
+            <input type={type} value={value} name={label} onChange={({ target }) => setFunction(target.value)}/>
+        </div>
+    )
+}
