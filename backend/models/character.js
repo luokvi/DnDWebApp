@@ -9,7 +9,7 @@ const characterSchema = new mongoose.Schema({
   race: { type: String },
   class: { type: String },
   level: { type: Number, min: 1 },
-  expreriencePoints: { type: Number, min: 0 },
+  experiencePoints: { type: Number, min: 0 },
   background: { type: String },
   personalityTraits: { type: String },
   alignment: { 
