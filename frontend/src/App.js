@@ -7,6 +7,7 @@ import ProfilePage from "./components/myProfilePage"
 import CharacterCreation from "./components/characterCreationForm"
 import ItemCreationForm from "./components/itemCreationForm"
 
+import NewForm from "./components/testCharacter"
 
 function App() {
   const [token, setToken] = useState("")
@@ -44,7 +45,8 @@ function App() {
           <Route path="/myProfile" element={<ProfilePage user={user} token={token} />} />
           <Route path="/createCharacter" element={ <CharacterCreation userId={user.id} token={token} userCreations={user.creations} /> } />
           <Route path="/createItem" element={ <ItemCreationForm userId={user.id} token={token} /> } />
-          <Route path="/editCharacter/:characterId" element={ <CharacterCreation userId={user.id} token={token} userCreations={user.creations} /> } />
+          
+          <Route path="/test/character/:characterId" element={ <NewForm /> } />
         </Routes>
       </div>
   );
