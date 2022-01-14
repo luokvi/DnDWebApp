@@ -188,6 +188,20 @@ const NewForm = ({ token, handleSubmitToBackend }) => {
                 <NewFormField type="number" label="Experience Points" value={exp} setFunction={setExp} min="0" />
                 <NewFormField type="text" label="Background" value={background} setFunction={setBackground}/>
                 <NewFormField type="text" label="Personality" value={personality} setFunction={setPersonality}/>
+                <NewFormField type="text" label="Alignment" value={alignment} setFunction={setAlignment} />
+                <NewFormField type="number" label="Hit Points" value={health} setFunction={setHealth} min="0" />
+                <NewFormField type="text" label="Hit Dice" value={hitDice} setFunction={setHitDice} />
+                <NewFormField type="number" label="Armor Class" value={armorClass} setFunction={setArmorClass} min="0" max="20" />
+                <NewFormField type="number" label="Initiative" value={initiative} setFunction={setInitiative} min="0" max="20" />
+                <NewFormField type="number" label="Speed" value={speed} setFunction={setSpeed} min="0" max="20" />
+                <NewFormField type="number" label="Strength" value={strength} setFunction={setStrength} min="0" max="20" />
+                <NewFormField type="number" label="Dexterity" value={dex} setFunction={setDex} min="0" max="20" />
+                <NewFormField type="number" label="Constitution" value={constitution} setFunction={setConstitution} min="0" max="20" />
+                <NewFormField type="number" label="Intelligence" value={int} setFunction={setInt} min="0" max="20" />
+                <NewFormField type="number" label="Wisdom" value={wis} setFunction={setWis} min="0" max="20" />
+                <NewFormField type="number" label="Charisma" value={cha} setFunction={setCha} min="0" max="20" />
+                <NewFormField type="number" label="Passive Wisdom" value={pWis} setFunction={setPWis} min="0" max="20" />
+                <NewFormField type="number" label="Proficiency Bonus" value={bonus} setFunction={setBonus} min="0" max="20" />
 
                 <button type="submit">Submit</button>
             </form>
