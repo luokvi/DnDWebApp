@@ -122,11 +122,12 @@ export const DropDownList = ({ field, optionsList, listValue, listSetFunction })
     )
 }
 
-export const NewFormField = ({ label, type, value, setFunction }) => {
+export const NewFormField = ({ label, type, value, setFunction, ...args }) => {
     return(
         <div>
             <label>{label}: </label>
-            <input type={type} value={value} name={label} onChange={({ target }) => setFunction(target.value)}/>
+            <input type={type} value={value} name={label} onChange={({ target }) => setFunction(target.value)}
+            min={args.min} max={args.max}/>
         </div>
     )
 }

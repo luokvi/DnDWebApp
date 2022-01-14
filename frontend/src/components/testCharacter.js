@@ -183,6 +183,8 @@ const NewForm = ({ token, handleSubmitToBackend }) => {
             <form onSubmit={handleSubmit}>
                 <NewFormField type="text" label="Name" value={name} setFunction={setName} />
                 <NewFormField type="text" label="Race" value={race} setFunction={setRace}/>
+                <NewFormField type="text" label="Class" value={charClass} setFunction={setClass}/>
+                <NewFormField type="number" label="Level" value={level} setFunction={setLevel} min="0" max="100" />
 
                 <button type="submit">Submit</button>
             </form>
