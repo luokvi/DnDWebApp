@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom"
 import createService from '../services/creations'
 import { NewFormField } from "./formComponents"
 
-const NewForm = ({ token }) => {
+const NewForm = ({ token, handleSubmitToBackend }) => {
     const { characterId } = useParams()
     const [character, setCharacter] = useState({})
 
@@ -137,6 +137,9 @@ const NewForm = ({ token }) => {
             }
         }
         console.log(newCharacter)
+
+        // Send new character to backend or update existing one.
+        handleSubmitToBackend(newCharacter)
     }
 
     return(

@@ -36,6 +36,11 @@ function App() {
     )
   }
 
+  const handleCharacterSubmit = (character) => {
+    console.log("Handling character to backend")
+    console.log(character)
+  }
+
   return (
       <div>
         <h1>DnD Web App</h1>
@@ -46,7 +51,7 @@ function App() {
           <Route path="/createCharacter" element={ <CharacterCreation userId={user.id} token={token} userCreations={user.creations} /> } />
           <Route path="/createItem" element={ <ItemCreationForm userId={user.id} token={token} /> } />
           
-          <Route path="/test/character/:characterId" element={ <NewForm /> } />
+          <Route path="/test/character/:characterId" element={ <NewForm token={token} handleSubmitToBackend={ handleCharacterSubmit }/> } />
         </Routes>
       </div>
   );
