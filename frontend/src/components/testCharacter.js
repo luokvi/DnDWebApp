@@ -70,11 +70,13 @@ const NewForm = ({ token, handleSubmitToBackend }) => {
     }, [])
 
     const getCharacter = async () => {
-        if (characterId === undefined){
+        let chara = ""
+        try {
+            chara = await createService.getCharacter(characterId, token)
+        } catch{
+            // If no character found, return from this function.
             return
         }
-        
-        const chara = await createService.getCharacter(characterId, token)
         setCharacter(chara)
         setName(chara.name)
         setRace(chara.race)
