@@ -49,7 +49,7 @@ charaRouter.post('/', async (req, res) => {
         languages: body.languages,
         otherProficiencies: body.otherProficiencies,
         weapons: body.weapons,
-        spellCastingAbility: body.spellCasting,
+        spellCastingAbility: body.spellCastingAbility,
         spells: body.spells,
         equipment: body.equipment,
         storage: body.storage,
