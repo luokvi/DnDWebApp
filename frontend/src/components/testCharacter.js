@@ -2,7 +2,7 @@ import react, { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 
 import createService from '../services/creations'
-import { NewFormField, AddToSimpleList, AddItemToList } from "./formComponents"
+import { NewFormField, AddToSimpleList, AddItemToList, CheckboxField } from "./formComponents"
 
 const NewForm = ({ token, handleSubmitToBackend }) => {
     const { characterId } = useParams()
@@ -101,14 +101,69 @@ const NewForm = ({ token, handleSubmitToBackend }) => {
         setCha(chara.charisma)
         setPWis(chara.passiveWisdom)
         setBonus(chara.proficiencyBonus)
-        // TODO: set proficiencies
+        // Set proficiencient skills.
         const proficientSkills = chara.proficientSkills
         proficientSkills.forEach(skill => {
             switch(skill) {
+                case 'Acrobatics':
+                    setAcrobatics("true")
+                    break
+                case 'Animal Handling':
+                    setAnimalHandling("true")
+                    break
+                case 'Arcana':
+                    setArcana("true")
+                    break
+                case 'Athletics':
+                    setAthletics("true")
+                    break    
+                case 'Deception':
+                    setDeception("true")
+                    break
+                case 'History':
+                    setHistory("true")
+                    break
+                case 'Insight':
+                    setInsight("true")
+                    break
+                case 'Intimidation':
+                    setIntimidation("true")
+                    break
+                case 'Investigation':
+                    setInvestigation("true")
+                    break
+                case 'Medicine':
+                    setMedicine("true")
+                    break
+                case 'Nature':
+                    setNature("true")
+                    break
+                case 'Perception':
+                    setPerception("true")
+                    break
+                case 'Performance':
+                    setPerformance("true")
+                    break
+                case 'Persuasion':
+                    setPersuasion("true")
+                    break
+                case 'Religion':
+                    setReligion("true")
+                    break
+                case 'Sleight of Hand':
+                    setSleightOfHand("true")
+                    break
+                case 'Stealth':
+                    setStealth("true")
+                    break
+                case 'Survival':
+                    setSurvival("true")
+                    break
                 default:
-                    console.log("Got skill: " + skill)
+                    break
             }
         });
+
         setLan(chara.languages)
         setOtherProficiencies(chara.otherProficiencies)
         setFeatures(chara.features)
@@ -212,7 +267,8 @@ const NewForm = ({ token, handleSubmitToBackend }) => {
                 <NewFormField type="number" label="Proficiency Bonus" value={bonus} setFunction={setBonus} min="0" max="20" />
                 <div>
                     <h4>Proficiencies</h4>
-
+                    <CheckboxField title="Stealth" label="Stealth" value={stealth} setFunction={setStealth} />
+                    <CheckboxField title="Survival" label="Survival" value={survival} setFunction={setSurvival} />
                 </div>
                 <AddToSimpleList listHeader="Languages" label="New Language" listValue={lan} listSetFunction={setLan} />
                 <AddItemToList listHeader="Other Proficiencies" listValue={otherProficiencies} listSetFunction={setOtherProficiencies} />
