@@ -102,7 +102,13 @@ const NewForm = ({ token, handleSubmitToBackend }) => {
         setPWis(chara.passiveWisdom)
         setBonus(chara.proficiencyBonus)
         // TODO: set proficiencies
-
+        const proficientSkills = chara.proficientSkills
+        proficientSkills.forEach(skill => {
+            switch(skill) {
+                default:
+                    console.log("Got skill: " + skill)
+            }
+        });
         setLan(chara.languages)
         setOtherProficiencies(chara.otherProficiencies)
         setFeatures(chara.features)
@@ -204,9 +210,12 @@ const NewForm = ({ token, handleSubmitToBackend }) => {
                 <NewFormField type="number" label="Charisma" value={cha} setFunction={setCha} min="0" max="20" />
                 <NewFormField type="number" label="Passive Wisdom" value={pWis} setFunction={setPWis} min="0" max="20" />
                 <NewFormField type="number" label="Proficiency Bonus" value={bonus} setFunction={setBonus} min="0" max="20" />
+                <div>
+                    <h4>Proficiencies</h4>
 
+                </div>
                 <AddToSimpleList listHeader="Languages" label="New Language" listValue={lan} listSetFunction={setLan} />
-                <AddItemToList listHeader="Proficiencies" listValue={otherProficiencies} listSetFunction={setOtherProficiencies} />
+                <AddItemToList listHeader="Other Proficiencies" listValue={otherProficiencies} listSetFunction={setOtherProficiencies} />
                 
                 <NewFormField type="text" label="Spell Casting Ability" value={spellCasting} setFunction={setSpellCasting} />
                 <AddItemToList listHeader="Features" listValue={features} listSetFunction={setFeatures} />
