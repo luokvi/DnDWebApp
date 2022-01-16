@@ -106,58 +106,58 @@ const NewForm = ({ token, handleSubmitToBackend }) => {
         proficientSkills.forEach(skill => {
             switch(skill) {
                 case 'Acrobatics':
-                    setAcrobatics("true")
+                    setAcrobatics("Acrobatics")
                     break
                 case 'Animal Handling':
-                    setAnimalHandling("true")
+                    setAnimalHandling("Animal Handling")
                     break
                 case 'Arcana':
-                    setArcana("true")
+                    setArcana("Arcana")
                     break
                 case 'Athletics':
-                    setAthletics("true")
+                    setAthletics("Athletics")
                     break    
                 case 'Deception':
-                    setDeception("true")
+                    setDeception("Deception")
                     break
                 case 'History':
-                    setHistory("true")
+                    setHistory("History")
                     break
                 case 'Insight':
-                    setInsight("true")
+                    setInsight("Insight")
                     break
                 case 'Intimidation':
-                    setIntimidation("true")
+                    setIntimidation("Intimidation")
                     break
                 case 'Investigation':
-                    setInvestigation("true")
+                    setInvestigation("Investigation")
                     break
                 case 'Medicine':
-                    setMedicine("true")
+                    setMedicine("Medicine")
                     break
                 case 'Nature':
-                    setNature("true")
+                    setNature("Nature")
                     break
                 case 'Perception':
-                    setPerception("true")
+                    setPerception("Perception")
                     break
                 case 'Performance':
-                    setPerformance("true")
+                    setPerformance("Performance")
                     break
                 case 'Persuasion':
-                    setPersuasion("true")
+                    setPersuasion("Persuasion")
                     break
                 case 'Religion':
-                    setReligion("true")
+                    setReligion("Religion")
                     break
                 case 'Sleight of Hand':
-                    setSleightOfHand("true")
+                    setSleightOfHand("Sleight of Hand")
                     break
                 case 'Stealth':
-                    setStealth("true")
+                    setStealth("Stealth")
                     break
                 case 'Survival':
-                    setSurvival("true")
+                    setSurvival("Survival")
                     break
                 default:
                     break
