@@ -209,6 +209,17 @@ const NewForm = ({ token, handleSubmitToBackend }) => {
                 <AddItemToList listHeader="Proficiencies" listValue={otherProficiencies} listSetFunction={setOtherProficiencies} />
                 
                 <NewFormField type="text" label="Spell Casting Ability" value={spellCasting} setFunction={setSpellCasting} />
+                <AddItemToList listHeader="Features" listValue={features} listSetFunction={setFeatures} />
+                
+                <div>
+                    <h4>Coins</h4>
+                    <NewFormField type="number" label="Copper" value={copper} setFunction={setCopper} min="0"/>
+                    <NewFormField type="number" label="Silver" value={silver} setFunction={setSilver} min="0"/>
+                    <NewFormField type="number" label="Gold" value={gold} setFunction={setGold} min="0"/>
+                    <NewFormField type="number" label="Platinum" value={platinum} setFunction={setPlatinum} min="0"/>
+                    <NewFormField type="number" label="Electrum" value={electrum} setFunction={setElectrum} min="0"/>
+                </div>
+
                 <button type="submit">Submit</button>
             </form>
         </div>
