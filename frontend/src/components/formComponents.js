@@ -57,7 +57,7 @@ export const AddItemToList = ({ field, listValue, listSetFunction }) => {
     )
 }
 
-export const AddToSimpleList = ({ field, listValue, listSetFunction }) => {
+export const AddToSimpleList = ({ listHeader, label, listValue, listSetFunction }) => {
     const [item, setItem] = useState("")
 
     const addNew = (event) => {
@@ -73,7 +73,8 @@ export const AddToSimpleList = ({ field, listValue, listSetFunction }) => {
 
     return(
         <div>
-            <FormField id={field} title={field} value={item} setFunction={setItem}/>
+            <p><b>{listHeader}</b></p>
+            <NewFormField label={label} type="Text" value={item} setFunction={setItem} />
             <button onClick={addNew}>add</button>
 
             <p><b>Added:</b></p>

@@ -2,7 +2,7 @@ import react, { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 
 import createService from '../services/creations'
-import { NewFormField } from "./formComponents"
+import { NewFormField, AddToSimpleList } from "./formComponents"
 
 const NewForm = ({ token, handleSubmitToBackend }) => {
     const { characterId } = useParams()
@@ -203,6 +203,7 @@ const NewForm = ({ token, handleSubmitToBackend }) => {
                 <NewFormField type="number" label="Passive Wisdom" value={pWis} setFunction={setPWis} min="0" max="20" />
                 <NewFormField type="number" label="Proficiency Bonus" value={bonus} setFunction={setBonus} min="0" max="20" />
 
+                <AddToSimpleList listHeader="Languages" label="New Language" listValue={lan} listSetFunction={setLan} />
                 <button type="submit">Submit</button>
             </form>
         </div>
