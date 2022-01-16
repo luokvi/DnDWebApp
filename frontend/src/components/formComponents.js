@@ -16,7 +16,7 @@ export const CheckboxField = ({ title, label, value, setFunction }) => {
         return(
             <div>
             <input type="checkbox" id={title} name={title}
-            value={title} onChange={({ target }) => setFunction(target.value)} checked/>
+            value={title} onChange={() => setFunction("")} checked/>
             <label htmlFor={title}>{label}</label>
         </div>
         )
