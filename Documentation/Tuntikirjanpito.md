@@ -45,3 +45,4 @@
 | 13.1 | 1.5 | Muokkaa hahmon muokkausta, ei vieläkään valmis |
 | 14.1 | 0.5 | Peruuta joitain eilisiä muutoksia, mutta ei edelleenkään toimi kunnolla |
 | 14.1 | 2 | Luo hahmonluonti ja -editointi -lomake kokonaan uudestaan, tällä kertaa toimivana |
+| 16.1 | 2  | Lisää uuteen hahmonluonti-lomakkeeseen |
