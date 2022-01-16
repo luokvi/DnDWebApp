@@ -20,7 +20,7 @@ export const CheckboxField = ({ title, setFunction }) => {
     )
 }
 
-export const AddItemToList = ({ field, listValue, listSetFunction }) => {
+export const AddItemToList = ({ listHeader, listValue, listSetFunction }) => {
     const [nameValue, nameSet] = useState("")
     const [descriptionValue, descriptionSet] = useState("")
 
@@ -41,9 +41,9 @@ export const AddItemToList = ({ field, listValue, listSetFunction }) => {
 
     return(
         <div>
-            <h5>{field}</h5>
-                <FormField id="itemName" title="Name" value={nameValue} setFunction={nameSet} />
-                <FormField id="itemDesc" title="Description" value={descriptionValue} setFunction={descriptionSet}/>
+            <p><b>{listHeader}</b></p>
+                <NewFormField label="Name" type="text" value={nameValue} setFunction={nameSet} />
+                <NewFormField label="Description" type="text" value={descriptionValue} setFunction={descriptionSet}/>
                 <button onClick={addNew}>add</button>
 
             <p><b>Added:</b></p>
