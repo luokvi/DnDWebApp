@@ -67,6 +67,8 @@ const NewForm = ({ token, handleSubmitToBackend }) => {
 
     useEffect(() => {
         getCharacter()
+
+        // TODO: get weapons, spells, equipment.
     }, [])
 
     const getCharacter = async () => {
@@ -206,6 +208,7 @@ const NewForm = ({ token, handleSubmitToBackend }) => {
                 <AddToSimpleList listHeader="Languages" label="New Language" listValue={lan} listSetFunction={setLan} />
                 <AddItemToList listHeader="Proficiencies" listValue={otherProficiencies} listSetFunction={setOtherProficiencies} />
                 
+                <NewFormField type="text" label="Spell Casting Ability" value={spellCasting} setFunction={setSpellCasting} />
                 <button type="submit">Submit</button>
             </form>
         </div>
