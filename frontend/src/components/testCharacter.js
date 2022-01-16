@@ -267,6 +267,22 @@ const NewForm = ({ token, handleSubmitToBackend }) => {
                 <NewFormField type="number" label="Proficiency Bonus" value={bonus} setFunction={setBonus} min="0" max="20" />
                 <div>
                     <h4>Proficiencies</h4>
+                    <CheckboxField title='Acrobatics' label="Acrobatics" value={acrobatics} setFunction={setAcrobatics}/>
+                    <CheckboxField title='AnimalHandling' label="Animal Handling" value={animalHandling} setFunction={setAnimalHandling}/>
+                    <CheckboxField title='Arcana' label="Arcana" value={arcana} setFunction={setArcana}/>
+                    <CheckboxField title='Athletics' label="Athletics" value={athletics} setFunction={setAthletics}/>
+                    <CheckboxField title='Deception' label="Deception" value={deception} setFunction={setDeception}/>
+                    <CheckboxField title='History' label="History" value={history} setFunction={setHistory}/>
+                    <CheckboxField title='Insight' label="Insight" value={insight} setFunction={setInsight}/>
+                    <CheckboxField title='Intimidation' label="Intimidation" value={intimidation} setFunction={setIntimidation}/>
+                    <CheckboxField title='Investigation' label="Investigation" value={investigation} setFunction={setInvestigation}/>
+                    <CheckboxField title='Medicine' label="Medicine" value={medicine} setFunction={setMedicine}/>
+                    <CheckboxField title='Nature' label="Nature" value={nature} setFunction={setNature}/>
+                    <CheckboxField title='Perception' label="Perception" value={perception} setFunction={setPerception}/>
+                    <CheckboxField title='Performance' label="Performance" value={performance} setFunction={setPerformance}/>
+                    <CheckboxField title='Persuasion' label="Persuasion" value={persuasion} setFunction={setPersuasion}/>
+                    <CheckboxField title='Religion' label="Religion" value={religion} setFunction={setReligion}/>
+                    <CheckboxField title='SleightOfHand' label="Sleight of Hand" value={sleightOfHand} setFunction={setSleightOfHand}/>
                     <CheckboxField title="Stealth" label="Stealth" value={stealth} setFunction={setStealth} />
                     <CheckboxField title="Survival" label="Survival" value={survival} setFunction={setSurvival} />
                 </div>
