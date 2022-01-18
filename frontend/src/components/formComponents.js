@@ -101,6 +101,8 @@ export const DropDownList = ({ field, optionsList, listValue, listSetFunction })
     const [selected, setSelected] = useState("")
     const [addedItemNames, setItemNames] = useState([])
 
+    console.log(listValue)
+
     const add = (event) => {
         event.preventDefault()
         if (selected === ""){
@@ -130,6 +132,9 @@ export const DropDownList = ({ field, optionsList, listValue, listSetFunction })
             <p><b>Added:</b></p>
             {addedItemNames.map(value =>
                 <p key={value}>{value}</p>
+                )}
+            {listValue.map(item =>
+                <p key={item.id}>{item.name}</p>
                 )}
         </div>
     )
