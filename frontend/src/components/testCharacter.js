@@ -2,7 +2,7 @@ import react, { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 
 import createService from '../services/creations'
-import { NewFormField, AddToSimpleList, AddItemToList, CheckboxField } from "./formComponents"
+import { NewFormField, AddToSimpleList, AddItemToList, CheckboxField, DropDownList } from "./formComponents"
 
 const NewForm = ({ token, handleSubmitToBackend }) => {
     const { characterId } = useParams()
@@ -195,11 +195,6 @@ const NewForm = ({ token, handleSubmitToBackend }) => {
 
         const w = await createService.getWeapons()
         setGotWeapons(w)
-
-        console.log("Got items:")
-        console.log(gotEquipment)
-        console.log(gotSpells)
-        console.log(gotWeapons)
     }
 
     const handleSubmit = (event) => {
@@ -309,6 +304,9 @@ const NewForm = ({ token, handleSubmitToBackend }) => {
                 <AddItemToList listHeader="Other Proficiencies" listValue={otherProficiencies} listSetFunction={setOtherProficiencies} />
                 
                 <NewFormField type="text" label="Spell Casting Ability" value={spellCasting} setFunction={setSpellCasting} />
+
+                <DropDownList field="Equipment" optionsList={gotEquipment} listValue={equip} listSetFunction={setEquip} />
+
                 <AddItemToList listHeader="Features" listValue={features} listSetFunction={setFeatures} />
                 
                 <div>
