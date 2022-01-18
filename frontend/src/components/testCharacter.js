@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom"
 import createService from '../services/creations'
 import { NewFormField, AddToSimpleList, AddItemToList, CheckboxField, DropDownList } from "./formComponents"
 
-const NewForm = ({ token, handleSubmitToBackend }) => {
+const NewForm = ({ token, handleSubmitToBackend, userCreations }) => {
     const { characterId } = useParams()
     const [character, setCharacter] = useState({})
 
@@ -187,14 +187,19 @@ const NewForm = ({ token, handleSubmitToBackend }) => {
     }
 
     const getItems = async () => {
+        // Get public equipment.
         const e = await createService.getEquipment()
-        setGotEquipment(e)
+        // Add user's created equipment.
+        const allEquipment = e.concat(userCreations.equipment)
+        setGotEquipment(allEquipment)
 
         const s = await createService.getSpells()
-        setGotSpells(s)
+        const allSpells = s.concat(userCreations.spells)
+        setGotSpells(allSpells)
 
         const w = await createService.getWeapons()
-        setGotWeapons(w)
+        const allWeapons = w.concat(userCreations.weapons)
+        setGotWeapons(allWeapons)
     }
 
     const handleSubmit = (event) => {
