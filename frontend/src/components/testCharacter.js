@@ -65,6 +65,10 @@ const NewForm = ({ token, handleSubmitToBackend }) => {
     const [platinum, setPlatinum] = useState(0)
     const [electrum, setElectrum] = useState(0)
 
+    const [gotEquipment, setGotEquipment] = useState([])
+    const [gotSpells, setGotSpells] = useState([])
+    const [gotWeapons, setGotWeapons] = useState([])
+
     useEffect(() => {
         getCharacter()
         getItems()
@@ -184,7 +188,18 @@ const NewForm = ({ token, handleSubmitToBackend }) => {
 
     const getItems = async () => {
         const e = await createService.getEquipment()
-        console.log(JSON.stringify(e))
+        setGotEquipment(e)
+
+        const s = await createService.getSpells()
+        setGotSpells(s)
+
+        const w = await createService.getWeapons()
+        setGotWeapons(w)
+
+        console.log("Got items:")
+        console.log(gotEquipment)
+        console.log(gotSpells)
+        console.log(gotWeapons)
     }
 
     const handleSubmit = (event) => {
