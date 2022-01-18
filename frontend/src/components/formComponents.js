@@ -99,7 +99,6 @@ export const AddToSimpleList = ({ listHeader, label, listValue, listSetFunction 
 
 export const DropDownList = ({ field, optionsList, listValue, listSetFunction }) => {
     const [selected, setSelected] = useState("")
-    const [addedItemNames, setItemNames] = useState([])
 
     console.log(listValue)
 
@@ -112,8 +111,7 @@ export const DropDownList = ({ field, optionsList, listValue, listSetFunction })
         const string = selected.split(",")
         const selectedId = string[0]
         const selectedName = string[1]
-        listSetFunction([...listValue, selectedId])
-        setItemNames([...addedItemNames, selectedName])
+        listSetFunction([...listValue, {id: selectedId, name: selectedName}])
 
         setSelected("")
     }
@@ -130,9 +128,6 @@ export const DropDownList = ({ field, optionsList, listValue, listSetFunction })
             <button onClick={add}>Add</button>
 
             <p><b>Added:</b></p>
-            {addedItemNames.map(value =>
-                <p key={value}>{value}</p>
-                )}
             {listValue.map(item =>
                 <p key={item.id}>{item.name}</p>
                 )}
