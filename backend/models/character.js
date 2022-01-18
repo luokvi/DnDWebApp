@@ -47,10 +47,7 @@ const characterSchema = new mongoose.Schema({
     amount: { type: Number, min: 0 },
     used: { type: Number, min: 0 }
   }],
-  spells: {
-    cantrips: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Spell', required: true }],
-    prepared: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Spell', required: true }]
-  },
+  spells: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Spell', required: true }],
   equipment: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Equipment', required: true }],
   storage: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Equipment', required: true }],
   features: [{ 
