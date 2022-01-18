@@ -67,8 +67,7 @@ const NewForm = ({ token, handleSubmitToBackend }) => {
 
     useEffect(() => {
         getCharacter()
-
-        // TODO: get weapons, spells, equipment.
+        getItems()
     }, [])
 
     const getCharacter = async () => {
@@ -181,6 +180,11 @@ const NewForm = ({ token, handleSubmitToBackend }) => {
 
         console.log("Chara:")
         console.log(chara)
+    }
+
+    const getItems = async () => {
+        const e = await createService.getEquipment()
+        console.log(JSON.stringify(e))
     }
 
     const handleSubmit = (event) => {
