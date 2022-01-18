@@ -12,11 +12,11 @@ export const FormField = ({ id, title, type, value, setFunction }) => {
 
 export const CheckboxField = ({ title, label, value, setFunction }) => {
     // If value already set to true, show checked checkbox.
-    if (value !== ""){
+    if (value !== "0"){
         return(
             <div>
             <input type="checkbox" id={title} name={title}
-            value={title} onChange={() => setFunction("")} checked/>
+            value={title} onChange={({target}) => setFunction("0")} checked/>
             <label htmlFor={title}>{label}</label>
         </div>
         )

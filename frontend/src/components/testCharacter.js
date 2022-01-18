@@ -30,24 +30,24 @@ const NewForm = ({ token, handleSubmitToBackend, userCreations }) => {
     const [pWis, setPWis] = useState("")
     const [bonus, setBonus] = useState("")
 
-    const [acrobatics, setAcrobatics] = useState("")
-    const [animalHandling, setAnimalHandling] = useState("")
-    const [arcana, setArcana] = useState("")
-    const [athletics, setAthletics] = useState("")
-    const [deception, setDeception] = useState("")
-    const [history, setHistory] = useState("")
-    const [insight, setInsight] = useState("")
-    const [intimidation, setIntimidation] = useState("")
-    const [investigation, setInvestigation] = useState("")
-    const [medicine, setMedicine] = useState("")
-    const [nature, setNature] = useState("")
-    const [perception, setPerception] = useState("")
-    const [performance, setPerformance] = useState("")
-    const [persuasion, setPersuasion] = useState("")
-    const [religion, setReligion] = useState("")
-    const [sleightOfHand, setSleightOfHand] = useState("")
-    const [stealth, setStealth] = useState("")
-    const [survival, setSurvival] = useState("")
+    const [acrobatics, setAcrobatics] = useState("0")
+    const [animalHandling, setAnimalHandling] = useState("0")
+    const [arcana, setArcana] = useState("0")
+    const [athletics, setAthletics] = useState("0")
+    const [deception, setDeception] = useState("0")
+    const [history, setHistory] = useState("0")
+    const [insight, setInsight] = useState("0")
+    const [intimidation, setIntimidation] = useState("0")
+    const [investigation, setInvestigation] = useState("0")
+    const [medicine, setMedicine] = useState("0")
+    const [nature, setNature] = useState("0")
+    const [perception, setPerception] = useState("0")
+    const [performance, setPerformance] = useState("0")
+    const [persuasion, setPersuasion] = useState("0")
+    const [religion, setReligion] = useState("0")
+    const [sleightOfHand, setSleightOfHand] = useState("0")
+    const [stealth, setStealth] = useState("0")
+    const [survival, setSurvival] = useState("0")
 
     const [lan, setLan] = useState([])
     const [otherProficiencies, setOtherProficiencies] = useState([])
@@ -212,7 +212,7 @@ const NewForm = ({ token, handleSubmitToBackend, userCreations }) => {
         let listOfProficiencies = [acrobatics, animalHandling, arcana, athletics, deception, history, insight, intimidation, investigation,
             medicine, nature, perception, performance, persuasion, religion, sleightOfHand, stealth, survival]
             
-        listOfProficiencies = listOfProficiencies.filter(p => p !== '')
+        listOfProficiencies = listOfProficiencies.filter(p => p !== '0')
 
         const newCharacter = {
             name: name,
