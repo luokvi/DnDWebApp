@@ -256,7 +256,6 @@ const NewForm = ({ token, handleSubmitToBackend, userCreations }) => {
                 electrum: electrum
             }
         }
-        console.log(newCharacter)
 
         // Send new character to backend or update existing one.
         handleSubmitToBackend(newCharacter)
