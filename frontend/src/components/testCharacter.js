@@ -308,7 +308,9 @@ const NewForm = ({ token, handleSubmitToBackend }) => {
                 
                 <NewFormField type="text" label="Spell Casting Ability" value={spellCasting} setFunction={setSpellCasting} />
 
+                <DropDownList field="Spells" optionsList={gotSpells} listValue={spells} listSetFunction={setSpells} />
                 <DropDownList field="Equipment" optionsList={gotEquipment} listValue={equip} listSetFunction={setEquip} />
+                <DropDownList field="Weapons" optionsList={gotWeapons} listValue={weapons} listSetFunction={setWeapons} />
 
                 <AddItemToList listHeader="Features" listValue={features} listSetFunction={setFeatures} />
                 
