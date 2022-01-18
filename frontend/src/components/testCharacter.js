@@ -234,11 +234,14 @@ const NewForm = ({ token, handleSubmitToBackend }) => {
             proficiencies: listOfProficiencies,
             languages: lan,
             otherProficiencies: otherProficiencies,
-            weapons: weapons,
+            // Save only weapon ids.
+            weapons: weapons.map(w => w.id),
             spellCastingAbility: spellCasting,
-            spells: spells,
-            equipment: equip,
-            storage: storage,
+            // Save only spell ids.
+            spells: spells.map(s => s.id),
+            // Save only equipment ids.
+            equipment: equip.map(e => e.id),
+            storage: storage.map(s => s.id),
             features: features,
             coins: {
                 copper: copper,
