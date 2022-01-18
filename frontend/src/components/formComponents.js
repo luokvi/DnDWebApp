@@ -100,14 +100,12 @@ export const AddToSimpleList = ({ listHeader, label, listValue, listSetFunction 
 export const DropDownList = ({ field, optionsList, listValue, listSetFunction }) => {
     const [selected, setSelected] = useState("")
 
-    console.log(listValue)
-
     const add = (event) => {
         event.preventDefault()
         if (selected === ""){
             return
         }
-        console.log("selected: " + selected)
+
         const string = selected.split(",")
         const selectedId = string[0]
         const selectedName = string[1]
