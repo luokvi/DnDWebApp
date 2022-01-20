@@ -9,9 +9,9 @@ const UserPage = ({ user, token }) => {
 
     const [gotUser, setUser] = useState("")
 
-    useEffect((
+    useEffect(() => {
         getUser()
-    ), [])
+    }, [])
 
     const getUser = async () => {
         const u = await userService.getUser(id)
