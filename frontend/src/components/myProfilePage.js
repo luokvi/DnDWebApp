@@ -1,14 +1,23 @@
 import React, { useState } from "react"
 import { Link, Outlet } from 'react-router-dom'
 import userService from '../services/users'
+import { useNavigate } from "react-router-dom"
 
 import FriendRequest from './friendRequest'
 
 const Character = ({ c }) => {
+    const navigate = useNavigate()
+
+    const handleClick = (event) => {
+        event.preventDefault()
+
+        navigate("/character/" + c.id)
+    }
     return(
         <div key={c.id}>
             <h5>{c.name}</h5>
             <p>{c.level} level {c.class}, {c.race}</p>
+            <button onClick={handleClick}>Edit</button>
         </div>
     )
 }
