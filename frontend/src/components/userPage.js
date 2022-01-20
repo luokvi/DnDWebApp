@@ -21,6 +21,7 @@ const UserPage = ({ user, token }) => {
     const getUser = async () => {
         const u = await userService.getOtherUser(id)
         setUser(u)
+        console.log(u)
 
         // Check if this user is a friend.
         user.friends.forEach(f => {
@@ -38,7 +39,6 @@ const UserPage = ({ user, token }) => {
 
         // Check if sent friendrequest.
         user.sentFriendRequests.forEach(r => {
-            console.log(r)
             if (r.receiver === id){
                 setSentRequest(true)
             }
@@ -66,6 +66,11 @@ const UserPage = ({ user, token }) => {
             {commonFriends.map(f =>
                 <p key={f.id}>{f.username}</p>
             )}
+
+            <h3>Characters</h3>
+            {gotUser.characters.map(c => 
+                <p key={c.id}>{c.name}</p>
+                )}
         </div>
     )
 }
