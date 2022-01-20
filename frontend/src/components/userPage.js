@@ -19,9 +19,11 @@ const UserPage = ({ user, token }) => {
         setUser(u)
 
         // Check if this user is a friend.
-        const userIsFriend = user.friends.includes(id)
-        console.log("User is friend: " + userIsFriend)
-        setIsFriend(userIsFriend)
+        user.friends.forEach(f => {
+          if (f.id === id){
+              setIsFriend(true)
+          }  
+        })
     }
 
     return(
