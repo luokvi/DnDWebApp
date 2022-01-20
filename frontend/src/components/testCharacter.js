@@ -207,9 +207,6 @@ const NewForm = ({ token, userId, handleSubmitToBackend, userCreations }) => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-
-        console.log("Submit")
-        console.log(character)
         
         // Get Proficiencies from checkboxes.
         let listOfProficiencies = [acrobatics, animalHandling, arcana, athletics, deception, history, insight, intimidation, investigation,
@@ -261,9 +258,6 @@ const NewForm = ({ token, userId, handleSubmitToBackend, userCreations }) => {
                 electrum: electrum
             }
         }
-
-        console.log("New Character:")
-        console.log(newCharacter)
 
         // Send new character to backend or update existing one.
         handleSubmitToBackend(newCharacter, isNewCharacter)
@@ -328,11 +322,11 @@ const NewForm = ({ token, userId, handleSubmitToBackend, userCreations }) => {
                 
                 <div>
                     <h4>Coins</h4>
-                    <NewFormField type="number" label="Copper" value={copper} setFunction={setCopper} min="0"/>
-                    <NewFormField type="number" label="Silver" value={silver} setFunction={setSilver} min="0"/>
-                    <NewFormField type="number" label="Gold" value={gold} setFunction={setGold} min="0"/>
-                    <NewFormField type="number" label="Platinum" value={platinum} setFunction={setPlatinum} min="0"/>
-                    <NewFormField type="number" label="Electrum" value={electrum} setFunction={setElectrum} min="0"/>
+                    <NewFormField type="Number" label="Copper" value={copper} setFunction={setCopper} min="0"/>
+                    <NewFormField type="Number" label="Silver" value={silver} setFunction={setSilver} min="0"/>
+                    <NewFormField type="Number" label="Gold" value={gold} setFunction={setGold} min="0"/>
+                    <NewFormField type="Number" label="Platinum" value={platinum} setFunction={setPlatinum} min="0"/>
+                    <NewFormField type="Number" label="Electrum" value={electrum} setFunction={setElectrum} min="0"/>
                 </div>
 
                 <button type="submit">Submit</button>

@@ -37,12 +37,13 @@ function App() {
     )
   }
 
-  const handleCharacterSubmit = (character, isNew) => {
+  const handleCharacterSubmit = (newCharacter, isNew) => {
     console.log("Handling character to backend")
+    console.log(newCharacter)
     if (isNew){
-      CreationsService.createCharacter(character, token)
+      CreationsService.createCharacter(newCharacter, token)
     } else {
-      CreationsService.updateCharacter(character, token)
+      CreationsService.updateCharacter(newCharacter, token)
     }
     
   }
