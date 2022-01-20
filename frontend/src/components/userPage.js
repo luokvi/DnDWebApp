@@ -1,11 +1,12 @@
-import React, { useEffect,  } from "react"
+import React, { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { useState } from "react/cjs/react.development"
+import { useNavigate } from "react-router-dom"
 
 import userService from '../services/users'
 
 const UserPage = ({ user, token }) => {
     const { id } = useParams()
+    const navigate = useNavigate()
 
     const [gotUser, setUser] = useState("")
     const [isFriend, setIsFriend] = useState(false)
@@ -19,9 +20,14 @@ const UserPage = ({ user, token }) => {
     }, [])
 
     const getUser = async () => {
+        // If trying to get self, navigate to myProfile.
+        if (id === user.id){
+            navigate("/myProfile")
+            return
+        }
+
         const u = await userService.getOtherUser(id)
         setUser(u)
-        console.log(u)
 
         // Check if this user is a friend.
         user.friends.forEach(f => {
