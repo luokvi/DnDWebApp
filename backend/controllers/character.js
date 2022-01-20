@@ -80,6 +80,7 @@ charaRouter.patch('/:id', async (req, res) => {
         return
     }
 
+    console.log("Updating character " + req.body.name)
     const id = req.params.id
     const body = req.body
 
