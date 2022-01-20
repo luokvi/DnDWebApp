@@ -1,5 +1,6 @@
 import react, { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 import createService from '../services/creations'
 import { NewFormField, AddToSimpleList, AddItemToList, CheckboxField, DropDownList } from "./formComponents"
@@ -69,6 +70,8 @@ const CharacterForm = ({ token, userId, handleSubmitToBackend, userCreations }) 
     const [gotEquipment, setGotEquipment] = useState([])
     const [gotSpells, setGotSpells] = useState([])
     const [gotWeapons, setGotWeapons] = useState([])
+
+    const navigate = useNavigate()
 
     useEffect(() => {
         getCharacter()
@@ -261,6 +264,10 @@ const CharacterForm = ({ token, userId, handleSubmitToBackend, userCreations }) 
 
         // Send new character to backend or update existing one.
         handleSubmitToBackend(newCharacter, isNewCharacter)
+
+        //Move to profile page.
+        navigate("/myProfile")
+
     }
 
     return(
