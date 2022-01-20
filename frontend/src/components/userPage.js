@@ -38,7 +38,7 @@ const UserPage = ({ user, token }) => {
         user.sentFriendRequests.forEach(r => {
             console.log(r)
             if (r.receiver === id){
-                setRequest(true)
+                setSentRequest(true)
             }
         })
     }
