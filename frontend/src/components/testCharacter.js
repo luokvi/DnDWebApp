@@ -7,7 +7,7 @@ import { NewFormField, AddToSimpleList, AddItemToList, CheckboxField, DropDownLi
 const NewForm = ({ token, handleSubmitToBackend, userCreations }) => {
     const { characterId } = useParams()
     const [character, setCharacter] = useState({})
-    let isNewCharacter = true
+    const [isNewCharacter, setIsNew] = useState(true)
 
     const [name, setName] = useState("")
     const [race, setRace] = useState("")
@@ -83,7 +83,9 @@ const NewForm = ({ token, handleSubmitToBackend, userCreations }) => {
             // If no character found, return from this function.
             return
         }
-        isNewCharacter = false
+        setIsNew(false)
+        console.log(isNewCharacter)
+
         setCharacter(chara)
         setName(chara.name)
         setRace(chara.race)
