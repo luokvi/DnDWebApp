@@ -10,8 +10,8 @@ usersRouter.get('/', async (req, res) => {
   res.json(users.map( user => user.toJSON() ))
 })
 
+// User's own info
 usersRouter.get('/:id', async (req, res) => {
-  // TODO: return more info if user's own info vs other user's.
   const id = req.params.id
 
   const user = await User.findById(id).populate('friends', { username: 1}).populate(
@@ -32,7 +32,27 @@ usersRouter.get('/:id', async (req, res) => {
   }
 
   res.json(user.toJSON())
-}) 
+})
+
+// Other user's info.
+usersRouter.get('/other/:id', async (req, res) => {
+  const id = req.params.id
+
+  const user = await User.findById(id).populate('friends', { username: 1}).populate(
+    'characters', {name: 1, race: 1, class: 1, level: 1}).populate(
+    'creations.campaigns', {name: 1}).populate(
+    'creations.enemies', {name: 1, race: 1, description: 1}).populate(
+    'creations.equipment', {name: 1, description: 1}).populate(
+    'creations.weapons', {name: 1, description: 1}).populate(
+    'creations.spells', {name: 1, description: 1})
+
+  if (user === null){
+    res.status(404).end()
+    return
+  }
+
+  res.json(user.toJSON())
+})
 
 usersRouter.post('/', async (req, res) => {
   const body = req.body
