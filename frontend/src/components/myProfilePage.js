@@ -16,7 +16,8 @@ const Character = ({ c }) => {
     return(
         <div key={c.id}>
             <h5>{c.name}</h5>
-            <p>{c.level} level {c.class}, {c.race}</p>
+            <p>level {c.level} {c.class}</p>
+            <p>{c.race}</p>
             <button onClick={handleClick}>Edit</button>
         </div>
     )
@@ -43,7 +44,7 @@ const Campaign = ({ campaigns }) => {
 const Friend = ({ f }) => {
     return(
         <li key={f.id}>
-            <Link to={"/user/" + f.id}>
+            <Link to={"/user/" + f.id} >
                 {f.username}
             </Link>
         </li>

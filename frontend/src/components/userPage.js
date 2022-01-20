@@ -53,6 +53,15 @@ const UserPage = ({ user, token }) => {
         setCommonFriends(common.filter(f => f !== ""))
     }
 
+    // If no user yet, return loading page
+    if (gotUser === ""){
+        return(
+            <div>
+                <p>Loading...</p>
+            </div>
+        )
+    }
+
     return(
         <div>
             <h2>User {gotUser.username}</h2>
@@ -69,7 +78,9 @@ const UserPage = ({ user, token }) => {
 
             <h3>Characters</h3>
             {gotUser.characters.map(c => 
-                <p key={c.id}>{c.name}</p>
+                <p key={c.id}>
+                    <b>{c.name}</b>, a {c.race}, level {c.level} {c.class}
+                </p>
                 )}
         </div>
     )
