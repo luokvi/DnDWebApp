@@ -80,9 +80,11 @@ charaRouter.patch('/:id', async (req, res) => {
         return
     }
 
-    console.log("Updating character " + req.body.name)
     const id = req.params.id
     const body = req.body
+
+    console.log("Got body:")
+    console.log(body)
 
     const chara = await Character.findByIdAndUpdate(id, body.update, { new: true })
 
