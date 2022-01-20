@@ -14,6 +14,19 @@ const createCharacter = async (body, token) => {
     return res.data
 }
 
+const updateCharacter = async (body, token) => {
+    const characterId = body.characterId
+    const url = baseUrl + "character/" + characterId
+    const axiosConfig = {
+        headers: {
+            'Authorization': 'Bearer ' + token
+        }
+    }
+
+    const res = await axios.patch(url, body, axiosConfig)
+    return res.data
+}
+
 const getCharacter = async (id, token) => {
     const url = baseUrl + "character/" + id
     const axiosConfig = {
@@ -75,4 +88,4 @@ const getWeapons = async () => {
     return res.data
 }
 
-export default { createCharacter, createItem, getEquipment, getSpells, getWeapons, getCharacter }
+export default { createCharacter, createItem, getEquipment, getSpells, getWeapons, getCharacter, updateCharacter }
