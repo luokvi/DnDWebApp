@@ -1,15 +1,5 @@
 import React, { useState } from "react"
 
-export const FormField = ({ id, title, type, value, setFunction }) => {
-    return(
-        <div>
-            {title}: 
-            <input id={id} type={type} value={value} name={title}
-            onChange={({ target }) => setFunction(target.value)}/>
-        </div>
-    )
-}
-
 export const CheckboxField = ({ title, label, value, setFunction }) => {
     // If value already set to true, show checked checkbox.
     if (value !== "0"){
