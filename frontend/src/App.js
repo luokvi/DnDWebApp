@@ -57,7 +57,7 @@ function App() {
           <Route path="/createCharacter" element={ <CharacterCreation userId={user.id} token={token} userCreations={user.creations} /> } />
           <Route path="/createItem" element={ <ItemCreationForm userId={user.id} token={token} /> } />
           
-          <Route path="/test/character/:characterId" element={ <NewForm token={token} handleSubmitToBackend={ handleCharacterSubmit } userCreations={user.creations} /> } />
+          <Route path="/test/character/:characterId" element={ <NewForm token={token} userId={user.id} handleSubmitToBackend={ handleCharacterSubmit } userCreations={user.creations} /> } />
         </Routes>
       </div>
   );

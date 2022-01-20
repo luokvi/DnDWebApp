@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom"
 import createService from '../services/creations'
 import { NewFormField, AddToSimpleList, AddItemToList, CheckboxField, DropDownList } from "./formComponents"
 
-const NewForm = ({ token, handleSubmitToBackend, userCreations }) => {
+const NewForm = ({ token, userId, handleSubmitToBackend, userCreations }) => {
     const { characterId } = useParams()
     const [character, setCharacter] = useState({})
     const [isNewCharacter, setIsNew] = useState(true)
@@ -218,6 +218,7 @@ const NewForm = ({ token, handleSubmitToBackend, userCreations }) => {
         listOfProficiencies = listOfProficiencies.filter(p => p !== '0')
 
         const newCharacter = {
+            userId: userId,
             characterId: characterId,
             name: name,
             race: race,
