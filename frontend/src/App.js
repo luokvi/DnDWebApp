@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import { BrowserRouter as Router, Route, Routes, useNavigate } from "react-router-dom"
 
 import userService from './services/users'
+import CreationsService from './services/creations'
 import LoginForm from './components/loginForm'
 import ProfilePage from "./components/myProfilePage"
 import CharacterCreation from "./components/characterCreationForm"
@@ -36,9 +37,14 @@ function App() {
     )
   }
 
-  const handleCharacterSubmit = (character) => {
+  const handleCharacterSubmit = (character, isNew) => {
     console.log("Handling character to backend")
-    console.log(character)
+    if (isNew){
+      CreationsService.createCharacter(character, token)
+    } else {
+      CreationsService.updateCharacter(character, token)
+    }
+    
   }
 
   return (

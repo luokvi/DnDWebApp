@@ -7,6 +7,7 @@ import { NewFormField, AddToSimpleList, AddItemToList, CheckboxField, DropDownLi
 const NewForm = ({ token, handleSubmitToBackend, userCreations }) => {
     const { characterId } = useParams()
     const [character, setCharacter] = useState({})
+    let isNewCharacter = true
 
     const [name, setName] = useState("")
     const [race, setRace] = useState("")
@@ -82,6 +83,7 @@ const NewForm = ({ token, handleSubmitToBackend, userCreations }) => {
             // If no character found, return from this function.
             return
         }
+        isNewCharacter = false
         setCharacter(chara)
         setName(chara.name)
         setRace(chara.race)
@@ -215,6 +217,7 @@ const NewForm = ({ token, handleSubmitToBackend, userCreations }) => {
         listOfProficiencies = listOfProficiencies.filter(p => p !== '0')
 
         const newCharacter = {
+            characterId: characterId,
             name: name,
             race: race,
             class: charClass,
@@ -258,7 +261,7 @@ const NewForm = ({ token, handleSubmitToBackend, userCreations }) => {
         }
 
         // Send new character to backend or update existing one.
-        handleSubmitToBackend(newCharacter)
+        handleSubmitToBackend(newCharacter, isNewCharacter)
     }
 
     return(
