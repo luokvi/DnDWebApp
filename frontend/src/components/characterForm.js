@@ -1,4 +1,4 @@
-import react, { useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
 
@@ -7,7 +7,6 @@ import { NewFormField, AddToSimpleList, AddItemToList, CheckboxField, DropDownLi
 
 const CharacterForm = ({ token, userId, handleSubmitToBackend, userCreations }) => {
     const { characterId } = useParams()
-    const [character, setCharacter] = useState({})
     const [isNewCharacter, setIsNew] = useState(true)
 
     const [name, setName] = useState("")
@@ -88,7 +87,6 @@ const CharacterForm = ({ token, userId, handleSubmitToBackend, userCreations }) 
         }
         setIsNew(false)
 
-        setCharacter(chara)
         setName(chara.name)
         setRace(chara.race)
         setClass(chara.class)
