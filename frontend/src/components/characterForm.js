@@ -265,7 +265,10 @@ const CharacterForm = ({ token, userId, handleSubmitToBackend, userCreations }) 
 
     return(
         <div>
-            <h2>Testing...</h2>
+            { isNewCharacter ? <h2>Create New Character</h2>
+                : <h2>Edit Character {name}</h2>
+            }
+            
             <form onSubmit={handleSubmit}>
                 <NewFormField type="text" label="Name" value={name} setFunction={setName} />
                 <NewFormField type="text" label="Race" value={race} setFunction={setRace}/>
