@@ -12,6 +12,8 @@ const UserPage = ({ user, token }) => {
     const [hasFriendRequest, setRequest] = useState(false)
     const [hasSentFriendRequest, setSentRequest] = useState(false)
 
+    const [commonFriends, setCommonFriends] = useState([])
+
     useEffect(() => {
         getUser()
     }, [])
@@ -41,6 +43,14 @@ const UserPage = ({ user, token }) => {
                 setSentRequest(true)
             }
         })
+
+        let common = u.friends
+        common.forEach(f => {
+            if (!user.friends.includes(f)){
+                f = ""
+            }
+        })
+        setCommonFriends(common.filter(f => f !== ""))
     }
 
     return(
@@ -51,6 +61,11 @@ const UserPage = ({ user, token }) => {
                     : hasSentFriendRequest ? <p>Sent friendrequest</p>
                         : <button>Send friendrequest</button>
             }
+
+            <h3>Common friends</h3>
+            {commonFriends.map(f =>
+                <p key={f.id}>{f.username}</p>
+            )}
         </div>
     )
 }
