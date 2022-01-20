@@ -78,6 +78,10 @@ const ProfilePage = ({ user, token }) => {
                 )}
             </ul>
             <h3>Characters:</h3>
+            < Link to={"/character/new"}>
+                Create a new character
+            </Link>
+
             {user.characters.map(chara => 
                 <Character c={chara} key={chara.id}/>
                 )}
