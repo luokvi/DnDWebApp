@@ -260,6 +260,7 @@ const NewForm = ({ token, handleSubmitToBackend, userCreations }) => {
             }
         }
 
+        console.log("Is new: " + isNewCharacter)
         // Send new character to backend or update existing one.
         handleSubmitToBackend(newCharacter, isNewCharacter)
     }
