@@ -14,7 +14,7 @@ const Character = ({ c }) => {
         navigate("/character/" + c.id)
     }
     return(
-        <div key={c.id}>
+        <div>
             <h5>{c.name}</h5>
             <p>level {c.level} {c.class}</p>
             <p>{c.race}</p>
@@ -79,7 +79,7 @@ const ProfilePage = ({ user, token }) => {
             </ul>
             <h3>Characters:</h3>
             {user.characters.map(chara => 
-                <Character c={chara} />
+                <Character c={chara} key={chara.id}/>
                 )}
             <Campaign campaigns={user.creations.campaigns} />
             <Outlet />
