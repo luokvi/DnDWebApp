@@ -43,7 +43,9 @@ const Campaign = ({ campaigns }) => {
 const Friend = ({ f }) => {
     return(
         <li key={f.id}>
-            {f.username}
+            <Link to={"/user/" + f.id}>
+                {f.username}
+            </Link>
         </li>
     )
 }
