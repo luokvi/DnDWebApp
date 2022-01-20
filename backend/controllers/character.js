@@ -86,6 +86,8 @@ charaRouter.patch('/:id', async (req, res) => {
 
     const chara = await Character.findByIdAndUpdate(id, body.update, { new: true })
 
+    console.log(chara.toJSON())
+
     res.json(chara.toJSON())
 })
 
