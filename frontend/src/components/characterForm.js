@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom"
 import createService from '../services/creations'
 import { NewFormField, AddToSimpleList, AddItemToList, CheckboxField, DropDownList } from "./formComponents"
 
-const NewForm = ({ token, userId, handleSubmitToBackend, userCreations }) => {
+const CharacterForm = ({ token, userId, handleSubmitToBackend, userCreations }) => {
     const { characterId } = useParams()
     const [character, setCharacter] = useState({})
     const [isNewCharacter, setIsNew] = useState(true)
@@ -335,4 +335,4 @@ const NewForm = ({ token, userId, handleSubmitToBackend, userCreations }) => {
     )
 }
 
-export default NewForm
+export default CharacterForm

@@ -5,10 +5,9 @@ import userService from './services/users'
 import CreationsService from './services/creations'
 import LoginForm from './components/loginForm'
 import ProfilePage from "./components/myProfilePage"
-import CharacterCreation from "./components/characterCreationForm"
 import ItemCreationForm from "./components/itemCreationForm"
 
-import NewForm from "./components/testCharacter"
+import CharacterForm from "./components/characterForm"
 
 function App() {
   const [token, setToken] = useState("")
@@ -55,10 +54,9 @@ function App() {
 
         <Routes>
           <Route path="/myProfile" element={<ProfilePage user={user} token={token} />} />
-          <Route path="/createCharacter" element={ <CharacterCreation userId={user.id} token={token} userCreations={user.creations} /> } />
+          <Route path="/character/:characterId" element={ <CharacterForm token={token} userId={user.id} handleSubmitToBackend={ handleCharacterSubmit } userCreations={user.creations} /> } />
           <Route path="/createItem" element={ <ItemCreationForm userId={user.id} token={token} /> } />
           
-          <Route path="/test/character/:characterId" element={ <NewForm token={token} userId={user.id} handleSubmitToBackend={ handleCharacterSubmit } userCreations={user.creations} /> } />
         </Routes>
       </div>
   );
