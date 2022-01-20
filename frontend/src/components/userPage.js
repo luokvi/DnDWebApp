@@ -9,6 +9,8 @@ const UserPage = ({ user, token }) => {
 
     const [gotUser, setUser] = useState("")
     const [isFriend, setIsFriend] = useState(false)
+    const [hasFriendRequest, setRequest] = useState(false)
+    const [hasSentFriendRequest, setSentRequest] = useState(false)
 
     useEffect(() => {
         getUser()
@@ -24,13 +26,30 @@ const UserPage = ({ user, token }) => {
               setIsFriend(true)
           }  
         })
+
+        // Check if friendrequest.
+        user.friendRequests.forEach(r => {
+            if (r.sender.id === id){
+                setRequest(true)
+            }
+        })
+
+        // Check if sent friendrequest.
+        user.sentFriendRequests.forEach(r => {
+            console.log(r)
+            if (r.receiver === id){
+                setRequest(true)
+            }
+        })
     }
 
     return(
         <div>
             <h2>User {gotUser.username}</h2>
             {isFriend ? <p>A friend!</p>
-                : <button>Send friendrequest</button>
+                : hasFriendRequest ? <button>Accept friendRequest</button>
+                    : hasSentFriendRequest ? <p>Sent friendrequest</p>
+                        : <button>Send friendrequest</button>
             }
         </div>
     )
