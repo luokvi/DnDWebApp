@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router-dom"
 
 import userService from '../services/users'
 
@@ -44,7 +45,9 @@ const FriendRequest = ({ user, r, setNotif, token }) => {
     return(
         <li>
             <p>
-                From: {r.sender.username}
+                From: <Link to={"/user/" + r.sender.id}>
+                        {r.sender.username}
+                    </Link>
                 <button onClick={accept}>accept</button>
             </p>
             <p>You have these friends in common:  
