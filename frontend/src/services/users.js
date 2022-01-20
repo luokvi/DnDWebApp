@@ -17,6 +17,13 @@ const getUser = async (userId) => {
     return res.data
 }
 
+const getOtherUser = async (userId) => {
+    const url = baseUrl + "/other/" + userId
+    const res = await axios.get(url)
+
+    return res.data
+}
+
 // Get user's username.
 const getUsersName = async(userId) => {
     const url = baseUrl + "/" + userId
@@ -45,4 +52,4 @@ const acceptFriendRequest = async (userId, senderId, requestId, token) => {
     return res.data
 }
 
-export default { getAll, getUser, acceptFriendRequest, getUsersName }
+export default { getAll, getUser, acceptFriendRequest, getOtherUser, getUsersName }

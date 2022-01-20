@@ -14,7 +14,7 @@ const UserPage = ({ user, token }) => {
     }, [])
 
     const getUser = async () => {
-        const u = await userService.getUser(id)
+        const u = await userService.getOtherUser(id)
         setUser(u)
     }
 
