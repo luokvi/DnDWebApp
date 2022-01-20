@@ -48,3 +48,4 @@
 | 16.1 | 2  | Lisää uuteen hahmonluonti-lomakkeeseen |
 | 18.1 | 1 | Vielä lisää hahmonluonti-lomakkeeseen |
 | 20.1 | 1 | Hahmonluonti-lomake valmis |
+| 20.1 | 2 | Profiilisivu muille käyttäjille. Pieniä korjauksia ja parannuksia |
