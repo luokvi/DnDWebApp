@@ -20,7 +20,7 @@ const UserPage = ({ user, token }) => {
 
     return(
         <div>
-            <h2>User {gotUser.name}</h2>
+            <h2>User {gotUser.username}</h2>
         </div>
     )
 }
