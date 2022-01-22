@@ -74,6 +74,7 @@ const ItemCreationForm = ({ userId, token, spellsList, setSpellsList, equipList,
         const created = await createService.createItem(newSpell, token)
 
         creations.push(created)
+        setSpellsList([...spellsList, created])
 
         // Empty form.
         spellNameSet("")
@@ -101,6 +102,7 @@ const ItemCreationForm = ({ userId, token, spellsList, setSpellsList, equipList,
         const created = await createService.createItem(newWeapon, token)
 
         creations.push(created)
+        setWeaponsList([...weaponsList, created])
 
         // Empty form.
         weaponNameSet("")
