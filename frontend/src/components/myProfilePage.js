@@ -59,6 +59,8 @@ const ProfilePage = ({ user, token }) => {
         )
     }
 
+    console.log(user.dateCreated)
+
     console.log(JSON.stringify(user))
     return(
         <div id={user.username}>
