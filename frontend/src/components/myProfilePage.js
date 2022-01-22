@@ -59,19 +59,23 @@ const ProfilePage = ({ user, token }) => {
         )
     }
 
-    console.log(user.dateCreated[0].split("T"))
+    // Get just the day of when user was created.
+    const dateParts = user.dateCreated[0].split("T")
+    const dateCreated = dateParts[0]
 
     console.log(JSON.stringify(user))
     return(
         <div id={user.username}>
             <h2>{user.username}</h2>
-            <p>user since <time dateTime={user.dateCreated}>{user.dateCreated}</time></p>
+            <p>User since <time dateTime={dateCreated}>{dateCreated}</time></p>
+
             <h3>Friends:</h3>
             <ul>
             {user.friends.map(friend =>
                 <Friend f={friend} key={friend.id}/>
                 )}
             </ul>
+
             <h3>Friend requests:</h3>
             <p>{notifText}</p>
             <ul>
@@ -79,6 +83,7 @@ const ProfilePage = ({ user, token }) => {
                 <FriendRequest r={request} user={user} setNotif={setNotif} token={token} key={request.id}/>
                 )}
             </ul>
+
             <h3>Characters:</h3>
             < Link to={"/character/new"}>
                 Create a new character
@@ -87,7 +92,9 @@ const ProfilePage = ({ user, token }) => {
             {user.characters.map(chara => 
                 <Character c={chara} key={chara.id}/>
                 )}
+
             <Campaign campaigns={user.creations.campaigns} />
+            
             <Outlet />
         </div>
     )
