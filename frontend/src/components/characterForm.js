@@ -80,6 +80,9 @@ const CharacterForm = ({ token, userId, handleSubmitToBackend, userCreations }) 
 
     const getCharacter = async () => {
         let chara = ""
+        if (characterId === "new"){
+            return
+        }
         try {
             chara = await createService.getCharacter(characterId, token)
         } catch{
@@ -341,7 +344,8 @@ const CharacterForm = ({ token, userId, handleSubmitToBackend, userCreations }) 
                 <button type="submit">Submit</button>
             </form>
 
-            <ItemCreationForm userId={userId} token={token} />
+            <ItemCreationForm userId={userId} token={token} spellsList={gotSpells} equipList={gotEquipment} weaponsList={gotWeapons}
+                setSpellsLiss={setGotSpells} setEquipList={setGotEquipment} setWeaponsList={setGotWeapons}/>
         </div>
     )
 }

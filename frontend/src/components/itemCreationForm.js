@@ -4,7 +4,7 @@ import createService from '../services/creations'
 
 import { CheckboxField, NewFormField } from './formComponents'
 
-const ItemCreationForm = ({ userId, token }) => {
+const ItemCreationForm = ({ userId, token, spellsList, setSpellsList, equipList, setEquipList, weaponsList, setWeaponsList }) => {
     const [equipNameValue, equipNameSet] = useState("")
     const [equipDescriptionValue, equipDescriptionSet] = useState("")
 
@@ -40,6 +40,7 @@ const ItemCreationForm = ({ userId, token }) => {
         const created = await createService.createItem(newEquip, token)
 
         creations.push(created)
+        setEquipList([...equipList ,created])
         
         // Empty form.
         equipNameSet("")
