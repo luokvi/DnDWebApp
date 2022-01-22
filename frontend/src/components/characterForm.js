@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom"
 
 import createService from '../services/creations'
 import { NewFormField, AddToSimpleList, AddItemToList, CheckboxField, DropDownList } from "./formComponents"
+import ItemCreationForm from "./itemCreationForm"
 
 const CharacterForm = ({ token, userId, handleSubmitToBackend, userCreations }) => {
     const { characterId } = useParams()
@@ -339,6 +340,8 @@ const CharacterForm = ({ token, userId, handleSubmitToBackend, userCreations }) 
 
                 <button type="submit">Submit</button>
             </form>
+
+            <ItemCreationForm userId={userId} token={token} />
         </div>
     )
 }
