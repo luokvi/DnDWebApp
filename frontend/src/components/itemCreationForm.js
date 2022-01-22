@@ -7,6 +7,7 @@ import { CheckboxField, NewFormField } from './formComponents'
 export const EquipmentCreationForm = ({ userId, token, equipList, setEquipList }) => {
     const [equipNameValue, equipNameSet] = useState("")
     const [equipDescriptionValue, equipDescriptionSet] = useState("")
+    const [creations, setCreations] = useState([])
 
     const createEquip = async (event) => {
         event.preventDefault()
@@ -19,6 +20,7 @@ export const EquipmentCreationForm = ({ userId, token, equipList, setEquipList }
         }
         const created = await createService.createItem(newEquip, token)
 
+        setCreations([...creations, created])
         setEquipList([...equipList ,created])
         
         // Empty form.
@@ -34,6 +36,13 @@ export const EquipmentCreationForm = ({ userId, token, equipList, setEquipList }
                 <NewFormField label="Description" type="text" value={equipDescriptionValue} setFunction={equipDescriptionSet} />
                 <button type="Submit">Create</button>
             </form>
+
+            <p><b>Created equipment:</b></p>
+            {creations.map(e => 
+                <p key={e.id}>
+                    <i>{e.name}</i>: {e.description}
+                </p>
+            )}
         </div>
     )
 
@@ -51,6 +60,7 @@ export const SpellCreationForm = ({ userId, token, spellsList, setSpellsList }) 
     let components = []
     const [minutesValue, minutesSet] = useState("")
     const [isConcentrationValue, concentrationSet] = useState("0")
+    const [creations, setCreations] = useState([])
 
     const createSpell = async (event) => {
         event.preventDefault()
@@ -78,6 +88,7 @@ export const SpellCreationForm = ({ userId, token, spellsList, setSpellsList }) 
         }
         const created = await createService.createItem(newSpell, token)
 
+        setCreations([...creations, created])
         setSpellsList([...spellsList, created])
 
         // Empty form.
@@ -113,6 +124,13 @@ export const SpellCreationForm = ({ userId, token, spellsList, setSpellsList }) 
                 
                 <button type="Submit">Create</button>
             </form>
+
+            <p><b>Created spells:</b></p>
+            {creations.map(s => 
+                <p key={s.id}>
+                    <i>{s.name}</i>: {s.description}
+                </p>
+            )}
         </div>
     )
 }
@@ -123,6 +141,7 @@ export const WeaponCreationForm = ({ userId, token, weaponsList, setWeaponsList 
     const [atkValue, atkSet] = useState("")
     const [damageValue, damageSet] = useState("")
     const [weaponRangeValue, weaponRangeSet] = useState("")
+    const [creations, setCreations] = useState([])
 
     const createWeapon = async (event) => {
         event.preventDefault()
@@ -138,6 +157,7 @@ export const WeaponCreationForm = ({ userId, token, weaponsList, setWeaponsList 
         }
         const created = await createService.createItem(newWeapon, token)
 
+        setCreations([...creations, created])
         setWeaponsList([...weaponsList, created])
 
         // Empty form.
@@ -159,6 +179,13 @@ export const WeaponCreationForm = ({ userId, token, weaponsList, setWeaponsList 
                 <NewFormField label="Attack Range" type="number" value={weaponRangeValue} setFunction={weaponRangeSet} min="0" />
                 <button type="Submit">Create</button>
             </form>
+
+            <p><b>Created weapons:</b></p>
+            {creations.map(w => 
+                <p key={w.id}>
+                    <i>{w.name}</i>: {w.description}
+                </p>
+            )}
         </div>
     )
 }

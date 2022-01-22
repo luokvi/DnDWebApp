@@ -345,7 +345,7 @@ const CharacterForm = ({ token, userId, handleSubmitToBackend, userCreations }) 
             </form>
 
             <EquipmentCreationForm userId={userId} token={token} equipList={gotEquipment} setEquipList={setGotEquipment} />
-            <SpellCreationForm userId={userId} token={token} spellsList={gotSpells} setSpellsLiss={setGotSpells} />
+            <SpellCreationForm userId={userId} token={token} spellsList={gotSpells} setSpellsList={setGotSpells} />
             <WeaponCreationForm userId={userId} token={token} weaponsList={gotWeapons} setWeaponsList={setGotWeapons}/>
         </div>
     )
