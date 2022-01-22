@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom"
 
 import createService from '../services/creations'
 import { NewFormField, AddToSimpleList, AddItemToList, CheckboxField, DropDownList } from "./formComponents"
-import ItemCreationForm from "./itemCreationForm"
+import { EquipmentCreationForm, SpellCreationForm, WeaponCreationForm } from "./itemCreationForm"
 
 const CharacterForm = ({ token, userId, handleSubmitToBackend, userCreations }) => {
     const { characterId } = useParams()
@@ -344,8 +344,9 @@ const CharacterForm = ({ token, userId, handleSubmitToBackend, userCreations }) 
                 <button type="submit">Submit</button>
             </form>
 
-            <ItemCreationForm userId={userId} token={token} spellsList={gotSpells} equipList={gotEquipment} weaponsList={gotWeapons}
-                setSpellsLiss={setGotSpells} setEquipList={setGotEquipment} setWeaponsList={setGotWeapons}/>
+            <EquipmentCreationForm userId={userId} token={token} equipList={gotEquipment} setEquipList={setGotEquipment} />
+            <SpellCreationForm userId={userId} token={token} spellsList={gotSpells} setSpellsLiss={setGotSpells} />
+            <WeaponCreationForm userId={userId} token={token} weaponsList={gotWeapons} setWeaponsList={setGotWeapons}/>
         </div>
     )
 }

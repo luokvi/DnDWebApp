@@ -5,7 +5,6 @@ import userService from './services/users'
 import CreationsService from './services/creations'
 import LoginForm from './components/loginForm'
 import ProfilePage from "./components/myProfilePage"
-import ItemCreationForm from "./components/itemCreationForm"
 import UserPage from './components/userPage'
 
 import CharacterForm from "./components/characterForm"
@@ -57,7 +56,6 @@ function App() {
           <Route path="/myProfile" element={ <ProfilePage user={user} token={token} /> } />
           < Route path="/user/:id" element={ <UserPage user={user} token={token} /> } />
           <Route path="/character/:characterId" element={ <CharacterForm token={token} userId={user.id} handleSubmitToBackend={ handleCharacterSubmit } userCreations={user.creations} /> } />
-          <Route path="/createItem" element={ <ItemCreationForm userId={user.id} token={token} /> } />
           
         </Routes>
       </div>

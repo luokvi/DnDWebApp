@@ -4,29 +4,9 @@ import createService from '../services/creations'
 
 import { CheckboxField, NewFormField } from './formComponents'
 
-const ItemCreationForm = ({ userId, token, spellsList, setSpellsList, equipList, setEquipList, weaponsList, setWeaponsList }) => {
+export const EquipmentCreationForm = ({ userId, token, equipList, setEquipList }) => {
     const [equipNameValue, equipNameSet] = useState("")
     const [equipDescriptionValue, equipDescriptionSet] = useState("")
-
-    const [spellNameValue, spellNameSet] = useState("")
-    const [spellDescriptionValue, spellDescriptionSet] = useState("")
-    const [spellLevel, levelSet] = useState("")
-    const [castingTime, castingTimeSet] = useState("")
-    const [spellRangeValue, spellRangeSet] = useState("")
-    const [verbal, verbalSet] = useState("0")
-    const [somatic, somaticSet] = useState("0")
-    const [material, materialSet] = useState("0")
-    let components = []
-    const [minutesValue, minutesSet] = useState("")
-    const [isConcentrationValue, concentrationSet] = useState("0")
-
-    const [weaponNameValue, weaponNameSet] = useState("")
-    const [weaponDescriptionValue, weaponDescriptionSet] = useState("")
-    const [atkValue, atkSet] = useState("")
-    const [damageValue, damageSet] = useState("")
-    const [weaponRangeValue, weaponRangeSet] = useState("")
-
-    const [creations, creationsSet] = useState([])
 
     const createEquip = async (event) => {
         event.preventDefault()
@@ -39,13 +19,38 @@ const ItemCreationForm = ({ userId, token, spellsList, setSpellsList, equipList,
         }
         const created = await createService.createItem(newEquip, token)
 
-        creations.push(created)
         setEquipList([...equipList ,created])
         
         // Empty form.
         equipNameSet("")
         equipDescriptionSet("")
     }
+
+    return(
+        <div>
+            <form onSubmit={createEquip}>
+                <h4>Create new Equipment</h4>
+                <NewFormField label="Name" type="text" value={equipNameValue} setFunction={equipNameSet} />
+                <NewFormField label="Description" type="text" value={equipDescriptionValue} setFunction={equipDescriptionSet} />
+                <button type="Submit">Create</button>
+            </form>
+        </div>
+    )
+
+}
+
+export const SpellCreationForm = ({ userId, token, spellsList, setSpellsList }) => {
+    const [spellNameValue, spellNameSet] = useState("")
+    const [spellDescriptionValue, spellDescriptionSet] = useState("")
+    const [spellLevel, levelSet] = useState("")
+    const [castingTime, castingTimeSet] = useState("")
+    const [spellRangeValue, spellRangeSet] = useState("")
+    const [verbal, verbalSet] = useState("0")
+    const [somatic, somaticSet] = useState("0")
+    const [material, materialSet] = useState("0")
+    let components = []
+    const [minutesValue, minutesSet] = useState("")
+    const [isConcentrationValue, concentrationSet] = useState("0")
 
     const createSpell = async (event) => {
         event.preventDefault()
@@ -73,7 +78,6 @@ const ItemCreationForm = ({ userId, token, spellsList, setSpellsList, equipList,
         }
         const created = await createService.createItem(newSpell, token)
 
-        creations.push(created)
         setSpellsList([...spellsList, created])
 
         // Empty form.
@@ -87,40 +91,8 @@ const ItemCreationForm = ({ userId, token, spellsList, setSpellsList, equipList,
         concentrationSet("")
     }
 
-    const createWeapon = async (event) => {
-        event.preventDefault()
-
-        const newWeapon = {
-            "name": weaponNameValue,
-            "description": weaponDescriptionValue,
-            "atkBonus": atkValue,
-            "damage": damageValue,
-            "range": weaponRangeValue,
-            "itemType": "Weapon",
-            "userId": userId
-        }
-        const created = await createService.createItem(newWeapon, token)
-
-        creations.push(created)
-        setWeaponsList([...weaponsList, created])
-
-        // Empty form.
-        weaponNameSet("")
-        weaponDescriptionSet("")
-        atkSet("")
-        damageSet("")
-        weaponRangeSet("")
-    }
-
     return(
         <div>
-            <form onSubmit={createEquip}>
-                <h4>Create new Equipment</h4>
-                <NewFormField label="Name" type="text" value={equipNameValue} setFunction={equipNameSet} />
-                <NewFormField label="Description" type="text" value={equipDescriptionValue} setFunction={equipDescriptionSet} />
-                <button type="Submit">Create</button>
-            </form>
-
             <form onSubmit={createSpell}>
                 <h4>Create new Spell</h4>
                 <NewFormField label="Name" type="text" value={spellNameValue} setFunction={spellNameSet} />
@@ -141,7 +113,43 @@ const ItemCreationForm = ({ userId, token, spellsList, setSpellsList, equipList,
                 
                 <button type="Submit">Create</button>
             </form>
+        </div>
+    )
+}
 
+export const WeaponCreationForm = ({ userId, token, weaponsList, setWeaponsList }) => {
+    const [weaponNameValue, weaponNameSet] = useState("")
+    const [weaponDescriptionValue, weaponDescriptionSet] = useState("")
+    const [atkValue, atkSet] = useState("")
+    const [damageValue, damageSet] = useState("")
+    const [weaponRangeValue, weaponRangeSet] = useState("")
+
+    const createWeapon = async (event) => {
+        event.preventDefault()
+
+        const newWeapon = {
+            "name": weaponNameValue,
+            "description": weaponDescriptionValue,
+            "atkBonus": atkValue,
+            "damage": damageValue,
+            "range": weaponRangeValue,
+            "itemType": "Weapon",
+            "userId": userId
+        }
+        const created = await createService.createItem(newWeapon, token)
+
+        setWeaponsList([...weaponsList, created])
+
+        // Empty form.
+        weaponNameSet("")
+        weaponDescriptionSet("")
+        atkSet("")
+        damageSet("")
+        weaponRangeSet("")
+    }
+
+    return(
+        <div>
             <form onSubmit={createWeapon}>
                 <h4>Create new Weapon</h4>
                 <NewFormField label="Name" type="text" value={weaponNameValue} setFunction={weaponNameSet} />
@@ -151,18 +159,6 @@ const ItemCreationForm = ({ userId, token, spellsList, setSpellsList, equipList,
                 <NewFormField label="Attack Range" type="number" value={weaponRangeValue} setFunction={weaponRangeSet} min="0" />
                 <button type="Submit">Create</button>
             </form>
-
-            <div>
-                <h4>Created items:</h4>
-                {creations.map(item =>
-                    <div key={item.id}>
-                        <h5>{item.name}</h5>
-                        <p>{item.description}</p>
-                    </div>
-                )}
-            </div>
         </div>
     )
 }
-
-export default ItemCreationForm
