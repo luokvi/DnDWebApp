@@ -59,7 +59,7 @@ const ProfilePage = ({ user, token }) => {
         )
     }
 
-    console.log(user.dateCreated)
+    console.log(user.dateCreated[0].split("T"))
 
     console.log(JSON.stringify(user))
     return(
