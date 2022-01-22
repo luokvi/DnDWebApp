@@ -24,7 +24,8 @@ const userSchema = new mongoose.Schema({
     equipment: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Equipment' }],
     weapons: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Weapon' }],
     spells: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Spell' }]
-  }
+  },
+  dateCreated: [{ type: Date }]
 })
 
 userSchema.plugin(uniqueValidator)

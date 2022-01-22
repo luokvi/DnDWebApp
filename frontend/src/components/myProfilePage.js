@@ -63,6 +63,7 @@ const ProfilePage = ({ user, token }) => {
     return(
         <div id={user.username}>
             <h2>{user.username}</h2>
+            <p>user since <time dateTime={user.dateCreated}>{user.dateCreated}</time></p>
             <h3>Friends:</h3>
             <ul>
             {user.friends.map(friend =>
