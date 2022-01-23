@@ -45,7 +45,7 @@ const PartyCreationForm = ({ token, userId, user }) => {
         const newParty = {
             name: name,
             characters: characters.map(c => c.id),
-            users: users.map(u => u.id),
+            users: [...users.map(u => u.id), userId],
             userId: userId,
         }
 
