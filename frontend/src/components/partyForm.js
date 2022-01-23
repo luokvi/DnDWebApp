@@ -12,11 +12,12 @@ const PartyCreationForm = ({ token, userId, user, userCreations }) => {
     const [users, setUsers] = useState([])
 
     const [gotCharas, setCharas] = useState([])
+    const [gotUsers, setGotUsers] = useState([])
 
     useEffect(() => {
         getParty()
         getCharas()
-
+        getUsers()
     }, [])
 
     const getParty = async () => {
@@ -34,8 +35,14 @@ const PartyCreationForm = ({ token, userId, user, userCreations }) => {
         setCharas(user.characters)
     }
 
+    const getUsers = () => {
+        setGotUsers(user.friends)
+    }
+
     const handleSubmit = (event) => {
         event.preventDefault()
+
+        
     }
 
     return(
@@ -45,6 +52,7 @@ const PartyCreationForm = ({ token, userId, user, userCreations }) => {
             <form onSubmit={handleSubmit}>
                 <NewFormField label="Name" type="text" value={name} setFunction={setName} />
                 <DropDownList field="Characters" optionsList={gotCharas} listValue={characters} listSetFunction={setCharacters} />
+                <DropDownList field="Other users" optionsList={gotUsers} listValue={users} listSetFunction={setUsers} />
                 <button type="submit">Submit</button>
             </form>
             
