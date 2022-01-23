@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom"
 import createService from '../services/creations'
 import { NewFormField, DropDownList } from "./formComponents"
 
-const PartyCreationForm = ({ token, userId, user, userCreations }) => {
+const PartyCreationForm = ({ token, userId, user }) => {
     const { partyId } = useParams()
 
     const [name, setName] = useState("")
