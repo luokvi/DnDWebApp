@@ -2,17 +2,21 @@ import React, { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 
 import createService from '../services/creations'
-import { NewFormField } from "./formComponents"
+import { NewFormField, DropDownList } from "./formComponents"
 
-const PartyCreationForm = ({ token, userId, userCreations }) => {
+const PartyCreationForm = ({ token, userId, user, userCreations }) => {
     const { partyId } = useParams()
 
     const [name, setName] = useState("")
     const [characters, setCharacters] = useState([])
     const [users, setUsers] = useState([])
 
+    const [gotCharas, setCharas] = useState([])
+
     useEffect(() => {
         getParty()
+        getCharas()
+
     }, [])
 
     const getParty = async () => {
@@ -26,6 +30,10 @@ const PartyCreationForm = ({ token, userId, userCreations }) => {
         setUsers(gotParty.users)
     }
 
+    const getCharas = () => {
+        setCharas(user.characters)
+    }
+
     const handleSubmit = (event) => {
         event.preventDefault()
     }
@@ -36,7 +44,7 @@ const PartyCreationForm = ({ token, userId, userCreations }) => {
 
             <form onSubmit={handleSubmit}>
                 <NewFormField label="Name" type="text" value={name} setFunction={setName} />
-            
+                <DropDownList field="Characters" optionsList={gotCharas} listValue={characters} listSetFunction={setCharacters} />
                 <button type="submit">Submit</button>
             </form>
             
