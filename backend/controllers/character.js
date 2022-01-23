@@ -153,6 +153,16 @@ charaRouter.patch('/party/:id', async (req, res) => {
     res.json(updatedParty.toJSON())
 })
 
+// Get party.
+charaRouter.get('/party/:id', async (req, res) => {
+    const id = req.params.id
 
+    const party = await Party.findById(id).populate(
+        "users", { username: 1}).populate(
+        "characters", {name: 1, race: 1, class: 1, level: 1}
+        )
+
+    res.json(party.toJSON())
+})
 
 module.exports = charaRouter
