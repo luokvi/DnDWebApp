@@ -98,8 +98,11 @@ export const SpellCreationForm = ({ userId, token, spellsList, setSpellsList }) 
         castingTimeSet("")
         spellRangeSet("")
         components = []
+        verbalSet("0")
+        somaticSet("0")
+        materialSet("0")
         minutesSet("")
-        concentrationSet("")
+        concentrationSet("0")
     }
 
     return(
