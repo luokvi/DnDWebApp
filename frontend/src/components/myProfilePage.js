@@ -27,6 +27,9 @@ const Parties = ({ parties }) => {
             null
         )
     }
+
+    console.log("Parties:")
+    console.log(parties)
     return(
         <div>
             <h3>Parties:</h3>
