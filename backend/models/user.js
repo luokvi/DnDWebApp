@@ -23,7 +23,8 @@ const userSchema = new mongoose.Schema({
     campaigns: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Campaign' }],
     equipment: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Equipment' }],
     weapons: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Weapon' }],
-    spells: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Spell' }]
+    spells: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Spell' }],
+    parties: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Party' }]
   },
   dateCreated: [{ type: Date }]
 })
