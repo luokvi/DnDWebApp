@@ -21,19 +21,23 @@ const Character = ({ c }) => {
         </div>
     )
 }
-const Campaign = ({ campaigns }) => {
-    if (campaigns.length === 0){
+const Parties = ({ parties }) => {
+    if (parties.length === 0){
         return(
             null
         )
     }
     return(
         <div>
-            <h3>Campaigns:</h3>
-            {campaigns.map(c =>
-                <div key={c.id}>
-                    <h5>{c.name}</h5>
-                    <p>{c.description}</p>
+            <h3>Parties:</h3>
+            {parties.map(p =>
+                <div key={p.id}>
+                    <h5>{p.name}</h5>
+                    {p.characters.map(c =>
+                        <p key={c.id}>
+                            {c.name}
+                        </p>
+                    )}
                 </div>
                 )}
         </div>
@@ -93,7 +97,7 @@ const ProfilePage = ({ user, token }) => {
                 <Character c={chara} key={chara.id}/>
                 )}
 
-            <Campaign campaigns={user.creations.campaigns} />
+            <Parties parties={user.creations.parties} />
             
             <Outlet />
         </div>
