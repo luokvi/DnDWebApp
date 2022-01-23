@@ -73,4 +73,25 @@ characterSchema.set('toJSON', {
   }
 })
 
-module.exports = mongoose.model("Character", characterSchema)
+const characterModel = mongoose.model("Character", characterSchema)
+
+const partySchema = new mongoose.Schema({
+  characters: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Character' }],
+  users: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }],
+  name: {type: String, required: true }
+})
+
+partySchema.set('toJSON', {
+  transform: (document, returnedObject) => {
+    returnedObject.id = returnedObject._id.toString()
+    delete returnedObject._id
+    delete returnedObject.__v
+  }
+})
+
+const partyModel = mongoose.model("Party", partySchema)
+
+module.exports = {
+  Character: characterModel,
+  Party: partyModel
+}
