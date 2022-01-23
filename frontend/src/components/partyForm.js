@@ -39,7 +39,7 @@ const PartyCreationForm = ({ token, userId, user }) => {
         setGotUsers(user.friends)
     }
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault()
 
         const newParty = {
@@ -49,7 +49,7 @@ const PartyCreationForm = ({ token, userId, user }) => {
             userId: userId,
         }
 
-        const created = createService.createParty(newParty, token)
+        const created = await createService.createParty(newParty, token)
         console.log(created)
     }
 
