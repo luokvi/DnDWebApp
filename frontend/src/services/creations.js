@@ -88,4 +88,12 @@ const getWeapons = async () => {
     return res.data
 }
 
-export default { createCharacter, createItem, getEquipment, getSpells, getWeapons, getCharacter, updateCharacter }
+const getParty = async (id) => {
+    const url = baseUrl + 'character/party/' + id
+
+    const res = await axios.get(url)
+
+    return res.data
+}
+
+export default { createCharacter, createItem, getEquipment, getSpells, getWeapons, getCharacter, updateCharacter, getParty }
