@@ -96,4 +96,16 @@ const getParty = async (id) => {
     return res.data
 }
 
-export default { createCharacter, createItem, getEquipment, getSpells, getWeapons, getCharacter, updateCharacter, getParty }
+const createParty = async (body, token) => {
+    const url = baseUrl + "character/party"
+    const axiosConfig = {
+        headers: {
+            'Authorization': 'Bearer ' + token
+        }
+    }
+
+    const res = await axios.post(url, body, axiosConfig)
+    return res.data
+}
+
+export default { createCharacter, createItem, getEquipment, getSpells, getWeapons, getCharacter, updateCharacter, getParty, createParty }

@@ -115,7 +115,7 @@ charaRouter.post('/party', async (req, res) => {
     const body = req.body
     const party = new Party({
         name: body.name,
-        users: [body.userId],
+        users: body.users,
         characters: body.characters
     })
 

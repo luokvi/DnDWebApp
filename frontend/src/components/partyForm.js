@@ -42,7 +42,15 @@ const PartyCreationForm = ({ token, userId, user, userCreations }) => {
     const handleSubmit = (event) => {
         event.preventDefault()
 
-        
+        const newParty = {
+            name: name,
+            characters: characters,
+            users: users,
+            userId: userId,
+        }
+
+        const created = createService.createParty(newParty, token)
+        console.log(created)
     }
 
     return(
