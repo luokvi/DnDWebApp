@@ -38,7 +38,7 @@ const Parties = ({ parties }) => {
                     <h5>{p.name}</h5>
                     {p.characters.map(c =>
                         <p key={c.id}>
-                            {c.name}
+                            {c.name}: level {c.level} {c.class}
                         </p>
                     )}
                 </div>
