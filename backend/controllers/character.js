@@ -129,4 +129,30 @@ charaRouter.post('/party', async (req, res) => {
     res.json(savedParty.toJSON())
 })
 
+// Modify party, e.g. add members.
+charaRouter.patch('/party/:id', async (req, res) => {
+    const [authorized, checkMessage] = await TokenCheck.checkToken(req, req.body.userId)
+    if (!authorized){
+        res.status(401).send(checkMessage).end()
+        return
+    }
+
+    const body = req.body
+    const id = req.params.id
+    const party = await Party.findById(id)
+
+    // Check that modifying user is a user in this party.
+    const isUser = party.users.includes(body.userId)
+    if (!isUser){
+        res.status(401).send("User not in this Party").end()
+        return
+    }
+
+    const updatedParty = await Party.findByIdAndUpdate(id, body, { new: true })
+
+    res.json(updatedParty.toJSON())
+})
+
+
+
 module.exports = charaRouter
