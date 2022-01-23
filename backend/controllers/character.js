@@ -1,5 +1,6 @@
 const charaRouter = require('express').Router()
-const Character = require('../models/character')
+const { Party } = require('../models/character')
+const { Character } = require('../models/character')
 const User = require('../models/user')
 const TokenCheck = require('../util/tokenCheck')
 
@@ -101,6 +102,31 @@ charaRouter.delete('/:id', async (req, res) => {
     await Character.deleteOne({ "_id": id })
 
     res.status(204).end()
+})
+
+// Create party.
+charaRouter.post('/party', async (req, res) => {
+    const [authorized, checkMessage] = await TokenCheck.checkToken(req, req.body.userId)
+    if (!authorized){
+        res.status(401).send(checkMessage).end()
+        return
+    }
+
+    const body = req.body
+    const party = new Party({
+        name: body.name,
+        users: [body.userId],
+        characters: body.characters
+    })
+
+    const savedParty = await party.save()
+
+    // Add party to user's creations.
+    const user = await User.findById(body.userId)
+    user.creations.parties = user.creations.parties.concat(savedParty._id)
+    await user.save()
+
+    res.json(savedParty.toJSON())
 })
 
 module.exports = charaRouter
