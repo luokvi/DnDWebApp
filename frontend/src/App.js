@@ -3,10 +3,11 @@ import { BrowserRouter as Router, Route, Routes, useNavigate } from "react-route
 
 import userService from './services/users'
 import CreationsService from './services/creations'
+
 import LoginForm from './components/loginForm'
+import CreateUserForm from './components/signupForm'
 import ProfilePage from "./components/myProfilePage"
 import UserPage from './components/userPage'
-
 import CharacterForm from "./components/characterForm"
 import PartyCreationForm  from './components/partyForm'
 
@@ -58,6 +59,8 @@ function App() {
           < Route path="/user/:id" element={ <UserPage user={user} token={token} /> } />
           <Route path="/character/:characterId" element={ <CharacterForm token={token} userId={user.id} handleSubmitToBackend={ handleCharacterSubmit } userCreations={user.creations} /> } />
           <Route path="/party/:partyId" element={ <PartyCreationForm token={token} userId={user.id} user={user} /> } />
+
+          <Route path="/" element={ <CreateUserForm /> } />
         </Routes>
       </div>
   );
