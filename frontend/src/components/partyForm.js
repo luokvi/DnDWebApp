@@ -11,7 +11,7 @@ export const AddFriendToPartyForm = ({ token, user, friendId }) => {
     parties = parties.filter(p => !p.users.includes(friendId))
     if (parties.length === 0){
         return(
-            <div></div>
+            <></>
         )
     }
 
