@@ -49,7 +49,12 @@ usersRouter.get('/other/:id', async (req, res) => {
     'creations.enemies', {name: 1, race: 1, description: 1}).populate(
     'creations.equipment', {name: 1, description: 1}).populate(
     'creations.weapons', {name: 1, description: 1}).populate(
-    'creations.spells', {name: 1, description: 1})
+    'creations.spells', {name: 1, description: 1}).populate(
+    'creations.parties', {name: 1}).populate(
+      {
+        path: 'creations.parties',
+        populate: { path: 'characters'}
+      })
 
   if (user === null){
     res.status(404).end()
