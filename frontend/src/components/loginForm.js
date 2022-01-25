@@ -18,10 +18,10 @@ const LoginForm = ({ setFunction, user, loggedInAs }) => {
 
     const checkStorage = async () => {
         if ( user === ''){
-            const storedUser = localStorage.getItem('user')
+            const storedUser = JSON.parse(localStorage.getItem('user'))
             const storedToken = localStorage.getItem('token')
 
-            console.log("Got from storage: " + storedUser + ", and token: " + storedToken)
+            console.log("Got from storage: " + storedUser.name + ", and token: " + storedToken)
             if (storedUser !== null){
                 // See if token still valid.
                 console.log("Checking token...")
