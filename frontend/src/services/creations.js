@@ -113,7 +113,7 @@ const addUserToParty = async (partyId, friendId, token) => {
 
     const updated = {
         ...party,
-        users: [...party.users, friendId]
+        users: [...(party.users.map(u => u.id)), friendId]
     }
 
     console.log("Updated party:")
