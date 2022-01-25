@@ -16,7 +16,6 @@ usersRouter.get('/:id', async (req, res) => {
 
   const [authorized, checkMessage] = await TokenCheck.checkToken(req, id)
   if (!authorized){
-    console.log(checkMessage)
     res.status(401).send(checkMessage).end()
     return
   }

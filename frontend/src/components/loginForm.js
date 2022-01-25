@@ -24,11 +24,7 @@ const LoginForm = ({ setFunction, user, loggedInAs }) => {
             console.log("Got from storage: " + storedUser.name + ", and token: " + storedToken)
             if (storedUser !== null){
                 // See if token still valid.
-                console.log("Checking token...")
-                console.log(storedUser.id)
                 const response = await userService.getUser(storedUser.id, storedToken)
-                console.log("Got response:")
-                console.log(response)
                 try{
                     const id = response.id
                     setFunction(id, storedToken)

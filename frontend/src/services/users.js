@@ -18,11 +18,8 @@ const getUser = async (userId, token) => {
         }
     }
 
-    console.log("Sending to backend:")
-    console.log(axiosConfig)
     const res = await axios.get(url, axiosConfig)
 
-    console.log(res)
     return res.data
 }
 
