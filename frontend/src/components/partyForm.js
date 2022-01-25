@@ -5,19 +5,25 @@ import createService from '../services/creations'
 import { NewFormField, DropDownList } from "./formComponents"
 
 export const AddFriendToPartyForm = ({ token, user, friendId }) => {
-    const [party, setParty] = useState("")
+    const [selected, setSelected] = useState("")
 
     const parties = user.creations.parties
 
     const handleSubmit = (event) => {
         event.preventDefault()
         console.log("Add to party:")
-        console.log(party)
+        console.log(selected)
     }
 
     return(
         <form onSubmit={handleSubmit}>
-            <DropDownList field="Parties" optionsList={parties} listValue={party} listSetFunction={setParty} oneValue={true}/>
+            <select name="Party" onChange={({ target }) => setSelected(target.value)}>
+                {parties.map( p =>
+                    <option key={p.id} value={p.id} >
+                        {p.name}
+                    </option>
+                    )}
+            </select>
             <button type="submit">Add to Party</button>
         </form>
     )
