@@ -13,12 +13,18 @@ const CreateUserForm = ({ }) => {
     const handleSubmit = async (event) => {
         event.preventDefault()
 
+        if (username === "" || password === "" || repeatPwd === ""){
+            setNotif("Username and password required.")
+            return
+        }
         // Check that passwords match.
         if (password !== repeatPwd){
             setPassword("")
             setRepeatPws("")
             setNotif("Passwords should match.")
+            return
         }
+        setNotif("")
 
         const newUser = {
             username: username,
@@ -29,6 +35,9 @@ const CreateUserForm = ({ }) => {
         console.log(savedUser)
         setNotif("Created new user " + savedUser.username)
 
+        setUsername("")
+        setPassword("")
+        setRepeatPws("")
     }
     return(
         <div>
