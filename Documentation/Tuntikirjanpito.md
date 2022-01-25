@@ -1,6 +1,6 @@
 | päivä | aika | mitä tein  |
 | :----:|:-----| :-----|
-| yhteensä: | 87.5 | |
+| yhteensä: | 89.0 | |
 | 14.9. | 2 | Idean suunnittelu |
 | 19.9. | 0.5 | Backendin tekemistä |
 | 25.9. | 1 | User backendissä |
@@ -53,3 +53,4 @@
 | 22.1 | 1.5 | Item creation lomake osiksi ja liitetty hahmon luonti lomakkeeseen. Lisää käyttäjälle dateCreated ja näytä se profiilisivulla |
 | 23.1 | 2 | Partyn luominen hahmoille |
 | 25.1 | 2 | Partyn muokkaaminen ja käyttäjien lisääminen |
+| 25.1 | 1.5 | Sisäänkirjautumisen muutoksia, lomake uuden käyttäjän luomiseen |
