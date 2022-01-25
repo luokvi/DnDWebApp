@@ -9,24 +9,30 @@ export const AddFriendToPartyForm = ({ token, user, friendId }) => {
 
     let parties = user.creations.parties
     parties = parties.filter(p => !p.users.includes(friendId))
+    if (parties.length === 0){
+        return(
+            <div></div>
+        )
+    }
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        console.log("Add to party:")
-        console.log(selected)
+        if (selected === ""){
+            return
+        }
 
         createService.addUserToParty(selected, friendId, token, user.id)
     }
 
     return(
         <form onSubmit={handleSubmit}>
-            <select name="Party" onChange={({ target }) => setSelected(target.value)}>
+            <select name="Party" onChange={({ target }) => setSelected(target.value)} defaultValue={""}>
                 {parties.map( p =>
                     <option key={p.id} value={p.id} >
                         {p.name}
                     </option>
                     )}
-                <option>Select a Party</option>
+                <option value="">Select a Party</option>
             </select>
             <button type="submit">Add to Party</button>
         </form>
