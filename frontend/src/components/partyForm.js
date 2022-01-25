@@ -38,9 +38,14 @@ const PartyCreationForm = ({ token, userId, user }) => {
     const getUsers = () => {
         let friends = user.friends
 
-        friends = friends.map(f =>
-            f.name = f.username
+        friends = friends.map(f => {
+            return(
+                {
+                    name: f.username,
+                    id: f.id
+                }
             )
+        })
 
         console.log("Found friends:")
         console.log(friends)
