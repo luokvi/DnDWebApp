@@ -30,15 +30,6 @@ const getOtherUser = async (userId) => {
     return res.data
 }
 
-// Get user's username.
-const getUsersName = async(userId) => {
-    const url = baseUrl + "/" + userId
-    const res = await axios.get(url)
-
-    const username = res.data.username
-    return username
-}
-
 // Accept a friend request.
 const acceptFriendRequest = async (userId, senderId, requestId, token) => {
     console.log("got token: " + token)
@@ -58,4 +49,4 @@ const acceptFriendRequest = async (userId, senderId, requestId, token) => {
     return res.data
 }
 
-export default { getAll, getUser, acceptFriendRequest, getOtherUser, getUsersName }
+export default { getAll, getUser, acceptFriendRequest, getOtherUser }
