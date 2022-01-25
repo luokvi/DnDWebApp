@@ -33,6 +33,7 @@ const checkToken = ( async ( req, userId ) => {
 
     // Check that found user is the user we want to authorize
     if(decoded.id !== userId){
+        console.log("Id doesn't match")
         return [false, {error: 'Wrong Token'}]
     }
 
