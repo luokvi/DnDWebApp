@@ -7,6 +7,7 @@ const CreateUserForm = () => {
     const [password, setPassword] = useState("")
     const [repeatPwd, setRepeatPws] = useState("")
 
+    console.log("IN signup form")
     const handleSubmit = async (event) => {
         event.preventDefault()
 
