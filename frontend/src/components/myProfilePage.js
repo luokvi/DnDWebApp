@@ -30,7 +30,7 @@ const Party = ({ p }) => {
         navigate("/party/" + p.id)
     }
     return(
-        <div key={p.id}>
+        <div>
             <h5>{p.name}</h5>
             {p.characters.map(c =>
                 <p key={c.id}>
@@ -55,7 +55,7 @@ const Parties = ({ parties }) => {
             <h3>Parties:</h3>
             <Link to={"/party/new"}>Create a new Party</Link>
             {parties.map(p =>
-                <Party p={p} />
+                <Party p={p} key={p.id}/>
             )}
         </div>
     )
