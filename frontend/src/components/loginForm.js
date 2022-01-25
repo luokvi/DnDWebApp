@@ -77,6 +77,7 @@ const LoginForm = ({ setFunction, user, loggedInAs }) => {
     if ( !user ){
         return(
             <div>
+                <h3>Sign in</h3>
                 <form onSubmit={handleLogin}>
                     <p>{notifText}</p>
                     <div>username

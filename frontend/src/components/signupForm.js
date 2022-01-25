@@ -15,6 +15,7 @@ const CreateUserForm = ({ }) => {
     }
     return(
         <div>
+            <h3>Sign up</h3>
             <form onSubmit={handleSubmit}>
                 <NewFormField label="Username" value={username} setFunction={setUsername} />
                 <NewFormField label="Password" value={password} setFunction={setPassword} />
