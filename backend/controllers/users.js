@@ -13,6 +13,12 @@ usersRouter.get('/', async (req, res) => {
 // User's own info
 usersRouter.get('/:id', async (req, res) => {
   const id = req.params.id
+  
+  const [authorized, checkMessage] = await TokenCheck.checkToken(req, id)
+  if (!authorized){
+    res.status(401).send(checkMessage).end()
+    return
+  }
 
   const user = await User.findById(id).populate('friends', { username: 1}).populate(
     { // Get friendrequest sender
