@@ -4,6 +4,25 @@ import { useParams } from "react-router-dom"
 import createService from '../services/creations'
 import { NewFormField, DropDownList } from "./formComponents"
 
+export const AddFriendToPartyForm = ({ token, user, friendId }) => {
+    const [party, setParty] = useState("")
+
+    const parties = user.creations.parties
+
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        console.log("Add to party:")
+        console.log(party)
+    }
+
+    return(
+        <form onSubmit={handleSubmit}>
+            <DropDownList field="Parties" optionsList={parties} listValue={party} listSetFunction={setParty} oneValue={true}/>
+            <button type="submit">Add to Party</button>
+        </form>
+    )
+}
+
 const PartyCreationForm = ({ token, userId, user }) => {
     const { partyId } = useParams()
 

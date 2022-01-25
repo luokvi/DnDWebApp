@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
 
 import userService from '../services/users'
+import { AddFriendToPartyForm } from "./partyForm"
 
 const UserPage = ({ user, token }) => {
     const { id } = useParams()
@@ -75,6 +76,10 @@ const UserPage = ({ user, token }) => {
                 : hasFriendRequest ? <button>Accept friendRequest</button>
                     : hasSentFriendRequest ? <p>Sent friendrequest</p>
                         : <button>Send friendrequest</button>
+            }
+
+            {isFriend ? <AddFriendToPartyForm token={token} user={user} friendId={id}/>
+                : <></>
             }
 
             <h3>Common friends</h3>
