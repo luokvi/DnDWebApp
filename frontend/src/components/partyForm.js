@@ -13,6 +13,8 @@ export const AddFriendToPartyForm = ({ token, user, friendId }) => {
         event.preventDefault()
         console.log("Add to party:")
         console.log(selected)
+
+        createService.AddUserToParty(selected, friendId, token)
     }
 
     return(

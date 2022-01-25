@@ -108,4 +108,28 @@ const createParty = async (body, token) => {
     return res.data
 }
 
-export default { createCharacter, createItem, getEquipment, getSpells, getWeapons, getCharacter, updateCharacter, getParty, createParty }
+const addUserToParty = async (partyId, friendId, token) => {
+    const party = await getParty(partyId)
+
+    const updated = {
+        ...party,
+        users: [...party.users, friendId]
+    }
+
+    console.log("Updated party:")
+    console.log(updated)
+
+    const url = baseUrl + "character/party/" + partyId
+    const axiosConfig = {
+        headers: {
+            'Authorization': 'Bearer ' + token
+        }
+    }
+
+    const res = await axios.patch(url, updated, axiosConfig)
+    return res.data
+
+}
+
+export default { createCharacter, createItem, getEquipment, getSpells, getWeapons,
+    getCharacter, updateCharacter, getParty, createParty, addUserToParty }
