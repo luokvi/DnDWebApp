@@ -53,9 +53,10 @@ function App() {
       <div>
         <h1>DnD Web App</h1>
         <LoginForm setFunction={loginFunc} user={user.id} loggedInAs={user.username}/>
+        <CreateUserForm string="Hello world" />
 
         <Routes>
-          <Route path="/signup" element={ <CreateUserForm /> } />
+          
           <Route path="/myProfile" element={ <ProfilePage user={user} token={token} /> } />
           <Route path="/user/:id" element={ <UserPage user={user} token={token} /> } />
           <Route path="/character/:characterId" element={ <CharacterForm token={token} userId={user.id} handleSubmitToBackend={ handleCharacterSubmit } userCreations={user.creations} /> } />
