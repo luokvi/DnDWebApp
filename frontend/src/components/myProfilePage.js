@@ -21,6 +21,26 @@ const Character = ({ c }) => {
         </div>
     )
 }
+const Party = ({ p }) => {
+    const navigate = useNavigate()
+    
+    const handleClick = (event) => {
+        event.preventDefault()
+
+        navigate("/party/" + p.id)
+    }
+    return(
+        <div key={p.id}>
+            <h5>{p.name}</h5>
+            {p.characters.map(c =>
+                <p key={c.id}>
+                    {c.name}: level {c.level} {c.class}
+                </p>
+            )}
+            <button onClick={handleClick}>Edit</button>
+        </div>
+    )
+}
 const Parties = ({ parties }) => {
     if (parties.length === 0){
         return(
@@ -35,17 +55,8 @@ const Parties = ({ parties }) => {
             <h3>Parties:</h3>
             <Link to={"/party/new"}>Create a new Party</Link>
             {parties.map(p =>
-                <div key={p.id}>
-                    <h5>
-                        <Link to={"party/" + p.id}>{p.name}</Link>
-                    </h5>
-                    {p.characters.map(c =>
-                        <p key={c.id}>
-                            {c.name}: level {c.level} {c.class}
-                        </p>
-                    )}
-                </div>
-                )}
+                <Party p={p} />
+            )}
         </div>
     )
 }
