@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken')
 const TokenBlacklist = require('../models/tokenBlacklist')
+const user = require('../models/user')
 
 const checkToken = ( async ( req, userId ) => {
     const auth = req.get('authorization')
@@ -34,6 +35,8 @@ const checkToken = ( async ( req, userId ) => {
     // Check that found user is the user we want to authorize
     if(decoded.id !== userId){
         console.log("Id doesn't match")
+        console.log(decoded.id)
+        console.log(userId)
         return [false, {error: 'Wrong Token'}]
     }
 
