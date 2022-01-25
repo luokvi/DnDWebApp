@@ -140,6 +140,7 @@ charaRouter.patch('/party/:id', async (req, res) => {
     const body = req.body
     const id = req.params.id
     const party = await Party.findById(id)
+    console.log(body)
 
     // Check that modifying user is a user in this party.
     const isUser = party.users.includes(body.userId)
