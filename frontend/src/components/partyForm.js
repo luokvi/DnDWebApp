@@ -7,7 +7,8 @@ import { NewFormField, DropDownList } from "./formComponents"
 export const AddFriendToPartyForm = ({ token, user, friendId }) => {
     const [selected, setSelected] = useState("")
 
-    const parties = user.creations.parties
+    let parties = user.creations.parties
+    parties = parties.filter(p => !p.users.includes(friendId))
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -25,6 +26,7 @@ export const AddFriendToPartyForm = ({ token, user, friendId }) => {
                         {p.name}
                     </option>
                     )}
+                <option>Select a Party</option>
             </select>
             <button type="submit">Add to Party</button>
         </form>
