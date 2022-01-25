@@ -49,4 +49,11 @@ const acceptFriendRequest = async (userId, senderId, requestId, token) => {
     return res.data
 }
 
-export default { getAll, getUser, acceptFriendRequest, getOtherUser }
+// Create new user.
+const createUser = async (newUser) => {
+    const res = await axios.post(baseUrl, newUser)
+
+    return res.data
+}
+
+export default { getAll, getUser, acceptFriendRequest, getOtherUser, createUser }
