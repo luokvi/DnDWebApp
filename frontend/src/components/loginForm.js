@@ -13,17 +13,27 @@ const LoginForm = ({ setFunction, user, loggedInAs }) => {
     
     // Check localStorage for user.
     useEffect(() => {
+        checkStorage()
+      }, [])
+
+    const checkStorage = async () => {
         if ( user === ''){
             const storedUser = localStorage.getItem('user')
             const storedToken = localStorage.getItem('token')
 
             console.log("Got from storage: " + storedUser + ", and token: " + storedToken)
             if (storedUser !== null){
+                // See if token still valid.
+                const response = await userService.getUser(storedUser.id, storedToken)
                 const parsedUser = JSON.parse(storedUser)
-                setFunction(parsedUser.id, storedToken)
+                if (parsedUser.id === response.id){
+                    setFunction(parsedUser.id, storedToken)
+                } else {
+                    console.log("Session expired")
+                }
             }
         }
-      }, [setFunction, user])
+    }
 
     const handleLogin = async (event) => {
         event.preventDefault()
