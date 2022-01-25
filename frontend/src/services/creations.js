@@ -108,12 +108,13 @@ const createParty = async (body, token) => {
     return res.data
 }
 
-const addUserToParty = async (partyId, friendId, token) => {
+const addUserToParty = async (partyId, friendId, token, userId) => {
     const party = await getParty(partyId)
 
     const updated = {
         ...party,
-        users: [...(party.users.map(u => u.id)), friendId]
+        users: [...(party.users.map(u => u.id)), friendId],
+        userId: userId
     }
 
     console.log("Updated party:")
