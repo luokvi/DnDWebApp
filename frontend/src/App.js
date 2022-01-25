@@ -20,7 +20,7 @@ function App() {
     setToken(token)
 
     if(user !== ''){
-      const profile = await userService.getUser(user)
+      const profile = await userService.getUser(user, token)
       setUser(profile)
 
     } else{

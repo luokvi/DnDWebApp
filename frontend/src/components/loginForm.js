@@ -32,7 +32,7 @@ const LoginForm = ({ setFunction, user, loggedInAs }) => {
             // Login
             const response = await loginService.loginUser(username, password)
             // Get user
-            const user = await userService.getUser(response.userid)
+            const user = await userService.getUser(response.userid, response.token)
             
             // Set user and token to LocalStorage
             localStorage.setItem('user', JSON.stringify(user))

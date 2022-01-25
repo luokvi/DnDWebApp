@@ -10,9 +10,15 @@ const getAll = async () => {
 };
 
 // Get specific user by id.
-const getUser = async (userId) => {
+const getUser = async (userId, token) => {
     const url = baseUrl + "/" + userId
-    const res = await axios.get(url)
+    const axiosConfig = {
+        headers: {
+            'Authorization': 'Bearer ' + token
+        }
+    }
+
+    const res = await axios.get(url, axiosConfig)
 
     return res.data
 }
