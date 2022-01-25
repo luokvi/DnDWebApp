@@ -53,7 +53,6 @@ function App() {
       <div>
         <h1>DnD Web App</h1>
         <LoginForm setFunction={loginFunc} user={user.id} loggedInAs={user.username}/>
-        <CreateUserForm string="Hello world" />
 
         <Routes>
           
@@ -61,7 +60,7 @@ function App() {
           <Route path="/user/:id" element={ <UserPage user={user} token={token} /> } />
           <Route path="/character/:characterId" element={ <CharacterForm token={token} userId={user.id} handleSubmitToBackend={ handleCharacterSubmit } userCreations={user.creations} /> } />
           <Route path="/party/:partyId" element={ <PartyCreationForm token={token} userId={user.id} user={user} /> } />
-
+          <Route path="/signup" element={ <CreateUserForm /> } />
         </Routes>
       </div>
   );

@@ -2,13 +2,12 @@ import React, { useState } from "react"
 
 import { NewFormField } from "./formComponents"
 
-const CreateUserForm = ({ string }) => {
+const CreateUserForm = ({ }) => {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [repeatPwd, setRepeatPws] = useState("")
 
     console.log("IN signup form")
-    console.log(string)
     const handleSubmit = async (event) => {
         event.preventDefault()
 
