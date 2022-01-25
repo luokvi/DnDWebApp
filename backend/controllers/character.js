@@ -121,10 +121,12 @@ charaRouter.post('/party', async (req, res) => {
 
     const savedParty = await party.save()
 
-    // Add party to user's creations.
-    const user = await User.findById(body.userId)
-    user.creations.parties = user.creations.parties.concat(savedParty._id)
-    await user.save()
+    // Add party to users' creations.
+    savedParty.users.forEach(u => {
+        const user = await User.findById(u)
+        user.creations.parties = user.creations.parties.concat(savedParty._id)
+        await user.save()
+    })
 
     res.json(savedParty.toJSON())
 })
@@ -149,6 +151,15 @@ charaRouter.patch('/party/:id', async (req, res) => {
     }
 
     const updatedParty = await Party.findByIdAndUpdate(id, body, { new: true })
+
+    // Add party to users' creations.
+    updatedParty.users.forEach(u => {
+        const user = await User.findById(u)
+        if (!user.creations.parties.includes(updatedParty._id)){
+            user.creations.parties = user.creations.parties.concat(updatedParty._id)
+        }
+        await user.save()
+    })
 
     res.json(updatedParty.toJSON())
 })
