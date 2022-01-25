@@ -33,9 +33,12 @@ const Parties = ({ parties }) => {
     return(
         <div>
             <h3>Parties:</h3>
+            <Link to={"/party/new"}>Create a new Party</Link>
             {parties.map(p =>
                 <div key={p.id}>
-                    <h5>{p.name}</h5>
+                    <h5>
+                        <Link to={"party/" + p.id}>{p.name}</Link>
+                    </h5>
                     {p.characters.map(c =>
                         <p key={c.id}>
                             {c.name}: level {c.level} {c.class}
