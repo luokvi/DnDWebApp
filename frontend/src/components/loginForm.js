@@ -25,10 +25,10 @@ const LoginForm = ({ setFunction, user, loggedInAs }) => {
             if (storedUser !== null){
                 // See if token still valid.
                 const response = await userService.getUser(storedUser.id, storedToken)
-                const parsedUser = JSON.parse(storedUser)
-                if (parsedUser.id === response.id){
-                    setFunction(parsedUser.id, storedToken)
-                } else {
+                try{
+                    const id = response.id
+                    setFunction(id, storedToken)
+                } catch {
                     console.log("Session expired")
                 }
             }
