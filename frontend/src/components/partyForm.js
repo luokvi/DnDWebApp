@@ -14,7 +14,7 @@ export const AddFriendToPartyForm = ({ token, user, friendId }) => {
         console.log("Add to party:")
         console.log(selected)
 
-        createService.AddUserToParty(selected, friendId, token)
+        createService.addUserToParty(selected, friendId, token)
     }
 
     return(
