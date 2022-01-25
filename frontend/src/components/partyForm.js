@@ -73,7 +73,7 @@ const PartyCreationForm = ({ token, userId, user }) => {
             <form onSubmit={handleSubmit}>
                 <NewFormField label="Name" type="text" value={name} setFunction={setName} />
                 <DropDownList field="Characters" optionsList={gotCharas} listValue={characters} listSetFunction={setCharacters} />
-                <DropDownList field="Other users" optionsList={gotUsers} listValue={users} listSetFunction={setUsers} />
+                <DropDownList field="Other users" optionsList={gotUsers} listValue={users} listSetFunction={setUsers} oneValue={true} />
                 <button type="submit">Submit</button>
             </form>
             
