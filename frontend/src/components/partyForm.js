@@ -36,7 +36,10 @@ const PartyCreationForm = ({ token, userId, user }) => {
     }
 
     const getUsers = () => {
-        setGotUsers(user.friends)
+        const friends = user.friends
+        console.log("Found friends:")
+        console.log(friends)
+        setGotUsers(friends)
     }
 
     const handleSubmit = async (event) => {
