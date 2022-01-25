@@ -93,6 +93,11 @@ const UserPage = ({ user, token }) => {
                     <b>{c.name}</b>, a {c.race}, level {c.level} {c.class}
                 </p>
                 )}
+
+            <h3>Common parties</h3>
+            {gotUser.creations.parties.map(p =>
+                <p key={p.id}>{p.name}</p>
+                )}
         </div>
     )
 }
