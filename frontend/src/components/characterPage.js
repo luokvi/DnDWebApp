@@ -87,9 +87,11 @@ const CharacterPage = ({ token }) => {
                     )}
 
                 <h5>Languages:</h5>
-                {chara.languages.map(lan =>
-                    <p key={lan}>{lan}</p>
+                <p>
+                    {chara.languages.map(lan =>
+                        <span key={lan}>{lan} </span>
                     )}
+                </p>
             </div>
 
             <div>
