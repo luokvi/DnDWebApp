@@ -10,8 +10,8 @@ charaRouter.get('/:id', async (req, res) => {
     const chara = await (await Character.findById(id).populate(
         "creator", { username: 1}).populate(
         "equipment", { name: 1, description: 1 }).populate(
-        "weapons", { name: 1, description: 1 }).populate(
-        "spells", { name: 1, description: 1 })
+        "weapons", { name: 1, description: 1, atkBonus: 1, damage: 1 }).populate(
+        "spells", { name: 1, description: 1, level: 1 })
         )
 
     res.json(chara.toJSON())
