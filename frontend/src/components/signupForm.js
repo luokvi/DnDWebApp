@@ -18,12 +18,12 @@ const CreateUserForm = ({ }) => {
             return
         }
         // Check that username is atleast 5 chatacters long.
-        if (username.length() < 5){
+        if ( username.length < 5){
             setNotif("Username should be atleast 5 characters long.")
             return
         }
         // Check that password is atleast 8 characters long.
-        if (password.length() < 8){
+        if (password.length < 8){
             setNotif("Password should be atleast 8 characters long.")
             setPassword("")
             setRepeatPws("")
