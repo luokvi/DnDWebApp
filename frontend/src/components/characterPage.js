@@ -4,7 +4,7 @@ import { useParams, Link } from "react-router-dom"
 import creationsService from '../services/creations'
 
 const CharacterPage = ({ token }) => {
-    const id = useParams
+    const characterId = useParams()
     const [chara, setChara] = useState("")
 
     useEffect(() => {
@@ -12,7 +12,7 @@ const CharacterPage = ({ token }) => {
     },[])
 
     const getCharacter = async () => {
-        const response = await creationsService.getCharacter(id, token)
+        const response = await creationsService.getCharacter(characterId, token)
         setChara(response)
     }
 
