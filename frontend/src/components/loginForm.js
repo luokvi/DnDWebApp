@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { useNavigate } from "react-router"
+import { Link } from "react-router-dom"
+
 import loginService from '../services/login'
 import userService from '../services/users'
 
@@ -94,7 +96,11 @@ const LoginForm = ({ setFunction, user, loggedInAs }) => {
 
     return(
         <div>
-            <p>Logged in as {loggedInAs}</p>
+            <p>Logged in as
+                <Link to={"/myProfile"}>
+                     {loggedInAs}
+                </Link>
+            </p>
             <button id="logout-button" onClick={handleLogout}>Logout</button>
         </div>
     )
