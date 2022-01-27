@@ -107,6 +107,8 @@ const ProfilePage = ({ user, token }) => {
                 )}
             </ul>
 
+            <Link to={'/user/all'}>Look for users</Link>
+
             <h3>Characters:</h3>
             < Link to={"/character/new"}>
                 Create a new character
