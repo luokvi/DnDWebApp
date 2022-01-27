@@ -14,7 +14,9 @@ const Character = ({ c }) => {
     }
     return(
         <div>
-            <h5>{c.name}</h5>
+            <h5><Link to={"/character/view/" + c.id}>
+                {c.name}</Link>
+            </h5>
             <p>level {c.level} {c.class}</p>
             <p>{c.race}</p>
             <button onClick={handleClick}>Edit</button>

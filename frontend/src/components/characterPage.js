@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react"
-import { useParams, Link } from "react-router-dom"
+import { useParams, Link, useNavigate } from "react-router-dom"
 
 import creationsService from '../services/creations'
 
 const CharacterPage = ({ token }) => {
     const { characterId } = useParams()
     const [chara, setChara] = useState("")
+
+    const navigate = useNavigate()
 
     useEffect(() => {
         getCharacter()
@@ -14,6 +16,12 @@ const CharacterPage = ({ token }) => {
     const getCharacter = async () => {
         const response = await creationsService.getCharacter(characterId, token)
         setChara(response)
+    }
+
+    const handleClick = (event) => {
+        event.preventDefault()
+
+        navigate('/character/' + characterId)
     }
 
     if (chara === ""){
@@ -137,11 +145,14 @@ const CharacterPage = ({ token }) => {
             
             <div>
                 <h5>Notes:</h5>
-                {chara.notes.map(n =>
-                    <p>{n}</p>
+                <ul>
+                    {chara.notes.map(n =>
+                        <li>{n}</li>
                     )}
+                </ul>
             </div>
 
+            <button onClick={handleClick}>Edit character</button>
         </div>
     )
 }
