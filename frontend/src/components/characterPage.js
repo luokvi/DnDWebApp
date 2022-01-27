@@ -12,7 +12,7 @@ const CharacterPage = ({ token }) => {
     },[])
 
     const getCharacter = async () => {
-        const response = creationsService.getCharacter(id, token)
+        const response = await creationsService.getCharacter(id, token)
         setChara(response)
     }
 
