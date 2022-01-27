@@ -12,6 +12,15 @@ const AllUsers = ({ }) => {
 
     const getUsers = async () => {
         const response = await userService.getAll()
+
+        // Edit the dateCreated field.
+        response.forEach(user => {
+            const rawDate = user.dateCreated
+            const dateParts = rawDate.split("T")
+            const dateCreated = dateParts[0]
+            user.dateCreated = dateCreated
+        })
+
         setAllUsers(response)
     }
 
@@ -30,7 +39,7 @@ const AllUsers = ({ }) => {
                     <Link to={"/user/" + u.id}>
                         {u.username}
                     </Link>
-                    , {u}
+                    , user since {u.dateCreated}
                 </p>
             ))}
         </div>
