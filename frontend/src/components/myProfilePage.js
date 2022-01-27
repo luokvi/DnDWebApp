@@ -81,7 +81,7 @@ const ProfilePage = ({ user, token }) => {
     }
 
     // Get just the day of when user was created.
-    const dateParts = user.dateCreated[0].split("T")
+    const dateParts = user.dateCreated.split("T")
     const dateCreated = dateParts[0]
 
     console.log(JSON.stringify(user))
