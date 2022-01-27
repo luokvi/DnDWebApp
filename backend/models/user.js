@@ -26,7 +26,7 @@ const userSchema = new mongoose.Schema({
     spells: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Spell' }],
     parties: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Party' }]
   },
-  dateCreated: [{ type: Date }]
+  dateCreated: { type: Date }
 })
 
 userSchema.plugin(uniqueValidator)
