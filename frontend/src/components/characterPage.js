@@ -125,6 +125,23 @@ const CharacterPage = ({ token }) => {
                 <p>Spellcasting ability: {chara.spellCastingAbility}</p>
             </div>
             
+            <div>
+                <h5>Features:</h5>
+                {chara.features.map(f =>
+                    <div key={f.name}>
+                        <p><b>{f.name}</b></p>
+                        <p>{f.description}</p>
+                    </div>
+                    )}
+            </div>
+            
+            <div>
+                <h5>Notes:</h5>
+                {chara.notes.map(n =>
+                    <p>{n}</p>
+                    )}
+            </div>
+
         </div>
     )
 }
