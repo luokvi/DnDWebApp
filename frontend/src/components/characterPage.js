@@ -4,7 +4,7 @@ import { useParams, Link } from "react-router-dom"
 import creationsService from '../services/creations'
 
 const CharacterPage = ({ token }) => {
-    const characterId = useParams()
+    const { characterId } = useParams()
     const [chara, setChara] = useState("")
 
     useEffect(() => {
