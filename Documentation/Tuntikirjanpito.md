@@ -1,6 +1,6 @@
 | päivä | aika | mitä tein  |
 | :----:|:-----| :-----|
-| yhteensä: | 90.0 | |
+| yhteensä: | 91.5 | |
 | 14.9. | 2 | Idean suunnittelu |
 | 19.9. | 0.5 | Backendin tekemistä |
 | 25.9. | 1 | User backendissä |
@@ -55,3 +55,4 @@
 | 25.1 | 2 | Partyn muokkaaminen ja käyttäjien lisääminen |
 | 25.1 | 1.5 | Sisäänkirjautumisen muutoksia, lomake uuden käyttäjän luomiseen |
 | 27.1 | 1 | Muutoksia uuden käyttäjän luomiseen, sivu kaikkien käyttäjien näyttämiseen |
+| 27.1 | 1.5 | Sivu hahmolle |
