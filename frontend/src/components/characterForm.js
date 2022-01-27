@@ -67,6 +67,8 @@ const CharacterForm = ({ token, userId, handleSubmitToBackend, userCreations }) 
     const [platinum, setPlatinum] = useState(0)
     const [electrum, setElectrum] = useState(0)
 
+    const [notes, setNotes] = useState([])
+
     const [gotEquipment, setGotEquipment] = useState([])
     const [gotSpells, setGotSpells] = useState([])
     const [gotWeapons, setGotWeapons] = useState([])
@@ -190,6 +192,8 @@ const CharacterForm = ({ token, userId, handleSubmitToBackend, userCreations }) 
         setPlatinum(chara.coins.platinum)
         setElectrum(chara.coins.electrum)
 
+        setNotes(chara.notes)
+
         console.log("Chara:")
         console.log(chara)
     }
@@ -261,7 +265,8 @@ const CharacterForm = ({ token, userId, handleSubmitToBackend, userCreations }) 
                 gold: gold,
                 platinum: platinum,
                 electrum: electrum
-            }
+            },
+            notes: notes
         }
 
         // Send new character to backend or update existing one.
@@ -340,6 +345,8 @@ const CharacterForm = ({ token, userId, handleSubmitToBackend, userCreations }) 
                     <NewFormField type="Number" label="Platinum" value={platinum} setFunction={setPlatinum} min="0"/>
                     <NewFormField type="Number" label="Electrum" value={electrum} setFunction={setElectrum} min="0"/>
                 </div>
+
+                <AddToSimpleList listHeader="Notes" label="New Note" listValue={notes} listSetFunction={setNotes} />
 
                 <button type="submit">Submit</button>
             </form>
