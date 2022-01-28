@@ -97,6 +97,15 @@ body button {
   min-width: fit-content;
 }
 
+.frontPage {
+  height: 25vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 500%;
+  color: var(--red);
+}
 .siteName {
   font-family: var(--cursiveFont);
   color: var(--red);

@@ -34,9 +34,12 @@ function App() {
   if (user === ''){
     return(
       <div>
-        <h1 className="siteName">TTRPG Parties</h1>
-        <LoginForm setFunction={loginFunc} user={user}/>
-        <CreateUserForm />
+        <h1 className="frontPage">TTRPG Parties</h1>
+
+        <div className="formHorPart">
+          <LoginForm setFunction={loginFunc} user={user}/>
+          <CreateUserForm />
+        </div>
       </div>
     )
   }
