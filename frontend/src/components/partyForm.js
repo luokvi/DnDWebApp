@@ -105,10 +105,17 @@ const PartyCreationForm = ({ token, userId, user }) => {
         <div>
             <h3>Create a Party</h3>
 
-            <form onSubmit={handleSubmit}>
-                <NewFormField label="Name" type="text" value={name} setFunction={setName} />
-                <DropDownList field="Characters" optionsList={gotCharas} listValue={characters} listSetFunction={setCharacters} oneValue={true} />
-                <DropDownList field="Other users" optionsList={gotUsers} listValue={users} listSetFunction={setUsers} oneValue={true} />
+            <form onSubmit={handleSubmit} className="formContainer">
+                <div className="formHorPart">
+                    <NewFormField label="Name" type="text" value={name} setFunction={setName} />
+                </div>
+                <div className="formHorPart">
+                    <DropDownList field="Characters" optionsList={gotCharas} listValue={characters} listSetFunction={setCharacters} oneValue={true} />
+                </div>
+                <div className="formHorPart">
+                    <DropDownList field="Other users" optionsList={gotUsers} listValue={users} listSetFunction={setUsers} oneValue={true} />
+                </div>
+                
                 <button type="submit">Submit</button>
             </form>
             
