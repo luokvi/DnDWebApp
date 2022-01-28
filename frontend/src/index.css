@@ -68,9 +68,13 @@ body button {
   margin: 2%;
   width: 50%;
 }
+.formContainer input {
+  margin-bottom: 1%;
+}
 .formHorPart {
   display: flex;
   flex-wrap: wrap;
+  gap: 5%;
 
   margin: 1%;
   padding-bottom: 1%;
@@ -80,12 +84,18 @@ body button {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  max-width: 50%;
+  gap: 5%;
 
   padding-left: 1%;
   padding-bottom: 1%;
   border-bottom: 1px solid var(--middleGrey);
 }
+.formVerPart button {
+  margin: 0;
+  width: 7%;
+  min-width: fit-content;
+}
+
 .siteName {
   font-family: var(--cursiveFont);
   color: var(--red);
