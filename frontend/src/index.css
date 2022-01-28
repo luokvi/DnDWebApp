@@ -1,19 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=Yantramanav:wght@500;900&display=swap');
+
 :root {
   --grey: #bfbabe;
   --white: #f1f2f0;
   --blue: #558a86;
   --red: #a63e14;
+  --black: #333;
+
+  --sansFont: 'Yantramanav', sans-serif;
+  --cursiveFont: 'UnifrakturCook', cursive;
 }
 
 body {
   background-color: var(--grey);
-  color: var(--red);
+  color: var(--black);
+  font-family: var(--sansFont);
 }
 body a {
   color: var(--blue);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.siteName {
+  font-family: var(--cursiveFont);
 }
