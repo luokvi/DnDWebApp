@@ -59,6 +59,33 @@ body button {
   color: var(--red);
 }
 
+.formContainer {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+.formContainer button {
+  margin: 2%;
+  width: 50%;
+}
+.formHorPart {
+  display: flex;
+  flex-wrap: wrap;
+
+  margin: 1%;
+  padding-bottom: 1%;
+  border-bottom: 1px solid var(--middleGrey);
+}
+.formVerPart {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  max-width: 50%;
+
+  padding-left: 1%;
+  padding-bottom: 1%;
+  border-bottom: 1px solid var(--middleGrey);
+}
 .siteName {
   font-family: var(--cursiveFont);
   color: var(--red);

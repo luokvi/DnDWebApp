@@ -283,29 +283,40 @@ const CharacterForm = ({ token, userId, handleSubmitToBackend, userCreations }) 
                 : <h2>Edit Character <i>{name}</i></h2>
             }
 
-            <form onSubmit={handleSubmit}>
-                <NewFormField type="text" label="Name" value={name} setFunction={setName} />
-                <NewFormField type="text" label="Race" value={race} setFunction={setRace}/>
-                <NewFormField type="text" label="Class" value={charClass} setFunction={setClass}/>
-                <NewFormField type="number" label="Level" value={level} setFunction={setLevel} min="0" max="100" />
-                <NewFormField type="number" label="Experience Points" value={exp} setFunction={setExp} min="0" />
-                <NewFormField type="text" label="Background" value={background} setFunction={setBackground}/>
-                <NewFormField type="text" label="Personality" value={personality} setFunction={setPersonality}/>
-                <NewFormField type="text" label="Alignment" value={alignment} setFunction={setAlignment} />
-                <NewFormField type="number" label="Hit Points" value={health} setFunction={setHealth} min="0" />
-                <NewFormField type="text" label="Hit Dice" value={hitDice} setFunction={setHitDice} />
-                <NewFormField type="number" label="Armor Class" value={armorClass} setFunction={setArmorClass} min="0" max="20" />
-                <NewFormField type="number" label="Initiative" value={initiative} setFunction={setInitiative} min="0" max="20" />
-                <NewFormField type="number" label="Speed" value={speed} setFunction={setSpeed} min="0" max="20" />
-                <NewFormField type="number" label="Strength" value={strength} setFunction={setStrength} min="0" max="20" />
-                <NewFormField type="number" label="Dexterity" value={dex} setFunction={setDex} min="0" max="20" />
-                <NewFormField type="number" label="Constitution" value={constitution} setFunction={setConstitution} min="0" max="20" />
-                <NewFormField type="number" label="Intelligence" value={int} setFunction={setInt} min="0" max="20" />
-                <NewFormField type="number" label="Wisdom" value={wis} setFunction={setWis} min="0" max="20" />
-                <NewFormField type="number" label="Charisma" value={cha} setFunction={setCha} min="0" max="20" />
-                <NewFormField type="number" label="Passive Wisdom" value={pWis} setFunction={setPWis} min="0" max="20" />
-                <NewFormField type="number" label="Proficiency Bonus" value={bonus} setFunction={setBonus} min="0" max="20" />
-                <div>
+            <form onSubmit={handleSubmit} className="formContainer">
+                <div className="formHorPart">
+                    <NewFormField type="text" label="Name" value={name} setFunction={setName}/>
+                </div>
+                <div className="formHorPart">
+                    <NewFormField type="text" label="Race" value={race} setFunction={setRace}/>
+                    <NewFormField type="text" label="Class" value={charClass} setFunction={setClass}/>
+                    <NewFormField type="number" label="Level" value={level} setFunction={setLevel} min="0" max="100" />
+                    <NewFormField type="number" label="Experience Points" value={exp} setFunction={setExp} min="0" />
+                </div>
+                <div className="formHorPart">
+                    <NewFormField type="text" label="Background" value={background} setFunction={setBackground}/>
+                    <NewFormField type="text" label="Personality" value={personality} setFunction={setPersonality}/>
+                    <NewFormField type="text" label="Alignment" value={alignment} setFunction={setAlignment} />
+                </div>
+                <div className="formHorPart">
+                    <NewFormField type="number" label="Hit Points" value={health} setFunction={setHealth} min="0" />
+                    <NewFormField type="text" label="Hit Dice" value={hitDice} setFunction={setHitDice} />
+                    <NewFormField type="number" label="Armor Class" value={armorClass} setFunction={setArmorClass} min="0" max="20" />
+                    <NewFormField type="number" label="Initiative" value={initiative} setFunction={setInitiative} min="0" max="20" />
+                </div>
+                <div className="formVerPart">
+                    <NewFormField type="number" label="Speed" value={speed} setFunction={setSpeed} min="0" max="20" />
+                    <NewFormField type="number" label="Strength" value={strength} setFunction={setStrength} min="0" max="20" />
+                    <NewFormField type="number" label="Dexterity" value={dex} setFunction={setDex} min="0" max="20" />
+                    <NewFormField type="number" label="Constitution" value={constitution} setFunction={setConstitution} min="0" max="20" />
+                    <NewFormField type="number" label="Intelligence" value={int} setFunction={setInt} min="0" max="20" />
+                    <NewFormField type="number" label="Wisdom" value={wis} setFunction={setWis} min="0" max="20" />
+                    <NewFormField type="number" label="Charisma" value={cha} setFunction={setCha} min="0" max="20" />
+                    <NewFormField type="number" label="Passive Wisdom" value={pWis} setFunction={setPWis} min="0" max="20" />
+                    <NewFormField type="number" label="Proficiency Bonus" value={bonus} setFunction={setBonus} min="0" max="20" />
+                </div>
+                
+                <div className="formVerPart">
                     <h4>Proficiencies</h4>
                     <CheckboxField title='Acrobatics' label="Acrobatics" value={acrobatics} setFunction={setAcrobatics}/>
                     <CheckboxField title='AnimalHandling' label="Animal Handling" value={animalHandling} setFunction={setAnimalHandling}/>
@@ -326,18 +337,27 @@ const CharacterForm = ({ token, userId, handleSubmitToBackend, userCreations }) 
                     <CheckboxField title="Stealth" label="Stealth" value={stealth} setFunction={setStealth} />
                     <CheckboxField title="Survival" label="Survival" value={survival} setFunction={setSurvival} />
                 </div>
-                <AddToSimpleList listHeader="Languages" label="New Language" listValue={lan} listSetFunction={setLan} />
-                <AddItemToList listHeader="Other Proficiencies" listValue={otherProficiencies} listSetFunction={setOtherProficiencies} />
+                <div className="formVerPart">
+                    <AddToSimpleList listHeader="Languages" label="New Language" listValue={lan} listSetFunction={setLan} />
+                </div>
+                <div className="formVerPart">
+                    <AddItemToList listHeader="Other Proficiencies" listValue={otherProficiencies} listSetFunction={setOtherProficiencies} />
+                </div>
+                <div className="formVerPart">
+                    <NewFormField type="text" label="Spell Casting Ability" value={spellCasting} setFunction={setSpellCasting} />
+                    <DropDownList field="Spells" optionsList={gotSpells} listValue={spells} listSetFunction={setSpells} />
+                </div>
+                <div className="formVerPart">
+                    <DropDownList field="Equipment" optionsList={gotEquipment} listValue={equip} listSetFunction={setEquip} />
+                </div>
+                <div className="formVerPart">
+                    <DropDownList field="Weapons" optionsList={gotWeapons} listValue={weapons} listSetFunction={setWeapons} />
+                </div>
+                <div className="formVerPart">
+                    <AddItemToList listHeader="Features" listValue={features} listSetFunction={setFeatures} />
+                </div>
                 
-                <NewFormField type="text" label="Spell Casting Ability" value={spellCasting} setFunction={setSpellCasting} />
-
-                <DropDownList field="Spells" optionsList={gotSpells} listValue={spells} listSetFunction={setSpells} />
-                <DropDownList field="Equipment" optionsList={gotEquipment} listValue={equip} listSetFunction={setEquip} />
-                <DropDownList field="Weapons" optionsList={gotWeapons} listValue={weapons} listSetFunction={setWeapons} />
-
-                <AddItemToList listHeader="Features" listValue={features} listSetFunction={setFeatures} />
-                
-                <div>
+                <div className="formVerPart">
                     <h4>Coins</h4>
                     <NewFormField type="Number" label="Copper" value={copper} setFunction={setCopper} min="0"/>
                     <NewFormField type="Number" label="Silver" value={silver} setFunction={setSilver} min="0"/>
@@ -345,15 +365,25 @@ const CharacterForm = ({ token, userId, handleSubmitToBackend, userCreations }) 
                     <NewFormField type="Number" label="Platinum" value={platinum} setFunction={setPlatinum} min="0"/>
                     <NewFormField type="Number" label="Electrum" value={electrum} setFunction={setElectrum} min="0"/>
                 </div>
-
-                <AddToSimpleList listHeader="Notes" label="New Note" listValue={notes} listSetFunction={setNotes} />
-
+                <div className="formVerPart">
+                    <AddToSimpleList listHeader="Notes" label="New Note" listValue={notes} listSetFunction={setNotes} />
+                </div>
+                
                 <button type="submit">Submit</button>
             </form>
 
-            <EquipmentCreationForm userId={userId} token={token} equipList={gotEquipment} setEquipList={setGotEquipment} />
-            <SpellCreationForm userId={userId} token={token} spellsList={gotSpells} setSpellsList={setGotSpells} />
-            <WeaponCreationForm userId={userId} token={token} weaponsList={gotWeapons} setWeaponsList={setGotWeapons}/>
+            <div className="formContainer">
+                <div className="formHorPart">
+                    <EquipmentCreationForm userId={userId} token={token} equipList={gotEquipment} setEquipList={setGotEquipment} />
+                </div>
+                <div className="formHorPart">
+                    <SpellCreationForm userId={userId} token={token} spellsList={gotSpells} setSpellsList={setGotSpells} />
+                </div>
+                <div className="formHorPart">
+                    <WeaponCreationForm userId={userId} token={token} weaponsList={gotWeapons} setWeaponsList={setGotWeapons}/>
+                </div>
+            </div>
+            
         </div>
     )
 }
