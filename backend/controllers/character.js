@@ -14,6 +14,13 @@ charaRouter.get('/:id', async (req, res) => {
         "spells", { name: 1, description: 1, level: 1 })
         )
 
+    // Check that character belongs to querying user.
+    const [authorized, checkMessage] = await TokenCheck.checkToken(req, chara.creator.id)
+    if (!authorized){
+        res.status(401).send(checkMessage).end()
+        return
+    }
+
     res.json(chara.toJSON())
 })
 
