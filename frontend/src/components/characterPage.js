@@ -34,14 +34,16 @@ const CharacterPage = ({ token }) => {
 
     return(
         <div>
-            <div>
+            <div className="formHorPart">
                 <h2>{chara.name}</h2>
-                <p>
-                    Player: 
-                    <Link to={'/user/' + chara.creator.id}>
-                        {chara.creator.username}
-                    </Link>
-                </p>
+                    <p>
+                        Player: 
+                        <Link to={'/user/' + chara.creator.id}>
+                            {chara.creator.username}
+                        </Link>
+                    </p>
+            </div>
+            <div className="formHorPart">
                 <p>Class & level: {chara.class} {chara.level}</p>
                 <p>Background: {chara.background}</p>
                 <p>Race: {chara.race}</p>
@@ -49,8 +51,9 @@ const CharacterPage = ({ token }) => {
                 <p>Alignment: {chara.alignment}</p>
                 <p>Experience points: {chara.experiencePoints}</p>
             </div>
+                
 
-            <div>
+            <div className="formHorPart">
                 <p>Health: {chara.currentHealth} / {chara.maxHealth}</p>
                 <p>Hit dice: {chara.hitDice}</p>
                 <p>Armor class: {chara.armorClass}</p>
@@ -58,7 +61,7 @@ const CharacterPage = ({ token }) => {
                 <p>Speed: {chara.speed} feet</p>
             </div>
 
-            <div>
+            <div className="formHorPart">
                 <p>Strength: {chara.strength}</p>
                 <p>Dexterity: {chara.dexterity}</p>
                 <p>Constitution: {chara.constitution}</p>
@@ -68,17 +71,19 @@ const CharacterPage = ({ token }) => {
                 <p>Passive wisdom: {chara.passiveWisdom}</p>
             </div>
 
-            <div>
+            <div className="formVerPart">
                 <p>Proficiency bonus: {chara.proficiencyBonus}</p>
                 <div>
                     <h5>Skills:</h5>
-                    {chara.proficientSkills.map(skill =>
-                        <p key={skill}>{skill}</p>
-                        )}
+                    <div className="formHorPart">
+                        {chara.proficientSkills.map(skill =>
+                            <p key={skill}>{skill}</p>
+                            )}
+                    </div>
                 </div>
             </div>
 
-            <div>
+            <div className="formVerPart">
                 <h5>Proficiencies:</h5>
                 {chara.otherProficiencies.map(prof => 
                     <p key={prof.name}>
@@ -94,7 +99,7 @@ const CharacterPage = ({ token }) => {
                 </p>
             </div>
 
-            <div>
+            <div className="formHorPart">
                 <p>Copper: {chara.coins.copper}</p>
                 <p>Silver: {chara.coins.silver}</p>
                 <p>Electrum: {chara.coins.electrum}</p>
@@ -102,32 +107,33 @@ const CharacterPage = ({ token }) => {
                 <p>Platinum: {chara.coins.platinum}</p>
             </div>
 
-            <div>
+            <div className="formVerPart">
                 <h5>Equipment:</h5>
                 {chara.equipment.map(e =>
-                    <p key={e.id}>
-                        <b>{e.name}</b>: {e.description}
+                    <p key={e.id} className="card">
+                        <h5>{e.name}</h5>
+                        <p>{e.description}</p>
                     </p>
                     )}
             </div>
 
-            <div>
+            <div className="formVerPart">
                 <h5>Weapons:</h5>
                 {chara.weapons.map(w =>
-                    <div key={w.id}>
-                        <p>{w.name}</p>
-                        <p>ATK Bonus: {w.atkBonus}</p>
-                        <p>Damage / Type: {w.damage}</p>
+                    <div key={w.id} className="card">
+                        <h5>{w.name}</h5>
+                        <p><b>ATK Bonus:</b> {w.atkBonus}</p>
+                        <p><b>Damage / Type:</b> {w.damage}</p>
                         <p>Description: {w.description}</p>
                     </div>
                     )}
             </div>
 
-            <div>
+            <div className="formVerPart">
                 <h5>Spells:</h5>
                 {chara.spells.map(s => 
-                    <div key={s.id}>
-                        <p>{s.name}</p>
+                    <div key={s.id} className="card">
+                        <h5>{s.name}</h5>
                         <p>Level: {s.level}</p>
                         <p>Description: {s.description}</p>
                     </div>
@@ -135,17 +141,17 @@ const CharacterPage = ({ token }) => {
                 <p>Spellcasting ability: {chara.spellCastingAbility}</p>
             </div>
             
-            <div>
+            <div className="formVerPart">
                 <h5>Features:</h5>
                 {chara.features.map(f =>
-                    <div key={f.name}>
-                        <p><b>{f.name}</b></p>
+                    <div key={f.name} className="formHorPart">
+                        <h5>{f.name}</h5>
                         <p>{f.description}</p>
                     </div>
                     )}
             </div>
             
-            <div>
+            <div className="card">
                 <h5>Notes:</h5>
                 <ul>
                     {chara.notes.map(n =>
