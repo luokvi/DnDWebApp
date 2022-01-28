@@ -34,7 +34,7 @@ function App() {
   if (user === ''){
     return(
       <div>
-        <h1 className="siteName">DnD Web App</h1>
+        <h1 className="siteName">TTRPG Parties</h1>
         <LoginForm setFunction={loginFunc} user={user}/>
         <CreateUserForm />
       </div>
@@ -54,7 +54,7 @@ function App() {
 
   return (
       <div>
-        <h1 className="siteName">DnD Web App</h1>
+        <h1 className="siteName">TTRPG Parties</h1>
         <LoginForm setFunction={loginFunc} user={user.id} loggedInAs={user.username}/>
 
         <Routes>
