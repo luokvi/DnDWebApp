@@ -46,7 +46,7 @@ export const AddItemToList = ({ listHeader, listValue, listSetFunction }) => {
             <p><b>{listHeader}</b></p>
                 <NewFormField label="Name" type="text" value={nameValue} setFunction={nameSet} />
                 <NewFormField label="Description" type="text" value={descriptionValue} setFunction={descriptionSet}/>
-                <button onClick={addNew}>add</button>
+                <button onClick={addNew}>Add</button>
 
             <p><b>Added:</b></p>
             {listValue.map(value =>
@@ -77,7 +77,7 @@ export const AddToSimpleList = ({ listHeader, label, listValue, listSetFunction 
         <div>
             <p><b>{listHeader}</b></p>
             <NewFormField label={label} type="Text" value={item} setFunction={setItem} />
-            <button onClick={addNew}>add</button>
+            <button onClick={addNew}>Add</button>
 
             <p><b>Added:</b></p>
             {listValue.map(value =>
