@@ -33,7 +33,7 @@ export const AddItemToList = ({ listHeader, listValue, listSetFunction }) => {
         }
         const newItem = {
             'name': nameValue,
-            'desciption': descriptionValue
+            'description': descriptionValue
         }
         listSetFunction([...listValue, newItem])
 
