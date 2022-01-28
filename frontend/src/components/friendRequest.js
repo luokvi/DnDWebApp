@@ -3,19 +3,6 @@ import { Link } from "react-router-dom"
 
 import userService from '../services/users'
 
-const commonFriends = (user, sender) => {
-    var commonFriends = []
-
-    user.friends.forEach(friend => {
-        if (sender.friends.includes(friend.id)){
-            commonFriends = commonFriends.concat(friend.username)
-        }
-        
-    })
-    
-    return commonFriends
-}
-
 const FriendRequest = ({ user, r, setNotif, token }) => {
     console.log("Friendrequest: " + JSON.stringify(r))
 
@@ -23,24 +10,22 @@ const FriendRequest = ({ user, r, setNotif, token }) => {
         try{
             const response = await userService.acceptFriendRequest(
                 user.id,
-                r.sender,
+                r.sender.id,
                 r.id,
                 token
             )
             console.log(response)
             setNotif(
                 "Added friend " + 
-                r.sender
+                r.sender.username
                 )
         }catch{
             setNotif(
                 "Error occured when accepting friend request from " + 
-                r.sender
+                r.sender.username
                 )
         }
     }
-
-    const commonFriendsList = commonFriends(user, r.sender)
     
     return(
         <li>
@@ -48,12 +33,7 @@ const FriendRequest = ({ user, r, setNotif, token }) => {
                 From: <Link to={"/user/" + r.sender.id}>
                         {r.sender.username}
                     </Link>
-                <button onClick={accept}>accept</button>
-            </p>
-            <p>You have these friends in common:  
-                {commonFriendsList.map(f =>
-                    <b key={f}>{f} </b>
-                )}
+                <button onClick={accept}>Accept</button>
             </p>
         </li>
     )
