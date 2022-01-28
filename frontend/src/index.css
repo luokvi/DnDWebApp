@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=Yantramanav:wght@500;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rammetto+One&family=Yantramanav:wght@500;900&display=swap');
 
 :root {
   --grey: #bfbabe;
@@ -8,7 +8,7 @@
   --black: #333;
 
   --sansFont: 'Yantramanav', sans-serif;
-  --cursiveFont: 'UnifrakturCook', cursive;
+  --cursiveFont: 'Rammetto One', cursive;
 }
 
 body {
