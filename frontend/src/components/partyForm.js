@@ -25,7 +25,7 @@ export const AddFriendToPartyForm = ({ token, user, friendId }) => {
     }
 
     return(
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="formContainer">
             <select name="Party" onChange={({ target }) => setSelected(target.value)} defaultValue={""}>
                 {parties.map( p =>
                     <option key={p.id} value={p.id} >
