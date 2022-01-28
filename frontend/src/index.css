@@ -6,6 +6,7 @@
   --blue: #558a86;
   --red: #a63e14;
   --black: #333;
+  --middleGrey: #555;
 
   --sansFont: 'Yantramanav', sans-serif;
   --cursiveFont: 'Rammetto One', cursive;
@@ -19,7 +20,21 @@ body {
 body a {
   color: var(--blue);
 }
+body input {
+  background: var(--white);
+}
+body button {
+  background-color: var(--white);
+  color: var(--black);
+  font-family: var(--sansFont);
+  border: 2px solid var(--blue);
+}
+
+#lighterText {
+  color: var(--middleGrey);
+}
 
 .siteName {
   font-family: var(--cursiveFont);
+  color: var(--red);
 }
