@@ -13,7 +13,7 @@ const Character = ({ c }) => {
         navigate("/character/" + c.id)
     }
     return(
-        <div>
+        <div className="card">
             <h5><Link to={"/character/view/" + c.id}>
                 {c.name}</Link>
             </h5>
@@ -32,7 +32,7 @@ const Party = ({ p }) => {
         navigate("/party/" + p.id)
     }
     return(
-        <div>
+        <div className="card">
             <h5>{p.name}</h5>
             {p.characters.map(c =>
                 <p key={c.id}>
@@ -56,9 +56,11 @@ const Parties = ({ parties }) => {
         <div>
             <h3>Parties:</h3>
             <Link to={"/party/new"}>Create a new Party</Link>
-            {parties.map(p =>
-                <Party p={p} key={p.id}/>
-            )}
+            <div className="cardContainer">
+                {parties.map(p =>
+                    <Party p={p} key={p.id}/>
+                )}
+            </div>
         </div>
     )
 }
@@ -90,7 +92,7 @@ const ProfilePage = ({ user, token }) => {
     return(
         <div id={user.username}>
             <h2>{user.username}</h2>
-            <p>User since <time dateTime={dateCreated}>{dateCreated}</time></p>
+            <p className="lighterText">User since <time dateTime={dateCreated}>{dateCreated}</time></p>
 
             <h3>Friends:</h3>
             <ul>
@@ -114,9 +116,11 @@ const ProfilePage = ({ user, token }) => {
                 Create a new character
             </Link>
 
-            {user.characters.map(chara => 
-                <Character c={chara} key={chara.id}/>
-                )}
+            <div className="cardContainer">
+                {user.characters.map(chara => 
+                    <Character c={chara} key={chara.id}/>
+                    )}
+            </div>
 
             <Parties parties={user.creations.parties} />
             

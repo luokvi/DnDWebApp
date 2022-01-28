@@ -30,8 +30,30 @@ body button {
   border: 2px solid var(--blue);
 }
 
-#lighterText {
+.lighterText {
   color: var(--middleGrey);
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid var(--middleGrey);
+}
+
+.cardContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  padding: 0.5%;
+  margin: 1%;
+  border: 1px solid var(--black);
+  min-width: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.card h1 h2 h3 h4 h5 {
+  margin: 0;
+  padding: 0;
 }
 
 .siteName {
