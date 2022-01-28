@@ -52,7 +52,7 @@ export const AddItemToList = ({ listHeader, listValue, listSetFunction }) => {
             {listValue.map(value =>
                 <div key={value.name}>
                     <p><b>Name:</b> {value.name} </p>
-                    <p><b>Description:</b> {value.desciption}</p>
+                    <p><b>Description:</b> {value.description}</p>
                 </div>
             )}
         </div>
