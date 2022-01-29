@@ -58,7 +58,7 @@ charaRouter.post('/', async (req, res) => {
         charisma: body.charisma,
         passiveWisdom: body.passiveWisdom,
         proficiencyBonus: body.proficiencyBonus,
-        proficientSkills: body.proficiencientSkills,
+        proficientSkills: body.proficientSkills,
         languages: body.languages,
         otherProficiencies: body.otherProficiencies,
         weapons: body.weapons,
