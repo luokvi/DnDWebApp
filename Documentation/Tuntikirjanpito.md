@@ -1,6 +1,6 @@
 | päivä | aika | mitä tein  |
 | :----:|:-----| :-----|
-| yhteensä: | 95.5 | |
+| yhteensä: | 96.0 | 5 opintopistettä |
 | 14.9. | 2 | Idean suunnittelu |
 | 19.9. | 0.5 | Backendin tekemistä |
 | 25.9. | 1 | User backendissä |
@@ -58,3 +58,4 @@
 | 27.1 | 1.5 | Sivu hahmolle |
 | 28.1 | 3 | CSS tyylejä sivustolle |
 | 29.1 | 1 | Korjauksia toimintoihin ja koodin siistimistä |
+| 29.1 | 0.5 | Sovelluksen julkaiseminen ja lopun dokumentaation kirjoittaminen|
