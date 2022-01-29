@@ -41,7 +41,7 @@ export const AddFriendToPartyForm = ({ token, user, friendId }) => {
 
 const PartyCreationForm = ({ token, userId, user }) => {
     const { partyId } = useParams()
-    const { isNewParty, setIsNewParty } = useState(true)
+    const [isNewParty, setIsNewParty] = useState(true)
 
     const [name, setName] = useState("")
     const [characters, setCharacters] = useState([])
@@ -94,15 +94,16 @@ const PartyCreationForm = ({ token, userId, user }) => {
     const handleSubmit = async (event) => {
         event.preventDefault()
 
+        console.log(isNewParty)
         const newParty = {
             name: name,
             characters: characters.map(c => c.id),
             users: [...users.map(u => u.id), userId],
-            id: isNewParty ? partyId : "",
+            id: !isNewParty ? partyId : "",
             userId: userId
         }
 
-        if (isNewParty){
+        if (isNewParty === true){
             console.log("new party")
             const created = await createService.createParty(newParty, token)
         } else {

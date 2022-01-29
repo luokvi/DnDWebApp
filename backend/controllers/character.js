@@ -140,6 +140,8 @@ charaRouter.post('/party', async (req, res) => {
 
 // Modify party, e.g. add members.
 charaRouter.patch('/party/:id', async (req, res) => {
+    console.log("patch party")
+    console.log(req.body)
     const [authorized, checkMessage] = await TokenCheck.checkToken(req, req.body.userId)
     if (!authorized){
         res.status(401).send(checkMessage).end()

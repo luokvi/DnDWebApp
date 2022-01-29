@@ -134,7 +134,7 @@ const addUserToParty = async (partyId, friendId, token, userId) => {
 }
 
 const updateParty = async (body, token) => {
-    const url = baseUrl + "character/party" + body.id
+    const url = baseUrl + "character/party/" + body.id
     const axiosConfig = {
         headers: {
             'Authorization': 'Bearer ' + token
