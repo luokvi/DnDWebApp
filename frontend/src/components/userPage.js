@@ -66,7 +66,7 @@ const UserPage = ({ user, token }) => {
             receiverId: id
         }
 
-        const response = userService.sendFriendRequest(newRequest, token)
+        const response = await userService.sendFriendRequest(newRequest, token)
         console.log(response)
     }
 
