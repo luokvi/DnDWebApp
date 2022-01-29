@@ -60,6 +60,16 @@ const UserPage = ({ user, token }) => {
         setCommonFriends(common.filter(f => f !== ""))
     }
 
+    const sendFriendRequest = async () =>{
+        const newRequest = {
+            senderId: user.id,
+            receiverId: id
+        }
+
+        const response = userService.sendFriendRequest(newRequest, token)
+        console.log(response)
+    }
+
     // If no user yet, return loading page
     if (gotUser === ""){
         return(
@@ -75,7 +85,7 @@ const UserPage = ({ user, token }) => {
             {isFriend ? <p>A friend!</p>
                 : hasFriendRequest ? <button>Accept friendRequest</button>
                     : hasSentFriendRequest ? <p>Sent friendrequest</p>
-                        : <button>Send friendrequest</button>
+                        : <button onClick={sendFriendRequest}>Send friendrequest</button>
             }
 
             {isFriend ? <AddFriendToPartyForm token={token} user={user} friendId={id}/>

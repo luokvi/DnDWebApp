@@ -30,6 +30,19 @@ const getOtherUser = async (userId) => {
     return res.data
 }
 
+const sendFriendRequest = async (body, token) => {
+    const url = baseUrl + "/friendRequest"
+
+    const axiosConfig = {
+        headers: {
+            'Authorization': 'Bearer ' + token
+        }
+    }
+
+    const res = await axios.post(url, body, axiosConfig)
+    return res.data
+}
+
 // Accept a friend request.
 const acceptFriendRequest = async (userId, senderId, requestId, token) => {
     console.log("got token: " + token)
@@ -56,4 +69,4 @@ const createUser = async (newUser) => {
     return res.data
 }
 
-export default { getAll, getUser, acceptFriendRequest, getOtherUser, createUser }
+export default { getAll, getUser, sendFriendRequest, acceptFriendRequest, getOtherUser, createUser }
