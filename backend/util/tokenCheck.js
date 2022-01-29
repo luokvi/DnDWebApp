@@ -5,7 +5,6 @@ const user = require('../models/user')
 const checkToken = ( async ( req, userId ) => {
     const auth = req.get('authorization')
     
-    console.log(auth)
     // Check that auth starts with 'bearer'
     if (auth){
         const lowerCase = auth.toLowerCase()
