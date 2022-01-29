@@ -54,8 +54,6 @@ const Parties = ({ parties }) => {
     console.log(parties)
     return(
         <div>
-            <h3>Parties:</h3>
-            <Link to={"/party/new"}>Create a new Party</Link>
             <div className="cardContainer">
                 {parties.map(p =>
                     <Party p={p} key={p.id}/>
@@ -122,6 +120,8 @@ const ProfilePage = ({ user, token }) => {
                     )}
             </div>
 
+            <h3>Parties:</h3>
+            <Link to={"/party/new"}>Create a new Party</Link>
             <Parties parties={user.creations.parties} />
             
             <Outlet />

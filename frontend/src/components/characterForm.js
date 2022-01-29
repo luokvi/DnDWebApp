@@ -303,9 +303,9 @@ const CharacterForm = ({ token, userId, handleSubmitToBackend, userCreations }) 
                     <NewFormField type="text" label="Hit Dice" value={hitDice} setFunction={setHitDice} />
                     <NewFormField type="number" label="Armor Class" value={armorClass} setFunction={setArmorClass} min="0" max="20" />
                     <NewFormField type="number" label="Initiative" value={initiative} setFunction={setInitiative} min="0" max="20" />
+                    <NewFormField type="number" label="Speed" value={speed} setFunction={setSpeed} min="0" />
                 </div>
                 <div className="formVerPart">
-                    <NewFormField type="number" label="Speed" value={speed} setFunction={setSpeed} min="0" max="20" />
                     <NewFormField type="number" label="Strength" value={strength} setFunction={setStrength} min="0" max="20" />
                     <NewFormField type="number" label="Dexterity" value={dex} setFunction={setDex} min="0" max="20" />
                     <NewFormField type="number" label="Constitution" value={constitution} setFunction={setConstitution} min="0" max="20" />

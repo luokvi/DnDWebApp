@@ -87,7 +87,7 @@ const CharacterPage = ({ token }) => {
                 <h5>Proficiencies:</h5>
                 {chara.otherProficiencies.map(prof => 
                     <p key={prof.name}>
-                        <b>{prof.name}: {prof.description}</b>
+                        <b>{prof.name}</b>: {prof.description}
                     </p>
                     )}
 
@@ -124,7 +124,7 @@ const CharacterPage = ({ token }) => {
                         <h5>{w.name}</h5>
                         <p><b>ATK Bonus:</b> {w.atkBonus}</p>
                         <p><b>Damage / Type:</b> {w.damage}</p>
-                        <p>Description: {w.description}</p>
+                        <p><b>Description:</b> {w.description}</p>
                     </div>
                     )}
             </div>
@@ -134,17 +134,17 @@ const CharacterPage = ({ token }) => {
                 {chara.spells.map(s => 
                     <div key={s.id} className="card">
                         <h5>{s.name}</h5>
-                        <p>Level: {s.level}</p>
-                        <p>Description: {s.description}</p>
+                        <p><b>Level:</b> {s.level}</p>
+                        <p><b>Description:</b> {s.description}</p>
                     </div>
                     )}
-                <p>Spellcasting ability: {chara.spellCastingAbility}</p>
+                <p><b>Spellcasting ability:</b> {chara.spellCastingAbility}</p>
             </div>
             
             <div className="formVerPart">
                 <h5>Features:</h5>
                 {chara.features.map(f =>
-                    <div key={f.name} className="formHorPart">
+                    <div key={f.name}>
                         <h5>{f.name}</h5>
                         <p>{f.description}</p>
                     </div>

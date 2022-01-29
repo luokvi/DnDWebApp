@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 
 import createService from '../services/creations'
 import { NewFormField, DropDownList } from "./formComponents"
@@ -48,6 +48,8 @@ const PartyCreationForm = ({ token, userId, user }) => {
 
     const [gotCharas, setCharas] = useState([])
     const [gotUsers, setGotUsers] = useState([])
+
+    const navigate = useNavigate()
 
     useEffect(() => {
         getParty()
@@ -98,7 +100,8 @@ const PartyCreationForm = ({ token, userId, user }) => {
         }
 
         const created = await createService.createParty(newParty, token)
-        console.log(created)
+
+        navigate('/myProfile')
     }
 
     return(

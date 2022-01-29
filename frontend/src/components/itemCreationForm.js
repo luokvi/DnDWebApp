@@ -178,7 +178,7 @@ export const WeaponCreationForm = ({ userId, token, weaponsList, setWeaponsList 
                 <NewFormField label="Name" type="text" value={weaponNameValue} setFunction={weaponNameSet} />
                 <NewFormField label="Description" type="text" value={weaponDescriptionValue} setFunction={weaponDescriptionSet} />
                 <NewFormField label="Attack Bonus" type="number" value={atkValue} setFunction={atkSet} min="0" />
-                <NewFormField label="Damage Type" type="text" value={damageValue} setFunction={damageSet} />
+                <NewFormField label="Damage and Type" type="text" value={damageValue} setFunction={damageSet} />
                 <NewFormField label="Attack Range" type="number" value={weaponRangeValue} setFunction={weaponRangeSet} min="0" />
                 <button type="Submit">Create</button>
             </form>
