@@ -285,13 +285,13 @@ const CharacterForm = ({ token, userId, handleSubmitToBackend, userCreations }) 
 
             <form onSubmit={handleSubmit} className="formContainer">
                 <div className="formHorPart">
-                    <NewFormField type="text" label="Name" value={name} setFunction={setName}/>
+                    <NewFormField type="text" label="Name" value={name} setFunction={setName} required/>
                 </div>
                 <div className="formHorPart">
                     <NewFormField type="text" label="Race" value={race} setFunction={setRace}/>
                     <NewFormField type="text" label="Class" value={charClass} setFunction={setClass}/>
                     <NewFormField type="number" label="Level" value={level} setFunction={setLevel} min="0" max="100" />
-                    <NewFormField type="number" label="Experience Points" value={exp} setFunction={setExp} min="0" />
+                    <NewFormField type="number" label="Experience Points" value={exp} setFunction={setExp} min="0" required/>
                 </div>
                 <div className="formHorPart">
                     <NewFormField type="text" label="Background" value={background} setFunction={setBackground}/>
@@ -302,7 +302,7 @@ const CharacterForm = ({ token, userId, handleSubmitToBackend, userCreations }) 
                     <NewFormField type="number" label="Hit Points" value={health} setFunction={setHealth} min="0" />
                     <NewFormField type="text" label="Hit Dice" value={hitDice} setFunction={setHitDice} />
                     <NewFormField type="number" label="Armor Class" value={armorClass} setFunction={setArmorClass} min="0" max="20" />
-                    <NewFormField type="number" label="Initiative" value={initiative} setFunction={setInitiative} min="0" max="20" />
+                    <NewFormField type="number" label="Initiative" value={initiative} setFunction={setInitiative} min="-20" max="20" />
                     <NewFormField type="number" label="Speed" value={speed} setFunction={setSpeed} min="0" />
                 </div>
                 <div className="formVerPart">

@@ -32,8 +32,8 @@ export const EquipmentCreationForm = ({ userId, token, equipList, setEquipList }
         <div>
             <form onSubmit={createEquip}>
                 <h4>Create new Equipment</h4>
-                <NewFormField label="Name" type="text" value={equipNameValue} setFunction={equipNameSet} />
-                <NewFormField label="Description" type="text" value={equipDescriptionValue} setFunction={equipDescriptionSet} />
+                <NewFormField label="Name" type="text" value={equipNameValue} setFunction={equipNameSet} required/>
+                <NewFormField label="Description" type="text" value={equipDescriptionValue} setFunction={equipDescriptionSet} required/>
                 <button type="Submit">Create</button>
             </form>
 
@@ -109,11 +109,11 @@ export const SpellCreationForm = ({ userId, token, spellsList, setSpellsList }) 
         <div>
             <form onSubmit={createSpell}>
                 <h4>Create new Spell</h4>
-                <NewFormField label="Name" type="text" value={spellNameValue} setFunction={spellNameSet} />
-                <NewFormField label="Description" type="text" value={spellDescriptionValue} setFunction={spellDescriptionSet} />
-                <NewFormField label="Level" type="number" value={spellLevel} setFunction={levelSet} min="0" />
-                <NewFormField label="Casting Time" type="text" value={castingTime} setFunction={castingTimeSet} />
-                <NewFormField label="Spell Range" type="number" value={spellRangeValue} setFunction={spellRangeSet} min="0" />
+                <NewFormField label="Name" type="text" value={spellNameValue} setFunction={spellNameSet} required/>
+                <NewFormField label="Description" type="text" value={spellDescriptionValue} setFunction={spellDescriptionSet} required/>
+                <NewFormField label="Level" type="number" value={spellLevel} setFunction={levelSet} min="0" required/>
+                <NewFormField label="Casting Time" type="text" value={castingTime} setFunction={castingTimeSet} required/>
+                <NewFormField label="Spell Range" type="number" value={spellRangeValue} setFunction={spellRangeSet} min="0" required/>
                 
                 <div>
                     <h5>Needed components</h5>
@@ -122,8 +122,8 @@ export const SpellCreationForm = ({ userId, token, spellsList, setSpellsList }) 
                     <CheckboxField title="Material" label="Material" value={material} setFunction={materialSet} />
                 </div>
                 
-                <NewFormField label="Duration, minutes" type="number" value={minutesValue} setFunction={minutesSet} min="0" />
-                <CheckboxField title="concentration" label="Is Concentration" value={isConcentrationValue} setFunction={concentrationSet} />
+                <NewFormField label="Duration, minutes" type="number" value={minutesValue} setFunction={minutesSet} min="0" required/>
+                <CheckboxField title="concentration" label="Is Concentration" value={isConcentrationValue} setFunction={concentrationSet} required/>
                 
                 <button type="Submit">Create</button>
             </form>
@@ -175,11 +175,11 @@ export const WeaponCreationForm = ({ userId, token, weaponsList, setWeaponsList 
         <div>
             <form onSubmit={createWeapon}>
                 <h4>Create new Weapon</h4>
-                <NewFormField label="Name" type="text" value={weaponNameValue} setFunction={weaponNameSet} />
-                <NewFormField label="Description" type="text" value={weaponDescriptionValue} setFunction={weaponDescriptionSet} />
-                <NewFormField label="Attack Bonus" type="number" value={atkValue} setFunction={atkSet} min="0" />
-                <NewFormField label="Damage and Type" type="text" value={damageValue} setFunction={damageSet} />
-                <NewFormField label="Attack Range" type="number" value={weaponRangeValue} setFunction={weaponRangeSet} min="0" />
+                <NewFormField label="Name" type="text" value={weaponNameValue} setFunction={weaponNameSet} required/>
+                <NewFormField label="Description" type="text" value={weaponDescriptionValue} setFunction={weaponDescriptionSet} required/>
+                <NewFormField label="Attack Bonus" type="number" value={atkValue} setFunction={atkSet} min="0" required/>
+                <NewFormField label="Damage and Type" type="text" value={damageValue} setFunction={damageSet} required/>
+                <NewFormField label="Attack Range" type="number" value={weaponRangeValue} setFunction={weaponRangeSet} min="0" required/>
                 <button type="Submit">Create</button>
             </form>
 
