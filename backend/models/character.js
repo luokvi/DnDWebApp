@@ -41,7 +41,7 @@ const characterSchema = new mongoose.Schema({
     description: { type: String }
   }],
   weapons: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Weapon', required: true }],
-  spellCastingAbility: { type: String, enum: ['Wisdom', 'Intelligence', 'Charisma']},
+  spellCastingAbility: { type: String, enum: ['Wisdom', 'Intelligence', 'Charisma', '']},
   spellSlots: [{
     level: { type: Number, min: 1 },
     amount: { type: Number, min: 0 },
