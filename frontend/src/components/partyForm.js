@@ -41,6 +41,7 @@ export const AddFriendToPartyForm = ({ token, user, friendId }) => {
 
 const PartyCreationForm = ({ token, userId, user }) => {
     const { partyId } = useParams()
+    const { isNewParty, setIsNewParty } = useState(true)
 
     const [name, setName] = useState("")
     const [characters, setCharacters] = useState([])
@@ -66,6 +67,7 @@ const PartyCreationForm = ({ token, userId, user }) => {
         setName(gotParty.name)
         setCharacters(gotParty.characters)
         setUsers(gotParty.users)
+        setIsNewParty(false)
     }
 
     const getCharas = () => {
@@ -96,10 +98,18 @@ const PartyCreationForm = ({ token, userId, user }) => {
             name: name,
             characters: characters.map(c => c.id),
             users: [...users.map(u => u.id), userId],
-            userId: userId,
+            id: isNewParty ? partyId : "",
+            userId: userId
         }
 
-        const created = await createService.createParty(newParty, token)
+        if (isNewParty){
+            console.log("new party")
+            const created = await createService.createParty(newParty, token)
+        } else {
+            console.log("updating")
+            const created = await createService.updateParty(newParty, token)
+        }
+        
 
         navigate('/myProfile')
     }
