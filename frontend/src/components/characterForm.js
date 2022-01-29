@@ -247,7 +247,7 @@ const CharacterForm = ({ token, userId, handleSubmitToBackend, userCreations }) 
             charisma: cha,
             passiveWisdom: pWis,
             proficiencyBonus: bonus,
-            proficiencientSkills: listOfProficiencies,
+            proficientSkills: listOfProficiencies,
             languages: lan,
             otherProficiencies: otherProficiencies,
             // Save only weapon ids.
