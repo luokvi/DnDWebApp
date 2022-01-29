@@ -68,7 +68,7 @@ const UserPage = ({ user, token }) => {
         }
 
         const response = await userService.sendFriendRequest(newRequest, token)
-        console.log(response)
+        setSentRequest(true)
     }
 
     // If no user yet, return loading page
