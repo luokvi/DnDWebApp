@@ -23,6 +23,8 @@ app.use('/api/dm', campaignRouter)
 const middleware = require('./backend/util/middleware')
 app.use(middleware.errorHandler)
 
+app.use(express.static('build'))
+
 app.get('/', ( req, res ) => {
   res.send( '<h1>Hello World!</h1>' )
 })
