@@ -9,7 +9,6 @@ const CreateUserForm = ({ }) => {
     const [repeatPwd, setRepeatPws] = useState("")
     const [notif, setNotif] = useState("")
 
-    console.log("IN signup form")
     const handleSubmit = async (event) => {
         event.preventDefault()
 
@@ -44,7 +43,7 @@ const CreateUserForm = ({ }) => {
         }
 
         const savedUser = await userService.createUser(newUser)
-        console.log(savedUser)
+
         setNotif("Created new user " + savedUser.username)
 
         setUsername("")

@@ -4,8 +4,7 @@ import { Link } from "react-router-dom"
 import userService from '../services/users'
 
 const FriendRequest = ({ user, r, setNotif, token }) => {
-    console.log("Friendrequest: " + JSON.stringify(r))
-
+    
     const accept = async () => {
         try{
             const response = await userService.acceptFriendRequest(
@@ -14,7 +13,7 @@ const FriendRequest = ({ user, r, setNotif, token }) => {
                 r.id,
                 token
             )
-            console.log(response)
+            
             setNotif(
                 "Added friend " + 
                 r.sender.username

@@ -193,9 +193,6 @@ const CharacterForm = ({ token, userId, handleSubmitToBackend, userCreations }) 
         setElectrum(chara.coins.electrum)
 
         setNotes(chara.notes)
-
-        console.log("Chara:")
-        console.log(chara)
     }
 
     const getItems = async () => {

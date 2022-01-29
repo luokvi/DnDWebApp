@@ -50,8 +50,6 @@ const Parties = ({ parties }) => {
         )
     }
 
-    console.log("Parties:")
-    console.log(parties)
     return(
         <div>
             <div className="cardContainer">
@@ -86,7 +84,6 @@ const ProfilePage = ({ user, token }) => {
     const dateParts = user.dateCreated.split("T")
     const dateCreated = dateParts[0]
 
-    console.log(JSON.stringify(user))
     return(
         <div id={user.username}>
             <h2>{user.username}</h2>

@@ -45,7 +45,6 @@ const sendFriendRequest = async (body, token) => {
 
 // Accept a friend request.
 const acceptFriendRequest = async (userId, senderId, requestId, token) => {
-    console.log("got token: " + token)
     const url = baseUrl + "/friend"
     const body = {
         "senderId": userId,

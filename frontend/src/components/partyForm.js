@@ -86,15 +86,11 @@ const PartyCreationForm = ({ token, userId, user }) => {
             )
         })
 
-        console.log("Found friends:")
-        console.log(friends)
         setGotUsers(friends)
     }
 
     const handleSubmit = async (event) => {
         event.preventDefault()
-
-        console.log(isNewParty)
         const newParty = {
             name: name,
             characters: characters.map(c => c.id),
@@ -104,13 +100,10 @@ const PartyCreationForm = ({ token, userId, user }) => {
         }
 
         if (isNewParty === true){
-            console.log("new party")
             const created = await createService.createParty(newParty, token)
         } else {
-            console.log("updating")
             const created = await createService.updateParty(newParty, token)
         }
-        
 
         navigate('/myProfile')
     }

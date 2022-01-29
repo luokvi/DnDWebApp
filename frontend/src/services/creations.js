@@ -36,9 +36,6 @@ const getCharacter = async (id, token) => {
     }
 
     const res = await axios.get(url, axiosConfig)
-
-    console.log("Creations got character:")
-    console.log(res.data)
     
     return res.data
 }
@@ -51,15 +48,7 @@ const createItem = async (body, token) => {
         }
     }
 
-    //Debug item creation.
-    console.log("CreateItem posting:")
-    console.log(body)
-
     const res = await axios.post(url, body, axiosConfig)
-
-    //Debug item creation.
-    console.log("CreateItem got response:")
-    console.log(res)
 
     return res.data
 }
@@ -117,9 +106,6 @@ const addUserToParty = async (partyId, friendId, token, userId) => {
         users: [...(party.users.map(u => u.id)), friendId],
         userId: userId
     }
-
-    console.log("Updated party:")
-    console.log(updated)
 
     const url = baseUrl + "character/party/" + partyId
     const axiosConfig = {

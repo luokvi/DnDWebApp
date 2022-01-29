@@ -23,7 +23,6 @@ const LoginForm = ({ setFunction, user, loggedInAs }) => {
             const storedUser = JSON.parse(localStorage.getItem('user'))
             const storedToken = localStorage.getItem('token')
 
-            console.log("Got from storage: " + storedUser + ", and token: " + storedToken)
             if (storedUser !== null){
                 // See if token still valid.
                 const response = await userService.getUser(storedUser.id, storedToken)
@@ -31,7 +30,7 @@ const LoginForm = ({ setFunction, user, loggedInAs }) => {
                     const id = response.id
                     setFunction(id, storedToken)
                 } catch {
-                    console.log("Session expired")
+                    return
                 }
             }
         }
@@ -75,7 +74,6 @@ const LoginForm = ({ setFunction, user, loggedInAs }) => {
         localStorage.clear()
     }
 
-    console.log("User is: " + user)
     if ( !user ){
         return(
             <div>

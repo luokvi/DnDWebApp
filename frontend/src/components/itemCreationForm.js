@@ -69,9 +69,6 @@ export const SpellCreationForm = ({ userId, token, spellsList, setSpellsList }) 
         if (somatic !== "0") components.push("Somatic")
         if (material !== "0") components.push("Material")
 
-        console.log("Components: ")
-        console.log(components)
-
         const newSpell = {
             "name": spellNameValue,
             "description": spellDescriptionValue,
