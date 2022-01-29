@@ -25,6 +25,10 @@ usersRouter.get('/:id', async (req, res) => {
       path: 'friendRequests',
       populate: { path: 'sender'}
   }).populate(
+    { // Get sent friendrequest
+      path: 'sentFriendRequests',
+      populate: { path: 'receiver'}
+  }).populate(
     'characters', {name: 1, race: 1, class: 1, level: 1}).populate(
     'creations.campaigns', {name: 1}).populate(
     'creations.enemies', {name: 1, race: 1, description: 1}).populate(

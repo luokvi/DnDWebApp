@@ -46,7 +46,8 @@ const UserPage = ({ user, token }) => {
 
         // Check if sent friendrequest.
         user.sentFriendRequests.forEach(r => {
-            if (r.receiver === id){
+            console.log(r)
+            if (r.receiver.id === id){
                 setSentRequest(true)
             }
         })
